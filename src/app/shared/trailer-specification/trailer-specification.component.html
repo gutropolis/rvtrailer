@@ -1,0 +1,174 @@
+<form #f="ngForm" (ngSubmit)="onSubmitSpecification(f)">
+    <div class="specification-box">
+        <h4 class="title text-uppercase">Trailer Specification</h4>
+        <div class="clearfix specification-btn">
+            <button type="button" class="btn btn-border-red" (click)="trailerspec('RV Cottage')" [ngClass]="{'btn-primary': trailerType === 'RV Cottage'}">
+            <i class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="50px" height="50px">
+                        <g>
+                            <g>
+                                <path d="M215.261,141.132H47.937c-5.545,0-10.039,4.496-10.039,10.039v53.981c0,5.544,4.495,10.039,10.039,10.039h167.324    c5.545,0,10.039-4.496,10.039-10.039v-53.981C225.3,145.627,220.806,141.132,215.261,141.132z M121.555,195.113H57.977V161.21    h63.578V195.113z M205.222,195.113h-63.588V161.21h63.588V195.113z" fill="#FFFFFF"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M501.961,351.745h-18.522v-19.315c0-5.544-4.496-10.039-10.039-10.039s-10.039,4.496-10.039,10.039v19.315h-52.751    c3.579-3.419,6.837-7.226,9.697-11.391c13.525-19.7,16.474-44.773,7.89-67.067L372.757,129.18    c-6.526-16.949-23.109-28.337-41.263-28.337H44.203C19.829,100.844,0,120.678,0,145.057v216.727    c0,5.544,4.495,10.039,10.039,10.039H73.25c4.65,22.427,24.554,39.334,48.335,39.334c23.785,0,43.694-16.907,48.345-39.334    h332.031c5.544,0,10.039-4.496,10.039-10.039C512,356.24,507.504,351.745,501.961,351.745z M20.078,145.057    c0-13.308,10.822-24.134,24.124-24.134h287.292c9.91,0,18.962,6.218,22.525,15.47l50.188,130.459h-21.955V256.02    c0-5.544-4.496-10.039-10.039-10.039s-10.039,4.496-10.039,10.039v10.832h-23.893V151.171c0-5.544-4.496-10.039-10.039-10.039    h-77.081c-5.545,0-10.039,4.496-10.039,10.039v115.682H20.078V145.057z M310.212,246.373h7.991v20.479h-57.002V161.21h57.002    v65.084h-7.991c-5.544,0-10.039,4.496-10.039,10.039S304.668,246.373,310.212,246.373z M318.203,286.931v26.885h-57.002v-26.885    H318.203z M121.585,391.078c-15.502,0-28.221-12.113-29.214-27.373l5.778-13.326h47.393l5.28,13.19    C149.893,378.894,137.138,391.078,121.585,391.078z M360.528,351.746H167.714l-6.058-15.135c-1.526-3.811-5.216-6.309-9.32-6.309    H91.558c-4.001,0-7.62,2.375-9.211,6.046l-6.675,15.398H20.078v-64.814h221.043v36.924c0,5.544,4.495,10.039,10.039,10.039h77.081    c5.544,0,10.039-4.496,10.039-10.039v-36.924h23.893v10.822c0,5.544,4.496,10.039,10.039,10.039    c5.544,0,10.039-4.496,10.039-10.039v-10.822h29.229c3.595,14.466,0.906,29.48-7.729,42.058    C393.825,343.451,378.07,351.746,360.528,351.746z" fill="#FFFFFF"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M184.22,228.543H47.937c-5.545,0-10.039,4.496-10.039,10.039s4.495,10.039,10.039,10.039H184.22    c5.545,0,10.039-4.496,10.039-10.039S189.764,228.543,184.22,228.543z" fill="#FFFFFF"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <circle cx="214.428" cy="238.582" r="10.374" fill="#FFFFFF"/>
+                            </g>
+                        </g>
+                    </svg>
+              </i> {{ RV_Cottage }}
+          </button>
+            <button type="button" class="btn btn-border-red" (click)="trailerspec('Travel Trailer')" [ngClass]="{'btn-primary': trailerType === 'Travel Trailer'}">
+            <i class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512px" height="512px">
+                        <g>
+                            <g>
+                                <g>
+                                    <path d="M501.333,405.333H448v-256c0-23.531-19.135-42.667-42.667-42.667H277.331l-0.007-37.156l14.874-6.375     c5.417-2.323,7.927-8.594,5.604-14c-1.724-4.043-5.657-6.452-9.755-6.469c-1.424-0.006-2.867,0.252-4.245,0.865l-147.316,63.135     H96c-52.938,0-96,43.063-96,96V384c0,23.531,19.135,42.667,42.667,42.667h46.599c8.835,24.779,32.293,42.667,60.068,42.667     c27.775,0,51.234-17.888,60.069-42.667H448v32c0,5.896,4.771,10.667,10.667,10.667s10.667-4.771,10.667-10.667v-32h32     c5.896,0,10.667-4.771,10.667-10.667S507.229,405.333,501.333,405.333z M255.992,78.652l0.005,28.014h-65.372L255.992,78.652z      M149.333,448c-23.531,0-42.667-19.135-42.667-42.667s19.135-42.667,42.667-42.667S192,381.802,192,405.333     S172.865,448,149.333,448z M256,405.333h-42.667c0-35.292-28.708-64-64-64c-35.292,0-64,28.708-64,64H42.667     c-11.76,0-21.333-9.573-21.333-21.333V234.667H64v32c0,5.896,4.771,10.667,10.667,10.667h128c5.896,0,10.667-4.771,10.667-10.667     v-32H256V405.333z M85.333,256v-64H192v64H85.333z M362.667,288L362.667,288v117.333h-85.333V234.667     C277.333,211.135,296.469,192,320,192s42.667,19.135,42.667,42.667V288z M426.667,405.333H384V234.667h42.667V405.333z      M426.667,213.333h-46.598c-8.835-24.779-32.294-42.667-60.069-42.667c-27.775,0-51.234,17.888-60.069,42.667h-46.598v-32     c0-5.896-4.771-10.667-10.667-10.667h-128c-5.896,0-10.667,4.771-10.667,10.667v32H21.333v-10.667     C21.333,161.5,54.833,128,96,128h309.333c11.76,0,21.333,9.573,21.333,21.333V213.333z" fill="#FFFFFF"/>
+                                    <circle cx="352" cy="288" r="10.667" fill="#FFFFFF"/>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+              </i> {{ Travel_Trailer }}
+          </button>
+
+            <button type="button" class="btn btn-border-red" (click)="trailerspec('Motor Home')" [ngClass]="{'btn-primary': trailerType === 'Motor Home'}">
+
+            <i class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512px" height="512px">
+                        <g>
+                            <g>
+                                <g>
+                                    <path d="M501.333,405.333H448v-256c0-23.531-19.135-42.667-42.667-42.667H277.331l-0.007-37.156l14.874-6.375     c5.417-2.323,7.927-8.594,5.604-14c-1.724-4.043-5.657-6.452-9.755-6.469c-1.424-0.006-2.867,0.252-4.245,0.865l-147.316,63.135     H96c-52.938,0-96,43.063-96,96V384c0,23.531,19.135,42.667,42.667,42.667h46.599c8.835,24.779,32.293,42.667,60.068,42.667     c27.775,0,51.234-17.888,60.069-42.667H448v32c0,5.896,4.771,10.667,10.667,10.667s10.667-4.771,10.667-10.667v-32h32     c5.896,0,10.667-4.771,10.667-10.667S507.229,405.333,501.333,405.333z M255.992,78.652l0.005,28.014h-65.372L255.992,78.652z      M149.333,448c-23.531,0-42.667-19.135-42.667-42.667s19.135-42.667,42.667-42.667S192,381.802,192,405.333     S172.865,448,149.333,448z M256,405.333h-42.667c0-35.292-28.708-64-64-64c-35.292,0-64,28.708-64,64H42.667     c-11.76,0-21.333-9.573-21.333-21.333V234.667H64v32c0,5.896,4.771,10.667,10.667,10.667h128c5.896,0,10.667-4.771,10.667-10.667     v-32H256V405.333z M85.333,256v-64H192v64H85.333z M362.667,288L362.667,288v117.333h-85.333V234.667     C277.333,211.135,296.469,192,320,192s42.667,19.135,42.667,42.667V288z M426.667,405.333H384V234.667h42.667V405.333z      M426.667,213.333h-46.598c-8.835-24.779-32.294-42.667-60.069-42.667c-27.775,0-51.234,17.888-60.069,42.667h-46.598v-32     c0-5.896-4.771-10.667-10.667-10.667h-128c-5.896,0-10.667,4.771-10.667,10.667v32H21.333v-10.667     C21.333,161.5,54.833,128,96,128h309.333c11.76,0,21.333,9.573,21.333,21.333V213.333z" fill="#FFFFFF"/>
+                                    <circle cx="352" cy="288" r="10.667" fill="#FFFFFF"/>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+              </i> {{ Motor_Home}}
+          </button>
+        </div>
+        <div class="trailer-type" *ngIf="trailerType === 'Travel Trailer'" >
+
+            <div class="checkbox">
+                <input type="checkbox" name="traveltrailer" id="traveltrailer" [(ngModel)]="traveltrailer" #trvl="ngModel" value="traveltrailer" />
+                <label for="traveltrailer">Travel Trailer</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" name="fifthwheel" id="fifthwheel"  [(ngModel)]="fifthwheel" #fthwheel="ngModel" value="fifthwheel" />
+                <label for="fifthwheel">Fifth Wheel</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" name="tenttrailer" id="tenttrailer"  [(ngModel)]="tenttrailer" #tnttrailer="ngModel" value="tenttrailer" />
+
+                <label for="tenttrailer">Tent Trailer</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" name="vintage" id="vintage" [(ngModel)]="vintage" #vtage="ngModel" value="vintage" />
+                <label for="vintage">Vintage</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" name="hybrid" id="hybrid" [(ngModel)]="hybrid" #brid="ngModel" value="hybrid" />
+
+                <label for="hybrid">Hybrid</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" name="toyhauler" id="toyhauler" [(ngModel)]="toyhauler" #tyhauler="ngModel" value="toyhauler" />
+
+                <label for="toyhauler">Toy Hauler</label>
+            </div>
+        </div>
+
+        <div class="trailer-type" *ngIf="trailerType === 'Motor Home'">
+            <div class="checkbox">
+                <input type="checkbox" [(ngModel)]="motor_class_a" #classA="ngModel" name="motor_class_a" id="motor_class_a" value="motor_class_a" />
+                <label for="motor_class_a">Class A</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" [(ngModel)]="motor_class_b" #classB="ngModel" name="motor_class_b" id="motor_class_b" value="motor_class_b" />
+                <label for="motor_class_b">Class B</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" [(ngModel)]="motor_class_c" #classC="ngModel" name="motor_class_c" id="motor_class_c" value="motor_class_c" />
+                <label for="motor_class_c">Class C</label>
+            </div>
+        </div>
+
+        <div class="clearfix row">
+            <div class="col-sm-4 form-group">
+                <input type="text" class="form-control" [(ngModel)]="specification_make" #spec_make="ngModel" name="specification_make" id="specification_make" placeholder="Make" required ng-model/>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="text" class="form-control" [(ngModel)]="specification_model" #spec_model="ngModel" name="specification_model" id="specification_model" placeholder="Model" required ng-model/>
+            </div>
+            <div class="col-sm-4 form-group">
+                <select class="form-control" [(ngModel)]="specification_year" placeholder="Year" #spec_year="ngModel" name="specification_year" id="specification_year" required ng-model>
+                <option value="" disabled="true" [selected]="!specification_year">Year</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+            </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <div class="input-group">
+                    <input type="number" class="form-control" [(ngModel)]="specification_length" #spec_length="ngModel" name="specification_length" id="specification_length" placeholder="Length" required ng-model/>
+                    <span class="input-group-addon">Ft</span>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <div class="input-group">
+                    <input type="number" class="form-control" [(ngModel)]="specification_gross_weight" #spec_gross_weight="ngModel" name="specification_gross_weight" id="specification_gross_weight" placeholder="Gross Weight" required ng-model />
+                    <span class="input-group-addon">LB</span>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <div class="input-group">
+                    <input type="number" class="form-control" [(ngModel)]="specification_tough_weight" #spec_tough_weight="ngModel" name="specification_tough_weight" id="specification_tough_weight" placeholder="Tongue Weight" required ng-model/>
+                    <span class="input-group-addon">LB</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <select class="form-control" [(ngModel)]="specification_guest" #spec_guest="ngModel" name="specification_guest" id="specification_guest" required ng-model>
+                <option value="" disabled="true" [selected]="!specification_guest">Guest</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            </div>
+            <div class="col-sm-4 form-group">
+                <select class="form-control" [(ngModel)]="specification_slide_out" #spec_slide_out="ngModel" name="specification_slide_out" id="specification_slide_out" required ng-model>
+                <option value="" disabled="true" [selected]="!specification_slide_out">Slide out</option>
+                <option value="1">1 Slide out</option>
+                <option value="2">2 Slide out</option>
+                <option value="3">3 Slide out</option>
+                <option value="4">4 Slide out</option>
+                <option value="5">5 Slide out</option>
+            </select>
+            </div>
+        </div>
+        <div class="clearfix specific-btn">
+            <button type=submit [disabled]="!f.valid" class="btn btn-primary btn-lg">NEXT</button>
+        </div>
+        
+    </div>
+</form>
+
+
+
+

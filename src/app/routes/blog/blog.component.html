@@ -1,0 +1,53 @@
+<rv-header></rv-header>
+<div class="breadcrumb-wrap">
+    <div class="container">
+        <h3>List Trailers</h3>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">List trailer</li>
+        </ol>
+    </div>
+</div>
+
+<div class="midbody blog-content">
+    <div class="container">
+        <div class="row">
+            <a [routerLink]="['/blog/1']">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="http://cevirdikce.com/proje/hasem-2/images/finance-1.jpg">
+                        <h4>Investment Strategy</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="blog-ici.html" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </a>
+            <a [routerLink]="['/blog/2']">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="http://cevirdikce.com/proje/hasem-2/images/finance-2.jpg">
+                        <h4>Investment Strategy</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="blog-ici.html" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </a>
+            <a [routerLink]="['/blog/3']">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="http://cevirdikce.com/proje/hasem-2/images/finance-3.jpg">
+                        <h4>Investment Strategy</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="blog-ici.html" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+
+
+    </div>
+</div>
+<rv-brandslide *ngIf="brandSlideVisible"></rv-brandslide>
+<rv-footer></rv-footer>

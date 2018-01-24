@@ -1,0 +1,27 @@
+@import '../../style/style';
+.specification-btn {
+    margin: $space-m 0;
+    .btn {
+        text-transform: uppercase;
+        @media(max-width: $break-sm) {
+            margin-left: 0px !important;
+            min-width: 200px;
+            margin-bottom: $space-s;
+        }
+    }
+}
+
+.trailer-type {
+    margin: $space-n 0;
+    text-transform: uppercase;
+    .checkbox {
+        display: inline-block;
+        vertical-align: top;
+        font-size: $very-small;
+        color: $secondary-color;
+        padding-right: $space-n;
+        &+.checkbox {
+            margin-top: $space-s;
+        }
+    }
+}

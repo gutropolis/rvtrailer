@@ -1,0 +1,132 @@
+<rv-header></rv-header>
+<div class="breadcrumb-wrap">
+    <div class="container">
+        <h3>Rent Trailers</h3>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">RVs</a></li>
+            <li class="active">Listing</li>
+        </ol>
+    </div>
+</div>
+
+<!-- <div class="rv-topsearch">
+    <div class="rv-topsearch-in">
+        <rv-header-filter></rv-header-filter>
+    </div>
+</div> -->
+
+<div class="rvlist-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="filter-box">
+                    <div class="filter-box-head clearfix">
+                        <i class="icon">
+                           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <g>
+                                        <path d="M501.333,405.333H448v-256c0-23.531-19.135-42.667-42.667-42.667H277.331l-0.007-37.156l14.874-6.375
+                                            c5.417-2.323,7.927-8.594,5.604-14c-1.724-4.043-5.657-6.452-9.755-6.469c-1.424-0.006-2.867,0.252-4.245,0.865l-147.316,63.135
+                                            H96c-52.938,0-96,43.063-96,96V384c0,23.531,19.135,42.667,42.667,42.667h46.599c8.835,24.779,32.293,42.667,60.068,42.667
+                                            c27.775,0,51.234-17.888,60.069-42.667H448v32c0,5.896,4.771,10.667,10.667,10.667s10.667-4.771,10.667-10.667v-32h32
+                                            c5.896,0,10.667-4.771,10.667-10.667S507.229,405.333,501.333,405.333z M255.992,78.652l0.005,28.014h-65.372L255.992,78.652z
+                                            M149.333,448c-23.531,0-42.667-19.135-42.667-42.667s19.135-42.667,42.667-42.667S192,381.802,192,405.333
+                                            S172.865,448,149.333,448z M256,405.333h-42.667c0-35.292-28.708-64-64-64c-35.292,0-64,28.708-64,64H42.667
+                                            c-11.76,0-21.333-9.573-21.333-21.333V234.667H64v32c0,5.896,4.771,10.667,10.667,10.667h128c5.896,0,10.667-4.771,10.667-10.667
+                                            v-32H256V405.333z M85.333,256v-64H192v64H85.333z M362.667,288L362.667,288v117.333h-85.333V234.667
+                                            C277.333,211.135,296.469,192,320,192s42.667,19.135,42.667,42.667V288z M426.667,405.333H384V234.667h42.667V405.333z
+                                            M426.667,213.333h-46.598c-8.835-24.779-32.294-42.667-60.069-42.667c-27.775,0-51.234,17.888-60.069,42.667h-46.598v-32
+                                            c0-5.896-4.771-10.667-10.667-10.667h-128c-5.896,0-10.667,4.771-10.667,10.667v32H21.333v-10.667
+                                            C21.333,161.5,54.833,128,96,128h309.333c11.76,0,21.333,9.573,21.333,21.333V213.333z"/>
+                                        <circle cx="352" cy="288" r="10.667"/>
+                                    </g>
+                                </g>
+                            </g>
+
+                           </svg>
+                       </i>
+                        <h4>Find Best Trailer Rental</h4>
+                    </div>
+                    <div class="filter-box-body clearfix">
+                        <rv-filter (myFilter)="filterSearch($event)"></rv-filter>
+                        <!-- <button class="btn btn-primary full-width searchbtn">Search</button> -->
+                    </div>
+                </div>
+
+                <div class="filter-box">
+                    <div class="filter-box-head clearfix text-center">
+
+                        <h4>HELP CENTER</h4>
+                    </div>
+                    <div class="filter-box-body clearfix">
+                        <div class="help-txt">
+                            <p>
+                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
+                            </p>
+                        </div>
+                        <div class="help-number">
+                            +90 555 444 66 33
+                        </div>
+                        <div class="help-email">
+                            support@trailerhailer.com
+                        </div>
+                        <div class="help-btn text-center">
+                            <button class="btn btn-primary searchbtn">Call Now</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-8">
+                <!-- <rv-listview *ngFor="let item of items" [rvInfo]="item" [rvimage]="item.rvimage" [rvName]="item.rvName" [rvPrice]="item.rvPrice" [location]="item.location" [rating]="item.rating" [year]="item.year" [guest]="item.guest" [ownerName]="item.ownerName" [ownerImage]="item.ownerImage">
+
+                </rv-listview> -->
+<!--
+                <div *ngFor="let item of items">
+                        {{ item | json }} <br>
+                </div> -->
+                <div class="clearfix rvlist" *ngFor="let item of items; let i = index;">
+                    <figure class="rvlist-figure">
+                        <img src="/images/{{ item.photo }}" />
+                    </figure>
+                    <div class="rvlist-content rv-info">
+                        <div class="clearfix rv-info-top">
+                            <div class="rv-info-top-left">
+                                <h6>{{ item.specification_name }}</h6>
+                                <p class="rv-price">Price: $ {{ item.pricing_high_rate_hour }} / Night</p>
+                                <p class="rv-location">Location: <label>{{ item.location_city}}</label></p>
+                                <label>{{ item.location_province }} </label>
+                            </div>
+                            <div class="rv-owner-info rv-info-top-right text-center">
+                                 <!-- <figure><img src="/images/{{ userDetail.photo }}" /></figure> -->
+                                <h6>{{ item.details_ad_title }}</h6>
+                                <div class="star-rating">
+                                      <rating [(ngModel)]="rating"></rating>
+                                     <!-- <rating (click)=ratingClick()></rating> -->
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="rv-info-bottom">
+
+                            <div class="rv-guest">guest <br /> {{ item.specification_guest }}</div>
+                            <div class="rv-modal"></div>
+                            <button class="rv-btn btn btn-primary" type="button" [routerLink]="['/rv/', item._id]">Rent IT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" view-btn ">
+                    <button class="btn btn-primary" (click)="loadMore()">View More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<rv-brandslide *ngIf="brandSlideVisible"></rv-brandslide>
+<rv-footer></rv-footer>

@@ -1,0 +1,60 @@
+@import '../../style/style';
+footer {
+    background: $background-color;
+    color: $white-color;
+    font-size: $extra-small;
+    padding: $space-n 0 0;
+    a {
+        color: $white-color;
+        &:hover {
+            color: $white-color;
+        }
+    }
+    .footer-logo {
+        text-align: center;
+        margin-bottom: $space-n;
+    }
+}
+
+.footer {
+    &-top {
+        h5 {
+            margin-bottom: $space-m
+        }
+        &-mid {
+            margin-top: $space-l;
+            li {
+                margin-bottom: $space-s + $space-vs;
+            }
+        }
+        &-right {
+            margin-top: $space-l;
+            p {
+                margin-bottom: $space-n;
+            }
+            .newletterform {
+                margin-bottom: $space-n
+            }
+            .follow-us {
+                label {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                }
+                a {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    &-bottom {
+        background: $black-color;
+        text-align: center;
+        color: $white-color;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: $space-n;
+        padding: $space-s 0;
+    }
+}

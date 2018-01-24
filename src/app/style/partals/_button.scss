@@ -1,0 +1,163 @@
+.btn {
+    border-radius: 0;
+    &+.btn {
+        margin-left: 7px;
+        @media(max-width: $break-vs) {
+            margin-left: 0px;
+            margin-top: $space-s;
+        }
+    }
+}
+
+.btn-border-white {
+    background: none;
+    border: solid 1px $white-color;
+    color: $white-color;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 0;
+        margin-right: $space-s;
+        svg {
+            width: 35px;
+            height: 35px;
+            path,
+            rect,
+            circle {
+                fill: $white-color;
+            }
+        }
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        background: #f01c00;
+        border: solid 1px #f01c00;
+        color: $white-color;
+        .icon {
+            svg {
+                path,
+                rect,
+                circle {
+                    fill: #f01c00;
+                }
+            }
+        }
+    }
+}
+
+.btn-border-red {
+    background: $white-color;
+    border: solid 1px $background-color;
+    color: $background-color;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 0;
+        margin-right: $space-s;
+        svg {
+            width: 35px;
+            height: 35px;
+            path,
+            rect,
+            circle {
+                fill: $background-color;
+            }
+        }
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        background: #f01c00;
+        border: solid 1px #f01c00;
+        color: $white-color;
+        .icon {
+            svg {
+                path,
+                rect,
+                circle {
+                    fill: $white-color;
+                }
+            }
+        }
+    }
+}
+
+.btn-primary {
+    background: $background-color;
+    color: $white-color;
+    border: solid 1px $background-color;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 0;
+        margin-right: $space-s;
+        svg {
+            width: 35px;
+            height: 35px;
+            path,
+            rect,
+            circle {
+                fill: $white-color;
+            }
+        }
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        background: #f01c00;
+        border: solid 1px #f01c00;
+        color: $white-color;
+        .icon {
+            svg {
+                path,
+                rect,
+                circle {
+                    fill: $white-color;
+                }
+            }
+        }
+    }
+}
+
+.btn-lg {
+    padding: $space-s $space-m;
+    text-transform: uppercase;
+}
+
+.btn-border-grey {
+    background: $white-color;
+    border: solid 1px $border-color;
+    color: $secondary-color;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 0;
+        margin-right: $space-s;
+        svg {
+            width: 20px;
+            height: 20px;
+            path,
+            rect,
+            circle {
+                fill: $secondary-color;
+            }
+        }
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        background: #f01c00;
+        border: solid 1px #f01c00;
+        color: $white-color;
+        .icon {
+            svg {
+                path,
+                rect,
+                circle {
+                    fill: $white-color;
+                }
+            }
+        }
+    }
+}

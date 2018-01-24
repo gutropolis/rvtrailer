@@ -1,0 +1,69 @@
+<rv-header></rv-header>
+
+<div class="breadcrumb-wrap">
+    <div class="container">
+        <h3>Contact Us</h3>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Contact Us</li>
+        </ol>
+    </div>
+</div>
+<div class="contact-us">
+	<div class="container">
+		<div class="contact-us-top">
+			<p><strong>Email:</strong> info@trailer.com</p>
+			<p><strong>Call Us</strong> +61-7654-111-222</p>
+		</div>
+	</div>
+	<form #f="ngForm" (ngSubmit)="onSubmitContact(f)">
+	<div class="contact-us-bottom">
+	<div class="container">
+		<div class="contact-us-form">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="form-label">Your Name*</label>
+					<input type="text" class="form-control"  [(ngModel)]="name" name="name" #Con_name="ngModel" placeholder="Name" required ng-model/>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="form-label">Your Email*</label>
+					<input type="email" class="form-control"  [(ngModel)]="email" name="email" #Con_email="ngModel" placeholder="E-Mail" required ng-model />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="form-label">Phone*</label>
+					<input type="number" class="form-control"  [(ngModel)]="phone" name="phone" #Con_phone="ngModel" placeholder="Phone" required ng-model />
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="form-label">Subject*</label>
+					<input type="text" class="form-control"  [(ngModel)]="subject" name="subject" #Con_subject="ngModel" placeholder="Subject" required ng-model/>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+
+				<div class="form-group">
+					<label class="form-label">Message</label>
+					<textarea class="form-control" [(ngModel)]="msg" name="msg" #Con_msg="ngModel" placeholder="message" required ng-model></textarea>
+				</div>
+
+		</div>
+		<div class="clearfix">
+			<button [disabled]="!f.valid" class="btn btn-primary btn-lg">Send Message</button>
+		</div>
+		</div>
+		</div>
+	</div>
+</form>
+</div>
+
+<rv-brandslide *ngIf="brandSlideVisible"></rv-brandslide>
+<rv-footer></rv-footer>

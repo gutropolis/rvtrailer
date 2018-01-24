@@ -1,0 +1,39 @@
+@import '../../style/style';
+.user-message {
+    padding: 15px;
+    &-top {
+        margin-bottom: $space-m;
+        .actionbox {
+            text-align: right;
+            .checkbox {
+                display: inline-block;
+                margin-right: $space-n;
+            }
+        }
+    }
+    .msglist {
+        table-layout: fixed;
+        tr {
+            background: $white-color;
+            &.active {
+                background: $background-color;
+            }
+        }
+        td {
+            vertical-align: middle;
+            .content {
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                .specialtxt {
+                    color: #4c8de9;
+                }
+            }
+            &.sender-name {
+                font-weight: bold;
+                border-left: solid 1px $border-color;
+            }
+        }
+    }
+}

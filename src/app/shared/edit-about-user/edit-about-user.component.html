@@ -1,0 +1,82 @@
+<form [formGroup]="rForm" (ngSubmit)="onSubmitUserDetails()">
+<div class="about-content clearfix">
+    <div class="about-content-top" >
+        <h5>Add a Photo *</h5><br>
+	    <div class="upload-picture clearfix">
+        <input type="file" name="photo" ng2FileSelect [uploader]="uploader" /> <br/>
+        <button type="button" class="btn btn-success btn-lg btn-primary" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+              Upload
+        </button>
+		  </div>
+    </div>
+
+    <div class="about-content-mid ">
+        <h5>About Me</h5>
+            <input [(ngModel)]="userDetails.firstname"  formControlName="firstname" id="firstname" type="text" class="form-control" placeholder="First Name"/><br>
+            <input [(ngModel)]="userDetails.lastname"  formControlName="lastname" id="lastname" type="text" class="form-control" placeholder="Last Name"/><br>
+            <textarea rows="7" formControlName="about_user_description" id="about_user_description" [(ngModel)]="userDetails.about_user_description"  class="form-control"  placeholder="Description"></textarea>
+    </div>
+    <div class="about-content-bottom">
+        <h5>Contact Details</h5>
+        <div class="info-strip col-sm-7 form-group">
+            <i class="icon">
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M506.555,208.064L263.859,30.367c-4.68-3.426-11.038-3.426-15.716,0L5.445,208.064
+                      c-5.928,4.341-7.216,12.665-2.875,18.593s12.666,7.214,18.593,2.875L256,57.588l234.837,171.943c2.368,1.735,5.12,2.57,7.848,2.57
+                      c4.096,0,8.138-1.885,10.744-5.445C513.771,220.729,512.483,212.405,506.555,208.064z"/>
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path d="M442.246,232.543c-7.346,0-13.303,5.956-13.303,13.303v211.749H322.521V342.009c0-36.68-29.842-66.52-66.52-66.52
+                      s-66.52,29.842-66.52,66.52v115.587H83.058V245.847c0-7.347-5.957-13.303-13.303-13.303s-13.303,5.956-13.303,13.303v225.053
+                      c0,7.347,5.957,13.303,13.303,13.303h133.029c6.996,0,12.721-5.405,13.251-12.267c0.032-0.311,0.052-0.651,0.052-1.036v-128.89
+                      c0-22.009,17.905-39.914,39.914-39.914s39.914,17.906,39.914,39.914v128.89c0,0.383,0.02,0.717,0.052,1.024
+                      c0.524,6.867,6.251,12.279,13.251,12.279h133.029c7.347,0,13.303-5.956,13.303-13.303V245.847
+                      C455.549,238.499,449.593,232.543,442.246,232.543z"/>
+                  </g>
+                </g>
+              </svg>
+          </i>
+            <textarea rows="3" [(ngModel)]="userDetails.user_address" formControlName="user_address" id="user_address"  class="form-control" placeholder="Address"></textarea>
+
+        </div>
+        <div class="info-strip col-sm-7 form-group">
+            <i class="icon">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                width="35px" height="35px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35;" xml:space="preserve">
+                  <g>
+                    <path d="M25.302,0H9.698c-1.3,0-2.364,1.063-2.364,2.364v30.271C7.334,33.936,8.398,35,9.698,35h15.604
+                      c1.3,0,2.364-1.062,2.364-2.364V2.364C27.666,1.063,26.602,0,25.302,0z M15.004,1.704h4.992c0.158,0,0.286,0.128,0.286,0.287
+                      c0,0.158-0.128,0.286-0.286,0.286h-4.992c-0.158,0-0.286-0.128-0.286-0.286C14.718,1.832,14.846,1.704,15.004,1.704z M17.5,33.818
+                      c-0.653,0-1.182-0.529-1.182-1.183s0.529-1.182,1.182-1.182s1.182,0.528,1.182,1.182S18.153,33.818,17.5,33.818z M26.021,30.625
+                      H8.979V3.749h17.042V30.625z"/>
+                  </g>
+
+              </svg>
+          </i> <div class="form-group" [ngClass]="{'has-error':!rForm.controls['user_contact_no'].valid && rForm.controls['user_contact_no'].touched}">
+                <input type="text" formControlName="user_contact_no" id="user_contact_no" [(ngModel)]="userDetails.user_contact_no"   class="form-control" placeholder="Contact Number"/>
+                <div *ngIf="rForm.controls['user_contact_no'].hasError('required') && rForm.controls['user_contact_no'].touched " class="alert alert-danger">
+                   Please Insert Valid 10 Digit Mobile Number.
+                </div>
+                <div *ngIf="rForm.controls['user_contact_no'].hasError('pattern') && rForm.controls['user_contact_no'].touched " class="alert alert-danger">
+                   Please Insert Valid 10 Digit Mobile Number.
+                </div>
+                <div *ngIf="rForm.controls['user_contact_no'].hasError('minLength') && rForm.controls['user_contact_no'].touched " class="alert alert-danger">
+                   Please Insert Valid 10 Digit Mobile Number.
+                </div>
+                <div *ngIf="rForm.controls['user_contact_no'].hasError('maxLength') && rForm.controls['user_contact_no'].touched " class="alert alert-danger">
+                   Please Insert Valid 10 Digit Mobile Number.
+                </div>
+
+              </div>
+        </div>
+    </div>
+    <div class="about-content-bottom">
+        <button type=submit [disabled]="!rForm.valid"  class="btn btn-primary btn-lg">Update User Details</button>
+    </div>
+</div>
+</form>

@@ -1,0 +1,17 @@
+<rv-header></rv-header>
+<section class="signup-wrap">
+    <div class="container">
+        <div class="signup">
+            <div class="signup-top">
+                <a [routerLinkActive]="['active']" [routerLink]="['/signup/renter']">Renter</a>
+                <a routerLinkActive="active" [routerLink]="['/signup/owner']">owner</a>
+            </div>
+            <div class="signup-body">
+                <h2 class="title">Sign-up</h2>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>
+<rv-brandslide *ngIf="brandSlideVisible"></rv-brandslide>
+<rv-footer></rv-footer>

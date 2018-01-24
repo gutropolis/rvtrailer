@@ -1,0 +1,29 @@
+<div class="admin-page">
+    <h4 class="admin-title">All List Trailer <button type="button" [routerLink]="['/admin/add-list-trailer']" class="btn btn-info pull-right">Add List Trailer</button></h4>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Lastname</th>
+                    <th>E-mail</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let listtrailer of listtrailers">
+                <tr>
+                    <td>{{ listtrailer.specification_make }}</td>
+                    <td>{{ listtrailer.specification_model }}</td>
+                    <td>{{ listtrailer.specification_year }}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm" type="button" [routerLink]="['/admin/view-list-trailer', listtrailer._id]">VIEW</button>
+                        <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/admin/edit-list-trailer', listtrailer._id]">EDIT</button>
+                        <button class="btn btn-danger btn-sm" type="button" (click)="deleteListTrailer(listtrailer._id)">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

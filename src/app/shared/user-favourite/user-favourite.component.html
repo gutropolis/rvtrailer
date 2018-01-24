@@ -1,0 +1,78 @@
+<div class="favourite-box">
+    <div class="favourite-box-top clearfix">
+        <h4 class="col-sm-6 col-md-7 pull-left"><strong>Favourite</strong></h4>
+        <div class="col-sm-6 col-md-5 pull-right actionbox">
+          <form>
+            <div class="checkbox">
+                <input type="checkbox" id="selectall" (change)="changeEvent($event)"/>
+                <label for="selectall">Select All</label>
+            </div>
+            <button [disabled]="toggleBool" class="btn btn-border-grey" (click)="deleteListTrailer()">
+              <i class="icon">
+                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                  viewBox="0 0 486.4 486.4" style="enable-background:new 0 0 486.4 486.4;" xml:space="preserve">
+                    <g>
+                      <g>
+                        <path d="M446,70H344.8V53.5c0-29.5-24-53.5-53.5-53.5h-96.2c-29.5,0-53.5,24-53.5,53.5V70H40.4c-7.5,0-13.5,6-13.5,13.5
+                          S32.9,97,40.4,97h24.4v317.2c0,39.8,32.4,72.2,72.2,72.2h212.4c39.8,0,72.2-32.4,72.2-72.2V97H446c7.5,0,13.5-6,13.5-13.5
+                          S453.5,70,446,70z M168.6,53.5c0-14.6,11.9-26.5,26.5-26.5h96.2c14.6,0,26.5,11.9,26.5,26.5V70H168.6V53.5z M394.6,414.2
+                          c0,24.9-20.3,45.2-45.2,45.2H137c-24.9,0-45.2-20.3-45.2-45.2V97h302.9v317.2H394.6z"/>
+                        <path d="M243.2,411c7.5,0,13.5-6,13.5-13.5V158.9c0-7.5-6-13.5-13.5-13.5s-13.5,6-13.5,13.5v238.5
+                          C229.7,404.9,235.7,411,243.2,411z"/>
+                        <path d="M155.1,396.1c7.5,0,13.5-6,13.5-13.5V173.7c0-7.5-6-13.5-13.5-13.5s-13.5,6-13.5,13.5v208.9
+                          C141.6,390.1,147.7,396.1,155.1,396.1z"/>
+                        <path d="M331.3,396.1c7.5,0,13.5-6,13.5-13.5V173.7c0-7.5-6-13.5-13.5-13.5s-13.5,6-13.5,13.5v208.9
+                          C317.8,390.1,323.8,396.1,331.3,396.1z"/>
+                      </g>
+                    </g>
+                  </svg>
+              </i>
+              Remove
+            </button>
+            </form>
+        </div>
+    </div>
+    <div class="favourite-box-body">
+        <div class="favourite-box-strip" *ngFor="let item of rvList; let i = index;">
+            <div class="favourite-box-strip-left">
+                <!-- <div class="checkbox">
+                    <input type="checkbox" id="rv-{{i}}" class="" />
+                    <label for="rv-{{i}}"></label>
+                </div> -->
+            </div>
+            <div class="favourite-rv favourite-box-strip-right">
+                <!-- <rv-listview [rvInfo]="item" [rvimage]="item.rvimage" [rvName]="item.rvName" [rvPrice]="item.rvPrice" [location]="item.location" [rating]="item.rating" [year]="item.year" [guest]="item.guest" [ownerName]="item.ownerName" [ownerImage]="item.ownerImage"></rv-listview> -->
+                <div class="clearfix rvlist">
+
+                    <figure class="rvlist-figure">
+                        <img src="/images/{{ item.photo }}" />
+                    </figure>
+                    <div class="rvlist-content rv-info">
+                        <div class="clearfix rv-info-top">
+                            <div class="rv-info-top-left">
+                                <h6>{{item.specification_name}}</h6>
+                                <p class="rv-price">Price: {{ item.pricing_high_rate_hour }} / Hours</p>
+                                <p class="rv-location">Location: <label>{{ item.location_street }}</label></p>
+                            </div>
+                            <div class="rv-owner-info rv-info-top-right text-center">
+                                <figure><img src="assets/images/{{ item.ownerImage }}" /></figure>
+                                <h6>{{ item.firstname }} {{item.lastname}}</h6>
+                                <!-- <div class="star-rating">
+                                    <rating [(ngModel)]="item.rating" [max]="item.max" [readonly]="item.isReadonly"></rating>
+                                </div> -->
+                            </div>
+
+                        </div>
+                        <div class="rv-info-bottom">
+
+                            <div class="rv-guest">guest <br /> {{ item.specification_guest }}</div>
+                            <div class="rv-modal"></div>
+                            <button class="rv-btn btn btn-primary" type="button" [routerLink]="['/rv/', item._id]">Rent IT</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

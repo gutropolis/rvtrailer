@@ -1,0 +1,33 @@
+<div class="admin-page">
+    <h4 class="admin-title">All User List
+        <button type="button" class="btn btn-info pull-right" [routerLink]="['/admin/add-user']">Add User</button></h4>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Lastname</th>
+                    <th>E-mail</th>
+                    <th>Approved</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let user of users">
+                <tr>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td> <input class="form-check-input" [(ngModel)]="user.approved" type="checkbox"> </td>
+
+                    <td>
+                        <button class="btn btn-success btn-sm" type="button" [routerLink]="['/admin/view-user', user._id]">VIEW</button>
+                        <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/admin/edit-user', user._id]">EDIT</button>
+                        <button class="btn btn-danger btn-sm" type="button" (click)="deleteUser(user._id)">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

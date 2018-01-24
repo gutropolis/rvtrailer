@@ -1,0 +1,95 @@
+@import '../../style/style';
+header {
+    background: $background-color;
+    color: #fff;
+	padding:0px 15px;
+    .nav {
+        margin-right: 0;
+        li {
+            padding: 10px 15px;
+            a {
+                color: #fff;
+                font-size: $very-small;
+                padding: $space-m 0px;
+                border-bottom: solid 4px transparent;
+                text-transform: uppercase;
+                @media(max-width: $break-sm) {
+                    padding: 0;
+                }
+                &:hover {
+                    background: none;
+                    color: $background-color;
+                    border-color: $background-color;
+                    @media(max-width: $break-sm) {
+                        border-color: transparent;
+                    }
+                }
+            }
+            &:hover,
+            &.active {
+                background: #fff;
+                &>a {
+                    color: $background-color;
+                    border-color: $background-color;
+                    @media(max-width: $break-sm) {
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    .navbar {
+        margin: 0;
+    }
+    .header-btn {
+        float: right;
+        margin-top: $space-m - 2;
+        margin-left: $space-n;
+        text-transform: uppercase;
+        .btn {
+            text-transform: uppercase;
+            font-size: $small;
+            border-width: 2px;
+            @media(max-width: $break-sm) {
+                margin-left: 0px;
+                margin-top: $space-s;
+                min-width: 115px;
+            }
+        }
+        @media(max-width: $break-sm) {
+            float: none;
+            margin-left: 0px;
+        }
+    }
+    .navbar-brand {
+        padding: $space-vs;
+        height: auto;
+    }
+    .header-lang {
+        display: block;
+        float: right;
+        margin-top: $space-m - 2;
+        margin-left: $space-n;
+        color: $white-color;
+        a {
+            color: $white-color;
+            display: block;
+            float: right;
+            padding: $space-vs $space-s;
+            border-left: solid 1px $white-color;
+            &:last-child {
+                border-left: none;
+            }
+            &:hover,
+            &:focus {
+                color: $white-color;
+                font-weight: 600;
+            }
+        }
+    }
+    .navbar-header {
+        .navbar-toggle {
+            margin-top: $space-m + $space-vs
+        }
+    }
+}

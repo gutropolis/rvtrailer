@@ -1,0 +1,102 @@
+@import '../../style/style';
+.dashboard {
+    padding: $space-xl 0;
+    .dashboard-nav {
+        border: solid 1px $background-color;
+        padding: $space-s $space-m;
+        background: $body-bg;
+        font-size: $very-small;
+        margin-bottom: $space-n;
+        @media(max-width: $break-sm) {
+            padding: $space-s + $space-vs
+        }
+        .dashboard-logout {
+            @media(max-width: $break-sm) {
+                display: none;
+            }
+        }
+        .dashbord-menus {
+            width: calc(100% / 2);
+            @media(max-width: $break-sm) {
+                display: block;
+                width: 100%;
+            }
+            ul {
+                display: flex;
+                width: $full;
+                text-align: center;
+                @media(max-width: $break-sm) {
+                    display: block;
+                    width: 100%;
+                }
+                li {
+                    flex: 0 0 25%;
+                    max-width: 25%;
+                    white-space: nowrap;
+                    padding: 0 $space-n;
+                    border-right: solid 1px $border-color;
+                    @media(max-width: $break-tab) {
+                        flex: 0 0 32%;
+                        max-width: 32%;
+                    }
+                    @media(max-width: $break-md) {
+                        flex: 0 0 32%;
+                        max-width: 32%;
+                        padding: 0 $space-s;
+                        font-size: 14px;
+                    }
+                    @media(max-width: $break-sm) {
+                        max-width: none;
+                        flex: none;
+                        padding: 0px $space-s;
+                        text-align: left;
+                        border: none;
+                        font-size: 0px;
+                        display: inline-block;
+                    }
+                    &:last-child {
+                        border-right: none;
+                    }
+                    &.active,
+                    &:hover {
+                        a {
+                            color: $background-color;
+                            .icon {
+                                svg {
+                                    path,
+                                    circle {
+                                        fill: $background-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    a {
+                        .icon {
+                            position: relative;
+                            top: $space-vs;
+                            svg {
+                                path {
+                                    fill: $primary-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .btn-logout {
+        .icon {
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
+
+.dashboard-content {
+    border: solid 1px $background-color;
+    background: $body-bg;
+}

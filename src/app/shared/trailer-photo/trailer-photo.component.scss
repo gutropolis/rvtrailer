@@ -1,0 +1,24 @@
+@import '../../style/style';
+.trailer-photo {
+    &-content {
+        margin: $space-m 0;
+        h5 {
+            text-transform: uppercase;
+            margin: $space-m 0;
+        }
+	.upload-picture
+	{
+		max-width:500px;
+		    border: 1px solid #ccc;
+			background: #fff;
+		input{
+			float:left;
+			padding:12px;
+		}
+		button{
+			float:right; 
+			opacity:1;
+		}
+	}
+	}
+}

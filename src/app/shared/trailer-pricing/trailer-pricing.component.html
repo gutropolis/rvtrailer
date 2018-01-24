@@ -1,0 +1,101 @@
+<form [formGroup]="rForm" (ngSubmit)="onSubmitPricing()">
+    <div class="trailer-pricing">
+        <h4 class="title text-uppercase">
+            Trailer Pricing
+        </h4>
+        <div class="clearfix trailer-pricing-form">
+            <div class="form-group">
+                <label>Security Deposit*</label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="number" class="form-control" [(ngModel)]="listing.pricing_security_deposit" formControlName="pricing_security_deposit" placeholder="Security Deposit" required ng-model/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Delivery Charges*</label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="number" class="form-control" [(ngModel)]="listing.pricing_delivery_charges" formControlName="pricing_delivery_charges" placeholder="Delivery Charges" required ng-model/>
+                    <span class="input-group-addon">/Hour</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Highest Season Rates*</label>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group pricing-box-space">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" [(ngModel)]="listing.pricing_high_rate_hour" formControlName="pricing_high_rate_hour" placeholder="Highest Rates / Night" required ng-model/>
+                            <span class="input-group-addon">/Night</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group pricing-box-space">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" [(ngModel)]="listing.pricing_high_rate_week" formControlName="pricing_high_rate_week" placeholder="Highest Rates / Week" required ng-model/>
+                            <span class="input-group-addon">/Week</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group pricing-box-space">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" [(ngModel)]="listing.pricing_high_rate_month" formControlName="pricing_high_rate_month" placeholder="Highest Rates / Month" required ng-model/>
+                            <span class="input-group-addon">/Month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Low Season Rates*</label>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group pricing-box-space">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" [(ngModel)]="listing.pricing_low_rate_hour" formControlName="pricing_low_rate_hour" placeholder="Low Rates / Night" required ng-model/>
+                            <span class="input-group-addon">/Night</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group pricing-box-space">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" [(ngModel)]="listing.pricing_low_rate_week" formControlName="pricing_low_rate_week" placeholder="Low Rates / Week" required ng-model/>
+                            <span class="input-group-addon">/Week</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group pricing-box-space">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" [(ngModel)]="listing.pricing_low_rate_month" formControlName="pricing_low_rate_month" placeholder="Low Rates / Month" required ng-model/>
+                            <span class="input-group-addon">/Month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Highest Season Date Range</label>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group pricing-box-space">
+                            <span class="input-group-addon">From</span>
+                            <input type="date" class="form-control" [(ngModel)]="listing.pricing_highest_season_date_range_from" formControlName="pricing_highest_season_date_range_from" placeholder="asasas" required ng-model/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="input-group pricing-box-space">
+                            <span class="input-group-addon">To</span>
+                            <input type="date" class="form-control" [(ngModel)]="listing.pricing_highest_season_date_range_to" formControlName="pricing_highest_season_date_range_to" placeholder="asasas" required ng-model/>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix pricing-btn">
+            <button class="btn btn-border-red btn-lg" [routerLink]="['/list-trailer/details']">Back</button>
+            <button class="btn btn-primary btn-lg" [disabled]="!rForm.valid" type="submit">Next</button>
+        </div>
+    </div>
+</form>

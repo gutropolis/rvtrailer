@@ -1,0 +1,42 @@
+<flash-messages></flash-messages>
+
+<form [formGroup]="rForm" (ngSubmit)="onSubmit()">
+
+<div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" formControlName="firstname" id="firstname" placeholder="First Name" />
+</div>
+<div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" formControlName="lastname" id="lastname"  placeholder="Last Name" />
+</div>
+<div class="form-group" [ngClass]="{'has-error':!rForm.controls['email'].valid && rForm.controls['email'].touched}">
+    <label>E-mail*</label>
+    <input type="text" class="form-control" formControlName="email" id="email" placeholder="E-mail/Username" [email]="true" email/>
+    <div *ngIf="rForm.controls['email'].hasError('required') && rForm.controls['email'].touched " class="alert alert-danger">
+       Please Insert Valid E-mail.
+    </div>
+    <div *ngIf="rForm.controls['email'].hasError('pattern') && rForm.controls['email'].touched " class="alert alert-danger">
+       Please Insert Valid E-mail.
+    </div>
+
+</div>
+<div class="form-group">
+    <label>Password*</label>
+    <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password" />
+</div>
+<!-- <div class="form-group">
+    <label>Confirm Password*</label>
+    <input type="password" class="form-control" formControlName="firstname" id="firstname" placeholder="Confirm Password" />
+</div> -->
+<div class="form-group">
+    <button [disabled]="!rForm.valid" class="btn btn-primary">Create Account</button>
+</div>
+<div class="signup-social">
+    <label>or sign up with :</label>
+    <a href="#"><img src="assets/images/facebook.png" alt="Facebook" /></a>
+    <a href="#"><img src="assets/images/gplus.png" alt="Facebook" /></a>
+</div>
+<div class="privacy-policy">
+    By joining you agree to the <strong>TRAILER HAILER</strong> <a [routerLink]="['/']">Terms of Service </a> and <a [routerLink]="['/']">Privacy Policy</a>.
+</div>

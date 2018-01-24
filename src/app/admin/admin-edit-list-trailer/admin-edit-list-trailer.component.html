@@ -1,0 +1,190 @@
+<div class="admin-page">
+    <h4 class="admin-title">Edit List Trailer</h4>
+
+    <form [formGroup]="rForm" (ngSubmit)="updateListTrailerData(listtrailers._id)">
+        <div class="form-group row">
+            <h4><b>(1) Specification</b></h4>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="specification_make" id="specification_make" [(ngModel)]="listtrailers.specification_make">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="specification_model" id="specification_model" [(ngModel)]="listtrailers.specification_model">
+                </div>
+                <div class="form-group col-md-4">
+                    <select id="inputState" class="form-control" formControlName="specification_year" id="specification_year" [(ngModel)]="listtrailers.specification_year">
+                    <option value="2017">2017</option>
+                  </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-4">
+                    <div class="input-group mb-2 mb-sm-0">
+                        <input type="text" class="form-control" formControlName="specification_length" id="specification_length" [(ngModel)]="listtrailers.specification_length">
+                        <div class="input-group-addon">FT</div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group mb-2 mb-sm-0">
+                        <input type="text" class="form-control" formControlName="specification_gross_weight" id="specification_gross_weight" [(ngModel)]="listtrailers.specification_gross_weight">
+                        <div class="input-group-addon">LB</div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group mb-2 mb-sm-0">
+                        <input type="text" class="form-control" formControlName="specification_tough_weight" id="specification_tough_weight" [(ngModel)]="listtrailers.specification_tough_weight">
+                        <div class="input-group-addon">LB</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-4" style="margin-top: 15px;">
+                    <select formControlName="specification_guest" id="specification_guest" class="form-control" [(ngModel)]="listtrailers.specification_guest">
+                    <option selected>Choose...</option>
+                    <option value="1">Guest</option>
+                  </select>
+
+                </div>
+                <div class="form-group col-md-4" style="margin-top: 15px;">
+                    <select id="specification_slide_out" class="form-control" formControlName="specification_slide_out" id="specification_slide_out" [(ngModel)]="listtrailers.specification_slide_out">
+                    <option selected>Choose...</option>
+                    <option value="1">Slight Out</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <h4><b>(2) Location</b></h4>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="location_street" id="location_street" [(ngModel)]="listtrailers.location_street">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="location_city" id="location_city" [(ngModel)]="listtrailers.location_city">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="location_province" id="location_province" [(ngModel)]="listtrailers.location_province">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="location_postal" id="location_postal" [(ngModel)]="listtrailers.location_postal">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <h4><b>(3) Details</b></h4>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="details_ad_title" id="details_ad_title" [(ngModel)]="listtrailers.details_ad_title">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-9">
+                    <textarea class="form-control" formControlName="details_ad_description" id="details_ad_description" [(ngModel)]="listtrailers.details_ad_description" rows="3"></textarea>
+                </div>
+
+                <div class="col-sm-3 form-group" *ngFor="let listingFeature of listingFeatures">
+                    <input type="checkbox" [(ngModel)]="listing.details_feature" formControlName="details_feature" value="{{listingFeature}}" id="feature" />
+                    <label for="feature"> {{ listingFeature.feature }} </label>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4" style="margin-top: 15px;">
+                    <select formControlName="details_no_of_beds" id="details_no_of_beds" class="form-control" [(ngModel)]="listtrailers.details_no_of_beds">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4" style="margin-top: 15px;">
+                    <select formControlName="details_no_of_bathrooms" id="details_no_of_bathrooms" class="form-control" [(ngModel)]="listtrailers.details_no_of_bathrooms">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <h4><b>(4) Pricing</b></h4>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" formControlName="pricing_security_deposit" id="pricing_security_deposit" [(ngModel)]="listtrailers.pricing_security_deposit">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" formControlName="pricing_delivery_charges" id="pricing_delivery_charges" [(ngModel)]="listtrailers.pricing_delivery_charges">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="pricing_high_rate_hour" id="pricing_high_rate_hour" [(ngModel)]="listtrailers.pricing_high_rate_hour">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="pricing_high_rate_week" id="pricing_high_rate_week" [(ngModel)]="listtrailers.pricing_high_rate_week">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="pricing_high_rate_month" id="pricing_high_rate_month" [(ngModel)]="listtrailers.pricing_high_rate_month">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="pricing_low_rate_hour" id="pricing_low_rate_hour" [(ngModel)]="listtrailers.pricing_low_rate_hour">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="pricing_low_rate_week" id="pricing_low_rate_week" [(ngModel)]="listtrailers.pricing_low_rate_week">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" formControlName="pricing_low_rate_month" id="pricing_low_rate_month" [(ngModel)]="listtrailers.pricing_low_rate_month">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" formControlName="pricing_highest_season_date_range_from" id="pricing_highest_season_date_range_from" [(ngModel)]="listtrailers.pricing_highest_season_date_range_from">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" formControlName="pricing_highest_season_date_range_to" id="pricing_highest_season_date_range_to" [(ngModel)]="listtrailers.pricing_highest_season_date_range_to">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <h4><b>(5) Photo</b></h4>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" formControlName="photo" id="photo" [(ngModel)]="listtrailers.photo">
+                    <!-- <img src="uploads/{{listtrailers.photo}}" width="400" height="200">
+                    <input type="file" [(ngModel)]="listtrailers.photo" name="photo" ng2FileSelect [uploader]="uploader" />
+                    <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                          Upload
+                    </button>  -->
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class=" text-center">
+                <button type="submit" [disabled]="!rForm.valid" class="btn btn-primary">Add</button>
+                <button type="cancel" [routerLink]="['/admin/list-trailer']" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>

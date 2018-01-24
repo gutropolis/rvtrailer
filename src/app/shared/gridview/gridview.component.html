@@ -1,0 +1,26 @@
+<div class="rv">
+    <div class="rv-figure">
+        <img src="/images/{{ photo }}" />
+        <div class="rv-hover">
+            <h4>{{rvName}}</h4>
+            <p class="rv-location">Location: <label>{{ location }}</label></p>
+            <div class="rv-guest">guest <br /> {{ guest }}</div>
+            <p class="rv-price">Price: {{ rvPrice }}</p>
+            <button class="btn btn-white btn-lg">View</button>
+        </div>
+    </div>
+    <div class="rv-content">
+        <div class="rv-content-box rv-location">
+            <label>Location</label>
+            <span>{{ location }}  {{ province}}</span>
+        </div>
+        <div class="rv-content-box rv-guest">
+            <label>guest</label>
+            <span>{{ guest }}</span>
+        </div>
+        <div class="rv-content-box rv-price">
+            <label>Price</label>
+            <span>{{ rvPrice }}</span>
+        </div>
+    </div>
+</div>

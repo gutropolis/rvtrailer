@@ -1,0 +1,11 @@
+@import '../../style/style';
+.view-btn {
+    text-align: center;
+    margin: $space-l 0;
+    .btn {
+        font-size: $very-small;
+        padding: $space-s $space-n;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}

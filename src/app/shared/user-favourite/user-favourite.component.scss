@@ -1,0 +1,138 @@
+@import '../../style/style';
+.favourite-box {
+    padding: 15px;
+    &-top {
+        margin-bottom: $space-m;
+        .actionbox {
+            text-align: right;
+            .checkbox {
+                display: inline-block;
+                margin-right: $space-n;
+            }
+        }
+    }
+    &-strip {
+        position: relative;
+        background: $white-color;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-self: center;
+        margin-bottom: $space-m;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+        &-left {
+            flex: 0 0 5%;
+            max-width: 5%;
+            text-align: center;
+            align-self: center;
+        }
+        &-right {
+            flex: 0 0 95%;
+            max-width: 95%;
+            .rvlist {
+                margin-bottom: 0;
+                box-shadow: none;
+                &-figure {
+                    max-width: 25.8%;
+                    flex: 0 0 25.8%;
+                }
+                &-content {
+                    max-width: 74.2%;
+                    flex: 0 0 74.2%;
+                }
+            }
+        }
+    }
+}
+
+.rvlist {
+    position: relative;
+    display: flex;
+    background: $white-color;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    margin-bottom: $space-m;
+    cursor: pointer;
+    &-figure {
+        flex: 0 0 36.7%;
+        max-width: 36.7%
+    }
+    &-content {
+        flex: 0 0 63.3%;
+        max-width: 63.3%;
+    }
+    .rv-info {
+        &-top {
+            padding: 0 15px;
+            border-bottom: solid 1px $border-color;
+            &-left {
+                float: left;
+                width: 65%;
+                h6 {
+                    margin-top: $space-s;
+                    color: $secondary-color
+                }
+                .rv-price {
+                    color: $background-color;
+                    margin: $space-vs 0;
+                    font-size: $very-small;
+                }
+                .rv-location {
+                    font-size: $very-small;
+                    color: $secondary-color;
+                    margin-bottom: 0;
+                    label {
+                        text-transform: uppercase;
+                        font-size: $extra-small
+                    }
+                }
+            }
+            &-right {
+                width: 35%;
+                float: right;
+                figure {
+                    width: 64px;
+                    height: 64px;
+                    margin: $space-vs auto 0;
+                }
+                h6 {
+                    color: $secondary-color;
+                    font-weight: 600;
+                    font-size: $extra-small;
+                    margin-bottom: $space-vs
+                }
+                .star-rating {
+                    .glyphicon {
+                        &-star {
+                            color: #f7ed2f;
+                            &-empty {
+                                color: #bfc0c6;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-bottom {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+            .rv-guest,
+            .rv-btn {
+                flex: 0 0 33.333%;
+                max-width: 33.333%;
+                text-transform: uppercase;
+                font-weight: bold;
+                border-left: solid 1px $border-color;
+            //    border-right: solid 1px $border-color;
+            }
+            .rv-modal, {
+              flex: 0 0 33.333%;
+                max-width: 33.333%;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+ <form [formGroup]="rForm" (ngSubmit)="onSubmitDetail()">
+    <div class="trailer-detail">
+        <h4 class="title text-uppercase">Trailer Detail</h4>
+        <div class="clearfix row detail-top">
+            <div class="col-sm-7 form-group">
+                <label>Ad Title*</label>
+                <input [(ngModel)]="listing.details_ad_title" formControlName="details_ad_title" type="text" class="form-control" placeholder="Ad Title"/>
+            </div>
+            <div class="col-sm-7 form-group">
+                <label>Ad Description*</label>
+                <textarea [(ngModel)]="listing.details_ad_description" formControlName="details_ad_description" class="form-control" placeholder="Ad Description"></textarea>
+            </div>
+        </div>
+        <h5>Features</h5>
+        <div class="row checkbox">
+          <div class="col-sm-3 form-group" *ngFor="let data of listingFeatures; let id = index">
+            <input type="checkbox"  name={{data?.feature}}   id={{data?.feature}} value={{data.feature}} (change)="onChange(data.feature, $event.target.checked)"/>
+             <label for="{{data?.feature}}">{{data?.feature}} </label><br>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <select class="form-control" [(ngModel)]="listing.details_no_of_beds" formControlName="details_no_of_beds">
+                <option value="" disabled="true" [selected]="!listing.details_no_of_beds">Numbers of Beds</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>5+</option>
+            </select>
+            </div>
+
+            <div class="col-sm-6 form-group">
+                <select class="form-control" [(ngModel)]="listing.details_no_of_bathrooms" formControlName="details_no_of_bathrooms">
+                <option value="" disabled="true" [selected]="!listing.details_no_of_bathrooms">Numbers of Bathrooms</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>5+</option>
+            </select>
+            </div>
+        </div>
+
+
+        <div class="clearfix details-btn">
+            <button class="btn btn-border-red btn-lg" [routerLink]="['/list-trailer/location']">Back</button>
+            <button [disabled]="!rForm.valid" type="submit" class="btn btn-primary btn-lg">Next</button>
+        </div>
+
+    </div>
+ </form>

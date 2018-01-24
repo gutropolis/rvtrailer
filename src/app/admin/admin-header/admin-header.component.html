@@ -1,0 +1,27 @@
+<!-- <ul>
+    <li><a href="dashboard">ADMINPANEL</a></li>
+    <li style="float:right"><a href="admin">Logout</a></li>
+</ul> -->
+
+
+<nav class="navbar navbar-default navbar-static-top fix-header">
+    <div class="navbar-header">
+        <div class="container-fluid clearfix">
+            <div class="top-left-part pull-left">
+                <!-- Logo -->
+                <a class="logo" [routerLink]="['/admin']">
+                    <!-- Logo icon image, you can use font-icon also -->
+                    <!--This is dark logo icon--><img src="assets/images/logo3.png" alt="home" class="dark-logo">
+                </a>
+            </div>
+            <div class="top-right-part pull-right">
+                Welcome Admin, <a href="" (click)="onLogoutClick()"> Logout</a>
+            </div>
+        </div>
+        <!-- /Logo -->
+
+    </div>
+    <!-- /.navbar-header -->
+    <!-- /.navbar-top-links -->
+    <!-- /.navbar-static-side -->
+</nav>

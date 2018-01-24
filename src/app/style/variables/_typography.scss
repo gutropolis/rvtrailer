@@ -1,0 +1,19 @@
+$font-1: Arial,
+"Helvetica Neue",
+Helvetica,
+sans-serif;
+$font-2: "Times New Roman",
+Times,
+Georgia,
+serif;
+$primary-font: $font-1;
+body {
+    font-family: $font-1;
+}
+
+$extra-large: 40px;
+$large: 36px;
+$medium: 30px;
+$small: 20px;
+$very-small: 18px;
+$extra-small: 16px;

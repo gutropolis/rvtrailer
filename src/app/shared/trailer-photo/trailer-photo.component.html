@@ -1,0 +1,21 @@
+<form [formGroup]="rForm" (ngSubmit)="onSubmitPhoto()">
+<div class="trailer-photo">
+    <h4 class="title text-uppercase">Add photos</h4>
+    <div class="trailer-photo-content">
+        <p>The first image will be the one used in search results across the site. Drag and drop to re-order by using the cross icons on the left of each image, you must save below to capture your changes.</p>
+
+        <h5>Add a new file *</h5>
+	<div class="upload-picture clearfix">
+        <input type="file" name="photo"  ng2FileSelect [uploader]="uploader" />
+        <button type="button" class="btn btn-success btn-lg btn-primary" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+              Upload
+        </button>
+		</div>
+	</div>
+    <div class="clearfix trailer-photo-btn">
+        <button class="btn btn-border-red btn-lg" [routerLink]="['/list-trailer/pricing']">Back</button>
+        <!-- <button class="btn btn-border-red btn-lg">Preview</button> -->
+        <button type=submit [disabled]="!rForm.valid" class="btn btn-primary btn-lg">Publish</button>
+    </div>
+</div>
+</form>

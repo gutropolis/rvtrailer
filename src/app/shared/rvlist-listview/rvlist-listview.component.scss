@@ -1,0 +1,109 @@
+@import '../../style/style';
+.rvlist {
+    position: relative;
+    display: flex;
+    background: $white-color;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    margin-bottom: $space-m;
+    cursor: pointer;
+    @media(max-width: $break-sm) {
+        display: block;
+    }
+    &-figure {
+        flex: 0 0 36.7%;
+        max-width: 36.7%;
+        @media(max-width: $break-sm) {
+            flex: none;
+            max-width: none;
+        }
+    }
+    &-content {
+        flex: 0 0 63.3%;
+        max-width: 63.3%;
+        @media(max-width: $break-sm) {
+            max-width: none;
+            flex: none;
+        }
+    }
+    .rv-info {
+        &-top {
+            padding: 0 15px;
+            border-bottom: solid 1px $border-color;
+            &-left {
+                float: left;
+                width: 65%;
+                @media(max-width: $break-sm) {
+                    width: 100%;
+                }
+                h6 {
+                    margin-top: $space-s;
+                    color: $secondary-color
+                }
+                .rv-price {
+                    color: $background-color;
+                    margin: $space-vs 0;
+                    font-size: $very-small;
+                }
+                .rv-location {
+                    font-size: $very-small;
+                    color: $secondary-color;
+                    margin-bottom: 0;
+                    label {
+                        text-transform: uppercase;
+                        font-size: $extra-small
+                    }
+                }
+            }
+            &-right {
+                width: 35%;
+                float: right;
+                @media(max-width: $break-sm) {
+                    width: 100%;
+                }
+                figure {
+                    width: 64px;
+                    height: 64px;
+                    margin: $space-vs auto 0;
+                }
+                h6 {
+                    color: $secondary-color;
+                    font-weight: 600;
+                    font-size: $extra-small;
+                    margin-bottom: $space-vs
+                }
+                .star-rating {
+                    .glyphicon {
+                        &-star {
+                            color: #f7ed2f;
+                            &-empty {
+                                color: #bfc0c6;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-bottom {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+            .rv-guest,
+            .rv-btn {
+                flex: 0 0 33.333%;
+                max-width: 33.333%;
+                text-transform: uppercase;
+                font-weight: bold;
+                border-left: solid 1px $border-color;
+            //    border-right: solid 1px $border-color;
+            }
+            .rv-modal, {
+              flex: 0 0 33.333%;
+                max-width: 33.333%;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+@import '../../style/style';
+.testimonial-box {
+    background: $white-color;
+    border: solid 1px $border-color;
+    &-head {
+        height: 100px;
+        background: #5a7b99;
+    }
+    &-info {
+        position: relative;
+        margin-top: -1 * $space-l;
+    }
+    &-name {
+        font-size: $small;
+    }
+    &-avtar {
+        width: 102px;
+        height: 102px;
+        border: solid 1px #fff;
+        position: relative;
+        background: $white-color;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: auto auto $space-n;
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            max-width: 100%;
+        }
+    }
+    &-content {
+        max-width: 80%;
+        margin: auto;
+        border-top: solid 1px $border-color;
+        margin-top: $space-n;
+        padding-top: $space-n;
+        font-size: $very-small - 2;
+        padding-bottom: $space-n;
+    }
+}

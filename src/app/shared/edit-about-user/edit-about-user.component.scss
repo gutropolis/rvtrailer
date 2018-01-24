@@ -1,0 +1,56 @@
+@import '../../style/style';
+.about-content {
+    &-top {
+        position: relative;
+        padding: 15px;
+        border-bottom: solid 1px $border-color;
+        .user {
+            &-pic {
+                width: 107px;
+                height: 107px;
+                border-radius: 50%;
+                border: solid 1px $background-color;
+                position: relative;
+                display: inline-block;
+                margin-right: $space-m;
+                vertical-align: middle;
+                margin-bottom: $space-n;
+                background: $white-color;
+                img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    margin: auto;
+                    max-width: $full;
+                }
+            }
+            &-name {
+                display: inline-block;
+            }
+        }
+    }
+    &-mid,
+    &-bottom {
+        padding: $space-n $space-vs + $space-s;
+        border-bottom: solid 1px $border-color;
+        h5 {
+            text-transform: uppercase;
+            margin-bottom: $space-n;
+        }
+    }
+    &-bottom {
+        border-bottom: none;
+        .info-strip {
+            padding-left: $space-m;
+            position: relative;
+            margin-bottom: $space-s;
+            .icon {
+                position: absolute;
+                left: 0;
+                top: 5px;
+            }
+        }
+    }
+}

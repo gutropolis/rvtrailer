@@ -1,0 +1,8 @@
+<rv-listview *ngFor="let item of rvList" [rvInfo]="item" [rvimage]="item.rvimage" [rvName]="item.rvName" [rvPrice]="item.rvPrice" [location]="item.location" [rating]="item.rating" [year]="item.year" [guest]="item.guest" [ownerName]="item.ownerName" [ownerImage]="item.ownerImage"
+    [routerLink]="['/rent-trailer/rv-list/1']">
+
+</rv-listview>
+
+<div class=" view-btn ">
+    <button class="btn btn-primary ">View More</button>
+</div>

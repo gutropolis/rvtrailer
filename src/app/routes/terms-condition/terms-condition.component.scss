@@ -1,0 +1,41 @@
+    @import '../../style/style';
+    .mg_hotel_hd1 {
+        margin-bottom: $space-n + $space-s;
+        h6 {
+            font-size: $very-small;
+            font-style: italic;
+            margin-bottom: 1px;
+            position: relative;
+            line-height: normal;
+            text-transform: capitalize;
+            color: $secondary-color;
+        }
+        h4 {
+            font-size: $medium - 4;
+            font-weight: bold;
+            position: relative;
+            line-height: normal;
+            text-transform: uppercase;
+        }
+    }
+    
+    .aboutus-wrapper {
+        padding: $space-xl 0;
+        .about-us {
+            margin-bottom: $space-m;
+        }
+    }
+    
+ 
+    
+
+.abouttxt{
+    p{
+        margin-bottom: 10px;
+    }
+    
+    p + p{
+        margin-bottom: 10px;
+    }
+}
+    

@@ -1,0 +1,61 @@
+<div class="admin-page">
+    <h4 class="admin-title">Edit User Details</h4>
+
+    <form (ngSubmit)="updateUser(users._id)" [formGroup]="rForm">
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="users.firstname" formControlName="firstname" name="firstname">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="users.lastname" formControlName="lastname" id="lastname">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" [(ngModel)]="users.email" formControlName="email" id="email">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" [(ngModel)]="users.password" formControlName="password" id="password">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">RV User Type</label>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <label class="form-check-label">
+                    <input class="form-check-input" [(ngModel)]="users.owner" formControlName="owner" type="checkbox"> Owners
+                  </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                    <input class="form-check-input" [(ngModel)]="users.renter" formControlName="renter" type="checkbox"> Renters
+                  </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Approved</label>
+            <div class="col-sm-10">
+                <label class="form-check-label">
+                  <input class="form-check-input" [(ngModel)]="users.approved" formControlName="approved" type="checkbox">
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class=" text-center">
+                <button type="submit" [disabled]="!rForm.valid" class="btn btn-primary">Edit User</button>
+                <button type="cancel" [routerLink]="['/admin/list-trailer']" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+</div>

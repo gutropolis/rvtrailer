@@ -1,0 +1,110 @@
+<form #f="ngForm" (ngSubmit)="filterSearch(f)">
+    <div class="filter">
+        <div class="filter-location">
+            <label class="form-label">your location</label>
+            <div class="filter-field">
+                <i class="icon">
+
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 54.757 54.757" style="enable-background:new 0 0 54.757 54.757;" xml:space="preserve">
+                <g>
+                  <path d="M27.557,12c-3.859,0-7,3.141-7,7s3.141,7,7,7s7-3.141,7-7S31.416,12,27.557,12z M27.557,24c-2.757,0-5-2.243-5-5
+                    s2.243-5,5-5s5,2.243,5,5S30.314,24,27.557,24z"/>
+                  <path d="M40.94,5.617C37.318,1.995,32.502,0,27.38,0c-5.123,0-9.938,1.995-13.56,5.617c-6.703,6.702-7.536,19.312-1.804,26.952
+                    L27.38,54.757L42.721,32.6C48.476,24.929,47.643,12.319,40.94,5.617z M41.099,31.431L27.38,51.243L13.639,31.4
+                    C8.44,24.468,9.185,13.08,15.235,7.031C18.479,3.787,22.792,2,27.38,2s8.901,1.787,12.146,5.031
+                    C45.576,13.08,46.321,24.468,41.099,31.431z"/>
+                </g>
+              </svg>
+            </i>
+
+                <input type="text" ngModel name="location" class="form-control" placeholder="Nanaimo, Columbia" [typeahead]="states" />
+            </div>
+            <label class="form-label">
+        Price Range
+      </label>
+            <div class="filter-field">
+                <ion-range-slider (onFinish)="myOnFinish($event)" #sliderElement type="single" [min]="myMinVar" max="500" from="0" to="500" grid="false">
+
+                </ion-range-slider>
+                <div class="clearfix range-values">
+                    <div class="pull-left">$0</div>
+                    <div class="pull-right">$500</div>
+                </div>
+
+            </div>
+
+            <label class="form-label">
+        Available Location
+      </label>
+            <div class="filter-field">
+
+                <my-date-picker ngModel name="dateFrom" placeholder="Hire On"></my-date-picker>
+            </div>
+            <div class="filter-field">
+                <my-date-picker ngModel name="dateTo" placeholder="Return On"></my-date-picker>
+            </div>
+
+            <label class="form-label">Guest</label>
+            <div class="filter-field">
+
+                    <select ngModel name="numberOfGuest" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">5+</option>
+
+      </select>
+            </div>
+
+            <label class="form-label">Rental</label>
+            <div class="filter-field checkbox">
+                <input type="checkbox" ngModel name="traveltrailer" id="traveltrailer" value="traveltrailer" />
+                <label for="traveltrailer">
+
+        TRAVEL TRAILER
+      </label>
+            </div>
+            <div class="filter-field checkbox">
+                <input type="checkbox" ngModel name="fifthwheel" id="fifthwheel" value="fifthwheel" />
+                <label for="fifthwheel">
+
+        FIFTH WHEEL
+      </label>
+            </div>
+            <div class="filter-field checkbox">
+                <input type="checkbox" ngModel name="tentrailer" id="tentrailer" />
+                <label for="tentrailer">
+
+       TENT TRAILER
+      </label>
+            </div>
+            <div class="filter-field checkbox">
+                <input type="checkbox" ngModel name="vintagetrailer" id="vintagetrailer" />
+                <label for="vintagetrailer">
+
+        VINTAGE
+      </label>
+            </div>
+            <div class="filter-field checkbox">
+                <input type="checkbox" ngModel name="hybridtrailer" id="hybridtrailer" />
+                <label for="hybridtrailer">
+
+        HYBRID
+      </label>
+            </div>
+            <div class="filter-field checkbox">
+                <input type="checkbox" ngModel name="toytrailer" id="toytrailer" />
+                <label for="toytrailer">
+
+       TOY HAULER
+      </label>
+            </div>
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary full-width searchbtn">Search</button>
+
+</form>

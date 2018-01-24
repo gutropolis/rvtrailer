@@ -1,0 +1,196 @@
+@import '../../style/style';
+.home-banner {
+    @include background-image('rv-banner.jpg', 0 0, $white-color);
+    background-size: cover;
+    padding: $space-xl 0;
+    color: $white-color;
+    text-align: center;
+    h1 {
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: $extra-large + $medium;
+        @media(max-width: $break-lg) {
+            font-size: $extra-large + $very-small;
+        }
+        @media(max-width: $break-md) {
+            font-size: $extra-large;
+        }
+        span {
+            color: $background-color;
+        }
+    }
+    .homefilter {
+        text-align: left;
+        margin-top: $space-xl;
+        @media(max-width: $break-sm) {
+            margin-top: $space-s * 2;
+        }
+    }
+}
+
+.feature-rv {
+    padding: $space-xl 0;
+    &-title {
+        text-transform: uppercase;
+        margin-bottom: $space-m;
+        h2 {
+            font-weight: 700;
+            span {
+                display: block;
+                color: $background-color;
+            }
+        }
+    }
+    &-box {
+        width: 31%;
+        display: inline-block;
+        vertical-align: top;
+        margin: 13px;
+        @media(max-width: $break-sm) {
+            width: 100%;
+        }
+    }
+    .view-btn {
+        margin-top: $space-m;
+        margin-bottom: 0;
+    }
+}
+
+.hwit-work {
+    padding: $space-xl 0;
+    background: $white-color;
+    .title {
+        font-weight: 700;
+        span {
+            color: $background-color;
+        }
+    }
+    &-content {
+        margin: $space-l 0 0;
+        .work-step {
+            position: relative;
+            +.work-step {
+                margin-top: $space-l;
+            }
+            &-title {
+                color: $background-color;
+                position: relative;
+                padding-left: $space-l - $space-s;
+                margin-bottom: $space-s;
+                h4 {
+                    font-size: $small;
+                    font-weight: 700;
+                }
+                .icon {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    svg {
+                        width: 27px;
+                        height: 27px;
+                        path,
+                        circle {
+                            fill: $background-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.our-fact {
+    padding: $space-xl 0;
+    @include background-image('rv-field.jpg', bottom center, #000);
+    background-size: cover;
+    position: relative;
+    color: $white-color;
+    text-align: center;
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.70);
+    }
+    .container {
+        position: relative;
+        z-index: 3;
+    }
+    .title {
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: $space-m;
+        span {
+            color: $background-color;
+        }
+    }
+    .fact {
+        margin-bottom: $space-n;
+        &-circle {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: solid 5px $white-color;
+            display: inline-block;
+            vertical-align: top;
+            margin-bottom: $space-m;
+            line-height: 170px;
+            font-weight: 700;
+            font-size: $large;
+        }
+        &-info {
+            font-weight: 700;
+            font-size: $medium;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.offer-trailer {
+    padding: $space-xl 0;
+    background: $white-color;
+    .title {
+        font-weight: 700;
+        text-transform: uppercase;
+        margin: $space-m 0 $space-m;
+        span {
+            color: $background-color;
+        }
+    }
+    &-content {
+        font-size: $small;
+        margin-bottom: $space-m;
+    }
+}
+
+.testimonial {
+    padding: $space-xl 0;
+    .title {
+        font-weight: 700;
+        margin-bottom: $space-m;
+        span {
+            color: $background-color;
+        }
+    }
+    p {
+        font-size: $small;
+    }
+    &-content {
+        &-top {
+            p {
+                color: $secondary-color;
+            }
+        }
+        &-bottom {
+            margin-top: $space-m;
+        }
+        .item {
+            padding: $space-s;
+        }
+    }
+}

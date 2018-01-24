@@ -1,0 +1,60 @@
+@import '../../style/style';
+.signup {
+    max-width: 680px;
+    margin: 45px auto;
+    &-top {
+        display: flex;
+        a {
+            flex: 0 0 50%;
+            padding: 18px;
+            text-transform: uppercase;
+            text-align: center;
+            background: #454545;
+            color: $white-color;
+            font-size: $small;
+            &.active {
+                background: $background-color;
+            }
+        }
+    }
+    &-body {
+        padding: 40px;
+        background: $white-color;
+        border: solid 1px $border-color;
+    }
+    h2 {
+        font-weight: bold;
+        color: $secondary-color;
+        margin-bottom: $space-m;
+        text-transform: uppercase;
+    }
+    .form-group {
+        margin-bottom: $space-m;
+        label {
+            color: $secondary-color;
+        }
+    }
+    .btn {
+        font-size: $small;
+        text-transform: uppercase;
+        padding: $space-s $space-n;
+    }
+    &-social {
+        text-transform: uppercase;
+        color: $secondary-color;
+        font-size: $small;
+        margin-right: $space-n
+    }
+}
+
+.privacy-policy {
+    color: $secondary-color;
+    font-size: $small - 2;
+    margin-top: $space-n * 2;
+    strong {
+        text-transform: uppercase;
+    }
+    a {
+        color: $background-color;
+    }
+}

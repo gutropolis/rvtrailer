@@ -1,0 +1,91 @@
+@import '../../style/style';
+.subscribe-plan-box
+{
+	padding-top:40px;
+}
+.subscription-box
+{
+	max-width:590px;
+	margin:45px auto;
+	
+	.price-box
+	{
+		border:1px solid #ccc;
+		width:45%;
+		text-align:center;
+		padding:10px;
+		display: inline-block;
+    margin-left: 15px;
+		.circle-box
+		{
+			    border-radius: 100%;
+				    width: 220px;
+					height: 220px;
+				background: #e2e0e0;
+				text-align: center;
+				line-height: 100px;
+				padding: 70px 0px;
+				margin: 0px auto;
+			h3
+			{
+			color:#bbb;
+			font-weight:600;
+			font-size:36px;
+			}
+			h3 span{
+			display:block;
+			font-size:18px;
+			}
+			
+		}
+		article
+		{
+			padding:10px 0px;
+			border-bottom:1px solid #ccc;
+			p{    font-size: 16px;
+					margin-bottom:0px;
+					color: #999;
+				span{font-weight: 600;}	
+					
+			}	
+			a{
+				font-weight:600;
+			}	
+		}
+	ul{    text-align: left;
+			padding: 20px 30px;
+			
+		li
+		{
+			list-style:disc;
+			line-height: 30px;
+			font-weight: 600;
+			color: #555;
+		}
+	}
+	.select-btn{
+		text-transform: uppercase;
+		font-size: 20px;
+		
+	}
+	&:hover
+	{
+		box-shadow:0px 0px 9px rgba(12, 12, 12, 0.44);
+		.circle-box{
+				background:red;
+			h3{
+				color:#fff;
+			}
+		}
+		.select-btn{background:red;color:#fff;}
+	}
+	}
+}
+.payment-method
+{
+	text-align:center;
+	padding-bottom:30px;
+	span{
+		font-weight:600;
+	}
+}

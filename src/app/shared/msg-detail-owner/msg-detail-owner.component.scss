@@ -1,0 +1,30 @@
+@import '../../style/style';
+.msg-detail {
+    &-top {
+        margin-bottom: $space-m;
+        padding: $space-s + $space-vs 0;
+        border-bottom: solid 1px $border-color;
+        .actionbox {
+            text-align: right;
+            .checkbox {
+                display: inline-block;
+                margin-right: $space-n;
+            }
+        }
+        .backbtn {
+            background: none;
+            border: none;
+            line-height: 20px;
+            padding: 0;
+            margin-right: $space-s;
+            .icon {
+                svg {
+                    path {
+                        fill: $black-color;
+                    }
+                }
+            }
+        }
+    }
+    &-body {}
+}

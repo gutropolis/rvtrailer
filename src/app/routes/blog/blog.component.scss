@@ -1,0 +1,41 @@
+ @import '../../style/style';
+ .blog-content {
+     margin-bottom: 20px;
+     padding: 50px 0px;
+     .row {
+         margin-top: 20px;
+     }
+     .card {
+         background-color: #FFFFFF;
+         padding: 0;
+         margin-bottom: $space-m;
+         -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+         border-radius: 4px;
+         border: solid 1px $border-color;
+         &:hover {
+             color: black;
+         }
+         img {
+             width: 100%;
+             border-top-left-radius: 4px;
+             border-top-right-radius: 4px;
+         }
+         h4 {
+             margin: 20px;
+         }
+         p {
+             margin: 20px;
+             opacity: 0.65;
+         }
+     }
+     .btn {
+         margin: 0px 20px 15px 20px;
+     }
+ }
+ 
+ @media (max-width: 768px) {
+     .index-content .col-lg-4 {
+         margin-top: 20px;
+     }
+ }

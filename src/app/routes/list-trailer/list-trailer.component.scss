@@ -1,0 +1,96 @@
+@import '../../style/style';
+.listtrailer {
+    padding: $space-xl 0;
+    &-box {
+        display: flex;
+        border: solid 1px $border-color;
+        @media(max-width: $break-sm) {
+            display: block;
+        }
+        &-left {
+            flex: 0 0 25%;
+            max-width: 25%;
+            border-right: solid 1px $border-color;
+            @media(max-width: $break-sm) {
+                flex: none;
+                max-width: none;
+                text-align: center;
+            }
+            li {
+                border-bottom: solid 1px $border-color;
+                @media(max-width: $break-sm) {
+                    display: inline-block;
+                }
+                a {
+                    display: block;
+                    padding: $space-s $space-n;
+                    color: $background-color;
+                    font-size: $small;
+                    position: relative;
+                    @media(max-width: $break-sm) {
+                        font-size: 0px;
+                        padding: $space-s $space-vs;
+                    }
+                    &:after {
+                        font-family: FontAwesome;
+                        font-size: inherit;
+                        text-rendering: auto;
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                        position: absolute;
+                        color: $background-color;
+                        right: -7px;
+                        left: auto;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto auto auto 0;
+                        height: 15px;
+                        line-height: 16px;
+                    }
+                    .icon {
+                        display: inline-block;
+                        position: relative;
+                        vertical-align: middle;
+                        margin-right: $space-n;
+                        @media(max-width: $break-sm) {
+                            margin-right: 0px;
+                        }
+                        svg {
+                            width: 40px;
+                            height: 40px;
+                            path,
+                            rect {
+                                fill: $background-color;
+                            }
+                        }
+                    }
+                    &:hover,
+                    &:focus,
+                    &.active {
+                        background: $background-color;
+                        color: $white-color;
+                        &:after {
+                            content: "\f0da";
+                        }
+                        svg {
+                            path,
+                            rect {
+                                fill: $white-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-right {
+            flex: 0 0 75%;
+            max-width: 75%;
+            padding: $space-n $space-m;
+            background: $body-bg;
+            @media(max-width: $break-sm) {
+                flex: none;
+                max-width: none;
+            }
+        }
+    }
+}

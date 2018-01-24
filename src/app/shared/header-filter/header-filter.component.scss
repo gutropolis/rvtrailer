@@ -1,0 +1,37 @@
+@import '../../style/style';
+.header-filter {
+    .field-search {
+        position: relative;
+        background: $white-color;
+        .icon {
+            position: absolute;
+            left: 0;
+            background: $white-color;
+            height: 100%;
+            line-height: 55px;
+            border-right: solid 1px $border-color;
+            padding: 10px;
+            svg {
+                height: 30px;
+                width: 30px;
+            }
+        }
+        .form-control {
+            border: none;
+            height: auto;
+            font-size: 18px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 65px;
+        }
+    }
+    .btn {
+        font-size: 22px;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 10px 25px;
+        @media(max-width: $break-sm) {
+            margin-top: $space-n;
+        }
+    }
+}

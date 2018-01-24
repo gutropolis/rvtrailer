@@ -1,0 +1,83 @@
+@import '../../style/style';
+.rv {
+    &-figure {
+        position: relative;
+        height: 286px;
+        width: 100%;
+        background: $white-color;
+        border: solid 1px $border-color;
+        border-bottom: none;
+        overflow: hidden;
+        cursor: pointer;
+        * {
+            cursor: pointer;
+        }
+        img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 1;
+        }
+        &:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &-hover {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 3;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease-in 0.2s;
+        color: #fff;
+        padding: 15px;
+        .btn {
+            margin-top: $space-s;
+            &-white {
+                color: $primary-color;
+            }
+        }
+    }
+    &-content {
+        display: flex;
+        width: $full;
+        &-box {
+            background: $white-color;
+            border: solid 1px $border-color;
+            border-collapse: collapse;
+            border-top: none;
+            padding: 2px;
+            &.rv-location {
+                flex: 0 0 40%;
+            }
+            &.rv-guest {
+                flex: 0 0 30%;
+            }
+            &.rv-price {
+                flex: 0 0 30%;
+            }
+            label {
+                display: block;
+                text-transform: uppercase;
+                color: $background-color;
+            }
+        }
+    }
+    &:hover {
+        .rv-hover {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

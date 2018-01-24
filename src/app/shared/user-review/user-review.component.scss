@@ -1,0 +1,36 @@
+@import '../../style/style';
+.user-review {
+    padding: $space-s + $space-vs;
+    .user-review-top {
+        background: $white-color;
+        display: inline-block;
+        padding: $space-s + $space-vs;
+        width: $full;
+        margin: $space-s 0px;
+        p {
+            font-size: 18px;
+            text-transform: uppercase;
+            rating {
+                color: #F0E004;
+            }
+        }
+        .review-content {
+            padding: $space-s 0;
+            h5 {
+                text-transform: uppercase;
+            }
+            p {
+                font-size: 14px;
+                text-transform: none;
+            }
+        }
+    }
+    .user-review-form {
+        background: $grey-color3;
+        padding: $space-s + $space-vs;
+        border: 1px solid $grey-color2;
+        textarea {
+            height: 200px;
+        }
+    }
+}

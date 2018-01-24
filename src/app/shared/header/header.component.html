@@ -1,0 +1,38 @@
+<header>
+    <nav class="navbar">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" (click)="this.showMenu = !this.showMenu">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" routerLink="/"><img src="assets/images/logo.png" alt="" /></a>
+            </div>
+
+            <div class="collapse navbar-collapse" [ngClass]="{'in': showMenu}">
+                <div class="header-lang">
+
+                    <a href="#">FR</a>
+                    <a href="#">EN</a>
+                </div>
+                <div class="header-btn">
+                    <button *ngIf="!apiService.loggedIn()"  class="btn btn-border-white" [routerLink]="['/login']">Sign In</button>
+                    <button *ngIf="!apiService.loggedIn()"  class="btn btn-border-white" [routerLink]="['/signup/renter']">Sign Up</button>
+                    <button *ngIf="apiService.loggedIn()"  class="btn btn-border-white" (click)="onMyAccount()">My Account</button>
+               <!-- <button *ngIf="apiService.loggedIn()"  class="btn btn-border-white" (click)="onLogoutClick()">Log Out</button> -->
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li routerLinkActive="active"><a [routerLink]="['/list-trailer']">List Trailer</a></li>
+                    <li routerLinkActive="active"><a routerLink="/rv">Rent Trailer</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/contact-us']">Contact</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</header>

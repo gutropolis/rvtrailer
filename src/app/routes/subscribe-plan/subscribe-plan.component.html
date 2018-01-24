@@ -1,0 +1,28 @@
+<rv-header></rv-header>
+<div class="subscribe-plan-box">
+	<div class="container">
+		<h2>Subscription Packages</h2>
+		<div class="subscription-box">
+    <form>
+			<div class="price-box" *ngFor="let package of packages">
+        {{package.prise}}
+				<div class="circle-box"><h3>$ {{package.price}} / {{package.name}} <span>$24.48 per month</span></h3></div>
+				<article>
+					<p><span>List Trailer:</span>100/month</p>
+					<a href="#">Read more</a>
+				</article>
+				<ul>
+					<li>Maximum listing: {{package.listing}}</li>
+					<li>Edit listing:{{package.edit_listing}}</li>
+					<li>Chat with Renter:Yes</li>
+        </ul>
+        <input type="hidden" value={{package._id}} />
+        <button (click)="onSubmitPackage(package._id)" class="btn btn-default  select-btn">Select</button>
+			</div>
+    </form>
+		</div>
+		<div class="payment-method"><span>Note:</span> All payment are made up front, not by month, Cancellations will be charged 50% of your remain amount.</div>
+	</div>
+</div>
+<rv-brandslide *ngIf="brandSlideVisible"></rv-brandslide>
+<rv-footer></rv-footer>

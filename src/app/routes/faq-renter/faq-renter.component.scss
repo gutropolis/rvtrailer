@@ -1,0 +1,14 @@
+@import '../../style/style';
+.faq-block {
+    padding: $space-xl 0;
+    background: $white-color;
+    border-bottom: solid 1px $border-color;
+}
+.faq-content-box
+{
+	margin-bottom:20px;
+	h5{
+		font-size: 18px;
+		font-weight: 600;
+	}
+}

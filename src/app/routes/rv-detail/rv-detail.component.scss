@@ -1,0 +1,268 @@
+@import '../../style/style';
+.trailer {
+    color: $secondary-color;
+    padding: $space-xl 0;
+    &-slider {
+        width: $full;
+        position: relative;
+        .item {
+            img {
+                width: $full;
+            }
+        }
+    }
+    &-name {
+        background: $background-color;
+        color: $white-color;
+        padding: $space-s 0;
+		@media (max-width:$break-sm)
+		{
+		.trailor-rating{
+			text-align:left;
+		}
+		}
+    }
+    &-favourite {
+        padding: $space-n 0;
+        border-bottom: solid 1px $background-color;
+        &-btn {
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: $secondary-color;
+            text-transform: uppercase;
+            box-shadow: none;
+            border: none;
+			text-align:left;
+            .icon {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: $space-s;
+                svg {
+                    width: 30px;
+                    height: 30px;
+                    path {
+                        fill: $background-color;
+                    }
+                }
+            }
+        }
+    }
+    &-description {
+        padding: $space-n 0;
+        border-bottom: solid 1px $background-color;
+        h3 {
+            text-transform: uppercase;
+            margin-bottom: $space-n;
+            font-weight: 700;
+            color: $primary-color;
+        }
+    }
+    &-rates {
+        padding: $space-n 0;
+        border-bottom: solid 1px $background-color;
+        font-size: $very-small;
+        h3 {
+            text-transform: uppercase;
+            margin-bottom: $space-n;
+            font-weight: 700;
+            color: $primary-color;
+        }
+        h5 {
+            margin: $space-n 0;
+            color: $primary-color;
+        }
+    }
+    &-avilability {
+        padding: $space-n 0;
+        border-bottom: solid 1px $background-color;
+        h2 {
+            font-size: $small;
+        }
+        h3 {
+            text-transform: uppercase;
+            margin-bottom: $space-n;
+            font-weight: 700;
+            color: $primary-color;
+        }
+    }
+    &-features {
+        padding: $space-n 0;
+        border-bottom: solid 1px $background-color;
+        h3 {
+            text-transform: uppercase;
+            margin-bottom: $space-n;
+            font-weight: 700;
+            color: $primary-color;
+        }
+        &-icon {
+            display: inline-block;
+            vertical-align: top;
+            width: 23%;
+            margin: 0 0.75%;
+            text-align: center;
+            margin-bottom: $space-n;
+            font-size: $very-small;
+			@media(max-width: $break-sm) {
+			width:30%;
+			font-size:12px;
+			}
+            .icon {
+                svg,
+                img {
+                    width: 60px;
+                    height: 60px;
+                    path,
+                    circle,
+                    rect {
+                        fill: $background-color;
+                    }
+                }
+            }
+            label {
+                display: block;
+                margin-top: $space-s;
+                color: $primary-color;
+            }
+        }
+    }
+    &-testimonials {
+        padding: $space-n 0;
+        border-bottom: solid 1px $background-color;
+        h3 {
+            text-transform: uppercase;
+            margin-bottom: $space-n;
+            font-weight: 700;
+            color: $primary-color;
+        }
+    }
+    &-share {
+        padding: $space-n 0;
+        h3 {
+            text-transform: uppercase;
+            margin-bottom: $space-l;
+            font-weight: 700;
+            color: $primary-color;
+        }
+        &-social {
+            text-align: center;
+            a {
+                &+a {
+                    margin: 0 $space-s;
+                }
+            }
+        }
+    }
+}
+
+#quote-carousel {
+    padding: 0 $space-s $space-m;
+    margin-top: $space-m;
+    .carousel-control {
+        background: none;
+        color: $background-color;
+        font-size: 2.3em;
+        text-shadow: none;
+        margin-top: $space-m;
+    }
+    .carousel-indicators {
+        position: relative;
+        right: 50%;
+        top: auto;
+        bottom: 0px;
+        margin-top: $space-n;
+        margin-right: -$space-n;
+        li {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border: 1px solid $border-color;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            opacity: 0.4;
+            overflow: hidden;
+            transition: all .4s ease-in;
+            vertical-align: middle;
+        }
+        .active {
+            width: 128px;
+            height: 128px;
+            opacity: 1;
+            transition: all .2s;
+        }
+    }
+}
+
+.item {
+    border-left: none;
+    margin: 0;
+    p {
+        &:before {
+            content: "\f10d";
+            font-family: 'Fontawesome';
+            float: left;
+            margin-right: 10px;
+        }
+    }
+}
+
+.filter-box {
+    background: $white-color;
+    box-shadow: 0 8px 10px rgba(209, 209, 209, 0.75);
+    margin-bottom: $medium;
+    &-head {
+        background: $background-color;
+        color: $white-color;
+        padding: 10px 15px 5px;
+        h4 {
+            font-weight: 900;
+        }
+        .icon {
+            float: left;
+            svg,
+            img {
+                width: 35px;
+                height: 35px;
+                path,
+                circle {
+                    fill: $white-color;
+                }
+            }
+        }
+    }
+    &-body {
+        padding: 0 25px 25px;
+        &.enquiry-form {
+            padding-top: $space-m;
+        }
+        .help-txt {
+            margin-top: $medium;
+            font-size: $extra-small;
+        }
+        .help-number {
+            border-top: solid 2px $background-color;
+            text-align: center;
+            margin-top: $small;
+            padding-top: $small;
+            font-weight: 700;
+            font-size: $medium;
+        }
+        .help-email {
+            border-top: solid 2px $background-color;
+            text-align: center;
+            padding-top: $small;
+            margin-top: $very-small;
+            font-size: $small;
+			 @media(max-width: $break-lg) {
+			 font-size: 16px;
+			 }
+        }
+		
+        .btn {
+            text-transform: uppercase;
+            font-size: 25px;
+            margin-top: $medium;
+            font-weight: 700;
+        }
+    }
+}

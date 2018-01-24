@@ -1,0 +1,120 @@
+<footer class="footer">
+    <div class="container">
+        <div class="row footer-top">
+            <div class="col-md-3 footer-top-left">
+                <figure class="footer-logo"><img src="assets/images/logo2.png" alt="" /></figure>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="col-md-5 footer-top-mid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h5>Trailer Hailer</h5>
+                        <ul>
+                            <li><a [routerLink]="['/about-us']">Our Story</a></li>
+                            <li><a [routerLink]="['/blog']">Blog</a></li>
+                            <li><a [routerLink]="['/contact-us']">Contact</a></li>
+                            <li><a [routerLink]="['/subscribe-plan']">Pricing</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Usefull Links</h5>
+                        <ul>
+                            <li><a [routerLink]="['/term-conditions']">Terms of Service</a></li>
+                            <li><a [routerLink]="['/privacy-policy']">Privacy Policy</a></li>
+                            <li><a [routerLink]="['/term-conditions']">Useful Documents</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>How it Works</h5>
+                        <ul>
+                            <li><a [routerLink]="['/list-trailer']">Listing a Trailer</a></li>
+                            <li><a [routerLink]="['/rv']">Renting a Trailer</a></li>
+                            <li><a [routerLink]="['/faq-renter']">Trailer Renter FAQ</a></li>
+                            <li><a [routerLink]="['/faq-owner']">Trailer Owner FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-top-right">
+                <h5>Newsletter</h5>
+                <p>Sign up to receive notifications on the latest trailer listings.</p>
+                <flash-messages></flash-messages>
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                    <div class="row newletterform">
+                        <div class="col-xs-8 col-md-9"><input type="text" ngModel name="email" id="email" #email="ngModel" class="form-control" placeholder="Email Address" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required/>
+                            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                                <div [hidden]="!email.hasError('required')">Email is required</div>
+                                <div [hidden]="!email.hasError('pattern')">Email format should be
+                                    <small><b>joe@abc.com</b></small>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-4 col-md-3"><button type="submit" class="btn btn-border-white">Submit</button></div>
+                    </div>
+                </form>
+
+                <div class="follow-us">
+                    <label>
+            Follow us
+          </label>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+<g>
+	<g>
+		<path d="M612,306C612,137.004,474.995,0,306,0C137.004,0,0,137.004,0,306c0,168.995,137.004,306,306,306    C474.995,612,612,474.995,612,306z M27.818,306C27.818,152.36,152.36,27.818,306,27.818S584.182,152.36,584.182,306    S459.64,584.182,306,584.182S27.818,459.64,27.818,306z" fill="#FFFFFF"/>
+		<path d="M317.739,482.617V306h58.279l9.208-58.529h-67.487v-29.348c0-15.272,5.007-29.849,26.928-29.849h43.813v-58.418h-62.201    c-52.298,0-66.569,34.438-66.569,82.175v35.413h-35.885V306h35.885v176.617H317.739L317.739,482.617z" fill="#FFFFFF"/>
+	</g>
+</g>
+            </svg>
+                    </a>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+<g>
+	<g>
+		<path d="M437.219,245.162c0-3.088-0.056-6.148-0.195-9.18c13.214-9.848,24.675-22.171,33.744-36.275    c-12.129,5.453-25.148,9.097-38.835,10.626c13.965-8.596,24.675-22.338,29.738-38.834c-13.075,7.928-27.54,13.603-42.924,16.552    c-12.323-14.021-29.904-22.95-49.35-23.284c-37.332-0.612-67.598,30.934-67.598,70.463c0,5.619,0.584,11.072,1.752,16.329    c-56.22-3.616-106.042-32.881-139.369-77c-5.814,10.571-9.152,22.922-9.152,36.164c0,25.037,11.934,47.291,30.071,60.421    c-11.099-0.5-21.503-3.866-30.627-9.375c0,0.306,0,0.612,0,0.918c0,34.996,23.312,64.316,54.245,71.159    c-5.675,1.613-11.656,2.448-17.804,2.421c-4.367-0.028-8.596-0.501-12.713-1.392c8.596,28.681,33.577,49.628,63.147,50.323    c-23.145,19.194-52.298,30.655-83.955,30.572c-5.453,0-10.849-0.361-16.135-1.029c29.933,20.53,65.456,32.491,103.65,32.491    C369.23,447.261,437.219,339.048,437.219,245.162z" fill="#FFFFFF"/>
+		<path d="M612,306C612,137.004,474.995,0,306,0C137.004,0,0,137.004,0,306c0,168.995,137.004,306,306,306    C474.995,612,612,474.995,612,306z M27.818,306C27.818,152.36,152.36,27.818,306,27.818S584.182,152.36,584.182,306    S459.64,584.182,306,584.182S27.818,459.64,27.818,306z" fill="#FFFFFF"/>
+	</g>
+</g>
+            </svg>
+                    </a>
+                    <a href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="30px" height="30px">
+<g>
+	<g>
+		<path d="M437.019,74.981C388.667,26.628,324.379,0,256,0S123.333,26.628,74.982,74.981C26.628,123.333,0,187.621,0,256    s26.628,132.667,74.982,181.019C123.333,485.372,187.621,512,256,512s132.667-26.628,181.019-74.981S512,324.379,512,256    S485.372,123.333,437.019,74.981z M256,495.832C123.756,495.832,16.168,388.244,16.168,256S123.756,16.168,256,16.168    S495.832,123.756,495.832,256S388.244,495.832,256,495.832z" fill="#FFFFFF"/>
+	</g>
+</g>
+<g>
+	<g>
+		<path d="M438.974,141.549c-1.918-13.133-12.506-23.354-25.748-24.853c-104.328-11.82-210.125-11.819-314.452,0    c-13.243,1.5-23.83,11.72-25.749,24.854c-11.085,75.943-11.085,152.956,0,228.901c1.918,13.133,12.506,23.354,25.748,24.853    c52.165,5.91,104.695,8.866,157.226,8.866c22.362,0,44.724-0.542,67.057-1.615c4.302-0.207,7.68-3.773,7.68-8.08    c0-4.624-3.872-8.289-8.49-8.068c-73.921,3.543-148.157,1.159-221.654-7.169c-5.953-0.674-10.712-5.249-11.568-11.124    c-10.859-74.394-10.859-149.836-0.001-224.229c0.858-5.876,5.616-10.45,11.57-11.124c51.559-5.841,103.482-8.762,155.406-8.762    s103.847,2.92,155.407,8.762c5.953,0.674,10.712,5.249,11.568,11.124c10.859,74.394,10.859,149.836,0.001,224.229    c-0.858,5.876-5.616,10.45-11.569,11.124c0,0,0,0-0.001,0c-16.624,1.883-33.288,3.462-49.976,4.737    c-4.218,0.322-7.482,3.823-7.482,8.053v0.008c0,4.698,3.993,8.422,8.676,8.064c16.897-1.291,33.768-2.89,50.602-4.797    c13.243-1.5,23.83-11.72,25.749-24.854C450.059,294.507,450.059,217.493,438.974,141.549z" fill="#FFFFFF"/>
+	</g>
+</g>
+<g>
+	<g>
+		<path d="M345.99,248.843l-140.126-73.602c-2.506-1.317-5.518-1.227-7.94,0.238c-2.423,1.464-3.903,4.088-3.903,6.919v147.203    c0,2.831,1.48,5.455,3.903,6.919c1.283,0.775,2.73,1.165,4.181,1.165c1.289,0,2.58-0.308,3.759-0.927l140.126-73.602    c2.66-1.397,4.326-4.153,4.326-7.157C350.316,252.995,348.65,250.24,345.99,248.843z M210.189,316.224V195.776L324.846,256    L210.189,316.224z" fill="#FFFFFF"/>
+	</g>
+</g>
+            </svg>
+                    </a>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 314.652 314.652" style="enable-background:new 0 0 314.652 314.652;" xml:space="preserve" width="30px" height="30px">
+<g>
+	<path d="M157.326,0C70.576,0,0,70.576,0,157.326s70.576,157.326,157.326,157.326s157.326-70.576,157.326-157.326   S244.076,0,157.326,0z M157.326,296.652C80.502,296.652,18,234.15,18,157.326S80.502,18,157.326,18s139.326,62.502,139.326,139.326   S234.15,296.652,157.326,296.652z" fill="#FFFFFF"/>
+	<path d="M214.618,80.326H100.034c-10.477,0-19,8.523-19,19v116c0,10.477,8.523,19,19,19h114.584c10.477,0,19-8.523,19-19v-116   C233.618,88.85,225.095,80.326,214.618,80.326z M215.618,215.326c0,0.552-0.448,1-1,1H100.034c-0.552,0-1-0.448-1-1v-116   c0-0.552,0.448-1,1-1h114.584c0.552,0,1,0.448,1,1V215.326z" fill="#FFFFFF"/>
+	<rect x="183.583" y="111.812" width="20.615" height="18.911" fill="#FFFFFF"/>
+	<circle cx="157.326" cy="164.946" r="20.324" fill="#FFFFFF"/>
+	<path d="M189.745,164.856c0,17.904-14.514,32.418-32.418,32.418s-32.418-14.514-32.418-32.418l0.044-14.445h-14.497v53.761h93.743   v-53.761H189.82L189.745,164.856z" fill="#FFFFFF"/>
+</g>
+            </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer-bottom">
+        2017 ALL RIGHTS RESERVED, trailer hailer
+    </div>
+</footer>

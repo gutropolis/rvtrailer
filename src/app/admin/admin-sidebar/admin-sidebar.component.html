@@ -1,0 +1,34 @@
+<!-- <ul>
+    <li><a href="admin/dashboard">Dashboard</a></li>
+    <li><a class="active" href="#" [routerLink]="['/admin/user']">Users</a></li>
+    <li><a href="#" [routerLink]="['/admin/list-trailer']">List Trailer</a></li>
+    <li><a href="#">Manage CMS Page</a></li>
+    <li><a href="#">Change Password</a></li>
+    <li><a href="#" (click)="onLogoutClick()">Logout</a></li>
+</ul> -->
+
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-head">
+        <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> </h3>
+    </div>
+    <ul class="nav in" id="side-menu">
+        <li>
+            <a [routerLink]="['/admin/dashboard']" class="waves-effect active"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+        </li>
+        <li>
+            <a [routerLink]="['/admin/user']" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Users</a>
+        </li>
+        <li>
+            <a [routerLink]="['/admin/list-trailer']" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>List Trailer</a>
+        </li>
+        <li>
+            <a [routerLink]="['/admin/cmspage']" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Manage CMS Page</a>
+        </li>
+        <li>
+            <a [routerLink]="['/admin/change-password']" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> Change Password</a>
+        </li>
+        <li><a href="#" (click)="onLogoutClick()"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>  Logout</a></li>
+
+    </ul>
+
+</div>

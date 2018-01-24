@@ -1,0 +1,103 @@
+ <div class="about-content clearfix">
+    <div class="about-content-top col-sm-6 col-md-5 pull-left" >
+      <h5>Trailer Details</h5><br>
+	    <div class="upload-picture clearfix" *ngFor="let trailerDetail of trailerDetails">
+        Trailer Type : {{trailerDetail.rv_type}} <br>
+        Price : {{trailerDetail.pricing_high_rate_hour}} / Night <br>
+           <div class="trailer-slider">
+              <carousel>
+                <slide>
+                  <img src="/images/{{ trailerDetail.photo }}" alt="Second slide">
+                </slide>
+              </carousel>
+            </div>
+          <div class="about-content-bottom">
+                <a href="" [routerLink]="['/rv', trailerDetail?._id]" class="btn btn-primary btn-lg">View More</a>
+          </div>
+      </div>
+    </div>
+
+    <div class="about-content-mid col-sm-6 col-md-7 pull-right">
+        <h5>Send Message</h5>
+        <div class="alert alert-success" *ngIf="saveSuccess">
+            <strong>Trailer Owner is Contact you Soon.</strong>
+        </div>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="form-group mt-30">
+                <label for="name">Full Name</label>
+                <input type="text" class="form-control" id="name" required ngModel name="name" #name="ngModel" placeholder="Full Name" />
+                <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+                   <div [hidden]="!name.hasError('required')">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" ngModel name="email" id="email" #email="ngModel" class="form-control" placeholder="Email Address" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  required/>
+                <div [hidden]="email.valid || email.untouched"
+                   class="alert alert-danger">
+                   <div [hidden]="!email.hasError('required')">Email is required</div>
+                   <div [hidden]="!email.hasError('pattern')">Email format should be
+                      <small><b>email@abc.com</b></small>
+                   </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea class="form-control" ngModel name="message" id="message" #message="ngModel" required placeholder="Your Message here..."></textarea>
+                <div [hidden]="message.valid || message.untouched" class="alert alert-danger">
+                   <div [hidden]="!message.hasError('required')">Message is required</div>
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label>verification</label>
+                <div class="clearfix row">
+                     <div class="col-md-12">
+                        <recaptcha (resolved)="resolved($event)" siteKey="6LfIcDMUAAAAABl_no9y4dpVaXxBfTpcrHHmgTYn" ngModel name="captcha" id="captcha" #captcha="ngModel" required></recaptcha>
+                        <div [hidden]="captcha.valid || captcha.untouched" class="alert alert-danger">
+                          <div [hidden]="!captcha.hasError('required')">Please Select</div>
+                        </div>
+                    </div>
+                 </div>
+            </div> -->
+            <div class="form-group checkbox">
+                <input type="checkbox" ngModel name="sendCopy" id="send-copy">
+                <label for="send-copy">Send me a copy of email</label>
+            </div>
+
+            <div class="about-content-bottom">
+                <button type=submit [disabled]="!f.valid" class="btn btn-primary btn-lg">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="user-message">
+    <div class="user-message-body table-responsive clearfix">
+        <table class="table table-condensed msglist">
+            <tbody>
+
+                <tr draggable="true" *ngFor="let allMessage of allMessages">
+                    <td width="10%">
+                        <img src="assets/images/dummy.png" alt="" />
+                    </td>
+
+                    <td class="sender-name" width="10%">
+                        {{allMessage.name}}
+                    </td>
+
+                    <td width="62%" [routerLink]="['/user-dashboard/all-detail-messages']">
+
+
+                        <div class="content"><span class="specialtxt"><b>{{allMessage.message}}</b></span></div>
+
+                    </td>
+                    <td class="yf xY " width="5%">&nbsp;</td>
+                    <td class="text-right" width="12%"><b>{{ allMessage.date | date:'dd/MM/yyyy hh:mm a'}}</b></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

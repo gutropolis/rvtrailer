@@ -1,0 +1,48 @@
+@import '../style/style';
+.sidebar {
+    background: $white-color;
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    z-index: 11;
+    position: fixed;
+    width: 240px;
+    padding-top: 0;
+    height: 100%;
+    transition: .05s ease-in;
+    top: 0;
+    padding-top: 90px;
+    &--head {
+        padding: $space-vs $space-n;
+        width: 240px;
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        background: $white-color;
+        h3 {
+            color: #686868;
+            font-weight: 400;
+            line-height: 30px;
+            font-size: $small;
+        }
+        .fa-fw {
+            width: 20px;
+            text-align: center!important;
+            display: inline-block;
+            font-style: normal;
+            font-weight: 500;
+            margin-right: $space-vs;
+            font-size: $extra-small;
+            vertical-align: middle;
+            i {
+                font-size: $small;
+            }
+        }
+    }
+}
+
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}

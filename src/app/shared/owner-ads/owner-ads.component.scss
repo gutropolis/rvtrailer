@@ -1,0 +1,41 @@
+@import '../../style/style';
+.owner-ads {
+    padding: $space-n;
+    h4 {
+        color: $primary-color;
+        font-weight: bold;
+    }
+    .ad-box {
+        display: inline-block;
+        vertical-align: top;
+        width: 250px;
+        background: $white-color;
+        padding: $space-vs;
+        border: solid 1px $border-color;
+        overflow: hidden;
+        margin: 0 $space-vs $space-s;
+        &-top {
+            height: 200px;
+            position: relative;
+            background: $body-bg;
+            overflow: hidden;
+            margin-bottom: $space-vs;
+            img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                max-width: $full;
+            }
+        }
+        &-bottom {
+            h6 {
+                text-transform: uppercase;
+                color: $secondary-color;
+                font-size: $very-small - 2;
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+@import '../../style/style';
+
+.login {
+    max-width: 680px;
+    margin: 45px auto;
+    padding: 40px;
+    background: $white-color;
+    border: solid 1px $border-color;
+    h2 {
+        font-weight: bold;
+        color: $secondary-color;
+        margin-bottom: $space-m;
+        text-transform: uppercase;
+    }
+    .form-group {
+        margin-bottom: $space-m;
+        label {
+            color: $secondary-color;
+        }
+    }
+    .btn {
+        font-size: $small;
+        text-transform: uppercase;
+        padding: $space-s $space-n;
+    }
+    &-social {
+        text-transform: uppercase;
+        color: $secondary-color;
+        font-size: $small;
+        margin-right: $space-n
+    }
+}
