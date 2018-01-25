@@ -114,9 +114,9 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 //for localhost
- server.listen(port, () => console.log(`API running on localhost:${port}`));
+// server.listen(port, () => console.log(`API running on localhost:${port}`));
  
 //For Production
 
 app.listen(port, "104.236.9.249");
-console.log(`API running on 104.236.9.249:${port}`)
+console.log(`API running on 104.236.9.249:${port}`);
