@@ -19,10 +19,10 @@ const app = express();
 //mongoose.connect('mongodb://brijeshmkt:Annu1999@ds153113.mlab.com:53113/rvmarket', { useMongoClient: true });
 
 
-
+//mongodb://gutropolis:rvtrailer2017@localhost:27017/rvtrailerdb
 // Build the connection string 
 var dbURI = 'mongodb://localhost:27017/rvtrailerdb'; 
-
+var dbURI ='mongodb://admin:password@localhost:27017/rvtrailerdb';
 // Create the database connection 
 
 mongoose.connect(dbURI, { useMongoClient: true }); 
