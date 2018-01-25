@@ -15,9 +15,9 @@ const api = require('./server/routes/api');
 
 const app = express();
 
- mongoose.connect('mongodb://localhost/rvmarket', { useMongoClient: true });
+ //mongoose.connect('mongodb://localhost/rvmarket', { useMongoClient: true });
 //mongoose.connect('mongodb://brijeshmkt:Annu1999@ds153113.mlab.com:53113/rvmarket', { useMongoClient: true });
-
+mongoose.connect('mongodb://104.236.9.249:27017/rvtrailerdb', { useMongoClient: true });
 
 
 // Parsers for POST data
