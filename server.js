@@ -24,11 +24,11 @@ const app = express();
 var dbURI = 'mongodb://localhost:27017/rvtrailerdb'; 
 
 // Create the database connection 
+
+mongoose.connect(dbURI, { useMongoClient: true }); 
 // connect to MongoDB
 mongoose.Promise = global.Promise;
  
-mongoose.connect(dbURI, { useMongoClient: true }); 
-
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'DB connection error:'));
 db.once('open', function() {
