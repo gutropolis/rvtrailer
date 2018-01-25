@@ -27,12 +27,16 @@ var dbURI = 'mongodb://localhost:27017/rvtrailerdb';
 // connect to MongoDB
 mongoose.Promise = global.Promise;
  
-mongoose.connect(dbURI, { useMongoClient: true });
-// CONNECTION EVENTS
-// When successfully connected
-mongoose.connection.on('connected', function () {  
-  console.log('Mongoose default connection open to ' + dbURI);
-}); 
+mongoose.connect(dbURI, { useMongoClient: true }); 
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'DB connection error:'));
+db.once('open', function() {
+    console.log("DB connection successful");
+	console.log('Mongoose default connection open to ' + dbURI);
+});
+
+ 
 
 // If the connection throws an error
 mongoose.connection.on('error',function (err) {  
