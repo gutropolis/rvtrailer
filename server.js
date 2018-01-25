@@ -17,9 +17,30 @@ const app = express();
 
  //mongoose.connect('mongodb://localhost/rvmarket', { useMongoClient: true });
 //mongoose.connect('mongodb://brijeshmkt:Annu1999@ds153113.mlab.com:53113/rvmarket', { useMongoClient: true });
-mongoose.connect('mongodb://104.236.9.249:27017/rvtrailerdb', { useMongoClient: true });
 
 
+
+// Build the connection string 
+var dbURI = 'mongodb://localhost:27017/rvtrailerdb'; 
+
+// Create the database connection 
+
+mongoose.connect(dbURI, { useMongoClient: true });
+// CONNECTION EVENTS
+// When successfully connected
+mongoose.connection.on('connected', function () {  
+  console.log('Mongoose default connection open to ' + dbURI);
+}); 
+
+// If the connection throws an error
+mongoose.connection.on('error',function (err) {  
+  console.log('Mongoose default connection error: ' + err);
+}); 
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {  
+  console.log('Mongoose default connection disconnected'); 
+});
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
