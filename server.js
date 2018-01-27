@@ -103,6 +103,7 @@ app.get('*', (req, res) => {
  * Get port from environment and store in Express.
  */
 const port = process.env.PORT || '3001';
+var localhost = process.env.IP;
 app.set('port', port);
 
 /**
@@ -116,7 +117,7 @@ const server = http.createServer(app);
 //for localhost
 // server.listen(port, () => console.log(`API running on localhost:${port}`));
  
-//For Production
+//For Production 104.236.9.249
 
-app.listen(port, "104.236.9.249");
-console.log(`API running on 104.236.9.249:${port}`);
+app.listen(port,localhost);
+console.log(`API running on ${localhost}:${port}`);
