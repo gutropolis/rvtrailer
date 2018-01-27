@@ -17,10 +17,10 @@ export class ApiService {
   headers: any = {'Content-Type': 'application/json'};
 
   // This is for local
-  mainURL: string = 'http://localhost:3001';
+  //mainURL: string = 'http://localhost:3001';
 
   // This is for server
-   //mainURL: string = 'http://162.243.111.79:3001';
+   mainURL: string = 'http://104.236.9.249:3001';
 
   constructor(private http: Http) { }
 
