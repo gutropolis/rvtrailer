@@ -120,4 +120,4 @@ const server = http.createServer(app);
 //For Production 104.236.9.249
 
 app.listen(port,localhostip);
-console.log(`API running on ${localhostip}:${port}`);
+console.log('API running on '+localhostip+':'+port);
