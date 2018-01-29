@@ -51,14 +51,14 @@
                         {{ messageDetail.name }}
                     </td>
 
-                    <td width="62%" [routerLink]="['/user-dashboard/all-detail-messages', messageDetail?._id]">
+                    <td width="58%" [routerLink]="['/user-dashboard/all-detail-messages', messageDetail?._id]">
 
 
                         <div class="content"><span class="specialtxt"><b>{{ messageDetail.message}}</b></span></div>
 
                     </td>
                     <td class="yf xY " width="5%">&nbsp;</td>
-                    <td class="text-right" width="12%"><b>{{ messageDetail.date | date:'dd/MM/yyyy hh:mm a'}}</b></td>
+                    <td class="text-right" width="18%"><b>{{ messageDetail.date | date:'dd/MM/yyyy hh:mm a'}}</b></td>
                 </tr>
 
             </tbody>
