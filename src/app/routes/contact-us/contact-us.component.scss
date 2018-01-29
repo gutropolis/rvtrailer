@@ -11,8 +11,13 @@
 		font-size: $small;
 	}
 
+
 	&-form{
 		max-width: 800px;
 		margin: 0 auto;
 	}
+}
+.textareafix{
+	height:200px;
+	resize: vertical;
 }
