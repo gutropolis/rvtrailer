@@ -268,5 +268,6 @@
 }
 .textareafix{
 	height:100px !important;
-	resize: vertical;
+    resize: vertical;
+    overflow-x:hidden;
 }
