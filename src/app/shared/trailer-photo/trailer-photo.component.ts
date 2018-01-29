@@ -11,9 +11,9 @@ import { FileUploader } from 'ng2-file-upload';
 
 //const URL = 'http://localhost:3001/upload';
 
-//const URL='http://localhost:4200/';
+const URL='http://104.236.9.249:3001/upload';
 
- const URL: string = 'http://104.236.9.249:3001';
+ //const URL: string = 'http://104.236.9.249:3001';
 
 
 @Component({
