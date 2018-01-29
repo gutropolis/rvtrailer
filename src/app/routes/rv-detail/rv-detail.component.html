@@ -428,17 +428,7 @@
                             </div>
                         </div>
 
-                            <div class="form-group">
-                            <label>verification</label>
-                            <div class="clearfix row">
-                                 <div class="col-md-12">
-                                    <recaptcha (resolved)="resolved($event)" siteKey="6Le3F0MUAAAAAGUbrPk2Ph_nEPQ3PNHMf94tz8Cl" ngModel name="captcha" id="captcha" #captcha="ngModel" required></recaptcha>
-                                    <div [hidden]="captcha.valid || captcha.untouched" class="alert alert-danger">
-                                      <div [hidden]="!captcha.hasError('required')">Please Select</div>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
+                           
 
                         <div class="form-group checkbox">
                             <input type="checkbox" ngModel name="sendCopy" id="send-copy">
