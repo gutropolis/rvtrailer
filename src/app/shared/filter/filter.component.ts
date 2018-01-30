@@ -35,7 +35,7 @@ export class FilterComponent {
    
       this.apiService.getAllListTrailer().subscribe((res) => {
       this.myLocation = res;
-      alert(this.myLocation.location_city)
+      alert(this.myLocation)
       });
      
   }
