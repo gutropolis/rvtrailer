@@ -16,6 +16,7 @@ export class FilterComponent {
 
   Listing: any;
   public myLocation: any = [];
+  public mystatus: any = [];
   public states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas',
     'California', 'Colorado',
     'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
@@ -36,7 +37,9 @@ export class FilterComponent {
       this.apiService.getAllListTrailer().subscribe((res) => {
       this.myLocation = JSON.stringify(res);
       console.log(this.myLocation);
-      alert(this.myLocation)
+      let mystatus=this.myLocation.location_city;
+      alert(this.myLocation);
+      alert(this.mystatus);
       });
      
   }
