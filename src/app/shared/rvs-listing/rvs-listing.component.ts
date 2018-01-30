@@ -71,6 +71,7 @@ export class RvsListingComponent implements OnInit {
       .subscribe( (result) => {
         console.log(result);
         this.items = result;
+        alert(this.items);
       });
   }
 
@@ -93,7 +94,7 @@ export class RvsListingComponent implements OnInit {
   }
 
   loadMore() {
-    this.listLimit = this.items.length + 10;
+    this.listLimit = this.items.length + 5;
     console.log(this.listLimit);
     this.allItems();
   }
