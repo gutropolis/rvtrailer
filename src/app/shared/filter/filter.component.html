@@ -24,6 +24,10 @@
 
                 <input type="text" ngModel name="location" class="form-control" placeholder="Nanaimo, Columbia" [typeahead]="mylocation.location_city" />
             </div>
+            <li *ngFor="let stuff of mylocation">
+                    
+                       <h3>{{stuff.location_city}}</h3>
+                  </li>
             <label class="form-label">
         Price Range
       </label>
