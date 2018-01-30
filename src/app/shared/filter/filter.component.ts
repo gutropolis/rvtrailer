@@ -34,7 +34,7 @@ export class FilterComponent {
   constructor(public apiService: ApiService) { 
    
       this.apiService.getAllListTrailer().subscribe((res) => {
-      this.myLocation = res;
+      this.myLocation = JSON.stringify(res);
       alert(this.myLocation)
       });
      
