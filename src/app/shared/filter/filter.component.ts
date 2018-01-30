@@ -15,7 +15,7 @@ export class FilterComponent {
   @Output() myFilter = new EventEmitter() ;
 
   Listing: any;
-  public myLocation:any=[];
+  public myLocation:string;
   public states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas',
     'California', 'Colorado',
     'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
@@ -35,7 +35,7 @@ export class FilterComponent {
    
       this.apiService.getAllListTrailer().subscribe((res) => {
       this.myLocation = res;
-      //alert(JSON.stringify(this.myLocation))
+      alert(JSON.stringify(this.myLocation))
       });
      
   }
