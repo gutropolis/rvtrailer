@@ -1,8 +1,4 @@
 <form #f="ngForm" (ngSubmit)="filterSearch(f)">
-        <li *ngFor="let stuff of mylocation">
-                
-                   <h3>{{stuff.location_city}}</h3>
-              </li>
     <div class="filter">
         <div class="filter-location">
             <label class="form-label">your location</label>
@@ -22,12 +18,8 @@
               </svg>
             </i>
 
-                <input type="text" ngModel name="location" class="form-control" placeholder="Nanaimo, Columbia" [typeahead]="mylocation.location_city" />
+                <input type="text" ngModel name="location" class="form-control" placeholder="Nanaimo, Columbia" [typeahead]="states" />
             </div>
-            <li *ngFor="let stuff of mylocation">
-                    
-                       <h3>{{stuff.location_city}}</h3>
-                  </li>
             <label class="form-label">
         Price Range
       </label>
