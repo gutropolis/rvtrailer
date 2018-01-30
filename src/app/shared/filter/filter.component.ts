@@ -1,6 +1,10 @@
 import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import {IMyDpOptions} from 'mydatepicker';
 
+import { ActivatedRoute, Router, Params } from '@angular/router';
+
+import { ApiService } from './../../api.service';
+
 @Component({
   selector: 'rv-filter',
   templateUrl: './filter.component.html',
@@ -27,7 +31,14 @@ export class FilterComponent {
     'West Virginia', 'Wisconsin', 'Wyoming','Punjab','Hariyana','London'];
 
   public price: any;
-  constructor() { }
+  constructor(public apiService: ApiService) { 
+   
+      this.apiService.getAllListTrailer().subscribe((res) => {
+      this.myLocation = res;
+      alert(JSON.stringify(this.myLocation))
+      });
+     
+  }
 
   filterSearch(form) {
     let filterParams: any = {
@@ -49,10 +60,13 @@ export class FilterComponent {
 
   }
 
+
   myOnFinish(event) {
     this.price = event.from;
     
     
   }
+
+  
 
 }
