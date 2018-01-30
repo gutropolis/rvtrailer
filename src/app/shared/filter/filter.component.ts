@@ -51,6 +51,7 @@ export class FilterComponent {
 
   myOnFinish(event) {
     this.price = event.from;
+    alert(this.price);
   }
 
 }
