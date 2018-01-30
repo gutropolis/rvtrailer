@@ -24,7 +24,7 @@ export class FilterComponent {
     'Pennsylvania', 'Rhode Island',
     'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
     'Virginia', 'Washington',
-    'West Virginia', 'Wisconsin', 'Wyoming'];
+    'West Virginia', 'Wisconsin', 'Wyoming','Punjab','Hariyana','London'];
 
   public price: any;
   constructor() { }
