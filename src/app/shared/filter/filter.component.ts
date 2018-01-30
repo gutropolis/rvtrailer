@@ -35,11 +35,11 @@ export class FilterComponent {
   constructor(public apiService: ApiService) { 
    
       this.apiService.getAllListTrailer().subscribe((res) => {
-      this.myLocation = JSON.stringify(res);
+      this.myLocation = res;
       console.log(this.myLocation);
-      let mystatus=this.myLocation.location_city;
-      alert(this.myLocation);
-      alert(this.mystatus);
+      //let mystatus=this.myLocation.location_city;
+      alert(JSON.stringify(this.myLocation));
+      //alert(this.mystatus);
       });
      
   }
