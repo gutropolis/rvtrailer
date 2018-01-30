@@ -40,8 +40,7 @@ export class HeaderFilterComponent implements OnInit {
       homeSearch: true
       }]);
 
-    //this.router.navigate( [ 'Details', { id: company.id }] );
-    return false;
+        return false;
 
   }
 
