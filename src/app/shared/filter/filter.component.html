@@ -1,4 +1,8 @@
 <form #f="ngForm" (ngSubmit)="filterSearch(f)">
+        <li *ngFor="let stuff of mylocation">
+                
+                   <h3>{{stuff.city}}</h3>
+              </li>
     <div class="filter">
         <div class="filter-location">
             <label class="form-label">your location</label>
