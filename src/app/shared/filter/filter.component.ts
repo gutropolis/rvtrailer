@@ -44,14 +44,15 @@ export class FilterComponent {
     filterParams.toytrailer = form.value.toytrailer;
     filterParams.price = this.price;
     //console.log(filterParams);
-
+      alert(location);
     this.myFilter.emit(filterParams);
 
   }
 
   myOnFinish(event) {
     this.price = event.from;
-    alert(this.price);
+    
+    
   }
 
 }
