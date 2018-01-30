@@ -15,8 +15,8 @@ export class FilterComponent {
   @Output() myFilter = new EventEmitter() ;
 
   Listing: any;
-  public myLocation: any = [];
-  public mystatus: any = [];
+  public myLocation: string[];
+  public mystatus: string[];
   public states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas',
     'California', 'Colorado',
     'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
