@@ -57,7 +57,10 @@ export class FilterComponent {
         queryString.push(myLocation.location_city);
         alert(queryString);
     }
+    else{
+      queryString=['abc','ajay'];
     alert(queryString);
+    }
   }
 
   filterSearch(form) {
