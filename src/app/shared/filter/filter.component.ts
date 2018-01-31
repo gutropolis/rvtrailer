@@ -53,8 +53,8 @@ export class FilterComponent {
   getCity(myLocation) {
     var queryString = [];
 
-    if (myLocation.location_city) {
-        queryString.push(myLocation.location_city);
+    if (myLocation) {
+        queryString.push(myLocation);
         alert(queryString);
     }
     else{
