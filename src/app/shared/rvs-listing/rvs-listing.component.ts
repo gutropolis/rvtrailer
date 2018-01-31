@@ -71,7 +71,7 @@ export class RvsListingComponent implements OnInit {
       .subscribe( (result) => {
         console.log(result);
         this.items = result;
-        alert(JSON.stringify(this.items));
+       // alert(JSON.stringify(this.items));
       });
   }
 
