@@ -59,7 +59,7 @@ export class FilterComponent {
     filterParams.toytrailer = form.value.toytrailer;
     filterParams.price = this.price;
     //console.log(filterParams);
-      alert(JSON.stringify(filterParams));
+      //alert(JSON.stringify(filterParams));
     this.myFilter.emit(filterParams);
 
   }
