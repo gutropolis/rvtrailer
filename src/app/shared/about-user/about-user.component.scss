@@ -4,6 +4,9 @@
         position: relative;
         padding: 15px;
         border-bottom: solid 1px $border-color;
+        .btn {
+            margin: 0px 5px;
+        }
         .user {
             &-pic {
                 width: 107px;

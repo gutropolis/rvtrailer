@@ -85,7 +85,7 @@
                 <!-- <rv-listview *ngFor="let item of items" [rvInfo]="item" [rvimage]="item.rvimage" [rvName]="item.rvName" [rvPrice]="item.rvPrice" [location]="item.location" [rating]="item.rating" [year]="item.year" [guest]="item.guest" [ownerName]="item.ownerName" [ownerImage]="item.ownerImage">
 
                 </rv-listview> -->
-<!--
+                <!--
                 <div *ngFor="let item of items">
                         {{ item | json }} <br>
                 </div> -->
@@ -102,20 +102,20 @@
                                 <label>{{ item.location_street }} </label>
                             </div>
                             <div class="rv-owner-info rv-info-top-right text-center">
-                                 <!-- <figure><img src="/images/{{ userDetail.photo }}" /></figure> -->
+                                <figure><img src="" /></figure>
                                 <h6>{{ item.details_ad_title }}</h6>
                                 <div class="star-rating">
-                                      <rating [(ngModel)]="rating"></rating>
-                                     <!-- <rating (click)=ratingClick()></rating> -->
+                                    <rating [(ngModel)]="rating"></rating>
+                                    <!-- <rating (click)=ratingClick()></rating> -->
 
                                 </div>
                             </div>
 
                         </div>
                         <div class="rv-info-bottom">
-
+                            <div class="rv-modal">Year<br/> 2017</div>
                             <div class="rv-guest">guest <br /> {{ item.specification_guest }}</div>
-                            <div class="rv-modal"></div>
+
                             <button class="rv-btn btn btn-primary" type="button" [routerLink]="['/rv/', item._id]">Rent IT</button>
                         </div>
                     </div>

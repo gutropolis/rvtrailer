@@ -106,7 +106,6 @@
     }
 }
 
-
 .rvlist {
     position: relative;
     display: flex;
@@ -155,6 +154,8 @@
                     width: 64px;
                     height: 64px;
                     margin: $space-vs auto 0;
+                    border-radius: 100%;
+                    border: 1px solid $grey-color;
                 }
                 h6 {
                     color: $secondary-color;
@@ -172,6 +173,11 @@
                         }
                     }
                 }
+                .likes {
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                }
             }
         }
         &-bottom {
@@ -187,10 +193,11 @@
                 text-transform: uppercase;
                 font-weight: bold;
                 border-left: solid 1px $border-color;
-            //    border-right: solid 1px $border-color;
+                //    border-right: solid 1px $border-color;
             }
-            .rv-modal, {
-              flex: 0 0 33.333%;
+            .rv-modal,
+            {
+                flex: 0 0 33.333%;
                 max-width: 33.333%;
                 text-transform: uppercase;
                 font-weight: bold;
