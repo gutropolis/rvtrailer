@@ -274,7 +274,7 @@ export class ApiService {
 
   getAllListTrailer(listLimit = 10) {
 
-    let url:string = this.mainURL + '/api/trailers/' + listLimit;
+    let url:string = this.mainURL + '/api/trailers/' + listLimit,locatoin_city;
     console.log(url);
     return this.http.get(url)
       .map( (res: Response) => res.json());
