@@ -54,7 +54,7 @@ export class FilterComponent {
     var queryString = [];
 
     if (myLocation) {
-        queryString.push(JSON.stringify(myLocation));
+        queryString.push(JSON.stringify(myLocation.specification_make));
         alert(queryString);
     }
     else{
