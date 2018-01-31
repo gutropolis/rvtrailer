@@ -55,8 +55,9 @@ export class FilterComponent {
 
     if (myLocation.location_city) {
         queryString.push(myLocation.location_city);
-        alert(queryString)
+        alert(queryString);
     }
+    alert(queryString);
   }
 
   filterSearch(form) {
