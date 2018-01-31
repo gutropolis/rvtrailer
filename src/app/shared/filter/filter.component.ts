@@ -1,10 +1,6 @@
 import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import {IMyDpOptions} from 'mydatepicker';
 
-import { ActivatedRoute, Router, Params } from '@angular/router';
-
-import { ApiService } from './../../api.service';
-
 @Component({
   selector: 'rv-filter',
   templateUrl: './filter.component.html',
@@ -15,8 +11,7 @@ export class FilterComponent {
   @Output() myFilter = new EventEmitter() ;
 
   Listing: any;
-  public myLocation: string[];
-  public mystatus: string[];
+  public myLocation:string;
   public states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas',
     'California', 'Colorado',
     'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
@@ -29,20 +24,10 @@ export class FilterComponent {
     'Pennsylvania', 'Rhode Island',
     'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
     'Virginia', 'Washington',
-    'West Virginia', 'Wisconsin', 'Wyoming','Punjab','Hariyana','London'];
+    'West Virginia', 'Wisconsin', 'Wyoming'];
 
   public price: any;
-  constructor(public apiService: ApiService) { 
-   
-      this.apiService.getAllListTrailer().subscribe((res) => {
-      this.myLocation = res;
-      console.log(this.myLocation);
-      //let mystatus=this.myLocation.location_city;
-      //alert(JSON.stringify(this.myLocation));
-      //alert(this.mystatus);
-      });
-     
-  }
+  constructor() { }
 
   filterSearch(form) {
     let filterParams: any = {
@@ -59,18 +44,13 @@ export class FilterComponent {
     filterParams.toytrailer = form.value.toytrailer;
     filterParams.price = this.price;
     //console.log(filterParams);
-      //alert(JSON.stringify(filterParams));
+     // alert("hello");
     this.myFilter.emit(filterParams);
 
   }
 
-
   myOnFinish(event) {
     this.price = event.from;
-    
-    
   }
-
-  
 
 }
