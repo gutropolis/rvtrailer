@@ -4,7 +4,6 @@ import {IMyDpOptions} from 'mydatepicker';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { ApiService } from './../../api.service';
-import { getComponentViewDefinitionFactory } from '@angular/core/src/view/refs';
 
 @Component({
   selector: 'rv-filter',
@@ -37,30 +36,12 @@ export class FilterComponent {
    
       this.apiService.getAllListTrailer().subscribe((res) => {
       this.myLocation = res;
-        
-
       console.log(this.myLocation);
       //let mystatus=this.myLocation.location_city;
-      alert(JSON.stringify(this.myLocation));
-    this.getCity(this.myLocation);
+      //alert(JSON.stringify(this.myLocation));
       //alert(this.mystatus);
-      
-
-
       });
      
-  }
-  getCity(myLocation) {
-    var queryString = [];
-
-    if (myLocation) {
-        queryString.push(JSON.stringify(myLocation.specification_make));
-        alert(queryString);
-    }
-    else{
-      queryString=['abc','ajay'];
-    alert(queryString);
-    }
   }
 
   filterSearch(form) {

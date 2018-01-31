@@ -17,7 +17,7 @@ var NewsLetter = require('../models/newsletter');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'kirti.coderadobe@gmail.com',
+    user: 'ajaythakurniit93@gmail.com',
     pass: 'coder4321'
   }
 });
