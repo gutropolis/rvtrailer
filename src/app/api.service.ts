@@ -17,10 +17,10 @@ export class ApiService {
   headers: any = {'Content-Type': 'application/json'};
 
   // This is for local
-  //mainURL: string = 'http://localhost:3001';
+  mainURL: string = 'http://localhost:3001';
 
   // This is for server
-   mainURL: string = 'http://104.236.9.249:3001';
+  // mainURL: string = 'http://104.236.9.249:3001';
 
   constructor(private http: Http) { }
 
@@ -369,5 +369,14 @@ export class ApiService {
       return this.http.post( this.mainURL + '/api/newsLetter', data)
           .map(res => res.json());
   }
+      getCity() {
+    
+        let url:string = this.mainURL + '/api/list_trailer_locs';
+        console.log(url);
+        return this.http.get(url)
+          .map( (res: Response) => res.json());
+    
+       
+        }
 
 }

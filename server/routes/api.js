@@ -424,7 +424,35 @@ router.post('/list_trailersbyUserId/:FavTrailer_id', function(req, res) {
     res.json(trailers);
   });
 });
+ 
+router.get('/list_trailer_location/:word',function(req, res, next) {
+  console.log('I am here');
+  console.log(req.params.word);
+  query ={ $or: [ { location_street: req.params.word }, { location_city: req.params.word } , { location_province: req.params.word }, { location_postal: req.params.word }] };
+  
+ 
+  ListTrailer.findOne(query, function (err, listLocation){
+    if (err) return err;
 
+    res.json(listLocation);
+  });
+  //User.findOne()
+})
+
+router.get('/list_trailer_locs', function(req, res, next) {
+ /*
+ ListTrailer.find({}, 'location_street location_city location_province location_postal', function (err, docs) {
+    if (err) return next(err);
+    res.json(docs);
+    
+    }); 
+ */
+  ListTrailer.find({},{location_city:true,_id:false}, function (err, docs) {
+    if (err) return next(err);
+    res.json(docs);
+    
+    });   
+});
 // router.get('/allPackageDetail', function (req, res) {
 
 //   Package.find({}, function(err, package) {

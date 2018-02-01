@@ -1,6 +1,8 @@
 import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import {IMyDpOptions} from 'mydatepicker';
 
+import { ApiService } from './../../api.service';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 @Component({
   selector: 'rv-filter',
   templateUrl: './filter.component.html',
@@ -11,7 +13,8 @@ export class FilterComponent {
   @Output() myFilter = new EventEmitter() ;
 
   Listing: any;
-  public myLocation:string;
+  public mystates:any;
+  public myLocation:string[];
   public states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas',
     'California', 'Colorado',
     'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
@@ -24,10 +27,28 @@ export class FilterComponent {
     'Pennsylvania', 'Rhode Island',
     'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
     'Virginia', 'Washington',
-    'West Virginia', 'Wisconsin', 'Wyoming'];
+    'West Virginia', 'Wisconsin', 'Wyoming','Punjab','Kurukestra','Hariyana'];
 
   public price: any;
-  constructor() { }
+  constructor(public apiService: ApiService) { 
+    
+       this.apiService.getCity().subscribe((res) => {
+       this.myLocation = res;
+       //console.log("now location is ");
+      
+       //console.log(this.myLocation);
+       this.mystates = this.myLocation.map(function(a) {
+         return a["location_city"];
+        });
+       //console.log("after Maping");
+       //console.log(this.mystates);
+         
+       });
+
+    
+         
+        
+   }
 
   filterSearch(form) {
     let filterParams: any = {
