@@ -1,0 +1,36 @@
+<div class="admin-page">
+  <h4 class="admin-title">Rental Detail</h4>
+
+  <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">{{ rental.title }}</label>
+      </div>
+  </div>
+  <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Sort Description:</label>
+      <div class="col-sm-10">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">{{ rental.sort_description }}</label>
+      </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Icon:</label>
+    <div class="col-sm-10">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">{{ rental.icon }}</label>
+    </div>
+</div>
+
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">Active:</label>
+  <div class="col-sm-10">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">{{ rental.active }}</label>
+  </div>
+</div>
+  <div class="form-group row">
+      <div class="col-sm-10">
+          <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/admin/view_rental-type']">Go Back</button>
+      </div>
+  </div>
+
+
+</div>
