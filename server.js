@@ -24,8 +24,12 @@ const app = express();
 var dbURI = 'mongodb://localhost:27017/rvtrailerdb'; 
 //var dbURI ='mongodb://gutropolis:rvtrailer2017@localhost:27017/rvtrailerdb';
 // Create the database connection 
+//var dbURI = 'mongodb://localhost/rvtrailerdb';
 
-mongoose.connect(dbURI, { useMongoClient: true }); 
+
+mongoose.connect(dbURI, { useMongoClient: true });
+
+
 // connect to MongoDB
 mongoose.Promise = global.Promise;
  

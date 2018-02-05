@@ -17,8 +17,7 @@ export class ApiService {
   headers: any = {'Content-Type': 'application/json'};
 
   // This is for local
-  //mainURL: string = 'http://localhost:3001';
-
+ //mainURL: string = 'http://localhost:3001';
   // This is for server
    mainURL: string = 'http://104.236.9.249:3001';
 
@@ -177,6 +176,84 @@ export class ApiService {
       return this.http.post( this.mainURL + '/api/list_trailers/', data)
       .map(res => res.json());
   }
+
+  //Manage rental type
+
+  addRental(data) {
+    return new Promise((resolve, reject) => {
+        this.http.post( this.mainURL + '/api/rental_type', data)
+          .map(res => res.json())
+          .subscribe(res => {
+            resolve(res);
+          }, (err) => {
+            reject(err);
+          });
+    });
+  }
+
+
+  getAllRental() {
+    return new Promise((resolve, reject) => {
+      this.http.get( this.mainURL + '/api/rental_type')
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+      });
+    }
+
+
+    showRental(id) {
+      return new Promise((resolve, reject) => {
+          this.http.get( this.mainURL + '/api/show_rental_type/' + id)
+            .map(res => res.json())
+            .subscribe(res => {
+              resolve(res)
+          }, (err) => {
+            reject(err);
+          });
+      });
+    }
+     
+    getEditRental(id) {
+      return new Promise((resolve, reject) => {
+          this.http.get( this.mainURL + '/api/edit_rental_type/' + id)
+            .map(res => res.json())
+            .subscribe(res => {
+              resolve(res)
+          }, (err) => {
+            reject(err);
+          });
+      });
+    }
+
+    updateRental(id, data) {
+      return new Promise((resolve, reject) => {
+          this.http.put( this.mainURL + '/api/edit_rental_type/' + id, data)
+            .map(res => res.json())
+            .subscribe(res => {
+              resolve(res);
+            }, (err) => {
+              reject(err);
+            });
+      });
+    }
+
+    deleteRental(id) {
+      return new Promise((resolve, reject) => {
+            this.http.delete( this.mainURL + '/api/view_rental_type/' + id)
+              .subscribe(res => {
+                resolve(res);
+              }, (err) => {
+                reject(err);
+              });
+        });
+      }
+
+
+// manage cms
 
   getAllCmsPages() {
     return new Promise((resolve, reject) => {
