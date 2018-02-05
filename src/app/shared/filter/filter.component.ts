@@ -11,7 +11,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 })
 export class FilterComponent {
   @Output() myFilter = new EventEmitter() ;
-
+  rental :any=[];
   Listing: any;
   public mystates:any;
   public myLocation:string[];
@@ -45,10 +45,18 @@ export class FilterComponent {
          
        });
 
-    
+    this.getRental();
          
         
    }
+   getRental() {
+    this.apiService.getAllRental().then((res) => {
+      this.rental = res;
+      console.log(this.rental);
+      }, (err) => {
+      console.log(err);
+    });
+  }
 
   filterSearch(form) {
     let filterParams: any = {
@@ -73,5 +81,6 @@ export class FilterComponent {
   myOnFinish(event) {
     this.price = event.from;
   }
+
 
 }

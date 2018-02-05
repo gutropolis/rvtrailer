@@ -8,22 +8,25 @@
 
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <input type="text" class="form-control" formControlName="specification_make" id="specification_make" [(ngModel)]="listtrailers.specification_make" disabled="disabled">
+                    <input type="text" class="form-control" formControlName="specification_make" id="specification_make" [(ngModel)]="listtrailers.specification_make" disabled="disabled" placeholder="make">
                 </div>
                 <div class="form-group col-md-4">
-                    <input type="text" class="form-control" formControlName="specification_model" id="specification_model" [(ngModel)]="listtrailers.specification_model" disabled="disabled">
+                    <input type="text" class="form-control" formControlName="specification_model" id="specification_model" [(ngModel)]="listtrailers.specification_model" disabled="disabled" placeholder="Model">
                 </div>
                 <div class="form-group col-md-4">
-                    <select id="inputState" class="form-control" formControlName="specification_year" id="specification_year" [(ngModel)]="listtrailers.specification_year" disabled="disabled">
-                    <option value="2017">2017</option>
-                  </select>
+                       
+                        <input type="text" class="form-control" formControlName="specification_year" id="specification_year" [(ngModel)]="listtrailers.specification_year" disabled="disabled" placeholder="Year">
+
+
+                  
+                  
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="col-sm-4">
                     <div class="input-group mb-2 mb-sm-0">
-                        <input type="text" class="form-control" formControlName="specification_length" id="specification_length" [(ngModel)]="listtrailers.specification_length" disabled="disabled">
+                        <input type="text" class="form-control" formControlName="specification_length" id="specification_length" [(ngModel)]="listtrailers.specification_length" disabled="disabled" placeholder="Length">
                         <div class="input-group-addon">FT</div>
                     </div>
                 </div>
@@ -46,14 +49,23 @@
                 <div class="form-group col-md-4" style="margin-top: 15px;">
                     <select formControlName="specification_guest" id="specification_guest" class="form-control" [(ngModel)]="listtrailers.specification_guest" disabled="disabled">
                     <option selected>Choose...</option>
-                    <option value="1">Guest</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="5+">5+</option>
                   </select>
 
                 </div>
                 <div class="form-group col-md-4" style="margin-top: 15px;">
                     <select id="specification_slide_out" class="form-control" formControlName="specification_slide_out" id="specification_slide_out" [(ngModel)]="listtrailers.specification_slide_out" disabled="disabled">
                     <option selected>Choose...</option>
-                    <option value="1">Slight Out</option>
+                    <option value="1">1 Slight Out</option>
+                    <option value="2">2 Slight Out</option>
+                    <option value="3">3 Slight Out</option>
+                    <option value="4">4 Slight Out</option>
+                    <option value="5">5 Slight Out</option>
                   </select>
                 </div>
             </div> <br>

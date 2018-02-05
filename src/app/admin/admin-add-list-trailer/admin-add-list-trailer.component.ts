@@ -1,6 +1,6 @@
 import { ApiService } from './../../api.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder,FormArray, NgForm ,FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 
@@ -18,11 +18,11 @@ const URL = 'http://localhost:3001/upload';
 export class AdminAddListTrailerComponent implements OnInit {
 
 rForm: FormGroup;
+listings: any = [];
 user: {};
-listingFeatures: any[] = [
-     {feature: 'Brijesh'},
-     {feature: 'Kirti'},
-];
+listingFeatures: any[] = [{feature: 'Wifi'}, {feature: 'Built-in Speakers'}, {feature: 'TV/DVD'}, {feature: 'CD Player'}, {feature: 'Vanity'}, {feature: 'Pet Friendly'}, {feature: 'Dish Washer'}, {feature: 'Bathtub'}, {feature: 'Family/Kid Friendly'}, {feature: 'Outside Shower'}, {feature: 'Smoke Free'}, {feature: 'Bluetooth'},
+{feature: 'Pull-out sofa Bed'}, {feature: 'Outdoor Kitchenette'}, {feature: 'Delivery Avilable'}, {feature: 'Lines Provided'}, {feature: 'Heating / Cooling'}, {feature: 'BBQ'}, {feature: 'Automatic Awning'}, {feature: 'Camping Chairs'}, {feature: 'Basic Cookwaer / Cultery'},
+{feature: 'Closets & Storage Space'}, {feature: 'Full Winter Rental Avilable'}, {feature: 'Boardgames and Movies'}];
 public uploader:FileUploader = new FileUploader({url: URL});
 fileName: String;
 
@@ -45,7 +45,7 @@ fileName: String;
           'location_postal' : [null, Validators.required],
           'details_ad_title' : [null, Validators.required],
           'details_ad_description' : [null, Validators.required],
-          'details_feature' : [null, Validators.required],
+          'details_feature' : this.fb.array([]),
           'details_no_of_beds' : [null, Validators.required],
           'details_no_of_bathrooms' : [null, Validators.required],
           'pricing_security_deposit' : [null, Validators.required],
@@ -65,6 +65,11 @@ fileName: String;
   }
 
   ngOnInit() {
+    
+
+
+
+
           //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
         this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
         //overide the onCompleteItem property of the uploader so we are
@@ -83,7 +88,10 @@ fileName: String;
 
     console.log(this.fileName);
     const photo = {'photo': this.fileName};
-    const Listing_Data = Object.assign({}, this.rForm.value, photo);
+
+    const detail = this.rForm.value;
+    this.listings['details_feature'] = detail.details_feature;
+    const Listing_Data = Object.assign({},this.listings,detail, photo);
     console.log(Listing_Data);
 
     this.apiService.addListTrailer(Listing_Data).subscribe((result) => {
@@ -94,5 +102,16 @@ fileName: String;
       console.log(err);
     });
   }
+  onChange(feature: string, isChecked: boolean) {
+    const emailFormArray = <FormArray>this.rForm.controls.details_feature;
+    if (isChecked) {
+      emailFormArray.push(new FormControl(feature));
+    } else {
+      const index = emailFormArray.controls.findIndex(x => x.value === feature);
+      emailFormArray.removeAt(index);
+    }
+}
+  
+
 
 }

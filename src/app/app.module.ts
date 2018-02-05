@@ -111,6 +111,10 @@ import { UserDashboardComponent } from './routes/user-dashboard/user-dashboard.c
 import { EditAboutUserComponent } from './shared/edit-about-user/edit-about-user.component';
 import { UserDetailMessageComponent } from './shared/user-detail-message/user-detail-message.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { AddRentalTypeComponent } from './admin/add-rental-type/add-rental-type.component';
+import { ViewRentalTypeComponent } from './admin/view-rental-type/view-rental-type.component';
+import { ShowRentalTypeComponent } from './admin/show-rental-type/show-rental-type.component';
+import { EditRentalTypeComponent } from './admin/edit-rental-type/edit-rental-type.component';
 
 
 const firebaseConfig = {
@@ -209,6 +213,10 @@ const firebaseConfig = {
       EditAboutUserComponent,
       UserDetailMessageComponent,
       AdminComponent,
+      AddRentalTypeComponent,
+      ViewRentalTypeComponent,
+      ShowRentalTypeComponent,
+      EditRentalTypeComponent,
 
   ],
 

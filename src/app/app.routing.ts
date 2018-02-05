@@ -64,6 +64,10 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminEditCmsPageComponent } from './admin/admin-edit-cms-page/admin-edit-cms-page.component';
 import { RvComponent } from './routes/rv/rv.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { AddRentalTypeComponent } from './admin/add-rental-type/add-rental-type.component';
+import { ViewRentalTypeComponent } from './admin/view-rental-type/view-rental-type.component';
+import { ShowRentalTypeComponent } from './admin/show-rental-type/show-rental-type.component';
+import { EditRentalTypeComponent } from './admin/edit-rental-type/edit-rental-type.component';
 export const Routing = RouterModule.forRoot([
     {
         path: '',
@@ -183,6 +187,10 @@ export const Routing = RouterModule.forRoot([
             { path: 'add-list-trailer', component: AdminAddListTrailerComponent },
             { path: 'edit-list-trailer/:id', component: AdminEditListTrailerComponent },
             { path: 'view-list-trailer/:id', component: AdminViewListTrailerComponent },
+            { path: 'rental-type', component: AddRentalTypeComponent },
+            { path: 'view_rental-type', component: ViewRentalTypeComponent },
+            { path: 'show_rental_type/:id', component: ShowRentalTypeComponent },
+            { path: 'edit_rental_type/:id', component: EditRentalTypeComponent },
         ]
     },
 

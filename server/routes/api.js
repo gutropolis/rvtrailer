@@ -12,6 +12,7 @@ var Favourite = require('../models/favourite');
 var Package = require('../models/package');
 var Message = require('../models/message');
 var NewsLetter = require('../models/newsletter');
+var Rental=require('../models/rental_type');
 
 
 var transporter = nodemailer.createTransport({
@@ -126,7 +127,15 @@ router.get('/message/:id', function(req, res, next) {
 //   });
 
 
-
+function createRegex(userInput) {
+  return new RegExp(
+    // Escape all special characters except *
+    "^" + userInput.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1")
+      // Allow the use of * as a wildcard like % in SQL.
+      .replace(/\*/g, ".*") + "$",
+    'i'
+  );
+}
 
 router.post('/filterSearch', (req, res) => {
 
@@ -146,14 +155,59 @@ router.post('/filterSearch', (req, res) => {
 
   dateFrom = req.body.dateFrom;
   dateTo = req.body.dateTo;
+  
+   //var query = ListTrailer.find();
+ 
+  //let criteria = {};
+  let criteria = [];
+  
+if (city && city.length > 0) {   criteria.push({ 'location_city': city }); } 
+if (province && province.length > 0) {  criteria.push({  'location_province': province }); } 
+if (fifthwheel && fifthwheel.length > 0) {  criteria.push({  'fifthwheel': fifthwheel }); }
+if (hybridtrailer && hybridtrailer.length > 0) {  criteria.push({  'hybrid': hybridtrailer }); }
+if (numberOfGuest && numberOfGuest.length > 0) {  criteria.push({  'specification_guest': numberOfGuest }); }
+console.log(tentrailer);
+if (tentrailer) {  criteria.push({  'tenttrailer': tentrailer });
+  console.log('I am in tentrailer');
+}
+if (toytrailer) {  criteria.push({  'toyhauler': toytrailer }); }
+if (vintagetrailer) {  criteria.push({  'vintage': vintagetrailer }); }
+if (traveltrailer) {  criteria.push({  'traveltrailer': traveltrailer }); }
+if (price && price.length > 0) {  criteria.push({  'pricing_high_rate_hour': {$gte: 0, $lte: price} }); } 
 
-
-  let query = { $or:[ {'location_city':city}, {'location_province':province}, {'fifthwheel':fifthwheel}, {'hybrid':hybridtrailer}, {'specification_guest':numberOfGuest}, {'tenttrailer':tentrailer}, {'toyhauler':toytrailer}, {'traveltrailer':traveltrailer}, {'vintage':vintagetrailer}, {'pricing_high_rate_hour': {$gte: 0, $lte: price} }, {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}]}
+criteria = criteria.length > 0 ? { $and: criteria } : {};
+/*
+ let query = { 
+				 $and:[ 
+						{ 
+						
+						
+							$or: [       
+								   {'location_city':city}, 
+								   {'location_province':province}
+								  ]
+						},
+						
+						{'fifthwheel':fifthwheel}, 
+						{'hybrid':hybridtrailer}, 
+						{'specification_guest':numberOfGuest}, 
+						{'tenttrailer':tentrailer}, 
+						{'toyhauler':toytrailer}, 
+						{'traveltrailer':traveltrailer}, 
+						{'vintage':vintagetrailer}, 
+						{'pricing_high_rate_hour': {$gte: 0, $lte: price} }, 
+						{
+							$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]
+						}
+					]
+ 
+			}
+*/
+  //let query = { $or:[ {'location_city':city}, {'location_province':province}, {'fifthwheel':fifthwheel}, {'hybrid':hybridtrailer}, {'specification_guest':numberOfGuest}, {'tenttrailer':tentrailer}, {'toyhauler':toytrailer}, {'traveltrailer':traveltrailer}, {'vintage':vintagetrailer}, {'pricing_high_rate_hour': {$gte: 0, $lte: price} }, {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}]}
   // let query = {$and:[{'pricing_high_rate_hour': {$gte: 0, $lte: price} }]}
   // let query = {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}
 
-    ListTrailer.find(query, function(err, trailers){
-
+    ListTrailer.find(criteria, function(err, trailers){
       res.json(trailers);
     });
   });
@@ -507,6 +561,63 @@ router.post('/clientLogin', (req, res) => {
         }
     });
 });
+
+//for rental manage 
+
+router.post('/rental_type', function(req, res, next) {
+
+  console.log(req.body);
+ 
+  parent_id = req.body.parent_id;
+  title = req.body.title;
+  sort_description = req.body.sort_description;
+  icon = req.body.icon;
+
+
+  Rental.create(req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+ 
+});
+
+router.get('/rental_type', function(req, res, next) {
+  Rental.find({}, function(err, Rental){
+    if (err) return next(err);
+    res.json(Rental);
+  });
+});
+
+
+
+router.get('/show_rental_type/:id', function(req, res, next) {
+  Rental.findById(req.params.id, function (err, Rental) {
+    if (err) return next(err);
+    res.json(Rental);
+  });
+});
+
+router.get('/edit_rental_type/:id', function(req, res, next) {
+  Rental.findById(req.params.id, function (err, Rental) {
+    if (err) return next(err);
+    res.json(Rental);
+  });
+});
+
+router.put('/edit_rental_type/:id', function(req, res, next) {
+  Rental.findByIdAndUpdate(req.params.id, req.body, function (err, Rental) {
+    if (err) return next(err);
+    res.json(Rental);
+  });
+});
+
+router.delete('/view_rental_type/:id', function(req, res, next) {
+  Rental.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
 
 
 router.use((req, res, next) => {

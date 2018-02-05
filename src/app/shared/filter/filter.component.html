@@ -50,6 +50,7 @@
             <div class="filter-field">
 
                     <select ngModel name="numberOfGuest" class="form-control">
+            <option value="">select</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -61,51 +62,32 @@
             </div>
 
             <label class="form-label">Rental</label>
+
+           
+                
+
+           
+            <ng-container *ngFor="let rentals of rental">
+                <div *ngIf="rentals.parent_id==0">
+                    <h4>{{rentals.title}}</h4>
+
+                    <ng-container *ngFor="let sbrentals of rental">  
+                        <div *ngIf="rentals._id==sbrentals.parent_id">
             <div class="filter-field checkbox">
-                <input type="checkbox" ngModel name="traveltrailer" id="traveltrailer" value="traveltrailer" />
-                <label for="traveltrailer">
-
-        TRAVEL TRAILER
-      </label>
+                   
+                            <input type="checkbox" ngModel name="{{sbrentals.title}}" id="{{sbrentals.title}}" value="{{sbrentals.title}}" />
+                            <label for="{{sbrentals.title}}">
+            
+                    {{sbrentals.title}}
+                  </label>
+                </div>
             </div>
-            <div class="filter-field checkbox">
-                <input type="checkbox" ngModel name="fifthwheel" id="fifthwheel" value="fifthwheel" />
-                <label for="fifthwheel">
-
-        FIFTH WHEEL
-      </label>
+                </ng-container>
             </div>
-            <div class="filter-field checkbox">
-                <input type="checkbox" ngModel name="tentrailer" id="tentrailer" />
-                <label for="tentrailer">
+                    </ng-container>
 
-       TENT TRAILER
-      </label>
-            </div>
-            <div class="filter-field checkbox">
-                <input type="checkbox" ngModel name="vintagetrailer" id="vintagetrailer" />
-                <label for="vintagetrailer">
-
-        VINTAGE
-      </label>
-            </div>
-            <div class="filter-field checkbox">
-                <input type="checkbox" ngModel name="hybridtrailer" id="hybridtrailer" />
-                <label for="hybridtrailer">
-
-        HYBRID
-      </label>
-            </div>
-            <div class="filter-field checkbox">
-                <input type="checkbox" ngModel name="toytrailer" id="toytrailer" />
-                <label for="toytrailer">
-
-       TOY HAULER
-      </label>
-            </div>
-
-        </div>
+        
     </div>
     <button type="submit" class="btn btn-primary full-width searchbtn">Search</button>
-
+</div>
 </form>

@@ -14,9 +14,11 @@
                     <input type="text" class="form-control" formControlName="specification_model" id="specification_model" placeholder="Model">
                 </div>
                 <div class="form-group col-md-4">
-                    <select id="inputState" class="form-control" formControlName="specification_year" id="specification_year" placeholder="Choose Year">
-                    <option value="2017">2017</option>
-                  </select>
+                   
+                        <input type="text" class="form-control" formControlName="specification_year" id="specification_year" placeholder="Choose Year">
+
+
+                  
                 </div>
             </div>
 
@@ -44,13 +46,26 @@
 
             <div class="form-row">
                 <div class="form-group col-md-4" style="margin-top: 15px;">
-                    <select id="inputState" class="form-control" formControlName="specification_guest" id="specification_guest" placeholder="Guest">
-                    <option value="1">Guest</option>
+                    <select id="inputState" class="form-control" formControlName="specification_guest" id="specification_guest" placeholder="Guest"> 
+                 <option value=""[selected]>Guest</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="5+">5+</option>
+
                   </select>
                 </div>
                 <div class="form-group col-md-4" style="margin-top: 15px;">
                     <select id="inputState" class="form-control" formControlName="specification_slide_out" id="specification_slide_out" placeholder="Slight Out">
-                    <option value="1">Slight Out</option>
+                    <option value="0">Slight Out</option>
+                    <option value="1">1 Slight Out</option>
+                    <option value="2">2 Slight Out</option>
+                    <option value="3">3 Slight Out</option>
+                    <option value="4">4 Slight Out</option>
+                    <option value="5">5 Slight Out</option>
+
                   </select>
                 </div>
             </div>
@@ -87,12 +102,22 @@
                 <div class="form-group col-md-9">
                     <textarea class="form-control" formControlName="details_ad_description" id="details_ad_description" placeholder="AD Description" rows="3"></textarea>
                 </div>
-                <div class="form-group col-md-3" *ngFor="let listingFeature of listingFeatures">
-                    <input class="form-check-input" formControlName="details_feature" value="{{listingFeature}}" id="feature" type="checkbox">
-                    <label for="feature"> {{ listingFeature.feature }} </label>
-                </div>
-            </div>
 
+               
+            </div>
+           </div>
+           <h4><b>(4) Feature </b></h4>
+            <div class="form-group row">
+                    <div class="form-row">
+                            
+                            <div class="col-sm-3 form-group" *ngFor="let data of listingFeatures; let id = index">
+                                    <input type="checkbox"  name={{data?.feature}}   id={{data?.feature}} value={{data.feature}} (change)="onChange(data.feature, $event.target.checked)"/>
+                                     <label for="{{data?.feature}}">{{data?.feature}} </label><br>
+                                  </div>
+                                        </div>
+
+            </div>
+            <div class="form-group row">
             <div class="form-row">
                 <div class="form-group col-md-4" style="margin-top: 15px;">
                     <select formControlName="details_no_of_beds" id="details_no_of_beds" class="form-control" placeholder="Number Of Beds">
@@ -115,7 +140,7 @@
         </div>
 
         <div class="form-group row">
-            <h4><b>(4) Pricing</b></h4>
+            <h4><b>(5) Pricing</b></h4>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -160,7 +185,7 @@
         </div>
 
         <div class="form-group row">
-            <h4><b>(5) Photo</b></h4>
+            <h4><b>(6) Photo</b></h4>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!-- <input type="text" class="form-control" formControlName="photo" id="photo" placeholder="Photo"> -->
