@@ -44,6 +44,7 @@ var ListTrailerSchema = new Schema({
     pricing_highest_season_date_range_to: {type: String},
     photo: {type: String},
     user_id : {type: String},
+    type_of_rv:{type: String}
 });
 
 module.exports = mongoose.model('ListTrailer', ListTrailerSchema);

@@ -1,23 +1,23 @@
 <div class="admin-page">
   <h4 class="admin-title">All Rental List
-      <button type="button" class="btn btn-info pull-right" [routerLink]="['/admin/rental-type']">Add User</button></h4>
+      <button type="button" class="btn btn-info pull-right" [routerLink]="['/admin/rental-type']">Add rental-type</button></h4>
 
   <div class="table-responsive">
       <table class="table">
           <thead>
               <tr>
-                  <th>Title</th>
+                  <th>Type Of RV</th>
                   <th>Sort_description</th>
                   <th>Active</th>
                   <th>Action</th>
               </tr>
           </thead>
           <ng-container *ngFor="let rentals of rental">
-          <tbody *ngIf="rentals.parent_id==0">
+          <tbody *ngIf="rentals.rental_type==0">
                            
               <tr >
 
-                  <td>{{ rentals.title }}</td>
+                  <td>{{ rentals.type_of_rv }}</td>
                   <td>{{ rentals.sort_description }}</td>
                   
                   <td> <input class="form-check-input" [(ngModel)]="rentals.active" type="checkbox"> </td>
@@ -29,9 +29,9 @@
                   </td>
               </tr>
               <ng-container *ngFor="let sbrental of rental">
-                    <tr *ngIf="rentals._id==sbrental.parent_id">
+                    <tr *ngIf="rentals._id==sbrental.rental_type">
                             
-                        <td> * *{{ sbrental.title }}</td>
+                        <td> * *{{ sbrental.type_of_rv }}</td>
                         <td>{{ sbrental.sort_description }}</td>
                                               
                         <td> <input class="form-check-input" [(ngModel)]="sbrental.active" type="checkbox"> </td>

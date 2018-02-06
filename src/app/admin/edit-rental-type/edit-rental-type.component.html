@@ -3,9 +3,9 @@
 
   <form (ngSubmit)="updateRental(rental._id)" [formGroup]="rForm">
       <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Type of rv</label>
           <div class="col-sm-10">
-              <input type="text" class="form-control" [(ngModel)]="rental.title" formControlName="title" name="title">
+              <input type="text" class="form-control" [(ngModel)]="rental.type_of_rv" formControlName="type_of_rv" name="type_of_rv">
           </div>
       </div>
       <div class="form-group row">

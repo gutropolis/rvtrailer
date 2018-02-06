@@ -21,8 +21,8 @@ export class AddRentalTypeComponent implements OnInit {
     {
       this.getRental();
       this.rForm = fb.group({
-        'parent_id': [ null,Validators.required],
-        'title' : [null, Validators.required],
+        'rental_type': [ null,Validators.required],
+        'type_of_rv' : [null, Validators.required],
         'sort_description' : [null, Validators.required],
         'icon':[null],
         'active' : [ false ],
@@ -32,23 +32,7 @@ export class AddRentalTypeComponent implements OnInit {
     
 
      }
-     categoryform(form) {
-      let categoryParams: any = {
-        parent_id: form.value.parent_id,
-        title: form.value.title,
-        sort_description:form.value.sort_description,
-        icon: form.value.icon,
-       
-        };
-        categoryParams.parent_id = form.value.parent_id;
-        categoryParams.title = form.value.parent_title;
-        categoryParams.icon = form.value.icon;
-     
-      console.log(categoryParams);
-     
-     
-  
-    }
+   
     getRental() {
       this.apiService.getAllRental().then((res) => {
         this.rental = res;

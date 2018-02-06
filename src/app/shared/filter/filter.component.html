@@ -61,24 +61,24 @@
       </select>
             </div>
 
-            <label class="form-label">Rental</label>
+            <label class="form-label">Rental Types</label>
 
            
                 
 
            
             <ng-container *ngFor="let rentals of rental">
-                <div *ngIf="rentals.parent_id==0">
-                    <h4>{{rentals.title}}</h4>
+                <div *ngIf="rentals.rental_type==0">
+                    <h4><b>{{rentals.type_of_rv}}</b></h4>
 
                     <ng-container *ngFor="let sbrentals of rental">  
-                        <div *ngIf="rentals._id==sbrentals.parent_id">
+                        <div *ngIf="rentals._id==sbrentals.rental_type">
             <div class="filter-field checkbox">
                    
-                            <input type="checkbox" ngModel name="{{sbrentals.title}}" id="{{sbrentals.title}}" value="{{sbrentals.title}}" />
-                            <label for="{{sbrentals.title}}">
+                            <input type="checkbox" ngModel name="{{sbrentals.type_of_rv}}" id="{{sbrentals.type_of_rv}}" value="{{sbrentals.type_of_rv}}" />
+                            <label for="{{sbrentals.type_of_rv}}">
             
-                    {{sbrentals.title}}
+                    {{sbrentals.type_of_rv}}
                   </label>
                 </div>
             </div>

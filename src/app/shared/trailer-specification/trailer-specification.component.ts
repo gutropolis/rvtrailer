@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class TrailerSpecificationComponent implements OnInit {
 
   rForm: FormGroup;
+  rental: any = [];
   users: any = [];
   user: any = [];
   listing: any = [];
@@ -42,7 +43,16 @@ export class TrailerSpecificationComponent implements OnInit {
                   this.listing = this.gd.ListingObj['global'];
                   console.log(this.listing);
                   //alert(this.listing);
+                  this.getRental();
 
+  }
+  getRental() {
+    this.apiService.getAllRental().then((res) => {
+      this.rental = res;
+      console.log(this.rental);
+      }, (err) => {
+      console.log(err);
+    });
   }
 
   ngOnInit() {

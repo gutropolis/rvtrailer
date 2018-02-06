@@ -19,7 +19,7 @@ export class EditRentalTypeComponent implements OnInit {
     private route: ActivatedRoute) { 
 
       this.rForm = fb.group({
-        'title' : [null, Validators.required],
+        'type_of_rv' : [null, Validators.required],
         'sort_description' : [null, Validators.required],
         'icon' : [null],
        

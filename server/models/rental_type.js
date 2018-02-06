@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var schema = new Schema({
-    parent_id:{type:String},
-    title: {type: String},
+    rental_type:{type:String},
+    type_of_rv: {type: String},
     sort_description: {type: String},
     icon: {type: String},
     active:{type:Boolean}
