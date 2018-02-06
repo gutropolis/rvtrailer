@@ -14,6 +14,7 @@ export class TrailerSpecificationComponent implements OnInit {
 
   rForm: FormGroup;
   rental: any = [];
+  trailerTypes: any = [];
   users: any = [];
   user: any = [];
   listing: any = [];
@@ -31,11 +32,13 @@ export class TrailerSpecificationComponent implements OnInit {
     specification_slide_out : any = [];
 
 
-  public trailerType: string = 'RV Cottage';
+  public rentalType: string = 'RV Cottage';
+   public rentalTypeID: string = '';
+  
   RV_Cottage : string = 'RV Cottage';
   Travel_Trailer : string = 'Travel Trailer';
   Motor_Home : string = 'Motor Home';
-
+  public trailerType = 'RV Cottage';
   constructor(private fb: FormBuilder,
               public router: Router,
               public apiService: ApiService,
@@ -46,6 +49,23 @@ export class TrailerSpecificationComponent implements OnInit {
                   this.getRental();
 
   }
+  
+  getTrailerTypes(rentalTypeID){
+	    
+  }
+  
+  
+  onSelectRentalType(rentalType,rentalTypeID){
+	  console.log(rentalType);
+	   console.log(rentalTypeID);
+	  this.rentalType=rentalType;   
+	  this.rentalTypeID=rentalTypeID;   
+	  
+	   this.trailerTypes = this.rental.filter( book => book.rental_type === rentalTypeID);
+	  console.log(this.trailerTypes);
+	  
+  }
+  
   getRental() {
     this.apiService.getAllRental().then((res) => {
       this.rental = res;
@@ -96,8 +116,8 @@ export class TrailerSpecificationComponent implements OnInit {
 
       this.gd.ListingObj['global'] = listingSpecification;
       this.listing = this.gd.ListingObj['global'];
-      
-      //console.log(this.listing);
+       
+      console.log(this.listing);
 
       //alert(JSON.stringify(this.listing));
       localStorage.setItem('listing', JSON.stringify(this.listing));
