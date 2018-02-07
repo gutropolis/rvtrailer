@@ -30,7 +30,7 @@ export class TrailerSpecificationComponent implements OnInit {
     specification_tough_weight : any = [];
     specification_guest : any = [];
     specification_slide_out : any = [];
-
+    type_of_rv : any = [];
 
   public rentalType: string = 'RV Cottage';
    public rentalTypeID: string = '';
@@ -39,20 +39,22 @@ export class TrailerSpecificationComponent implements OnInit {
   Travel_Trailer : string = 'Travel Trailer';
   Motor_Home : string = 'Motor Home';
   public trailerType = 'RV Cottage';
+
+
   constructor(private fb: FormBuilder,
               public router: Router,
               public apiService: ApiService,
               private gd: GlobaldataService) {
                   this.listing = this.gd.ListingObj['global'];
                   console.log(this.listing);
-                  //alert(this.listing);
+               // alert(this.listing);
                   this.getRental();
-
+                  this.ss();
+                  
+                
   }
   
-  getTrailerTypes(rentalTypeID){
-	    
-  }
+ 
   
   
   onSelectRentalType(rentalType,rentalTypeID){
@@ -76,12 +78,15 @@ export class TrailerSpecificationComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  ss() {
 
     this.allListing = this.gd.ListingObj['global'];
     if (this.allListing === undefined) {
         console.log();
     } else {
       this.listing = this.gd.ListingObj['global'];
+      console.log(this.listing);
       this.specification_make = this.listing.specification_make;
       this.specification_model = this.listing.specification_model;
       this.specification_year = this.listing.specification_year;
@@ -90,6 +95,14 @@ export class TrailerSpecificationComponent implements OnInit {
       this.specification_tough_weight = this.listing.specification_tough_weight;
       this.specification_guest = this.listing.specification_guest;
       this.specification_slide_out = this.listing.specification_slide_out;
+      this.type_of_rv=this.listing.type_of_rv;
+      this.rentalType=this.listing.rv_type;
+      this.rentalTypeID=this.listing.rentalTypeID;
+      
+    // console.log(this.rental);
+      console.log('this isteting  rv type '+this.type_of_rv);
+      //this.trailerTypes = this.rental.filter( book => book.rental_type === this.rentalTypeID);
+      //console.log(this.trailerTypes);
     }
   }
 
@@ -98,19 +111,22 @@ export class TrailerSpecificationComponent implements OnInit {
    //alert(this.specification_make);
     //alert(this.specification_guest);
 
-    
-    
-    
 
+
+    
+    
+    
+/*
       if (this.trailerType == null) {
         this.trailerType = 'RV Cottage';
       }else {
         this.trailerType = this.trailerType;
       }
-
-      let rv_type = {'rv_type': this.trailerType};
+*/
+     let rv_type = {'rv_type': this.rentalType,'rentalTypeID':this.rentalTypeID};
+      console.log();
       let listingSpecification  =  Object.assign({}, value, rv_type);
-
+      console.log(listingSpecification);
      // alert(listingSpecification);
 
 

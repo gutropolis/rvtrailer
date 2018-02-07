@@ -23,15 +23,20 @@
           </button>
         
         </ng-container>
+        <div>
+          selected   {{type_of_rv}}
+            </div> 
                  
         </div>
-        
+       
         <div class="trailer-type"    *ngIf="rentalTypeID !=''" >
 
         <ng-container *ngFor="let trailType of trailerTypes">
             <div class="checkbox" >
                 <input type="radio" ngModel name="type_of_rv" id="{{trailType.type_of_rv}}" 
-				value="{{trailType.type_of_rv}}" />
+                value="{{trailType.type_of_rv}}"
+                ng-checked="trailType.type_of_rv === type_of_rv" 
+                />
                 <label for="{{trailType.type_of_rv}}"> {{trailType.type_of_rv}} </label>
             </div>
         </ng-container>
