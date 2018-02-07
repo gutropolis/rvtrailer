@@ -204,7 +204,18 @@ export class ApiService {
       });
     }
 
-
+ getRvTypeByRental(id) {
+	 console.log(this.mainURL + '/api/rvtypebyrental/' + id);
+    return new Promise((resolve, reject) => {
+      this.http.get( this.mainURL + '/api/rvtypebyrental/' + id)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => { console.log(err);
+          reject(err);
+        });
+      });
+    }
     showRental(id) {
       return new Promise((resolve, reject) => {
           this.http.get( this.mainURL + '/api/show_rental_type/' + id)
