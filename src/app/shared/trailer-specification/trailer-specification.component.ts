@@ -49,7 +49,7 @@ export class TrailerSpecificationComponent implements OnInit {
                   console.log(this.listing);
                // alert(this.listing);
                   this.getRental();
-                  this.ss();
+                  
                   
                 
   }
@@ -77,9 +77,17 @@ export class TrailerSpecificationComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  getTrailerByRental(){
+	  console.log('i a her'+this.rentalTypeID);
+	  this.apiService.getRvTypeByRental(this.rentalTypeID).then((res) => {
+      this.trailerTypes = res;
+      console.log(this.rental);
+      }, (err) => {
+      console.log(err);
+    });
   }
-  ss() {
+  ngOnInit() {
+   
 
     this.allListing = this.gd.ListingObj['global'];
     if (this.allListing === undefined) {
@@ -101,8 +109,11 @@ export class TrailerSpecificationComponent implements OnInit {
       
     // console.log(this.rental);
       console.log('this isteting  rv type '+this.type_of_rv);
-      //this.trailerTypes = this.rental.filter( book => book.rental_type === this.rentalTypeID);
-      //console.log(this.trailerTypes);
+	  console.log('this isteting  rentalTypeID '+this.rentalTypeID);
+	  console.log(this.rentalTypeID);
+      this.getTrailerByRental(); 
+	  // this.trailerTypes = this.rental.filter( book => book.rental_type === this.rentalTypeID); 
+       console.log(this.trailerTypes);
     }
   }
 

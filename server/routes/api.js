@@ -588,6 +588,15 @@ router.get('/rental_type', function(req, res, next) {
   });
 });
 
+router.get('/rvtypebyrental/:id', function(req, res, next) {
+    query = {'rental_type': {$in: req.params.id } };
+	  console.log(query);
+	  Rental.find(query, function(err, Rental) {
+		if (err) return err;
+		res.json(Rental);
+		console.log(Rental);
+	  });
+});
 
 
 router.get('/show_rental_type/:id', function(req, res, next) {
