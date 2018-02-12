@@ -12,13 +12,14 @@ import { ApiService } from './../../api.service';
 export class EditRentalTypeComponent implements OnInit {
   rForm: FormGroup;
   rental: any = [];
-
+  rentals: any = [];
   constructor(private fb: FormBuilder,
     public router: Router,
     public apiService: ApiService,
     private route: ActivatedRoute) { 
 
       this.rForm = fb.group({
+        'rental_type': [null, Validators.required],
         'type_of_rv' : [null, Validators.required],
         'sort_description' : [null, Validators.required],
         'icon' : [null],
@@ -28,10 +29,18 @@ export class EditRentalTypeComponent implements OnInit {
        
        
     });
+    this.getAllRecRental();
   }
 
   ngOnInit() {
     this.getRental(this.route.snapshot.params['id']);
+  }
+  getAllRecRental() {
+    this.apiService.getAllRental().then((res) => {
+      this.rentals = res;
+      }, (err) => {
+      console.log(err);
+    });
   }
   getRental(id) {
     this.apiService.getEditRental(id).then((res) => {

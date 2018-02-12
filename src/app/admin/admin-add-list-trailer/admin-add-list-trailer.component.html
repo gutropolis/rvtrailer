@@ -3,6 +3,50 @@
 
 
     <form [formGroup]="rForm" (ngSubmit)="onSubmitListTrailer()">
+            <div class="form-group row">
+            <h4 class="title text-uppercase">Trailer Specification</h4>
+            <div class="clearfix specification-btn"> 
+              <ng-container *ngFor="let rentals of rental">
+                 
+              
+                <button *ngIf="rentals.rental_type==0" type="button" class="btn btn-border-red" 
+                (click)="onSelectRentalType(rentals.type_of_rv,rentals._id)"
+                  [ngClass]="{'btn-primary': rentalType === rentals.type_of_rv}">
+                <i class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512px" height="512px">
+                            <g>
+                                <g>
+                                    <g>
+                                        <path d="M501.333,405.333H448v-256c0-23.531-19.135-42.667-42.667-42.667H277.331l-0.007-37.156l14.874-6.375     c5.417-2.323,7.927-8.594,5.604-14c-1.724-4.043-5.657-6.452-9.755-6.469c-1.424-0.006-2.867,0.252-4.245,0.865l-147.316,63.135     H96c-52.938,0-96,43.063-96,96V384c0,23.531,19.135,42.667,42.667,42.667h46.599c8.835,24.779,32.293,42.667,60.068,42.667     c27.775,0,51.234-17.888,60.069-42.667H448v32c0,5.896,4.771,10.667,10.667,10.667s10.667-4.771,10.667-10.667v-32h32     c5.896,0,10.667-4.771,10.667-10.667S507.229,405.333,501.333,405.333z M255.992,78.652l0.005,28.014h-65.372L255.992,78.652z      M149.333,448c-23.531,0-42.667-19.135-42.667-42.667s19.135-42.667,42.667-42.667S192,381.802,192,405.333     S172.865,448,149.333,448z M256,405.333h-42.667c0-35.292-28.708-64-64-64c-35.292,0-64,28.708-64,64H42.667     c-11.76,0-21.333-9.573-21.333-21.333V234.667H64v32c0,5.896,4.771,10.667,10.667,10.667h128c5.896,0,10.667-4.771,10.667-10.667     v-32H256V405.333z M85.333,256v-64H192v64H85.333z M362.667,288L362.667,288v117.333h-85.333V234.667     C277.333,211.135,296.469,192,320,192s42.667,19.135,42.667,42.667V288z M426.667,405.333H384V234.667h42.667V405.333z      M426.667,213.333h-46.598c-8.835-24.779-32.294-42.667-60.069-42.667c-27.775,0-51.234,17.888-60.069,42.667h-46.598v-32     c0-5.896-4.771-10.667-10.667-10.667h-128c-5.896,0-10.667,4.771-10.667,10.667v32H21.333v-10.667     C21.333,161.5,54.833,128,96,128h309.333c11.76,0,21.333,9.573,21.333,21.333V213.333z" fill="#FFFFFF"/>
+                                        <circle cx="352" cy="288" r="10.667" fill="#FFFFFF"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                  </i> {{ rentals.type_of_rv }}
+              </button>
+            
+            </ng-container>
+            
+                     
+            </div>
+           
+            <div class="trailer-type"    *ngIf="rentalTypeID !=''" >
+    
+            <ng-container *ngFor="let trailType of trailerTypes">
+             
+                <div class="checkbox" >
+                    <input type="radio"  formControlName="type_of_rv"  name="type_of_rv" id="{{trailType.type_of_rv}}" 
+                    value="{{trailType.type_of_rv}}" 
+                   
+                    />
+                    <label for="{{trailType.type_of_rv}}"> {{trailType.type_of_rv}} </label>
+                </div>
+            </ng-container>
+                
+            </div> 
+            </div>
+
         <div class="form-group row">
             <h4><b>(1) Specification</b></h4>
 
@@ -110,9 +154,9 @@
             <div class="form-group row">
                     <div class="form-row">
                             
-                            <div class="col-sm-3 form-group" *ngFor="let data of listingFeatures; let id = index">
-                                    <input type="checkbox"  name={{data?.feature}}   id={{data?.feature}} value={{data.feature}} (change)="onChange(data.feature, $event.target.checked)"/>
-                                     <label for="{{data?.feature}}">{{data?.feature}} </label><br>
+                            <div class="col-sm-3 form-group" *ngFor="let data of adminfeatures; let id = index">
+                                    <input type="checkbox"  name={{data?.feature_name}}   id={{data?.feature_name}} value={{data.feature_name}} (change)="onChange(data.feature_name, $event.target.checked)"/>
+                                     <label for="{{data?.feature_name}}">{{data?.feature_name}} </label><br>
                                   </div>
                                         </div>
 
@@ -122,17 +166,25 @@
                 <div class="form-group col-md-4" style="margin-top: 15px;">
                     <select formControlName="details_no_of_beds" id="details_no_of_beds" class="form-control" placeholder="Number Of Beds">
                     <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="5+">5+</option>
+
                   </select>
                 </div>
                 <div class="form-group col-md-4" style="margin-top: 15px;">
                     <select formControlName="details_no_of_bathrooms" id="details_no_of_bathrooms" class="form-control" placeholder="Number of Bathrooms">
                     <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                   
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="5+">5+</option>
                   </select>
                 </div>
             </div>

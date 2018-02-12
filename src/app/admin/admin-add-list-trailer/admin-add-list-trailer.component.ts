@@ -19,10 +19,17 @@ export class AdminAddListTrailerComponent implements OnInit {
 
 rForm: FormGroup;
 listings: any = [];
+adminfeatures: any = [];
+rental: any = [];
+trailerTypes: any = [];
+type_of_rv : any = [];
+
+public rentalType: string = 'RV Cottage';
+public rentalTypeID: string = '';
 user: {};
-listingFeatures: any[] = [{feature: 'Wifi'}, {feature: 'Built-in Speakers'}, {feature: 'TV/DVD'}, {feature: 'CD Player'}, {feature: 'Vanity'}, {feature: 'Pet Friendly'}, {feature: 'Dish Washer'}, {feature: 'Bathtub'}, {feature: 'Family/Kid Friendly'}, {feature: 'Outside Shower'}, {feature: 'Smoke Free'}, {feature: 'Bluetooth'},
-{feature: 'Pull-out sofa Bed'}, {feature: 'Outdoor Kitchenette'}, {feature: 'Delivery Avilable'}, {feature: 'Lines Provided'}, {feature: 'Heating / Cooling'}, {feature: 'BBQ'}, {feature: 'Automatic Awning'}, {feature: 'Camping Chairs'}, {feature: 'Basic Cookwaer / Cultery'},
-{feature: 'Closets & Storage Space'}, {feature: 'Full Winter Rental Avilable'}, {feature: 'Boardgames and Movies'}];
+//listingFeatures: any[] = [{feature: 'Wifi'}, {feature: 'Built-in Speakers'}, {feature: 'TV/DVD'}, {feature: 'CD Player'}, {feature: 'Vanity'}, {feature: 'Pet Friendly'}, {feature: 'Dish Washer'}, {feature: 'Bathtub'}, {feature: 'Family/Kid Friendly'}, {feature: 'Outside Shower'}, {feature: 'Smoke Free'}, {feature: 'Bluetooth'},
+//{feature: 'Pull-out sofa Bed'}, {feature: 'Outdoor Kitchenette'}, {feature: 'Delivery Avilable'}, {feature: 'Lines Provided'}, {feature: 'Heating / Cooling'}, {feature: 'BBQ'}, {feature: 'Automatic Awning'}, {feature: 'Camping Chairs'}, {feature: 'Basic Cookwaer / Cultery'},
+//{feature: 'Closets & Storage Space'}, {feature: 'Full Winter Rental Avilable'}, {feature: 'Boardgames and Movies'}];
 public uploader:FileUploader = new FileUploader({url: URL});
 fileName: String;
 
@@ -59,11 +66,31 @@ fileName: String;
           'pricing_highest_season_date_range_from' : [null, Validators.required],
           'pricing_highest_season_date_range_to' : [null, Validators.required],
           'photo' : [null],
-
+          'type_of_rv':[null],
     });
-
+    this.getFeature();
+    this.getRental();
   }
-
+  onSelectRentalType(rentalType,rentalTypeID){
+	  console.log(rentalType);
+	   console.log(rentalTypeID);
+	  this.rentalType=rentalType;   
+	  this.rentalTypeID=rentalTypeID;   
+	  
+	   this.trailerTypes = this.rental.filter( book => book.rental_type === rentalTypeID);
+	  console.log(this.trailerTypes);
+	  
+  }
+  getRental() {
+    this.apiService.getAllRental().then((res) => {
+      this.rental = res;
+      console.log(this.rental);
+      }, (err) => {
+      console.log(err);
+    });
+  }
+  
+  
   ngOnInit() {
     
 
@@ -80,18 +107,31 @@ fileName: String;
               const responseResult = JSON.parse(response);
               this.fileName = responseResult.filename;
               console.log(this.fileName);
+
+              
            //   console.log(responseResult.filename);
       }
     }
+    getFeature() {
+      this.apiService.getAllFeature().then((res) => {
+        this.adminfeatures = res;
+        console.log(this.adminfeatures);
+        }, (err) => {
+        console.log(err);
+      });
+    }
 
   onSubmitListTrailer() {
+    let rv_type = {'rv_type': this.rentalType,'rentalTypeID':this.rentalTypeID};
+    console.log(rv_type);
+    
 
     console.log(this.fileName);
     const photo = {'photo': this.fileName};
 
     const detail = this.rForm.value;
     this.listings['details_feature'] = detail.details_feature;
-    const Listing_Data = Object.assign({},this.listings,detail, photo);
+    const Listing_Data = Object.assign({},this.listings,detail, photo,rv_type);
     console.log(Listing_Data);
 
     this.apiService.addListTrailer(Listing_Data).subscribe((result) => {

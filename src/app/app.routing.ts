@@ -68,6 +68,11 @@ import { AddRentalTypeComponent } from './admin/add-rental-type/add-rental-type.
 import { ViewRentalTypeComponent } from './admin/view-rental-type/view-rental-type.component';
 import { ShowRentalTypeComponent } from './admin/show-rental-type/show-rental-type.component';
 import { EditRentalTypeComponent } from './admin/edit-rental-type/edit-rental-type.component';
+import { AdminFeaturesComponent } from './admin/admin-features/admin-features.component';
+import { AdminAddFeaturesComponent } from './admin/admin-add-features/admin-add-features.component';
+import { AdminEditFeaturesComponent } from './admin/admin-edit-features/admin-edit-features.component';
+import { AdminViewFeaturesComponent } from './admin/admin-view-features/admin-view-features.component';
+
 export const Routing = RouterModule.forRoot([
     {
         path: '',
@@ -191,6 +196,10 @@ export const Routing = RouterModule.forRoot([
             { path: 'view_rental-type', component: ViewRentalTypeComponent },
             { path: 'show_rental_type/:id', component: ShowRentalTypeComponent },
             { path: 'edit_rental_type/:id', component: EditRentalTypeComponent },
+            { path: 'features', component: AdminFeaturesComponent },
+            { path: 'add-features', component: AdminAddFeaturesComponent },
+            { path: 'view-features/:id', component: AdminViewFeaturesComponent },
+            { path: 'edit-features/:id', component: AdminEditFeaturesComponent },
         ]
     },
 

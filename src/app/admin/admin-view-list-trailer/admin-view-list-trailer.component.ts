@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, NgForm,FormArray,FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from './../../api.service';
 
@@ -13,9 +13,12 @@ export class AdminViewListTrailerComponent implements OnInit {
 
 rForm: FormGroup;
  listtrailers: any = [];
+ adminfeatures: any = [];
  listingFeatures: any[] = [
      {feature: 'Brijesh'},
      {feature: 'Kirti'},
+    
+
 ];
 
   constructor(private fb: FormBuilder,
@@ -53,12 +56,21 @@ rForm: FormGroup;
           'pricing_highest_season_date_range_to' : [null, Validators.required],
           'photo' : [null],
     });
+    this.getFeature();
 
   }
 
   ngOnInit() {
 
       this.onSubmitListTrailer(this.route.snapshot.params['id']);
+  }
+  getFeature() {
+    this.apiService.getAllFeature().then((res) => {
+      this.adminfeatures = res;
+      console.log(this.adminfeatures);
+      }, (err) => {
+      console.log(err);
+    });
   }
 
   onSubmitListTrailer(id) {
@@ -78,6 +90,15 @@ rForm: FormGroup;
       console.log(err);
     });
   }
+  onChange(feature_name: string, isChecked: boolean) {
+    const emailFormArray = <FormArray>this.rForm.controls.details_feature;
+    if (isChecked) {
+      emailFormArray.push(new FormControl(feature_name));
+    } else {
+      const index = emailFormArray.controls.findIndex(x => x.value === feature_name);
+      emailFormArray.removeAt(index);
+    }
+}
 
 
 }

@@ -1,0 +1,35 @@
+<div class="admin-page">
+    <h4 class="admin-title">All Features List
+        <button type="button" class="btn btn-info pull-right" [routerLink]="['/admin/add-features']">Add Feature</button></h4>
+  
+               <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Feature Name</th>
+                            
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <ng-container *ngFor="let feature of features">
+                   
+                                     
+                        <tr >
+          
+                            <td>{{ feature.feature_name }}</td>
+                           
+                            <td>
+                                <button class="btn btn-success btn-sm" type="button" [routerLink]="['/admin/view-features',feature._id]">VIEW</button>
+                                <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/admin/edit-features',feature._id]">EDIT</button>
+                                <button class="btn btn-danger btn-sm" type="button" (click)="deleteFeature(feature._id)">DELETE</button>
+                            </td>
+                        </tr>
+                      </ng-container>
+                     
+                    </tbody>
+                 
+                </table>
+            </div>
+          
+          </div>

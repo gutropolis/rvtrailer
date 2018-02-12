@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from './../../api.service';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormGroup, Validators, FormBuilder,FormArray, NgForm ,FormControl} from '@angular/forms';
+import { ActivatedRoute,Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
-
+import { formControlBinding } from '@angular/forms/src/directives/ng_model';
 // const URL = '/api/';
 //const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 const URL = 'http://localhost:3001/upload';
@@ -19,10 +19,18 @@ export class AdminEditListTrailerComponent implements OnInit {
 
  rForm: FormGroup;
  listtrailers: any = [];
+ listings: any = [];
+ adminfeatures: any = [];
+ myfeatures: any = [];
  listingFeatures: any[] = [
      {feature: 'Brijesh'},
      {feature: 'Kirti'},
 ];
+rental: any = [];
+trailerTypes: any = [];
+type_of_rv : any = [];
+public rentalType: string = 'RV Cottage';
+public rentalTypeID: string = '';
 public uploader:FileUploader = new FileUploader({url: URL});
 fileName: String;
 
@@ -46,7 +54,7 @@ fileName: String;
           'location_postal' : [null, Validators.required],
           'details_ad_title' : [null, Validators.required],
           'details_ad_description' : [null, Validators.required],
-          'details_feature' : [null, Validators.required],
+          'details_feature' : this.fb.array([]),
           'details_no_of_beds' : [null, Validators.required],
           'details_no_of_bathrooms' : [null, Validators.required],
           'pricing_security_deposit' : [null, Validators.required],
@@ -60,8 +68,28 @@ fileName: String;
           'pricing_highest_season_date_range_from' : [null, Validators.required],
           'pricing_highest_season_date_range_to' : [null, Validators.required],
           'photo' : [null],
+          'type_of_rv':[null],
     });
-
+    this.getFeature();
+    this.getRental();
+  }
+  onSelectRentalType(rentalType,rentalTypeID){
+	  console.log(rentalType);
+	   console.log(rentalTypeID);
+	  this.rentalType=rentalType;   
+	  this.rentalTypeID=rentalTypeID;   
+	  
+	   this.trailerTypes = this.rental.filter( book => book.rental_type === rentalTypeID);
+	  console.log(this.trailerTypes);
+	  
+  }
+  getRental() {
+    this.apiService.getAllRental().then((res) => {
+      this.rental = res;
+      console.log(this.rental);
+      }, (err) => {
+      console.log(err);
+    });
   }
 
     ngOnInit() {
@@ -81,6 +109,14 @@ fileName: String;
            //   console.log(responseResult.filename);
       }
     }
+    getFeature() {
+      this.apiService.getAllFeature().then((res) => {
+        this.adminfeatures = res;
+        console.log(this.adminfeatures);
+        }, (err) => {
+        console.log(err);
+      });
+    }
 
   onSubmitListTrailer(id) {
     this.apiService.showListTrailer(id).subscribe((res) => {
@@ -92,13 +128,55 @@ fileName: String;
   }
 
   updateListTrailerData(id) {
-    this.apiService.updateListTrailer(id, this.listtrailers).then((result) => {
+    const detail = this.rForm.value;
+    let rv_type = {'rv_type': this.rentalType,'rentalTypeID':this.rentalTypeID};
+    console.log(rv_type);
+    this.listings['details_feature'] = detail.details_feature;
+    //this.listings['details_feature'] =this.myfeatures;
+    const Listing_Data = Object.assign({},this.listings,detail,rv_type);
+    console.log(Listing_Data);
+
+    this.apiService.updateListTrailer(id,Listing_Data).then((result) => {
+     // console.log(this.rForm.value);
       let id = result['_id'];
       this.router.navigate(['admin/list-trailer']);
     }, (err) => {
       console.log(err);
     });
   }
+  onChange(feature: string, isChecked: boolean) {
+    const emailFormArray = <FormArray>this.rForm.controls.details_feature;
+    if (isChecked) {
+      emailFormArray.push(new FormControl(feature));
+      console.log(emailFormArray);
+    } else {
+      const index = emailFormArray.controls.findIndex(x => x.value === feature);
+      emailFormArray.removeAt(index);
+    }
+}
+  
+
+
+
+
+
+
+/*
+  onChange(feature_name: string, isChecked: boolean) {
+    
+   const emailFormArray = <FormArray>this.rForm.controls.details_feature;
+    if (isChecked) {
+      console.log("selected checkbox");
+     
+     this.myfeatures.push(feature_name);
+     console.log(this.myfeatures );
+     
+    } else {
+      const index =  emailFormArray.controls.findIndex(x => x.value === feature_name);
+      this.myfeatures.removeAt(index);
+    }
+}
+ */ 
 
 
 }

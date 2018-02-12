@@ -4,6 +4,12 @@
 
     <form [formGroup]="rForm" (ngSubmit)="updateListTrailerData(listtrailers._id)">
         <div class="form-group row">
+
+            <h1>Test</h1>
+            <div *ngFor="let rental of listtrailers.details_feature">
+                
+                {{listtrailers.details_feature}}
+                </div>
             <h4><b>(1) Specification</b></h4>
 
             <div class="form-row">
@@ -104,9 +110,10 @@
                 </div>
 
                 <div class="col-sm-3 form-group" *ngFor="let listingFeature of listingFeatures">
-                    <input type="checkbox" [(ngModel)]="listing.details_feature" formControlName="details_feature" value="{{listingFeature}}" id="feature" disabled="disabled" />
+                    <input type="checkbox" [(ngModel)]="listingFeature.details_feature" formControlName="details_feature" value="{{listingFeature}}" id="feature" disabled="disabled" />
                     <label for="feature"> {{ listingFeature.feature }} </label>
                 </div>
+               
 
             </div>
 
@@ -114,17 +121,23 @@
                 <div class="form-group col-md-4" style="margin-top: 15px;">
                     <select formControlName="details_no_of_beds" id="details_no_of_beds" class="form-control" [(ngModel)]="listtrailers.details_no_of_beds" disabled="disabled">
                     <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="5+">5+</option>
                   </select>
                 </div>
                 <div class="form-group col-md-4" style="margin-top: 15px;">
                     <select formControlName="details_no_of_bathrooms" id="details_no_of_bathrooms" class="form-control" [(ngModel)]="listtrailers.details_no_of_bathrooms" disabled="disabled">
                     <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="5+">5+</option>
                   </select>
                 </div>
             </div>
@@ -183,6 +196,20 @@
                     <input type="text" class="form-control" formControlName="photo" id="photo" [(ngModel)]="listtrailers.photo" disabled="disabled">
                 </div>
             </div>
+        </div>
+        <h4><b>(6) Feature </b></h4>
+        <div class="form-group row">
+                <div class="form-row">
+                        
+                        <div class="col-sm-3 form-group" *ngFor="let data of adminfeatures; let id = index">
+                                <input type="checkbox"  name={{data?.feature_name}}   id={{data?.feature_name}} value={{data.feature_name}} (change)="onChange(data.feature_name, $event.target.checked)"
+                                
+                                [checked]="'Wifi' ===data?.feature_name"
+                                disabled="disabled" />
+                                 <label for="{{data?.feature_name}}">{{data?.feature_name}} </label><br>
+                              </div>
+                                    </div>
+
         </div>
 
 

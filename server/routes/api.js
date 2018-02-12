@@ -13,7 +13,7 @@ var Package = require('../models/package');
 var Message = require('../models/message');
 var NewsLetter = require('../models/newsletter');
 var Rental=require('../models/rental_type');
-
+var Feature=require('../models/feature');
 
 var transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -565,15 +565,6 @@ router.post('/clientLogin', (req, res) => {
 //for rental manage 
 
 router.post('/rental_type', function(req, res, next) {
-
-  console.log(req.body);
- 
-  parent_id = req.body.parent_id;
-  title = req.body.title;
-  sort_description = req.body.sort_description;
-  icon = req.body.icon;
-
-
   Rental.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
@@ -626,6 +617,61 @@ router.delete('/view_rental_type/:id', function(req, res, next) {
     res.json(post);
   });
 });
+
+
+//Manage Feature
+router.post('/features', function(req, res, next) {
+  Feature.create(req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+ 
+});
+
+router.get('/features', function(req, res, next) {
+  Feature.find({}, function(err, Feature){
+    if (err) return next(err);
+    res.json(Feature);
+  });
+});
+
+router.get('/view-features/:id', function(req, res, next) {
+  Feature.findById(req.params.id, function (err, Feature) {
+    if (err) return next(err);
+    res.json(Feature);
+  });
+});
+router.get('/edit-features/:id', function(req, res, next) {
+  Feature.findById(req.params.id, function (err, Feature) {
+    if (err) return next(err);
+    res.json(Feature);
+  });
+});
+
+router.put('/view-features/:id', function(req, res, next) {
+  Feature.findByIdAndUpdate(req.params.id, req.body, function (err,Feature) {
+    if (err) return next(err);
+    res.json(Feature);
+  });
+});
+router.put('/edit-features/:id', function(req, res, next) {
+  Feature.findByIdAndUpdate(req.params.id, req.body, function (err,Feature) {
+    if (err) return next(err);
+    res.json(Feature);
+  });
+});
+
+
+router.delete('/view-features/:id', function(req, res, next) {
+  Feature.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+
+
+
 
 
 
