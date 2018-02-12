@@ -22,6 +22,7 @@ export class AdminEditListTrailerComponent implements OnInit {
  listings: any = [];
  adminfeatures: any = [];
  myfeatures: any = [];
+ 
  listingFeatures: any[] = [
      {feature: 'Brijesh'},
      {feature: 'Kirti'},
@@ -29,7 +30,7 @@ export class AdminEditListTrailerComponent implements OnInit {
 rental: any = [];
 trailerTypes: any = [];
 type_of_rv : any = [];
-public rentalType: string = 'RV Cottage';
+ public rentalType: string = 'RV Cottage';
 public rentalTypeID: string = '';
 public uploader:FileUploader = new FileUploader({url: URL});
 fileName: String;
@@ -108,6 +109,9 @@ fileName: String;
               console.log(this.fileName);
            //   console.log(responseResult.filename);
       }
+	  
+	  
+	  
     }
     getFeature() {
       this.apiService.getAllFeature().then((res) => {
@@ -117,10 +121,15 @@ fileName: String;
         console.log(err);
       });
     }
-
+//[{type_of_rv: 'Tent Trailer'}, {type_of_rv: 'Hybrid'}];
   onSubmitListTrailer(id) {
     this.apiService.showListTrailer(id).subscribe((res) => {
       this.listtrailers = res;
+	  this.rentalType  = this.listtrailers.rv_type;
+	  this.rentalTypeID=this.listtrailers._id;
+	  this.trailerTypes=this.listtrailers.type_of_rv;
+	  console.log("type_of_rv");
+	    console.log(this.trailerTypes);
       console.log(this.listtrailers);
     }, (err) => {
       console.log(err);
@@ -158,7 +167,15 @@ fileName: String;
 
 
 
-
+  getTrailerByRental(){
+	  console.log('i a her'+this.rentalTypeID);
+	  this.apiService.getRvTypeByRental(this.rentalTypeID).then((res) => {
+      this.trailerTypes = res;
+      console.log(this.rental);
+      }, (err) => {
+      console.log(err);
+    });
+  }
 
 
 /*
