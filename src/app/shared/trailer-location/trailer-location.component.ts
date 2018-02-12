@@ -46,8 +46,8 @@ export class TrailerLocationComponent implements OnInit {
                   'location_street' : [null, Validators.required],
                   'location_city' : [null, Validators.required],
                   
-                  //'location_province' : [null, Validators.required],
-                  //'location_postal' : [null, Validators.required],
+                  'location_province' : [null, Validators.required],
+                  'location_postal' : [null, Validators.required],
               });
               
                 

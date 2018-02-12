@@ -13,9 +13,9 @@
         </div>
         <h5>Features</h5>
         <div class="row checkbox">
-          <div class="col-sm-3 form-group" *ngFor="let data of listingFeatures; let id = index">
-            <input type="checkbox"  name={{data?.feature}}   id={{data?.feature}} value={{data.feature}} (change)="onChange(data.feature, $event.target.checked)"/>
-             <label for="{{data?.feature}}">{{data?.feature}} </label><br>
+          <div class="col-sm-3 form-group" *ngFor="let data of adminfeatures; let id = index">
+            <input type="checkbox"  name={{data?.feature_name}}   id={{data?.feature_name}} value={{data.feature_name}} (change)="onChange(data.feature_name, $event.target.checked)"/>
+             <label for="{{data?.feature_name}}">{{data?.feature_name}} </label><br>
           </div>
         </div>
 

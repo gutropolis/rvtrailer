@@ -17,9 +17,9 @@ export class ApiService {
   headers: any = {'Content-Type': 'application/json'};
 
   // This is for local
- //mainURL: string = 'http://localhost:3001';
+ mainURL: string = 'http://localhost:3001';
   // This is for server
-   mainURL: string = 'http://104.236.9.249:3001';
+   //mainURL: string = 'http://104.236.9.249:3001';
 
   constructor(private http: Http) { }
 
@@ -263,6 +263,82 @@ export class ApiService {
         });
       }
 
+
+
+      //Manage Feature
+      addFeature(data) {
+        return new Promise((resolve, reject) => {
+            this.http.post( this.mainURL + '/api/features', data)
+              .map(res => res.json())
+              .subscribe(res => {
+                resolve(res);
+              }, (err) => {
+                reject(err);
+              });
+        });
+      }
+
+
+
+      getAllFeature() {
+        return new Promise((resolve, reject) => {
+          this.http.get( this.mainURL + '/api/features')
+            .map(res => res.json())
+            .subscribe(res => {
+              resolve(res);
+            }, (err) => {
+              reject(err);
+            });
+          });
+        }
+
+        viewFeature(id) {
+          return new Promise((resolve, reject) => {
+              this.http.get( this.mainURL + '/api/view-features/' + id)
+                .map(res => res.json())
+                .subscribe(res => {
+                  resolve(res)
+              }, (err) => {
+                reject(err);
+              });
+          });
+        }
+
+        getEditFeature(id) {
+          return new Promise((resolve, reject) => {
+              this.http.get( this.mainURL + '/api/edit_features/' + id)
+                .map(res => res.json())
+                .subscribe(res => {
+                  resolve(res)
+              }, (err) => {
+                reject(err);
+              });
+          });
+        }
+    
+        updateFeature(id, data) {
+          return new Promise((resolve, reject) => {
+              this.http.put( this.mainURL + '/api/view-features/' + id, data)
+                .map(res => res.json())
+                .subscribe(res => {
+                  resolve(res);
+                }, (err) => {
+                  reject(err);
+                });
+          });
+        }
+    
+
+        deleteFeature(id) {
+          return new Promise((resolve, reject) => {
+                this.http.delete( this.mainURL + '/api/view-features/' + id)
+                  .subscribe(res => {
+                    resolve(res);
+                  }, (err) => {
+                    reject(err);
+                  });
+            });
+          }
 
 // manage cms
 

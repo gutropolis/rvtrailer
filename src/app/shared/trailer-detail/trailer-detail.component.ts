@@ -17,10 +17,11 @@ export class TrailerDetailComponent implements OnInit {
   listings: any = [];
   features: any;
   allListing: any = [];
+  adminfeatures: any = [];
 
-  listingFeatures: any = [{feature: 'Wifi'}, {feature: 'Built-in Speakers'}, {feature: 'TV/DVD'}, {feature: 'CD Player'}, {feature: 'Vanity'}, {feature: 'Pet Friendly'}, {feature: 'Dish Washer'}, {feature: 'Bathtub'}, {feature: 'Family/Kid Friendly'}, {feature: 'Outside Shower'}, {feature: 'Smoke Free'}, {feature: 'Bluetooth'},
-                          {feature: 'Pull-out sofa Bed'}, {feature: 'Outdoor Kitchenette'}, {feature: 'Delivery Avilable'}, {feature: 'Lines Provided'}, {feature: 'Heating / Cooling'}, {feature: 'BBQ'}, {feature: 'Automatic Awning'}, {feature: 'Camping Chairs'}, {feature: 'Basic Cookwaer / Cultery'},
-                          {feature: 'Closets and Storage Space'}, {feature: 'Full Winter Rental Avilable'}, {feature: 'Boardgames and Movies'}];
+ // listingFeatures: any = [{feature: 'Wifi'}, {feature: 'Built-in Speakers'}, {feature: 'TV/DVD'}, {feature: 'CD Player'}, {feature: 'Vanity'}, {feature: 'Pet Friendly'}, {feature: 'Dish Washer'}, {feature: 'Bathtub'}, {feature: 'Family/Kid Friendly'}, {feature: 'Outside Shower'}, {feature: 'Smoke Free'}, {feature: 'Bluetooth'},
+    //                      {feature: 'Pull-out sofa Bed'}, {feature: 'Outdoor Kitchenette'}, {feature: 'Delivery Avilable'}, {feature: 'Lines Provided'}, {feature: 'Heating / Cooling'}, {feature: 'BBQ'}, {feature: 'Automatic Awning'}, {feature: 'Camping Chairs'}, {feature: 'Basic Cookwaer / Cultery'},
+    //                      {feature: 'Closets and Storage Space'}, {feature: 'Full Winter Rental Avilable'}, {feature: 'Boardgames and Movies'}];
 
   constructor(private fb: FormBuilder,
               public router: Router,
@@ -48,10 +49,20 @@ export class TrailerDetailComponent implements OnInit {
                     'details_no_of_beds' : [null, Validators.required],
                     'details_no_of_bathrooms' : [null, Validators.required],
                 });
+
+                this.getFeature();
               }
 
   ngOnInit() {
     this.allListing.details = this.gd.ListingObj['global'].details;
+  }
+  getFeature() {
+    this.apiService.getAllFeature().then((res) => {
+      this.adminfeatures = res;
+      console.log(this.adminfeatures);
+      }, (err) => {
+      console.log(err);
+    });
   }
 
   onSubmitDetail() {
@@ -68,13 +79,13 @@ export class TrailerDetailComponent implements OnInit {
      this.router.navigate(['list-trailer/pricing']);
   }
 
-  onChange(feature: string, isChecked: boolean) {
-      const emailFormArray = <FormArray>this.rForm.controls.details_feature;
+  onChange(feature_name: string, isChecked: boolean) {
+      const abc = <FormArray>this.rForm.controls.details_feature;
       if (isChecked) {
-        emailFormArray.push(new FormControl(feature));
+        abc.push(new FormControl(feature_name));
       } else {
-        const index = emailFormArray.controls.findIndex(x => x.value === feature);
-        emailFormArray.removeAt(index);
+        const index = abc.controls.findIndex(x => x.value === feature_name);
+        abc.removeAt(index);
       }
   }
 
