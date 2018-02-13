@@ -4,13 +4,17 @@
         <!-- Ad box -->
         <div class="ad-box" *ngFor = "let userDetail of userDetails" >
             <div class="ad-box-top">
+              
                  <img src="/images/{{userDetail.photo}}">
             </div>
             <div class="ad-box-bottom text-center">
 
                 <h6>{{userDetail.specification_make}}</h6>
                 <div class="ad-box-bottom-action">
-                    <button class="btn btn-border-grey">
+                    <button class="btn btn-border-grey" type="button" [routerLink]="['/rv/', userDetail._id]">
+                      View
+                    </button>
+                    <button class="btn btn-border-grey"  type="button" [routerLink]="['/list-trailer']">
                       Edit
                   </button>
                     <button class="btn btn-border-grey" (click)="deleteListTrailer(userDetail._id)">

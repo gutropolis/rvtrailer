@@ -44,6 +44,13 @@ export class OwnerAdsComponent implements OnInit {
     console.log(err);
   });
 }
-
+editListTrailer(id) {
+  console.log("hello edit id "+id);
+  
+}
+viewListTrailer(id) {
+  console.log("hello view id "+id);
+  
+}
 
 }

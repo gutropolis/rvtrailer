@@ -9,7 +9,7 @@
               <ng-container *ngFor="let rentals of rental">
                  
               
-                <button *ngIf="rentals.rental_type==0" type="button" class="btn btn-border-red" 
+                <button *ngIf="rentals.rental_type==0"  type="button" class="btn btn-border-red" 
                 (click)="onSelectRentalType(rentals.type_of_rv,rentals._id)"
                   [ngClass]="{'btn-primary': rentalType === rentals.type_of_rv}">
                 <i class="icon">
@@ -254,7 +254,7 @@
         <div class="form-group  text-center">
 
             <button type="submit" [disabled]="!rForm.valid" class="btn btn-primary">Add User</button>
-            <button type="cancel" [routerLink]="['/admin/user']" class="btn btn-danger">Cancel</button>
+            <button type="cancel" [routerLink]="['/admin/list-trailer']" class="btn btn-danger">Cancel</button>
 
         </div>
     </form>

@@ -56,7 +56,7 @@
 						</div> 
 					   -->
 					   {{rentalTypeID}}
-					   {{trailerTypes}}
+					   
 					   
                         <div class="trailer-type"    *ngIf="rentalTypeID !=''" >
                 
@@ -69,6 +69,7 @@
                                 />
                                 <label for="{{trailType.type_of_rv}}"> {{trailType.type_of_rv}} </label>
                             </div>
+                    
                         </ng-container>
                             
                         </div> 
@@ -208,10 +209,13 @@
             <div class="form-group row">
                 <div class="form-row">
                         
-                        <div class="col-sm-3 form-group" *ngFor="let data of adminfeatures; let id = index">
-                            <input type="checkbox"  name={{data?.feature_name}}  id={{data?.feature_name}} value={{data.feature_name}} (change)="onChange(data.feature_name, $event.target.checked)"/>
-                                 <label for="{{data?.feature_name}}">{{data?.feature_name}} </label><br>
-                              </div>
+                    <div class="col-sm-3 form-group" *ngFor="let data of adminfeatures; let id = index">
+                        <input type="checkbox"  name={{data?.feature_name}}   id={{data?.feature_name}} value={{data.feature_name}} (change)="onChange(data.feature_name, $event.target.checked)"
+                        
+                        [checked]="(listtrailers.details_feature && (-1 !== listtrailers.details_feature.indexOf(data.feature_name)) ? 'checked' : '')" 
+                        />
+                         <label for="{{data?.feature_name}}">{{data?.feature_name}} </label><br>
+                      </div>
                                     </div>
 
         </div>
@@ -278,7 +282,7 @@
 
         <div class="form-group">
             <div class=" text-center">
-                <button type="submit" [disabled]="!rForm.valid" class="btn btn-primary">Add</button>
+                <button type="submit" [disabled]="!rForm.valid" class="btn btn-primary">Update</button>
                 <button type="cancel" [routerLink]="['/admin/list-trailer']" class="btn btn-danger">Cancel</button>
             </div>
         </div>

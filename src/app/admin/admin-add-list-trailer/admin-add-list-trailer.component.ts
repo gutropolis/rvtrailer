@@ -67,6 +67,7 @@ fileName: String;
           'pricing_highest_season_date_range_to' : [null, Validators.required],
           'photo' : [null],
           'type_of_rv':[null],
+          
     });
     this.getFeature();
     this.getRental();
@@ -124,14 +125,16 @@ fileName: String;
   onSubmitListTrailer() {
     let rv_type = {'rv_type': this.rentalType,'rentalTypeID':this.rentalTypeID};
     console.log(rv_type);
-    
+  let rentalTypeID={'rentalTypeID':this.rentalTypeID};
+  console.log("MyRental id");
+  console.log(rentalTypeID);
 
     console.log(this.fileName);
     const photo = {'photo': this.fileName};
 
     const detail = this.rForm.value;
     this.listings['details_feature'] = detail.details_feature;
-    const Listing_Data = Object.assign({},this.listings,detail, photo,rv_type);
+    const Listing_Data = Object.assign({},this.listings,detail,rentalTypeID, photo,rv_type);
     console.log(Listing_Data);
 
     this.apiService.addListTrailer(Listing_Data).subscribe((result) => {
