@@ -5,10 +5,7 @@
     <form [formGroup]="rForm" (ngSubmit)="updateListTrailerData(listtrailers._id)">
         <div class="form-group row">
 
-                <h2>Rental Type Test</h2>
-                <h5>{{listtrailers.rv_type}} </h5>
-                 <h2>Type of rv Test</h2>
-                <h5>{{listtrailers.type_of_rv}} </h5>
+               
             <h4><b>Rental Type</b></h4>
             <div class="clearfix specification-btn">  
             
@@ -36,9 +33,8 @@
             
                      
             </div>
-            {{rentalTypeID}}
-           
             
+           
              <div class="trailer-type"    *ngIf="rentalTypeID !=''" >
      
              <ng-container *ngFor="let trailType of trailerTypes">
