@@ -113,7 +113,7 @@ export class TrailerSpecificationComponent implements OnInit {
 	  console.log(this.rentalTypeID);
       this.getTrailerByRental(); 
 	  // this.trailerTypes = this.rental.filter( book => book.rental_type === this.rentalTypeID); 
-       console.log(this.trailerTypes);
+       //console.log(this.trailerTypes);
     }
   }
 

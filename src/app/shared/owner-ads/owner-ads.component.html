@@ -14,7 +14,7 @@
                     <button class="btn btn-border-grey" type="button" [routerLink]="['/rv/', userDetail._id]">
                       View
                     </button>
-                    <button class="btn btn-border-grey"  type="button" [routerLink]="['/list-trailer']">
+                    <button class="btn btn-border-grey"  type="button" [routerLink]="['/list_trailer',userDetail._id]">
                       Edit
                   </button>
                     <button class="btn btn-border-grey" (click)="deleteListTrailer(userDetail._id)">

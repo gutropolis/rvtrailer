@@ -78,6 +78,7 @@ export class TrailerDetailComponent implements OnInit {
      localStorage.setItem('listing', JSON.stringify(this.listing));
      this.router.navigate(['list-trailer/pricing']);
   }
+  
 
   onChange(feature_name: string, isChecked: boolean) {
       const abc = <FormArray>this.rForm.controls.details_feature;

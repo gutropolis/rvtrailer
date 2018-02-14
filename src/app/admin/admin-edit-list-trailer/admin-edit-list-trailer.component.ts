@@ -22,6 +22,7 @@ export class AdminEditListTrailerComponent implements OnInit {
  listings: any = [];
  adminfeatures: any = [];
  myfeatures: any = [];
+ details_feature:any=[];
  
  listingFeatures: any[] = [
      {feature: 'Brijesh'},
@@ -74,7 +75,6 @@ fileName: String;
     });
     this.getFeature();
     this.getRental();
-   // this.getTrailerByRental();
     
 
   }
@@ -104,6 +104,8 @@ fileName: String;
 
       this.onSubmitListTrailer(this.route.snapshot.params['id']);
 
+      
+
       //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
         this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
         //overide the onCompleteItem property of the uploader so we are
@@ -119,15 +121,15 @@ fileName: String;
 
       }
 	  
-      this.rentalTypeID="5a79520979a44131754d8d55";
-      this.getTrailerByRental();
+     
+     
 	  
     }
     getFeature() {
       this.apiService.getAllFeature().then((res) => {
-        this.adminfeatures = res;
+        this.details_feature = res;
        
-       // console.log(this.adminfeatures);
+       console.log(this.details_feature);
         }, (err) => {
         console.log(err);
       });
@@ -143,6 +145,8 @@ fileName: String;
 	  
 	    console.log(this.rentalType);
      console.log(this.rentalTypeID);
+
+     this.getTrailerByRental();
     }, (err) => {
       console.log(err);
     });
@@ -150,6 +154,7 @@ fileName: String;
 
   updateListTrailerData(id) {
     const detail = this.rForm.value;
+    
     let rv_type = {'rv_type': this.rentalType,'rentalTypeID':this.rentalTypeID};
     console.log(rv_type);
     this.listings['details_feature'] = detail.details_feature;
@@ -166,8 +171,10 @@ fileName: String;
     });
   }
   onChange(feature: string, isChecked: boolean) {
+   
     const emailFormArray = <FormArray>this.rForm.controls.details_feature;
     if (isChecked) {
+      
       emailFormArray.push(new FormControl(feature));
       console.log(emailFormArray);
     } else {
@@ -206,6 +213,7 @@ fileName: String;
     }
 }
  */ 
+
 
 
 }
