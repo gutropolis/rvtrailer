@@ -64,6 +64,9 @@ dll/
 .idea/
 *.swp
 
+#upload folder#
+/uploads/
+server.js
 
 # Angular #
 *.ngfactory.ts
