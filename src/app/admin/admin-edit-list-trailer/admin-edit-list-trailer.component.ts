@@ -147,6 +147,7 @@ fileName: String;
 	  
 	  const trailerDetailArray=this.listtrailers.details_feature;
 	   trailerDetailArray.forEach(function (value) {
+       console.log("old feature value");
 			console.log(value);
 			emailFormArray.push(new FormControl(value));
 			console.log(emailFormArray);
@@ -177,7 +178,7 @@ fileName: String;
     this.listings['details_feature'] = detail.details_feature;
     //this.listings['details_feature'] =this.myfeatures;
     const Listing_Data = Object.assign({},this.listings,detail,rv_type);
-    //console.log(Listing_Data);
+    console.log(Listing_Data);
 
     this.apiService.updateListTrailer(id,Listing_Data).then((result) => {
      // console.log(this.rForm.value);
