@@ -72,6 +72,7 @@ import { AdminFeaturesComponent } from './admin/admin-features/admin-features.co
 import { AdminAddFeaturesComponent } from './admin/admin-add-features/admin-add-features.component';
 import { AdminEditFeaturesComponent } from './admin/admin-edit-features/admin-edit-features.component';
 import { AdminViewFeaturesComponent } from './admin/admin-view-features/admin-view-features.component';
+import { OwnerEditListtrailerComponent } from './shared/owner-edit-listtrailer/owner-edit-listtrailer.component';
 
 export const Routing = RouterModule.forRoot([
     {
@@ -163,8 +164,8 @@ export const Routing = RouterModule.forRoot([
         ]
     },
     {
-        path: 'list_trailer/:id',
-        component: ListTrailerComponent
+        path: 'edit-list-trailer/:id',
+        component: OwnerEditListtrailerComponent
     },
 	
     
