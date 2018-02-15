@@ -164,36 +164,10 @@ export const Routing = RouterModule.forRoot([
     },
     {
         path: 'list_trailer/:id',
-        component: ListTrailerComponent,
-            children: [
-           
-                {
-                    path: '',
-                    component: TrailerSpecificationComponent
-                },
-                {
-                    path: 'specification',
-                    component: TrailerSpecificationComponent
-                },
-                {
-                    path: 'location',
-                    component: TrailerLocationComponent
-                },
-                {
-                    path: 'details',
-                    component: TrailerDetailComponent
-                },
-                {
-                    path: 'pricing',
-                    component: TrailerPricingComponent
-                },
-                {
-                    path: 'photo',
-                    component: TrailerPhotoComponent
-                }
-
-        ]
+        component: ListTrailerComponent
     },
+	
+    
     {
       path: 'contact-us',
       component: ContactUsComponent

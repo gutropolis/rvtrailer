@@ -140,6 +140,23 @@ fileName: String;
       this.listtrailers =res;
 	  this.rentalType  = this.listtrailers.rv_type;
 	  this.rentalTypeID=this.listtrailers.rentalTypeID;
+	  
+	  //add checkbox value//
+	  
+	   const emailFormArray = <FormArray>this.rForm.controls.details_feature;
+	  
+	  const trailerDetailArray=this.listtrailers.details_feature;
+	  trailerDetailArray.forEach(function (value) {
+			console.log(value);
+			emailFormArray.push(new FormControl(value));
+			console.log(emailFormArray);
+	  }); 
+	  
+     
+	//end here
+	  
+	  
+	  
     //this.trailerTypes=this.listtrailers.type_of_rv;
     //console.log(this.listtrailers.type_of_rv);
 	  
