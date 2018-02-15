@@ -146,7 +146,7 @@ fileName: String;
 	   const emailFormArray = <FormArray>this.rForm.controls.details_feature;
 	  
 	  const trailerDetailArray=this.listtrailers.details_feature;
-	  trailerDetailArray.forEach(function (value) {
+	   trailerDetailArray.forEach(function (value) {
 			console.log(value);
 			emailFormArray.push(new FormControl(value));
 			console.log(emailFormArray);

@@ -21,8 +21,7 @@ export class AdminEditFeaturesComponent implements OnInit {
       this.rForm = fb.group({
         'feature_name': [null, Validators.required],
        
-       
-       
+              
     });
     
 
