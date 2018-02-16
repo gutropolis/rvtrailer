@@ -172,12 +172,13 @@ fileName: String;
 
   updateListTrailerData(id) {
     const detail = this.rForm.value;
-    
+    console.log(this.fileName);
+    const photo = {'photo': this.fileName};
     let rv_type = {'rv_type': this.rentalType,'rentalTypeID':this.rentalTypeID};
     console.log(rv_type);
     this.listings['details_feature'] = detail.details_feature;
     //this.listings['details_feature'] =this.myfeatures;
-    const Listing_Data = Object.assign({},this.listings,detail,rv_type);
+    const Listing_Data = Object.assign({},this.listings,detail,rv_type,photo);
     console.log(Listing_Data);
 
     this.apiService.updateListTrailer(id,Listing_Data).then((result) => {

@@ -96,7 +96,20 @@ export class OwnerEditListtrailerComponent implements OnInit {
 
   ngOnInit() {
     this.onSubmitListTrailer(this.route.snapshot.params['id']);
-  }
+
+   //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
+        this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
+        //overide the onCompleteItem property of the uploader so we are
+        //able to deal with the server response.
+        this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+                //console.log("ImageUpload:uploaded:", item, status, response);
+           //   console.log(response);
+              const responseResult = JSON.parse(response);
+              this.fileName = responseResult.filename;
+              console.log(this.fileName);
+           //   console.log(responseResult.filename);
+        }
+      }
 
   getFeature() {
     this.apiService.getAllFeature().then((res) => {
@@ -136,6 +149,7 @@ export class OwnerEditListtrailerComponent implements OnInit {
 	  
 	    console.log(this.rentalType);
      console.log(this.rentalTypeID);
+     console.log(this.listtrailers);
 
      this.getTrailerByRental();
     }, (err) => {
@@ -145,18 +159,19 @@ export class OwnerEditListtrailerComponent implements OnInit {
 
   updateListTrailerData(id) {
     const detail = this.rForm.value;
-    
+    console.log(this.fileName);
+    const photo = {'photo': this.fileName};
     let rv_type = {'rv_type': this.rentalType,'rentalTypeID':this.rentalTypeID};
     console.log(rv_type);
     this.listings['details_feature'] = detail.details_feature;
     //this.listings['details_feature'] =this.myfeatures;
-    const Listing_Data = Object.assign({},this.listings,detail,rv_type);
+    const Listing_Data = Object.assign({},this.listings,detail,rv_type,photo);
     console.log(Listing_Data);
 
     this.apiService.updateListTrailer(id,Listing_Data).then((result) => {
      // console.log(this.rForm.value);
       let id = result['_id'];
-      this.router.navigate(['/user-dashboard']);
+      this.router.navigate(['/user-dashboard/my-ads']);
     }, (err) => {
       console.log(err);
     });

@@ -17,7 +17,7 @@
 <div class="admin-page">
   
 
-  <form [formGroup]="rForm" (ngSubmit)="updateListTrailerData(listtrailers._id)">
+  <form [formGroup]="rForm"   (ngSubmit)="updateListTrailerData(listtrailers._id)">
       <div class="form-group row">
 
               <div class="form-row">
@@ -92,32 +92,32 @@
 
           <div class="form-row">
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="specification_make" id="specification_make" [(ngModel)]="listtrailers.specification_make">
+                  <input type="text" class="form-control" formControlName="specification_make" id="specification_make" [(ngModel)]="listtrailers.specification_make" placeholder="Make">
               </div>
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="specification_model" id="specification_model" [(ngModel)]="listtrailers.specification_model">
+                  <input type="text" class="form-control" formControlName="specification_model" id="specification_model" [(ngModel)]="listtrailers.specification_model"placeholder="Model">
               </div>
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="specification_year" id="specification_year" [(ngModel)]="listtrailers.specification_year">
+                  <input type="text" class="form-control" formControlName="specification_year" id="specification_year" [(ngModel)]="listtrailers.specification_year" placeholder="Year">
               </div>
           </div>
 
           <div class="form-row">
               <div class="col-sm-4">
                   <div class="input-group mb-2 mb-sm-0">
-                      <input type="text" class="form-control" formControlName="specification_length" id="specification_length" [(ngModel)]="listtrailers.specification_length">
+                      <input type="text" class="form-control" formControlName="specification_length" id="specification_length" [(ngModel)]="listtrailers.specification_length" placeholder="Length">
                       <div class="input-group-addon">FT</div>
                   </div>
               </div>
               <div class="col-sm-4">
                   <div class="input-group mb-2 mb-sm-0">
-                      <input type="text" class="form-control" formControlName="specification_gross_weight" id="specification_gross_weight" [(ngModel)]="listtrailers.specification_gross_weight">
+                      <input type="text" class="form-control" formControlName="specification_gross_weight" id="specification_gross_weight" [(ngModel)]="listtrailers.specification_gross_weight" placeholder="Weight">
                       <div class="input-group-addon">LB</div>
                   </div>
               </div>
               <div class="col-sm-4">
                   <div class="input-group mb-2 mb-sm-0">
-                      <input type="text" class="form-control" formControlName="specification_tough_weight" id="specification_tough_weight" [(ngModel)]="listtrailers.specification_tough_weight">
+                      <input type="text" class="form-control" formControlName="specification_tough_weight" id="specification_tough_weight" [(ngModel)]="listtrailers.specification_tough_weight" placeholder="Tough weight">
                       <div class="input-group-addon">LB</div>
                   </div>
               </div>
@@ -157,16 +157,16 @@
 
           <div class="form-row">
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="location_street" id="location_street" [(ngModel)]="listtrailers.location_street">
+                  <input type="text" class="form-control" formControlName="location_street" id="location_street" [(ngModel)]="listtrailers.location_street" placeholder="Street">
               </div>
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="location_city" id="location_city" [(ngModel)]="listtrailers.location_city">
+                  <input type="text" class="form-control" formControlName="location_city" id="location_city" [(ngModel)]="listtrailers.location_city" placeholder="City">
               </div>
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="location_province" id="location_province" [(ngModel)]="listtrailers.location_province">
+                  <input type="text" class="form-control" formControlName="location_province" id="location_province" [(ngModel)]="listtrailers.location_province"placeholder="Province">
               </div>
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="location_postal" id="location_postal" [(ngModel)]="listtrailers.location_postal">
+                  <input type="text" class="form-control" formControlName="location_postal" id="location_postal" [(ngModel)]="listtrailers.location_postal"placeholder="postal code">
               </div>
           </div>
       </div>
@@ -176,12 +176,12 @@
 
           <div class="form-row">
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="details_ad_title" id="details_ad_title" [(ngModel)]="listtrailers.details_ad_title">
+                  <input type="text" class="form-control" formControlName="details_ad_title" id="details_ad_title" [(ngModel)]="listtrailers.details_ad_title" placeholder="Title">
               </div>
           </div>
           <div class="form-row">
               <div class="form-group col-md-9">
-                  <textarea class="form-control" formControlName="details_ad_description" id="details_ad_description" [(ngModel)]="listtrailers.details_ad_description" rows="3"></textarea>
+                  <textarea class="form-control" formControlName="details_ad_description" id="details_ad_description" [(ngModel)]="listtrailers.details_ad_description" rows="3" placeholder="Description"></textarea>
               </div>
           </div>
          
@@ -193,7 +193,7 @@
           <div class="form-row">
               <div class="form-group col-md-4" style="margin-top: 15px;">
                   <select formControlName="details_no_of_beds" id="details_no_of_beds" class="form-control" [(ngModel)]="listtrailers.details_no_of_beds">
-                  <option selected>Choose...</option>
+                  <option selected>Choose...Beds</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -204,7 +204,7 @@
               </div>
               <div class="form-group col-md-4" style="margin-top: 15px;">
                   <select formControlName="details_no_of_bathrooms" id="details_no_of_bathrooms" class="form-control" [(ngModel)]="listtrailers.details_no_of_bathrooms">
-                  <option selected>Choose...</option>
+                  <option selected>Choose...bathrooms</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -240,42 +240,46 @@
 
           <div class="form-row">
               <div class="form-group col-md-6">
-                  <input type="text" class="form-control" formControlName="pricing_security_deposit" id="pricing_security_deposit" [(ngModel)]="listtrailers.pricing_security_deposit">
+                  <input type="datetime" class="form-control" formControlName="pricing_security_deposit" id="pricing_security_deposit" [(ngModel)]="listtrailers.pricing_security_deposit" placeholder="pricing_security_deposit">
               </div>
               <div class="form-group col-md-6">
-                  <input type="text" class="form-control" formControlName="pricing_delivery_charges" id="pricing_delivery_charges" [(ngModel)]="listtrailers.pricing_delivery_charges">
+                  <input type="datetime" class="form-control" formControlName="pricing_delivery_charges" id="pricing_delivery_charges" [(ngModel)]="listtrailers.pricing_delivery_charges" placeholder="pricing_delivery_charges">
               </div>
           </div>
           <div class="form-row">
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="pricing_high_rate_hour" id="pricing_high_rate_hour" [(ngModel)]="listtrailers.pricing_high_rate_hour">
+                  <input type="text" class="form-control" formControlName="pricing_high_rate_hour" id="pricing_high_rate_hour" [(ngModel)]="listtrailers.pricing_high_rate_hour" placeholder="pricing_high_rate_hour">
               </div>
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="pricing_high_rate_week" id="pricing_high_rate_week" [(ngModel)]="listtrailers.pricing_high_rate_week">
+                  <input type="text" class="form-control" formControlName="pricing_high_rate_week" id="pricing_high_rate_week" [(ngModel)]="listtrailers.pricing_high_rate_week" placeholder="pricing_high_rate_week">
               </div>
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="pricing_high_rate_month" id="pricing_high_rate_month" [(ngModel)]="listtrailers.pricing_high_rate_month">
-              </div>
-          </div>
-
-          <div class="form-row">
-              <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="pricing_low_rate_hour" id="pricing_low_rate_hour" [(ngModel)]="listtrailers.pricing_low_rate_hour">
-              </div>
-              <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="pricing_low_rate_week" id="pricing_low_rate_week" [(ngModel)]="listtrailers.pricing_low_rate_week">
-              </div>
-              <div class="form-group col-md-4">
-                  <input type="text" class="form-control" formControlName="pricing_low_rate_month" id="pricing_low_rate_month" [(ngModel)]="listtrailers.pricing_low_rate_month">
+                  <input type="text" class="form-control" formControlName="pricing_high_rate_month" id="pricing_high_rate_month" [(ngModel)]="listtrailers.pricing_high_rate_month"
+                  placeholder="pricing_high_rate_month">
               </div>
           </div>
 
           <div class="form-row">
+              <div class="form-group col-md-4">
+                  <input type="text" class="form-control" formControlName="pricing_low_rate_hour" id="pricing_low_rate_hour" [(ngModel)]="listtrailers.pricing_low_rate_hour"
+                  placeholder="pricing_low_rate_hour">
+              </div>
+              <div class="form-group col-md-4">
+                  <input type="text" class="form-control" formControlName="pricing_low_rate_week" id="pricing_low_rate_week" [(ngModel)]="listtrailers.pricing_low_rate_week"
+                  placeholder="pricing_low_rate_week">
+              </div>
+              <div class="form-group col-md-4">
+                  <input type="text" class="form-control" formControlName="pricing_low_rate_month" id="pricing_low_rate_month" [(ngModel)]="listtrailers.pricing_low_rate_month"
+                  placeholder="pricing_low_rate_month">
+              </div>
+          </div>
+
+          <div class="form-row">
               <div class="form-group col-md-6">
-                  <input type="text" class="form-control" formControlName="pricing_highest_season_date_range_from" id="pricing_highest_season_date_range_from" [(ngModel)]="listtrailers.pricing_highest_season_date_range_from">
+                  <input type="date" class="form-control" formControlName="pricing_highest_season_date_range_from" id="pricing_highest_season_date_range_from" [(ngModel)]="listtrailers.pricing_highest_season_date_range_from" placeholder="pricing_highest_season_date_range_from">
               </div>
               <div class="form-group col-md-6">
-                  <input type="text" class="form-control" formControlName="pricing_highest_season_date_range_to" id="pricing_highest_season_date_range_to" [(ngModel)]="listtrailers.pricing_highest_season_date_range_to">
+                  <input type="date" class="form-control" formControlName="pricing_highest_season_date_range_to" id="pricing_highest_season_date_range_to" [(ngModel)]="listtrailers.pricing_highest_season_date_range_to" placeholder="pricing_highest_season_date_range_to">
               </div>
           </div>
       </div>
@@ -284,12 +288,13 @@
           <h4><b>(6) Photo</b></h4>
           <div class="form-row">
               <div class="form-group col-md-6">
-                  <input type="text" class="form-control" formControlName="photo" id="photo" [(ngModel)]="listtrailers.photo">
-                  <!-- <img src="uploads/{{listtrailers.photo}}" width="400" height="200">
-                  <input type="file" [(ngModel)]="listtrailers.photo" name="photo" ng2FileSelect [uploader]="uploader" />
+                 <!-- <input type="text" class="form-control" formControlName="photo" id="photo" [(ngModel)]="listtrailers.photo"> -->
+                 <label>{{listtrailers.photo}}</label>
+                  <img src="/images/{{listtrailers.photo}}" width="400" height="200">
+                  <input type="file" [(ngModel)]="listtrailers.photo"  name="photo" ng2FileSelect [uploader]="uploader" />
                   <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
                         Upload
-                  </button>  -->
+                  </button>  
               </div>
           </div>
       </div>
