@@ -9,9 +9,9 @@ import { FileUploader } from 'ng2-file-upload';
 // const URL = '/api/';
 //const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
-//const URL = 'http://localhost:3001/upload';
+const URL = 'http://localhost:3001/upload';
 
-const URL='http://104.236.9.249:3001/upload';
+//const URL='http://104.236.9.249:3001/upload';
 
  //const URL: string = 'http://104.236.9.249:3001';
 
@@ -30,9 +30,11 @@ listing: any = [];
 public uploader: FileUploader = new FileUploader({url: URL});
 fileName: String;
 userID: any = [];
+
 allListing: any = [];
 photo: any;
 photoname: String;
+userDetail: any = [];
 
 
   constructor(private fb: FormBuilder,
@@ -77,6 +79,15 @@ photoname: String;
     }
 
     this.userID = JSON.parse(localStorage.getItem('user'));
+
+    
+   
+
+
+  ;
+
+
+
     const photo_data = Object.assign({}, this.listing, this.photo, {user_id: this.userID.id});
     console.log(photo_data);
     //alert(JSON.stringify(photo_data));
@@ -86,6 +97,7 @@ photoname: String;
      }, (err) => {
       console.log(err);
     });
+ 
   }
 
 }

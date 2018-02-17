@@ -68,6 +68,13 @@ export class ApiService {
     return this.http.get(this.mainURL + '/api/user')
       .map(res => res.json());
   }
+  getLimitUser(listLimit = 10) {
+    
+        let url:string = this.mainURL + '/api/users/'+listLimit;
+        console.log(url);
+        return this.http.get(url)
+          .map( (res: Response) => res.json());
+  }
 
 
   showUser(id) {
@@ -204,6 +211,15 @@ export class ApiService {
       });
     }
 
+    getLimitRental(listLimit = 10) {
+      
+          let url:string = this.mainURL + '/api/rental_type/'+listLimit;
+          console.log(url);
+          return this.http.get(url)
+            .map( (res: Response) => res.json());
+    }
+
+
  getRvTypeByRental(id) {
 	 console.log(this.mainURL + '/api/rvtypebyrental/' + id);
     return new Promise((resolve, reject) => {
@@ -291,6 +307,15 @@ export class ApiService {
             });
           });
         }
+        getFeatureVlimit(listLimit = 10) {
+          
+              let url:string = this.mainURL + '/api/features/'+listLimit;
+              console.log(url);
+              return this.http.get(url)
+                .map( (res: Response) => res.json());
+        }
+        
+
 
         viewFeature(id) {
           return new Promise((resolve, reject) => {
@@ -315,6 +340,7 @@ export class ApiService {
               });
           });
         }
+
     
         updateFeature(id, data) {
           return new Promise((resolve, reject) => {
@@ -352,6 +378,14 @@ export class ApiService {
           reject(err);
         });
       });
+    }
+
+    getLimitCmsPages(listLimit = 10) {
+      
+          let url:string = this.mainURL + '/api/cmspages/'+listLimit;
+          console.log(url);
+          return this.http.get(url)
+            .map( (res: Response) => res.json());
     }
 
   showCmsPage(id) {

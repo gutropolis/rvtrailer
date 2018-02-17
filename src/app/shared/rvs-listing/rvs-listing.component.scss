@@ -115,7 +115,8 @@
     cursor: pointer;
     &-figure {
         flex: 0 0 36.7%;
-        max-width: 36.7%
+        max-width: 36.7%;
+        overflow: hidden;
     }
     &-content {
         flex: 0 0 63.3%;

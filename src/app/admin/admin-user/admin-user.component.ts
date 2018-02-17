@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AdminUserComponent implements OnInit {
 
 users: any = [];
-
+listLimit=10;
   constructor(public router: Router,
               public apiService: ApiService,
               private route: ActivatedRoute
@@ -24,7 +24,7 @@ users: any = [];
   }
 
   getUserList() {
-    this.apiService.getAllUsers().subscribe((res) => {
+    this.apiService.getLimitUser(this.listLimit).subscribe((res) => {
       this.users = res;
     }, (err) => {
       console.log(err);
@@ -38,6 +38,11 @@ users: any = [];
   }, (err) => {
     console.log(err);
   });
+}
+loadMore() {
+  this.listLimit = this.users.length + 5;
+  console.log(this.listLimit);
+  this.getUserList();
 }
 
 }

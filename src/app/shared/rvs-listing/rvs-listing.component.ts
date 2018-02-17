@@ -26,6 +26,7 @@ export class RvsListingComponent implements OnInit {
   ];
 
   items: any[] = [];
+  users: any[] = [];
   userDetails: any[] = [];
   logindata: any;
   rating: number;
@@ -80,12 +81,21 @@ export class RvsListingComponent implements OnInit {
     this.apiService.getAllListTrailer(this.listLimit)
           .subscribe( (result) => {
             this.items = result;
+            console.log(this.item);
           });
+
+          this.apiService.getAllUsers().subscribe((res) => {
+            this.users = res;
+            console.log(this.users);
+          });
+
   }
+
 
   getUserData(id) {
     this.apiService.showUser(id).subscribe((res) => {
       this.userDetails = res;
+      console.log(this.userDetails);
     });
   }
 

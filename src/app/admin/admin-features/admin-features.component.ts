@@ -10,23 +10,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AdminFeaturesComponent implements OnInit {
   features: any = [];
+  listLimit = 10;
   constructor(public router: Router,
     public apiService: ApiService,
     private route: ActivatedRoute) {
 
-      this.getFeature();
+     
      }
 
   ngOnInit() {
+    this.getFeature();
   }
   getFeature() {
-    this.apiService.getAllFeature().then((res) => {
+    this.apiService.getFeatureVlimit(this.listLimit).subscribe((res) => {
       this.features = res;
       console.log(this.features);
-      }, (err) => {
+    }, (err) => {
       console.log(err);
     });
   }
+  
   deleteFeature(id) {
     this.apiService.deleteFeature(id).then((result) => {
       console.log(" delete successfully");
@@ -36,6 +39,11 @@ export class AdminFeaturesComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+  loadMore() {
+    this.listLimit = this.features.length + 5;
+    console.log(this.listLimit);
+    this.getFeature();
   }
 
 }

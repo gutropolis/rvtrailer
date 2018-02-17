@@ -28,7 +28,7 @@ export class OwnerEditListtrailerComponent implements OnInit {
    public rentalType: string = 'RV Cottage';
   public rentalTypeID: string = '';
   public uploader:FileUploader = new FileUploader({url: URL});
-  fileName: String;
+  fileName: String='';
   
   constructor(private fb: FormBuilder,
     public router: Router,
@@ -62,7 +62,7 @@ export class OwnerEditListtrailerComponent implements OnInit {
         'pricing_low_rate_month' : [null, Validators.required],
         'pricing_highest_season_date_range_from' : [null, Validators.required],
         'pricing_highest_season_date_range_to' : [null, Validators.required],
-        'photo' : [null],
+        'photo' :[null],
         'type_of_rv':[null],
   });
 

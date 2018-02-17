@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AdminCmsPageComponent implements OnInit {
 
 cmspages: any = [];
-
+listLimit=10;
   constructor(public router: Router,
               public apiService: ApiService,
               private route: ActivatedRoute
@@ -23,7 +23,7 @@ cmspages: any = [];
   }
 
   getCmsPages() {
-    this.apiService.getAllCmsPages().then((res) => {
+    this.apiService.getLimitCmsPages(this.listLimit).subscribe((res) => {
       this.cmspages = res;
       }, (err) => {
       console.log(err);
@@ -37,6 +37,11 @@ cmspages: any = [];
   }, (err) => {
     console.log(err);
   });
+}
+loadMore() {
+  this.listLimit = this.cmspages.length + 5;
+  console.log(this.listLimit);
+  this.getCmsPages();
 }
 
 }

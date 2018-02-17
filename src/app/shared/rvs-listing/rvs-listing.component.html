@@ -102,7 +102,15 @@
                                 <label>{{ item.location_street }} </label>
                             </div>
                             <div class="rv-owner-info rv-info-top-right text-center">
-                                <figure><img src="" /></figure>
+                                <div *ngFor="let user of users; let i = index;">
+
+                                    <figure *ngIf="user._id == item.user_id">
+                                        <img src="/images/{{ user.photo }}" />
+                                    </figure>
+
+                                </div> 
+
+                                
                                 <h6>{{ item.details_ad_title }}</h6>
                                 <div class="star-rating">
                                     <rating [(ngModel)]="rating"></rating>
@@ -113,7 +121,7 @@
 
                         </div>
                         <div class="rv-info-bottom">
-                            <div class="rv-modal">Year<br/> 2017</div>
+                            <div class="rv-modal">Year<br/> {{item.specification_year}}</div>
                             <div class="rv-guest">guest <br /> {{ item.specification_guest }}</div>
 
                             <button class="rv-btn btn btn-primary" type="button" [routerLink]="['/rv/', item._id]">Rent IT</button>

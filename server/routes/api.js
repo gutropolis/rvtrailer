@@ -298,6 +298,17 @@ router.get('/user', function(req, res, next) {
   });
 });
 
+router.get('/users/:listlimit', function(req, res, next) {
+  let listlimit = parseInt(req.params.listlimit);
+  console.log(listlimit);
+
+  User.find({}, function(err, list){
+    if (err) return err;
+    res.json(list);
+
+  }).limit(listlimit);
+});
+
 router.get('/user/:id', function(req, res, next) {
   User.findById(req.params.id, function (err, post) {
     if (err) return next(err);
@@ -367,6 +378,18 @@ router.get('/cmspage', function(req, res, next) {
   });
 });
 
+router.get('/cmspages/:listlimit', function(req, res, next) {
+  let listlimit = parseInt(req.params.listlimit);
+  console.log(listlimit);
+
+  CmsPage.find({}, function(err, list){
+    if (err) return err;
+    res.json(list);
+
+  }).limit(listlimit);
+});
+
+
 router.get('/cmspage/:id', function(req, res, next) {
   CmsPage.findById(req.params.id, function (err, cmspages) {
     if (err) return next(err);
@@ -405,6 +428,30 @@ router.get('/trailers/:listlimit', function(req, res, next) {
 
   }).limit(listlimit);
 });
+
+router.get('/features/:listlimit', function(req, res, next) {
+  let listlimit = parseInt(req.params.listlimit);
+  console.log(listlimit);
+
+  Feature.find({}, function(err, list){
+    if (err) return err;
+    res.json(list);
+
+  }).limit(listlimit);
+});
+
+router.get('/rental_type/:listlimit', function(req, res, next) {
+  let listlimit = parseInt(req.params.listlimit);
+  console.log(listlimit);
+
+  Rental.find({}, function(err, list){
+    if (err) return err;
+    res.json(list);
+
+  }).limit(listlimit);
+});
+
+
 
 
 router.get('/trailersByUserId/:id', function(req, res, next) {
@@ -668,6 +715,9 @@ router.delete('/view-features/:id', function(req, res, next) {
     res.json(post);
   });
 });
+
+
+
 
 
 
