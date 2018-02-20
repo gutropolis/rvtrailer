@@ -21,8 +21,8 @@
                     <td>{{user.type}}</td>
 
                     <td>
-                        <div *ngIf="user.approved==true"> checked</div>
-                        <div *ngIf="user.approved!=true">Unchecked</div>
+                        <div *ngIf="user.approved==true"> <img src="assets/images/checked.png" height="20" width="20" alt="checked"></div>
+                        <div *ngIf="user.approved!=true"><img src="assets/images/deniend.png"  height="20" width="20" alt="unchecked"></div>
                     </td>
                     <td>{{user.created_at | date}}</td>
                     <td>
