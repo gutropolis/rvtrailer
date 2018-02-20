@@ -1,7 +1,9 @@
 <div class="admin-page">
     <h4 class="admin-title">All User List
         <button type="button" class="btn btn-info pull-right" [routerLink]="['/admin/add-user']">Add User</button></h4>
-
+       <h2> Search</h2> <nav class="navbar">
+            <input class="form-control" type="text" name="search" [(ngModel)]="filter">      
+          </nav>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -14,7 +16,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let user of users | OrderbyPipe: '-created_at'">
+            <tbody *ngFor="let user of users | filter:filter | OrderbyPipe:'-created_at' ;let i = index">
                 <tr>
                     <td>{{ user.firstname }}  {{ user.lastname }}</td>
                     <td>{{ user.email }}</td>

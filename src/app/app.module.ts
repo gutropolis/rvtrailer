@@ -121,7 +121,7 @@ import { AdminEditFeaturesComponent } from './admin/admin-edit-features/admin-ed
 import { AdminViewFeaturesComponent } from './admin/admin-view-features/admin-view-features.component';
 import { OwnerEditListtrailerComponent } from './shared/owner-edit-listtrailer/owner-edit-listtrailer.component';
 import { OrderbyPipe } from './orderby.pipe';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 const firebaseConfig = {
@@ -254,7 +254,8 @@ const firebaseConfig = {
     AccordionModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TypeaheadModule.forRoot(),
-    RecaptchaModule.forRoot()
+    RecaptchaModule.forRoot(),
+    Ng2SearchPipeModule
 
   ],
   providers: [ApiService, AuthGuard, NotAuthGuard, ClientAuthGuard, ClientNotAuthGuard, GlobaldataService],
