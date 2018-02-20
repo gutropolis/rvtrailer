@@ -120,6 +120,8 @@ import { AdminAddFeaturesComponent } from './admin/admin-add-features/admin-add-
 import { AdminEditFeaturesComponent } from './admin/admin-edit-features/admin-edit-features.component';
 import { AdminViewFeaturesComponent } from './admin/admin-view-features/admin-view-features.component';
 import { OwnerEditListtrailerComponent } from './shared/owner-edit-listtrailer/owner-edit-listtrailer.component';
+import { OrderbyPipe } from './orderby.pipe';
+
 
 
 const firebaseConfig = {
@@ -227,6 +229,8 @@ const firebaseConfig = {
       AdminEditFeaturesComponent,
       AdminViewFeaturesComponent,
       OwnerEditListtrailerComponent,
+      OrderbyPipe,
+     
 
   ],
 

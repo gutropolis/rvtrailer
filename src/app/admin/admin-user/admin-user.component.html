@@ -6,20 +6,25 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Lastname</th>
-                    <th>E-mail</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
                     <th>Approved</th>
+                    <th>Registration Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let user of users">
+            <tbody *ngFor="let user of users | OrderbyPipe: '-created_at'">
                 <tr>
-                    <td>{{ user.firstname }}</td>
-                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.firstname }}  {{ user.lastname }}</td>
                     <td>{{ user.email }}</td>
-                    <td> <input class="form-check-input" [(ngModel)]="user.approved" type="checkbox"> </td>
+                    <td>{{user.type}}</td>
 
+                    <td>
+                        <div *ngIf="user.approved==true"> checked</div>
+                        <div *ngIf="user.approved!=true">Unchecked</div>
+                    </td>
+                    <td>{{user.created_at | date}}</td>
                     <td>
                         <button class="btn btn-success btn-sm" type="button" [routerLink]="['/admin/view-user', user._id]">VIEW</button>
                         <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/admin/edit-user', user._id]">EDIT</button>
@@ -28,8 +33,8 @@
                 </tr>
             </tbody>
             <div class=" view-btn ">
-                    <button class="btn btn-primary" (click)="loadMore()">View More</button>
-                </div>
+                <button class="btn btn-primary" (click)="loadMore()">View More</button>
+            </div>
         </table>
     </div>
 

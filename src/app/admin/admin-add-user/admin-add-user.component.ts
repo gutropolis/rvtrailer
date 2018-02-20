@@ -23,9 +23,9 @@ rForm: FormGroup;
       'lastname' : [null, Validators.required],
       'email' : [null, Validators.required],
       'password' : [null, Validators.required],
-      'owner' : [ false ],
-      'renter' : [ false ],
+        'type':[null, Validators.required],
       'approved' : [ false ],
+      'created_at':Date.now(),
       'validate' : ''
     });
 

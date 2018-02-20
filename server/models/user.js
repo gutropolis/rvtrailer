@@ -18,7 +18,8 @@ var UserSchema = new Schema({
     about_user_description: {type: String},
     user_address: {type: String},
     user_contact_no: {type: String},
-    package_id: {type: String, default: null}
+    package_id: {type: String, default: null},
+    created_at : { type : Date,default:null},
 });
 
 module.exports = mongoose.model('User', UserSchema);

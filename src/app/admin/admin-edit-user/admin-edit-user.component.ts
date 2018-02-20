@@ -24,8 +24,7 @@ export class AdminEditUserComponent implements OnInit {
       'lastname' : [null, Validators.required],
       'email' : [null, Validators.required],
       'password' : [null, Validators.required],
-      'owner' : [ false ],
-      'renter' : [ false ],
+      'type': [null, Validators.required],
       'approved' : [ false ],
       'validate' : ''
     });
@@ -49,7 +48,7 @@ export class AdminEditUserComponent implements OnInit {
   updateUser(id) {
     this.apiService.updateUser(id, this.users).then((result) => {
       let id = result['_id'];
-      this.router.navigate(['admin/list-trailer']);
+      this.router.navigate(['admin/user']);
     }, (err) => {
       console.log(err);
     });
