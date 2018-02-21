@@ -33,7 +33,8 @@ export class SignupRenterComponent implements OnInit {
       'renter' : [ true ],
       'approved' : [ false ],
       'validate' : '',
-      'type': 'renter'
+      'type': 'renter',
+      'created_at':Date.now(),
     });
 
   }

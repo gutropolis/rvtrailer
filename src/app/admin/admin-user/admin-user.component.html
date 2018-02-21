@@ -16,7 +16,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let user of users | filter:filter | OrderbyPipe:'-created_at' ;let i = index">
+            <tbody *ngFor="let user of users | filter:filter | OrderbyPipe:'-created_at'| paginate: { itemsPerPage: 10, currentPage: p } ;let i = index">
                 <tr>
                     <td>{{ user.firstname }}  {{ user.lastname }}</td>
                     <td>{{ user.email }}</td>
@@ -34,10 +34,12 @@
                     </td>
                 </tr>
             </tbody>
-            <div class=" view-btn ">
-                <button class="btn btn-primary" (click)="loadMore()">View More</button>
-            </div>
+            
         </table>
+        <div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+        
     </div>
 
 </div>

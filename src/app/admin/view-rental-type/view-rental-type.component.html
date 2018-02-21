@@ -1,26 +1,31 @@
 <div class="admin-page">
   <h4 class="admin-title">All Rental List
       <button type="button" class="btn btn-info pull-right" [routerLink]="['/admin/rental-type']">Add rental-type</button></h4>
-
+      <h2> Search</h2> <nav class="navbar">
+        <input class="form-control" type="text" name="search" [(ngModel)]="filter">      
+      </nav>
   <div class="table-responsive">
       <table class="table">
           <thead>
               <tr>
                   <th>Type Of RV</th>
                   <th>Sort_description</th>
+                  <th>Registration Date</th>
                   <th>Active</th>
                   <th>Action</th>
               </tr>
           </thead>
-          <ng-container *ngFor="let rentals of rental">
+          <ng-container *ngFor="let rentals of rental | filter:filter | OrderbyPipe:'-created_at'| paginate: { itemsPerPage: 8, currentPage: p } ;let i = index">
           <tbody *ngIf="rentals.rental_type==0">
                            
               <tr >
 
                   <td>{{ rentals.type_of_rv }}</td>
                   <td>{{ rentals.sort_description }}</td>
+                  <td>{{rentals.created_at |date}}</td>
                   
-                  <td> <input class="form-check-input" [(ngModel)]="rentals.active" type="checkbox"> </td>
+                  <td>  <div *ngIf="rentals.active==true"> <img src="assets/images/checked.png" height="20" width="20" alt="checked"></div>
+                    <div *ngIf="rentals.active!=true"><img src="assets/images/deniend.png"  height="20" width="20" alt="unchecked"></div> </td>
 
                   <td>
                       <button class="btn btn-success btn-sm" type="button" [routerLink]="['/admin/show_rental_type',rentals._id]">VIEW</button>
@@ -28,14 +33,16 @@
                       <button class="btn btn-danger btn-sm" type="button" (click)="deleteRental(rentals._id)">DELETE</button>
                   </td>
               </tr>
-              <ng-container *ngFor="let sbrental of rental">
+              <ng-container *ngFor="let sbrental of rental | OrderbyPipe:'-created_at';let i = index">
                     <tr *ngIf="rentals._id==sbrental.rental_type">
                             
                         <td> * *{{ sbrental.type_of_rv }}</td>
                         <td>{{ sbrental.sort_description }}</td>
-                                              
-                        <td> <input class="form-check-input" [(ngModel)]="sbrental.active" type="checkbox"> </td>
-                            
+                        <td>{{sbrental.created_at |date}}</td>
+                         <td>                     
+                        <div *ngIf="sbrental.active==true"> <img src="assets/images/checked.png" height="20" width="20" alt="checked"></div>
+                        <div *ngIf="sbrental.active!=true"><img src="assets/images/deniend.png"  height="20" width="20" alt="unchecked"></div>
+                    </td> 
                         <td>
                         <button class="btn btn-success btn-sm" type="button" [routerLink]="['/admin/show_rental_type',sbrental._id]">VIEW</button>
                         <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/admin/edit_rental_type', sbrental._id]">EDIT</button>
@@ -48,11 +55,12 @@
               </ng-container>
           </tbody>
         </ng-container>
-        <div class=" view-btn ">
-                <button class="btn btn-primary" (click)="loadMore()">View More</button>
-            </div>
+      
 
       </table>
+      <div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
   </div>
 
 </div>

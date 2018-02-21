@@ -25,6 +25,7 @@ export class AddRentalTypeComponent implements OnInit {
         'type_of_rv' : [null, Validators.required],
         'sort_description' : [null, Validators.required],
         'icon':[null],
+        'created_at':Date.now(),
         'active' : [ false ],
         
         

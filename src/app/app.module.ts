@@ -122,6 +122,7 @@ import { AdminViewFeaturesComponent } from './admin/admin-view-features/admin-vi
 import { OwnerEditListtrailerComponent } from './shared/owner-edit-listtrailer/owner-edit-listtrailer.component';
 import { OrderbyPipe } from './orderby.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 const firebaseConfig = {
@@ -255,7 +256,8 @@ const firebaseConfig = {
     BsDatepickerModule.forRoot(),
     TypeaheadModule.forRoot(),
     RecaptchaModule.forRoot(),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
 
   ],
   providers: [ApiService, AuthGuard, NotAuthGuard, ClientAuthGuard, ClientNotAuthGuard, GlobaldataService],

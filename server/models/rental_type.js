@@ -6,7 +6,8 @@ var schema = new Schema({
     type_of_rv: {type: String},
     sort_description: {type: String},
     icon: {type: String},
-    active:{type:Boolean}
+    active:{type:Boolean},
+    created_at : { type : Date,default:null},
 });
 
 module.exports = mongoose.model('rental_type', schema);

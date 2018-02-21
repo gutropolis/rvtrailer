@@ -14,7 +14,7 @@ export class AdminUserComponent implements OnInit {
 
 users: any = [];
 listLimit=10;
-
+p: number;
  
     
     
@@ -34,10 +34,10 @@ listLimit=10;
   }
   getUserList()
   {
-    this.apiService.getLimitUser(this.listLimit).subscribe((res) => {
+    this.apiService.getAllUsers().subscribe((res) => {
       this.users = res;
       console.log(this.users);
-
+     this.p=1;
       
 
     }, (err) => {

@@ -17,9 +17,9 @@ export class ApiService {
   headers: any = {'Content-Type': 'application/json'};
 
   // This is for local
- //mainURL: string = 'http://localhost:3001';
+ mainURL: string = 'http://localhost:3001';
   // This is for server
-   mainURL: string = 'http://104.236.9.249:3001';
+  // mainURL: string = 'http://104.236.9.249:3001';
 
   constructor(private http: Http) { }
 
@@ -85,7 +85,7 @@ export class ApiService {
 
   addUser(data) {
     return new Promise((resolve, reject) => {
-        this.http.post( this.mainURL + '/api/saveuser', data)
+        this.http.post( this.mainURL + '/api/saveuser',data)
           .map(res => res.json())
           .subscribe(res => {
             resolve(res);
@@ -109,7 +109,7 @@ export class ApiService {
 
   deleteUser(id) {
     return new Promise((resolve, reject) => {
-        this.http.delete('/api/user/' + id)
+        this.http.delete('/api/user/' +id)
           .subscribe(res => {
             resolve(res);
           }, (err) => {
@@ -468,6 +468,19 @@ export class ApiService {
     console.log(ids);
     return this.http.post( this.mainURL + '/api/trailersbyids/', ids)
       .map( res => res.json() );
+  }
+
+  getListTrailer() {
+    
+    return new Promise((resolve, reject) => {
+      this.http.get( this.mainURL + '/api/trailers')
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+      });
   }
 
   getAllListTrailer(listLimit = 10) {

@@ -1,21 +1,24 @@
 <div class="admin-page">
     <h4 class="admin-title">All List Trailer <button type="button" [routerLink]="['/admin/add-list-trailer']" class="btn btn-info pull-right">Add List Trailer</button></h4>
-
+    <h2> Search</h2> <nav class="navbar">
+        <input class="form-control" type="text" name="search" [(ngModel)]="filter">      
+      </nav>
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Lastname</th>
-                    <th>E-mail</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    
+                    <th>Registration Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let listtrailer of listtrailers">
+            <tbody *ngFor="let listtrailer of listtrailers | filter:filter | OrderbyPipe:'-created_at'| paginate: { itemsPerPage: 10, currentPage: p } ;let i = index">
                 <tr>
-                    <td>{{ listtrailer.specification_make }}</td>
-                    <td>{{ listtrailer.specification_model }}</td>
-                    <td>{{ listtrailer.specification_year }}</td>
+                    <td>{{ listtrailer.details_ad_title }}</td>
+                    <td>{{ listtrailer.details_ad_description }}</td>
+                    <td>{{ listtrailer.created_at |date }}</td>
                     <td>
                         <button class="btn btn-success btn-sm" type="button" [routerLink]="['/admin/view-list-trailer', listtrailer._id]">VIEW</button>
                         <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/admin/edit-list-trailer', listtrailer._id]">EDIT</button>
@@ -24,10 +27,11 @@
                 </tr>
                
             </tbody>
-            <div class=" view-btn ">
-                    <button class="btn btn-primary" (click)="loadMore()">View More</button>
-                </div>
+            
         </table>
+        <div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
     </div>
 
 </div>

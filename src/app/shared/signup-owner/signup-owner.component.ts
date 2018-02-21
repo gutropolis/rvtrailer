@@ -37,6 +37,7 @@ photo: any;
       'about_user_description': [null],
       'user_address': [null],
       'user_contact_no': [null],
+      'created_at':Date.now(),
     });
 
   }

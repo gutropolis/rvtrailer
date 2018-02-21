@@ -10,7 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ViewRentalTypeComponent implements OnInit {
   rental: any = [];
-  listLimit=10;
+  
+  p:number;
   constructor(public router: Router,
     public apiService: ApiService,
     private route: ActivatedRoute) { 
@@ -21,8 +22,9 @@ export class ViewRentalTypeComponent implements OnInit {
   ngOnInit() {
   }
   getRental() {
-    this.apiService.getLimitRental(this.listLimit).subscribe((res) => {
+    this.apiService.getAllRental().then((res) => {
       this.rental = res;
+      this.p=1;
       }, (err) => {
       console.log(err);
     });
@@ -37,10 +39,6 @@ export class ViewRentalTypeComponent implements OnInit {
       console.log(err);
     });
   }
-  loadMore() {
-    this.listLimit = this.rental.length + 5;
-    console.log(this.listLimit);
-    this.getRental();
-  }
+  
 
 }

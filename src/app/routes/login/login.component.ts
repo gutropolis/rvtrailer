@@ -95,6 +95,7 @@ export class LoginComponent implements OnInit {
        // this.getUserByEmail();
         this.messageClass = 'alert alert-success';
         this.message = 'Success';
+        console.log(user);
         this.apiService.storeUserData(data.token, data.user);
         setTimeout(() => {
             this.router.navigate(['/']);

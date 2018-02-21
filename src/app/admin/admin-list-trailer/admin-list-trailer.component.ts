@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AdminListTrailerComponent implements OnInit {
 
 listtrailers: any = [];
-listLimit = 10;
+p:number;
   constructor(public router: Router,
               public apiService: ApiService,
               private route: ActivatedRoute
@@ -23,7 +23,7 @@ listLimit = 10;
   }
 
   getListTrailerList() {
-    this.apiService.getAllListTrailer(this.listLimit).subscribe((res) => {
+    this.apiService.getListTrailer().then((res) => {
       this.listtrailers = res;
       console.log(this.listtrailers);
     }, (err) => {
@@ -39,11 +39,7 @@ listLimit = 10;
     console.log(err);
   });
 }
-loadMore() {
-  this.listLimit = this.listtrailers.length + 5;
-  console.log(this.listLimit);
-  this.getListTrailerList();
-}
+
 
 
 }

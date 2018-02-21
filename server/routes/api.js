@@ -417,10 +417,17 @@ router.delete('/cmspage/:id', function(req, res, next) {
     res.json(post);
   });
 });
+router.get('/trailers', function(req, res, next) {
+  ListTrailer.find({}, function(err, ListTrailer){
+    if (err) return next(err);
+    res.json(ListTrailer);
+  });
+});
 
 router.get('/trailers/:listlimit', function(req, res, next) {
   let listlimit = parseInt(req.params.listlimit);
   console.log(listlimit);
+  
 
   ListTrailer.find({}, function(err, list){
     if (err) return err;

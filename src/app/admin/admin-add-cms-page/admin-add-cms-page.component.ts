@@ -48,6 +48,7 @@ text = "";
       this.rForm = fb.group({
       'slug' : [null, Validators.required],
       'body' : [null, Validators.required],
+      'created_at':Date.now(),
       });
 
   }

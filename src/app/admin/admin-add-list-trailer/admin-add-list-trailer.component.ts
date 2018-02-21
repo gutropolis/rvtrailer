@@ -67,6 +67,7 @@ fileName: String;
           'pricing_highest_season_date_range_to' : [null, Validators.required],
           'photo' : [null],
           'type_of_rv':[null],
+          'created_at':Date.now(),
           
     });
     this.getFeature();

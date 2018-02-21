@@ -17,7 +17,8 @@ export class AdminAddFeaturesComponent implements OnInit {
     public apiService:ApiService)
      { 
       this.rForm = fb.group({
-        'feature_name': [ null,Validators.required]
+        'feature_name': [ null,Validators.required],
+        'created_at':Date.now(),
        
         
       });
