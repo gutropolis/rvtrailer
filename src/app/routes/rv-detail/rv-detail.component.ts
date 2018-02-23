@@ -34,8 +34,8 @@ export class RvDetailComponent implements OnInit {
   private listing_id: string;
   private user_id: string;
   saveSuccess: boolean;
-
-
+  users:any=[];
+  rentalusername:any=[];
   constructor(private app: AppComponent,
               public router: Router,
               public apiService: ApiService,
@@ -67,13 +67,16 @@ console.log(this.listing_id);
   form.value.listing_id = this.listing_id;
   form.value.listings_user_id = this.user_id;
   let senderID = JSON.parse(localStorage.getItem('user'));
-
+  
   if(senderID === null) {
    this.router.navigate(['/signup/renter']);
    alert("Please Login before Contact for Trailer");
   }
 
   form.value.sender_id = senderID.id;
+
+  form.value.recivername=this.rentalusername;
+  form.value.sendername=senderID.username;
   form.value.parent_id = 0;
   console.log(form.value);
 
@@ -95,7 +98,23 @@ console.log(this.listing_id);
       this.renterdetail = res;
       console.log(this.renterdetail);
       this.user_id = this.renterdetail.user_id;
+
+       //get userby id
+
+    this.apiService.showUser(this.user_id).subscribe((res) => {
+      this.users = res;
+      this.rentalusername=this.users.firstname;
+      console.log(this.rentalusername);
+    }, (err) => {
+      console.log(err);
+    });
+ 
+  
       this.features = this.renterdetail.details_feature;
+
+
+
+
     }, (err) => {
       console.log(err);
     });
@@ -154,6 +173,8 @@ console.log(this.listing_id);
     });
     location.reload();
   }
+
+  
 
 
 

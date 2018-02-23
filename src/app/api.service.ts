@@ -63,7 +63,14 @@ export class ApiService {
     return this.http.post(this.mainURL + '/api/filterSearch', params)
     .map(res => res.json());
   }
+// For mailing perpose
 
+Email(params) {
+  return this.http.post(this.mainURL + '/api/send', params)
+  .map(res => res.json());
+
+
+}
   getAllUsers() {
     return this.http.get(this.mainURL + '/api/user')
       .map(res => res.json());
@@ -83,8 +90,12 @@ export class ApiService {
   }
 
 
+
+
+
   addUser(data) {
     return new Promise((resolve, reject) => {
+     
         this.http.post( this.mainURL + '/api/saveuser',data)
           .map(res => res.json())
           .subscribe(res => {

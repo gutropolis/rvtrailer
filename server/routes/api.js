@@ -15,29 +15,85 @@ var NewsLetter = require('../models/newsletter');
 var Rental=require('../models/rental_type');
 var Feature=require('../models/feature');
 
-var transporter = nodemailer.createTransport({
+/*var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'ajaythakurniit93@gmail.com',
-    pass: 'coder4321'
+    pass: 'Romanticworld12'
+  }
+});
+*/
+var smtpTransport = nodemailer.createTransport({
+  service: "outlook",
+  host: "smtp.outlook.com",
+  auth: {
+      user: "ajaythakur9329@outlook.com",
+      pass: ""
   }
 });
 
-router.post('/sendmail', (req, res) => {
+/*var mailOptions={
+  from: 'ajaythakur9329@outlook.com', //user sender
+  to: 'ajaythakurniit93@gmail.com',  //msg reciver adderss
+  subject: '5th time test',
+  text: 'its my testing'
+  
+}
+
+console.log(mailOptions);
+smtpTransport.sendMail(mailOptions, function(error, response){
+if(error){
+console.log(error);
+res.end("error");
+}else{
+console.log("Message sent: " + response.message);
+res.end("sent");
+}
+});
+
+*/
+//static email
+router.post('/send',function(req,res){
+console.log('in this api '+req.body);
+
+  
+  var mailOptions={
+    from: 'ajaythakur9329@outlook.com',
+    to: req.body.email,
+      subject : 'sign up successfully',
+      text : 'Hello text'
+  }
+  
+  console.log(mailOptions);
+  smtpTransport.sendMail(mailOptions, function(error, response){
+   if(error){
+          console.log(error);
+      res.end("error");
+   }else{
+          console.log("Message sent: " + response.message);
+      res.end("sent");
+       }
+});
+});
+
+
+/*router.post('/sendmail', (req, res) => {
 
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'kirti.coderadobe@gmail.com',
-      pass: 'coder4321'
+      user: 'ajaythakurniit93@gmail.com',
+      pass: 'Romanticworld12'
     }
   });
+  
+  
 
 
 
 
   var mailOptions = {
-    from: 'brijeshmkt@gmail.com',
+    from: 'singla.nikhil4@gmail.com',
     to: req.body.to,
     subject: req.body.subject,
     text: "Hello text"
@@ -54,6 +110,7 @@ router.post('/sendmail', (req, res) => {
 
 
 });
+*/
 
 router.get('/', (req, res) => {
   res.send('api works');
@@ -67,7 +124,7 @@ router.post('/message', (req, res) => {
 
   // Send mail details
   var mailOptions = {
-    from: 'brijeshmkt@gmail.com',
+    from: 'ajaythakurniit93@gmail.com',
     to: req.body.email,
     subject: "Your contact request to trailer owner",
     text: JSON.stringify(req.body.message)
@@ -587,7 +644,7 @@ router.get('/Packages', (req, res) => {
 
 
 router.post('/login', (req, res) => {
-      User.findOne({ $and: [ {email: req.body.email}, {password: req.body.password}, {admin: true} ]}, (err, user) => {
+      User.findOne({ $and: [ {email: req.body.email}, {password: req.body.password}, {type: 'admin'} ]}, (err, user) => {
         if(err) {
           res.json({success: false, message: err });
         } else {
@@ -596,21 +653,25 @@ router.post('/login', (req, res) => {
             } else {
                 const token = jwt.sign({ userId: user._id },'secret', {expiresIn: '24h' });
                 res.json({ success: true, token: token, user: { id: user._id } });
+                
             }
         }
     });
 });
 
 router.post('/clientLogin', (req, res) => {
-      User.findOne({ $and: [ {email: req.body.email}, {password: req.body.password} ]}, (err, user) => {
+      User.findOne({ $and: [ {email: req.body.email}, {password: req.body.password},{approved:true} ]}, (err, user) => {
         if(err) {
           res.json({success: false, message: err });
         } else {
           if(!user) {
             res.json({ success: false});
             } else {
-                const token = jwt.sign({ userId: user._id },'secret', {expiresIn: '24h' });
-                res.json({ success: true, token: token, user: { id: user._id } });
+              
+              console.log('User Type is '+user.type);
+                const token = jwt.sign({ userId: user._id,role: user.type,username:user.firstname  },'secret', {expiresIn: '24h' });
+                res.json({ success: true, token: token, user: { id: user._id,role:user.type,username:user.firstname } });
+                
             }
         }
     });

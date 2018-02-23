@@ -59,7 +59,7 @@ export class UserDetailMessageComponent implements OnInit {
 
   let parentId = this.route.snapshot.params['id'];
   form.value.parent_id = parentId;
-
+    form.value.sendername=senderID.username;
   console.log(form.value);
 
   this.apiService.createMessage(form.value)

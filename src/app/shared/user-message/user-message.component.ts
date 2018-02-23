@@ -11,7 +11,7 @@ import { ApiService } from './../../api.service';
 export class UserMessageComponent implements OnInit {
 
   messageDetails: any = [];
-
+  uid:any=[];
   constructor(public apiService: ApiService,
               private http: Http ) { }
 
@@ -22,6 +22,10 @@ export class UserMessageComponent implements OnInit {
 getMessageById() {
     let user = JSON.parse(localStorage.getItem('user'));
     let ids = user.id;
+    this.uid=user.id;
+    let user_name=user.username;
+    console.log('username is :'+user_name);
+    console.log('this i my id user details'+JSON.stringify(user));
     console.log(ids);
       this.apiService.messagesByUserId(ids).subscribe( (response) => {
        this.messageDetails = response;
@@ -32,5 +36,6 @@ getMessageById() {
 stringAsDate(dateStr: string) {
   return new Date(dateStr);
 }
+
 
 }

@@ -88,17 +88,27 @@ export class LoginComponent implements OnInit {
     this.apiService.clientLogin(user).subscribe(data => {
       if (!data.success) {
         this.messageClass = 'alert alert-danger';
-        this.message = 'Username or Password are Not Found.';
+        this.message = 'Username or Password are Not Found.If sign up complete then call to admin for aproved your a/c';
         this.processing = false;
         this.enableForm();
       } else {
        // this.getUserByEmail();
         this.messageClass = 'alert alert-success';
         this.message = 'Success';
-        console.log(user);
+        console.log(data.token);
         this.apiService.storeUserData(data.token, data.user);
         setTimeout(() => {
-            this.router.navigate(['/']);
+          console.log('Role Type is '+data.user.role);
+           if(data.user.role){
+             if(data.user.role=='admin'){
+              this.router.navigate(['/admin']);
+            }else   if(data.user.role=='owner'){
+              this.router.navigate(['/']);
+             }else{
+              this.router.navigate(['/']);
+             }
+           }
+            
            }, 2000);
       }
     });

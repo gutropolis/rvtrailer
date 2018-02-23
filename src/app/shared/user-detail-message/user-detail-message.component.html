@@ -2,9 +2,9 @@
     <div class="about-content-top col-sm-6 col-md-5 pull-left" >
       <h5>Trailer Details</h5><br>
 	    <div class="upload-picture clearfix" *ngFor="let trailerDetail of trailerDetails">
-        Trailer Type : {{trailerDetail.rv_type}} <br>
+    <h2>Trailer Detail</h2>    Trailer Type : {{trailerDetail.rv_type}} <br>
         Price : {{trailerDetail.pricing_high_rate_hour}} / Night <br>
-           <div class="trailer-slider">
+        <!--   <div class="trailer-slider">
               <carousel>
                 <slide>
                   <img src="/images/{{ trailerDetail.photo }}" alt="Second slide">
@@ -14,6 +14,7 @@
           <div class="about-content-bottom">
                 <a href="" [routerLink]="['/rv', trailerDetail?._id]" class="btn btn-primary btn-lg">View More</a>
           </div>
+        -->
       </div>
     </div>
 
@@ -23,7 +24,7 @@
             <strong>Trailer Owner is Contact you Soon.</strong>
         </div>
         <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-            <div class="form-group mt-30">
+         <!--   <div class="form-group mt-30">
                 <label for="name">Full Name</label>
                 <input type="text" class="form-control" id="name" required ngModel name="name" #name="ngModel" placeholder="Full Name" />
                 <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
@@ -41,9 +42,10 @@
                    </div>
                 </div>
             </div>
+        -->
             <div class="form-group">
                 <label>Message</label>
-                <textarea class="form-control textareafix" ngModel name="message" id="message" #message="ngModel" required placeholder="Your Message here..."></textarea>
+                <textarea class="form-control textareafix" ngModel cols="5" rows="10" name="message" id="message" #message="ngModel" required placeholder="Your Message here..."></textarea>
                 <div [hidden]="message.valid || message.untouched" class="alert alert-danger">
                    <div [hidden]="!message.hasError('required')">Message is required</div>
                 </div>
@@ -83,7 +85,7 @@
                     </td>
 
                     <td class="sender-name" width="10%">
-                        {{allMessage.name}}
+                        {{allMessage.sendername}}
                     </td>
 
                     <td width="58%" [routerLink]="['/user-dashboard/all-detail-messages']">

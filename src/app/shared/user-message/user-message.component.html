@@ -47,14 +47,20 @@
                         <img src="assets/images/dummy.png" alt="" />
                     </td>
 
-                    <td class="sender-name" width="10%">
-                        {{ messageDetail.name }}
+                    <td class="sender-name" width="10%" *ngIf="uid==messageDetail.listings_user_id">
+                        {{ messageDetail.sendername }}  
+                    </td>
+                    <td class="sender-name" width="10%" *ngIf="uid!=messageDetail.listings_user_id">
+                        {{ messageDetail.recivername }}  
                     </td>
 
                     <td width="58%" [routerLink]="['/user-dashboard/all-detail-messages', messageDetail?._id]">
+                       
 
 
-                        <div class="content"><span class="specialtxt"><b>{{ messageDetail.message}}</b></span></div>
+                        <div class="content"><span class="specialtxt"><b>{{ messageDetail.message}}</b></span>
+                                  
+                        </div>
 
                     </td>
                     <td class="yf xY " width="5%">&nbsp;</td>

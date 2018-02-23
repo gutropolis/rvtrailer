@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation,EventEmitter } from '@angular/core';
 import { ApiService } from './../../api.service';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,Params } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
@@ -11,7 +11,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   encapsulation: ViewEncapsulation.None
 })
 export class SignupOwnerComponent implements OnInit {
-
+   myFilter = new EventEmitter() ;
 rForm: FormGroup;
 user: {};
 photo: any;
@@ -53,11 +53,26 @@ photo: any;
      // console.log(this.rForm.value);
       let id = result['_id'];
      // alert('Please Loggin With Your Email and Password');
+//for mailing perpose
+     this.Email(this.rForm.value);
+     console.log('Email is where'+this.Email(this.rForm.value));
       this.router.navigate(['/login']);
     }, (err) => {
       console.log(err);
       this.flashMessagesService.show('This E-mail Id is Registered.', {cssClass: 'alert-danger'});
     });
   }
+
+  Email(rForm) {
+    let emailparams: any = {
+      location: rForm.value.email,
+     
+    }
+    console.log(emailparams);
+     // alert("hello");
+    this.myFilter.emit(emailparams);
+  
+  }
+  
 
 }
