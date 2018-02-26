@@ -35,7 +35,9 @@
                 </g>
                 </svg>
             </i>
-                <input type="text" formControlName="from" class="form-control" bsDatepicker #dp1="bsDatepicker" placeholder="Available On" [(bsValue)]="bsValue" />
+            <my-date-picker ngModel name="from" class="form-control"  formControlName="from" placeholder="Available On"></my-date-picker>
+             <!--   <input type="text" formControlName="from" class="form-control" bsDatepicker #dp1="bsDatepicker" placeholder="Available On" [(bsValue)]="bsValue" />
+             -->
             </div>
         </div>
 
@@ -53,7 +55,10 @@
                 </g>
                 </svg>
             </i>
-                <input type="text" formControlName="to" placeholder="Available Till" class="form-control" bsDatepicker #dp="bsDatepicker">
+            <my-date-picker ngModel name="to" class="form-control" formControlName="to" placeholder="Available Till"></my-date-picker>
+        
+               <!-- <input type="text" formControlName="to" placeholder="Available Till" class="form-control" bsDatepicker #dp="bsDatepicker">
+               -->
                 <!-- <input type="text" class="form-control" /> -->
             </div>
         </div>

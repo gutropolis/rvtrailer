@@ -22,7 +22,7 @@ const app = express();
 //mongodb://gutropolis:rvtrailer2017@localhost:27017/rvtrailerdb
 // Build the connection string 
 
-var dbURI = 'mongodb://localhost/rvtrailerdb'; 
+var dbURI = 'mongodb://localhost:27017/rvtrailerdb'; 
 //var dbURI ='mongodb://gutropolis:rvtrailer2017@localhost:27017/rvtrailerdb';
 // Create the database connection 
 //var dbURI = 'mongodb://localhost/rvtrailerdb';
