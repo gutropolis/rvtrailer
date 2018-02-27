@@ -6,9 +6,8 @@ import { FileUploader } from 'ng2-file-upload';
 
 // const URL = '/api/';
 //const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-//const URL = 'http://localhost:3001/upload';
+const URL = 'http://localhost:3001/upload';
 // const URL = 'http://162.243.111.79:3001/upload';
-const URL='http://104.236.9.249:3001/upload';
 
 @Component({
   selector: 'rv-admin-add-list-trailer',
@@ -69,6 +68,9 @@ fileName: String;
           'photo' : [null],
           'type_of_rv':[null],
           'created_at':Date.now(),
+          'unavailability_from':[null],
+          'unavailability_to':[null],
+
           
     });
     this.getFeature();

@@ -45,6 +45,10 @@ export class TrailerPricingComponent implements OnInit {
                     'pricing_low_rate_month' : [null],
                     'pricing_highest_season_date_range_from' : [null],
                     'pricing_highest_season_date_range_to' : [null],
+                    
+                    'unavailability_from':[null],
+                    'unavailability_to':[null],
+
                 });
               }
 

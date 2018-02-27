@@ -1,5 +1,5 @@
 <div class="clearfix header-filter">
-    <form [formGroup]="searchForm" (ngSubmit)="searchLocation()">
+    <form [formGroup]="searchForm" (ngSubmit)="searchLocation()" >
 
         <div class="col-sm-4">
 
@@ -18,7 +18,7 @@
                 </g>
               </svg>
             </i>
-                <input type="text" formControlName="location" name="location" class="form-control" placeholder="NANAIMO, COLUMBIA" />
+                <input type="text" formControlName="location" name="location"  class="form-control" autocorrect="off" autocapitalize="off" spellcheck="off"  placeholder="NANAIMO, COLUMBIA"  #search/>
             </div>
         </div>
         <div class="col-sm-3">
