@@ -4,7 +4,11 @@
         <div class="clearfix row detail-top">
             <div class="col-sm-6 form-group">
                 <label>Add Location</label>
-                <input [(ngModel)]="listing.location_street" formControlName="location_street" type="text" class="form-control" placeholder="Add street" />
+                <input type="text" formControlName="location_street" name="location_street"  class="form-control" 
+                autocorrect="off" autocapitalize="off" spellcheck="off" 
+                 placeholder="NANAIMO, COLUMBIA"  #search 
+                 (keyup.enter)="searchBoxChanged()"
+                 (blur)="searchBoxChanged()" [(ngModel)] ="listing.location_street"  />
             </div>
             <div class="col-sm-6 form-group">
                 <label>Ad City*</label>

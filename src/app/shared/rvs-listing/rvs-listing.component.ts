@@ -55,7 +55,14 @@ export class RvsListingComponent implements OnInit {
 
         this.activatedRoute.queryParams.subscribe((params: Params) => {
         let userId = params['location'];
+        let from=params['from'];
+        let to=params['to'];
+        console.log('myrecord after click home search');
+        console.log(from);
+        console.log(to);
         console.log(userId);
+        console.log(params);
+        this.getItems(params);
       });
 
 

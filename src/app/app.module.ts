@@ -20,7 +20,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { TypeaheadModule, BsDatepickerModule , AccordionModule, CarouselModule, RatingModule } from 'ngx-bootstrap';
 
-import { MyDatePickerModule } from 'mydatepicker';
+import { MyDatePickerModule,IMyDpOptions } from 'mydatepicker';
 import { IonRangeSliderModule } from 'ng2-ion-range-slider';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
@@ -123,6 +123,7 @@ import { OwnerEditListtrailerComponent } from './shared/owner-edit-listtrailer/o
 import { OrderbyPipe } from './orderby.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { AgmCoreModule } from '@agm/core';
 
 
 const firebaseConfig = {
@@ -257,7 +258,11 @@ const firebaseConfig = {
     TypeaheadModule.forRoot(),
     RecaptchaModule.forRoot(),
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDzjedSKp0zF9Bg4Gf2C-zWnNvAaWjTBrA',
+      libraries: ["places"]
+    })
 
   ],
   providers: [ApiService, AuthGuard, NotAuthGuard, ClientAuthGuard, ClientNotAuthGuard, GlobaldataService],

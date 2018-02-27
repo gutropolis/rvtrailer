@@ -102,6 +102,10 @@ export const Routing = RouterModule.forRoot([
         component: RvsListingComponent
     },
     {
+        path: 'rvs/:location/:from/:to',
+        component: RvsListingComponent
+    },
+    {
         path: 'rv/:id',
         component: RvDetailComponent
     },

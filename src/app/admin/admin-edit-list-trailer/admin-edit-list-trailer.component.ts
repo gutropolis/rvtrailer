@@ -174,7 +174,7 @@ fileName: String;
 
   updateListTrailerData(id) {
     const detail = this.rForm.value;
-    console.log(this.fileName);
+    console.log('photo name '+this.fileName);
     const photo = {'photo': this.fileName};
     let rv_type = {'rv_type': this.rentalType,'rentalTypeID':this.rentalTypeID};
     console.log(rv_type);

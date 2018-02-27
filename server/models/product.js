@@ -47,8 +47,8 @@ var ListTrailerSchema = new Schema({
     type_of_rv:{type: String},
     rentalTypeID:{type: String},
     created_at : { type : Date,default:null},
-    unavailability_from:{ type : Date,default:null},
-    unavailability_to:{ type : Date,default:null},
+    unavailability_from:{ type : String,default:null},
+    unavailability_to:{ type : String,default:null},
 });
 
 module.exports = mongoose.model('ListTrailer', ListTrailerSchema);

@@ -89,7 +89,7 @@
                 <div *ngFor="let item of items">
                         {{ item | json }} <br>
                 </div> -->
-                <div class="clearfix rvlist" *ngFor="let item of items; let i = index;">
+                <div class="clearfix rvlist" *ngFor="let item of items | filter:filter | OrderbyPipe:'-created_at'; let i = index">
                     <figure class="rvlist-figure">
                         <img src="/images/{{ item.photo }}" />
                     </figure>
@@ -113,7 +113,7 @@
                                 
                                 <h6>{{ item.details_ad_title }}</h6>
                                 <div class="star-rating">
-                                    <rating [(ngModel)]="rating"></rating>
+                                    <rating [(ngModel)]="rating" ></rating>
                                     <!-- <rating (click)=ratingClick()></rating> -->
 
                                 </div>

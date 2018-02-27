@@ -197,10 +197,10 @@ function createRegex(userInput) {
 router.post('/filterSearch', (req, res) => {
 
   console.log(req.body);
-  location = req.body.location.split(',');
+  //location = req.body.location;
 
-  city = location[0].trim();
-  province = location[1];
+  city = req.body.location;
+ // province = location[1];
   price = req.body.price;
   fifthwheel = req.body.fifthwheel;
   hybridtrailer = req.body.hybridtrailer;
@@ -210,8 +210,8 @@ router.post('/filterSearch', (req, res) => {
   traveltrailer = req.body.traveltrailer;
   vintagetrailer = req.body.vintagetrailer;
 
-  dateFrom = req.body.dateFrom;
-  dateTo = req.body.dateTo;
+  dateFrom = req.body.from;
+  dateTo = req.body.to;
   
    //var query = ListTrailer.find();
  
@@ -219,7 +219,9 @@ router.post('/filterSearch', (req, res) => {
   let criteria = [];
   
 if (city && city.length > 0) {   criteria.push({ 'location_city': city }); } 
-if (province && province.length > 0) {  criteria.push({  'location_province': province }); } 
+//if (province && province.length > 0) {  criteria.push({  'location_province': province }); } 
+//if (dateFrom && dateFrom.length > 0) {  criteria.push({  'unavailability_from': dateFrom }); }
+//if (dateTo && dateTo.length > 0) {  criteria.push({  'unavailability_to': dateTo }); }
 if (fifthwheel && fifthwheel.length > 0) {  criteria.push({  'fifthwheel': fifthwheel }); }
 if (hybridtrailer && hybridtrailer.length > 0) {  criteria.push({  'hybrid': hybridtrailer }); }
 if (numberOfGuest && numberOfGuest.length > 0) {  criteria.push({  'specification_guest': numberOfGuest }); }
@@ -301,6 +303,13 @@ router.post('/trailersbyids', (req, res) => {
     res.json(trailers);
   });
 });
+router.get('/rvs', async function(req, res) {
+  let location = req.query.location;
+  let from = req.query.from;
+  let to=req.query.to;
+  console.log(' this is my api '+location);
+});
+  
 
 router.get('/search', function(req, res, next) {
 

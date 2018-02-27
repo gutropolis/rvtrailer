@@ -18,7 +18,11 @@
                 </g>
               </svg>
             </i>
-                <input type="text" formControlName="location" name="location"  class="form-control" autocorrect="off" autocapitalize="off" spellcheck="off"  placeholder="NANAIMO, COLUMBIA"  #search/>
+                <input type="text" formControlName="location" name="location"  class="form-control" 
+                autocorrect="off" autocapitalize="off" spellcheck="off" 
+                 placeholder="NANAIMO, COLUMBIA"  #search 
+                 (keyup.enter)="searchBoxChanged()"
+                 (blur)="searchBoxChanged()" [(ngModel)] = "searchFieldValue"  />
             </div>
         </div>
         <div class="col-sm-3">

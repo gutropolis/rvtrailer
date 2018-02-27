@@ -20,6 +20,9 @@ export class HeaderFilterComponent implements OnInit {
   searchForm:any;
   bsValue: Date = new Date();
   mydate:any=[];
+   //content of searchbox field
+   searchFieldValue: string = "";
+   
   //router:Router;
   constructor(private fb: FormBuilder, public router: Router,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
 
@@ -39,9 +42,10 @@ export class HeaderFilterComponent implements OnInit {
         autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+         console.log(place);
          if(place.geometry === undefined || place.geometry === null ){
           return;
-         }
+         } 
         });
         });
       }
@@ -49,22 +53,45 @@ export class HeaderFilterComponent implements OnInit {
          
   }
 
+  searchBoxChanged () {
+   console.log(this.searchFieldValue)
+    
+    if (this.searchFieldValue != "")
+       this.searchFieldValue=this.searchElement.nativeElement.value;
+  }
+
+
+
+
+  
   searchLocation() {
     console.log(this.searchForm.value);
+   console.log(this.searchElement.nativeElement.value);
     let formValues = this.searchForm.value;
    this.mydate=formValues.from;
+   let tosearch =formValues.to.date.year+"-"+formValues.to.date.month+"-"+formValues.to.date.day;
+   let fromsearch =formValues.from.date.year+"-"+formValues.from.date.month+"-"+formValues.from.date.day;
    
-   
-   console.log('this is my date : '+this.mydate.datepicker({ dateFormat: 'dd-mm-yy' }).val());
-    this.router.navigate(['/rv', {
-      location: formValues.location,
-      from:formValues.from,
-      to: formValues.to,
-      homeSearch: true
-      }]);
+   //console.log('this is my date : '+this.mydate.datepicker({ dateFormat: 'dd-mm-yy' }).val());
+    
 
+      this.router.navigate(['/rv'], { queryParams: 
+        {
+          location: this.searchElement.nativeElement.value,
+         // location:'zirakpur',
+          from:fromsearch,
+          to: tosearch,
+          homeSearch: true
+        }
+        
+        });
+          
+     // console.log('here is day'+formValues.to.date.day);
         return false;
 
+//this.router.navigate(['/rvs']);
   }
+  
+
 
 }

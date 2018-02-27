@@ -29,7 +29,7 @@ export class OwnerEditListtrailerComponent implements OnInit {
    public rentalType: string = 'RV Cottage';
   public rentalTypeID: string = '';
   public uploader:FileUploader = new FileUploader({url: URL});
-  fileName: String='';
+  fileName: String;
   
   constructor(private fb: FormBuilder,
     public router: Router,
@@ -63,7 +63,7 @@ export class OwnerEditListtrailerComponent implements OnInit {
         'pricing_low_rate_month' : [null, Validators.required],
         'pricing_highest_season_date_range_from' : [null, Validators.required],
         'pricing_highest_season_date_range_to' : [null, Validators.required],
-        
+        'photo':[null],
         'type_of_rv':[null],
         'unavailability_from':[null],
         'unavailability_to':[null],
@@ -101,18 +101,18 @@ export class OwnerEditListtrailerComponent implements OnInit {
     this.onSubmitListTrailer(this.route.snapshot.params['id']);
 
    //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
-        this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
-        //overide the onCompleteItem property of the uploader so we are
-        //able to deal with the server response.
-        this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
-                //console.log("ImageUpload:uploaded:", item, status, response);
-           //   console.log(response);
-              const responseResult = JSON.parse(response);
-              this.fileName = responseResult.filename;
-              console.log(this.fileName);
-           //   console.log(responseResult.filename);
-        }
+   this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
+   //overide the onCompleteItem property of the uploader so we are
+   //able to deal with the server response.
+   this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+           //console.log("ImageUpload:uploaded:", item, status, response);
+      //   console.log(response);
+         const responseResult = JSON.parse(response);
+         this.fileName = responseResult.filename;
+         console.log(this.fileName);
+      //   console.log(responseResult.filename);
       }
+    }
 
   getFeature() {
     this.apiService.getAllFeature().then((res) => {
@@ -162,7 +162,7 @@ export class OwnerEditListtrailerComponent implements OnInit {
 
   updateListTrailerData(id) {
     const detail = this.rForm.value;
-    console.log(this.fileName);
+    console.log('photo name '+this.fileName);
     const photo = {'photo': this.fileName};
     let rv_type = {'rv_type': this.rentalType,'rentalTypeID':this.rentalTypeID};
     console.log(rv_type);
