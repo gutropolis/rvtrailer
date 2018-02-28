@@ -19,7 +19,7 @@ export class HeaderFilterComponent implements OnInit {
   public submitted: boolean;
   searchForm:any;
   bsValue: Date = new Date();
-  mydate:any=[];
+  mydate:Date;
    //content of searchbox field
    searchFieldValue: string = "";
    
@@ -68,19 +68,23 @@ export class HeaderFilterComponent implements OnInit {
     console.log(this.searchForm.value);
    console.log(this.searchElement.nativeElement.value);
     let formValues = this.searchForm.value;
-   this.mydate=formValues.from;
+   
    let tosearch =formValues.to.date.year+"-"+formValues.to.date.month+"-"+formValues.to.date.day;
    let fromsearch =formValues.from.date.year+"-"+formValues.from.date.month+"-"+formValues.from.date.day;
    
    //console.log('this is my date : '+this.mydate.datepicker({ dateFormat: 'dd-mm-yy' }).val());
-    
+   
+    this.mydate=new Date(tosearch);
+    this.bsValue=new Date(fromsearch);
+
+   // console.log('time format change by thakur'+this.bsValue);
 
       this.router.navigate(['/rv'], { queryParams: 
         {
           location: this.searchElement.nativeElement.value,
          // location:'zirakpur',
-          from:fromsearch,
-          to: tosearch,
+          from:this.bsValue,
+          to: this.mydate,
           homeSearch: true
         }
         

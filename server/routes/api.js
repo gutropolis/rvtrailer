@@ -199,7 +199,7 @@ router.post('/filterSearch', (req, res) => {
   console.log(req.body);
   //location = req.body.location;
 
-  city = req.body.location;
+  city = req.body.location.trim();
  // province = location[1];
   price = req.body.price;
   fifthwheel = req.body.fifthwheel;
@@ -212,7 +212,7 @@ router.post('/filterSearch', (req, res) => {
 
   dateFrom = req.body.from;
   dateTo = req.body.to;
-  
+  /*
    //var query = ListTrailer.find();
  
   //let criteria = {};
@@ -220,8 +220,8 @@ router.post('/filterSearch', (req, res) => {
   
 if (city && city.length > 0) {   criteria.push({ 'location_city': city }); } 
 //if (province && province.length > 0) {  criteria.push({  'location_province': province }); } 
-//if (dateFrom && dateFrom.length > 0) {  criteria.push({  'unavailability_from': dateFrom }); }
-//if (dateTo && dateTo.length > 0) {  criteria.push({  'unavailability_to': dateTo }); }
+if (dateFrom && dateFrom.length > 0) {  criteria.push({  'unavailability_from': dateFrom }); }
+if (dateTo && dateTo.length > 0) {  criteria.push({  'unavailability_to': dateTo }); }
 if (fifthwheel && fifthwheel.length > 0) {  criteria.push({  'fifthwheel': fifthwheel }); }
 if (hybridtrailer && hybridtrailer.length > 0) {  criteria.push({  'hybrid': hybridtrailer }); }
 if (numberOfGuest && numberOfGuest.length > 0) {  criteria.push({  'specification_guest': numberOfGuest }); }
@@ -266,9 +266,37 @@ criteria = criteria.length > 0 ? { $and: criteria } : {};
   // let query = {$and:[{'pricing_high_rate_hour': {$gte: 0, $lte: price} }]}
   // let query = {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}
 
-    ListTrailer.find(criteria, function(err, trailers){
+ /*   ListTrailer.find(criteria, function(err, trailers){
       res.json(trailers);
     });
+    */
+
+    let query = {
+      $and : 
+      [
+        {$or: [
+           
+            {"location_city":city}
+          ]},
+        {$and: [
+           
+          {'fifthwheel':fifthwheel ||{$exists:true}}, {'hybrid':hybridtrailer ||{$exists:true}}, {'specification_guest':numberOfGuest ||{$exists:true}}, {'tenttrailer':tentrailer ||{$exists:true}}, {'toyhauler':toytrailer ||{$exists:true}}, {'traveltrailer':traveltrailer ||{$exists:true} }, {'vintage':vintagetrailer ||{$exists:true}},{$or:[{'unavailability_from':{"$lt":dateFrom}},{'unavailability_to':{"$gt":dateTo}}    
+        ]
+      }     
+      ]
+    }
+  ]
+  }
+    
+  
+    // let query = {$and:[{'pricing_high_rate_hour': {$gte: 0, $lte: price} }]}
+    // let query = {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}
+  
+      ListTrailer.find(query, function(err, trailers){
+  
+        res.json(trailers);
+      });
+
   });
 
 
