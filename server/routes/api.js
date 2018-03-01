@@ -280,9 +280,22 @@ criteria = criteria.length > 0 ? { $and: criteria } : {};
           ]},
         {$and: [
            
-          {'fifthwheel':fifthwheel ||{$exists:true}}, {'hybrid':hybridtrailer ||{$exists:true}}, {'specification_guest':numberOfGuest ||{$exists:true}}, {'tenttrailer':tentrailer ||{$exists:true}}, {'toyhauler':toytrailer ||{$exists:true}}, {'traveltrailer':traveltrailer ||{$exists:true} }, {'vintage':vintagetrailer ||{$exists:true}},{$or:[{'unavailability_from':{$not:{"$gte":dateFrom}}},{'unavailability_to':{$not:{"$lte":dateTo}}}    
-        ]
-      }     
+          {'fifthwheel':fifthwheel ||{$exists:true}}, {'hybrid':hybridtrailer ||{$exists:true}}, {'specification_guest':numberOfGuest ||{$exists:true}}, {'tenttrailer':tentrailer ||{$exists:true}}, {'toyhauler':toytrailer ||{$exists:true}}, {'traveltrailer':traveltrailer ||{$exists:true} }, {'vintage':vintagetrailer ||{$exists:true}},{$and:[
+            {$or:
+                [
+                {'unavailability_from':{"$lt":dateFrom}},
+                {'unavailability_from':{"$gt":dateTo}}    
+                ]
+                  },
+                  
+                  {$or:
+                [
+                {'unavailability_to':{"$lt":dateFrom}},
+                {'unavailability_to':{"$gt":dateTo}}    
+                ]
+                  }
+                  ]
+              }
       ]
     }
   ]
