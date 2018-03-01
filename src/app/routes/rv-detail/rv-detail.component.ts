@@ -2,10 +2,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {AppComponent} from '../../shared/app/app.component';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { RecaptchaModule } from 'ng2-recaptcha';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router,Params } from '@angular/router';
 import { ApiService } from './../../api.service';
 import { FlashMessagesService } from 'angular2-flash-messages/module';
-
+import * as $ from 'jquery';
+import 'fullcalendar';
+import {Options} from "fullcalendar";
 @Component({
   selector: 'rv-detail',
   templateUrl: './rv-detail.component.html',
@@ -20,13 +22,24 @@ export class RvDetailComponent implements OnInit {
   public rate: number = 4;
   public isReadonly: boolean = true;
   public features: string[];
+
+  calendarOptions: Object = {};
+ 
+  /*   
   calendarOptions: Object = {
-    height: 'parent',
-    fixedWeekCount : false,
-    defaultDate: '2016-09-12',
-    editable: true,
-    eventLimit: true, // allow "more" link when too many events
+    defaultDate: '2018-03-10',
+    defaultView: 'month',
+    events: [
+      {
+        start: '2018-03-10',
+        end: '2018-03-22',
+        rendering: 'background'
+      }
+    ]
   };
+*/
+
+
 
   public isFavourite = true;
   public favourite = {};
@@ -40,9 +53,36 @@ export class RvDetailComponent implements OnInit {
               public router: Router,
               public apiService: ApiService,
               private route: ActivatedRoute,
-              private flashMessagesService: FlashMessagesService
+              private flashMessagesService: FlashMessagesService,
+              
               ) {
                   this.app.brandSlideVisible = false;
+
+                  this.route.queryParams.subscribe((params: Params) => {
+                   
+                    let from=params['from'];
+                    let to=params['to'];
+                    console.log('myrecord after click home search');
+                    console.log(from);
+                    console.log(to);
+                   // console.log(this.location);
+                    console.log(params);
+                   
+                    this.calendarOptions = {
+                      defaultDate: from,
+                      defaultView: 'month',
+                      events: [
+                        {
+                          start: from,
+                          end: to,
+                          rendering: 'background'
+                        }
+                      ]
+                    };
+
+                  });    
+                  
+                 
             }
 
               brandSlideVisible: boolean;
@@ -52,9 +92,11 @@ export class RvDetailComponent implements OnInit {
     this.getRenterDetail(this.route.snapshot.params['id']);
     this.listing_id = this.route.snapshot.params['id'];
     this.checkFavourite();
-
+   
 
   }
+ 
+
 
   resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response ${captchaResponse}:`);

@@ -113,7 +113,7 @@
                                 
                                 <h6>{{ item.details_ad_title }}</h6>
                                 <div class="star-rating">
-                                    <rating [(ngModel)]="rating" ></rating>
+                                    <rating [(ngModel)]="rating" disabled="disabled"></rating>
                                     <!-- <rating (click)=ratingClick()></rating> -->
 
                                 </div>
@@ -124,7 +124,10 @@
                             <div class="rv-modal">Year<br/> {{item.specification_year}}</div>
                             <div class="rv-guest">guest <br /> {{ item.specification_guest }}</div>
 
-                            <button class="rv-btn btn btn-primary" type="button" [routerLink]="['/rv/', item._id]">Rent IT</button>
+                      <!--      <button class="rv-btn btn btn-primary" type="button" [routerLink]="['/rv/', item._id]">Rent IT</button>
+                      -->
+                             <button class="rv-btn btn btn-primary" type="button" (click)="rentit(item._id)">Rent IT</button>
+
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class RvsListingComponent implements OnInit {
-
+  listtrailers:any=[];
   public rvList: any[] = [
     {
       rvimage: 'rv-1.jpg',
@@ -35,7 +35,8 @@ export class RvsListingComponent implements OnInit {
   listLimit = 10;
 
   constructor(private apiService: ApiService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              public router: Router) {
                       if (this.logindata  === null ) {
                         console.log();
                       } else {
@@ -114,6 +115,30 @@ export class RvsListingComponent implements OnInit {
     this.listLimit = this.items.length + 5;
     console.log(this.listLimit);
     this.allItems();
+  }
+
+  rentit(id)
+  {
+   console.log('renter click with this id '+id);
+   //this.router.navigate(['/rv/'+id]);
+
+   this.apiService.showListTrailer(id).subscribe((res) => {
+            
+    this.listtrailers =res;
+    this.router.navigate(['/rv/'+id], { queryParams: 
+      {
+        
+        from:this.listtrailers.unavailability_from,
+        to:this.listtrailers.unavailability_to,
+        
+      }
+     
+      });
+     
+          });
+         
+  
+
   }
 
 }

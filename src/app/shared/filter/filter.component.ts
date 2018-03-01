@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import {IMyDpOptions} from 'mydatepicker';
-
+import { FormGroup, Validators, FormBuilder,FormArray, NgForm ,FormControl} from '@angular/forms';
 import { ApiService } from './../../api.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 @Component({
@@ -13,6 +13,7 @@ export class FilterComponent {
   @Output() myFilter = new EventEmitter() ;
   rental :any=[];
   Listing: any;
+  location:any=[];
   public mystates:any;
   public myLocation:string[];
   public states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas',
@@ -28,10 +29,13 @@ export class FilterComponent {
     'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
     'Virginia', 'Washington',
     'West Virginia', 'Wisconsin', 'Wyoming','Punjab','Kurukestra','Hariyana'];
-
+    rForm: FormGroup;
   public price: any;
-  constructor(public apiService: ApiService) { 
-    
+  constructor(public apiService: ApiService,private fb: FormBuilder,private activatedRoute:ActivatedRoute) { 
+
+    this.rForm = fb.group({
+      'location':[null]
+     });
        this.apiService.getCity().subscribe((res) => {
        this.myLocation = res;
        //console.log("now location is ");
@@ -46,7 +50,18 @@ export class FilterComponent {
        });
 
     this.getRental();
-         
+    //this.location='mylocation';
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this.location= params['location'];
+      let from=params['from'];
+      let to=params['to'];
+      console.log('myrecord after click home search');
+      console.log(from);
+      console.log(to);
+      console.log(this.location);
+      console.log(params);
+     
+    });    
         
    }
    getRental() {
