@@ -14,7 +14,7 @@ var UserSchema = new Schema({
     owner: {type: Boolean, default: false},
     renter: {type: Boolean, default: false},
     type: {type: String},
-    photo: {type: String},
+    photo: {type: String,default:'noimage.jpg'},
     about_user_description: {type: String},
     user_address: {type: String},
     user_contact_no: {type: String},

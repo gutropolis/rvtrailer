@@ -33,8 +33,8 @@ export class RvsListingComponent implements OnInit {
   rating: number;
   counter: number;
   item: any[] = [];
-  listLimit = 10;
-
+  listLimit = 2;
+  content:any[]=new Array();
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
               public router: Router,private datePipe: DatePipe) {
@@ -93,10 +93,13 @@ export class RvsListingComponent implements OnInit {
 
   allItems() {
 
-    this.apiService.getAllListTrailer(this.listLimit)
+    this.apiService.getAllListTrailer()
           .subscribe( (result) => {
             this.items = result;
             console.log(this.item);
+
+            this.counter=0;
+            this.loadMore();
           });
 
           this.apiService.getAllUsers().subscribe((res) => {
@@ -105,6 +108,21 @@ export class RvsListingComponent implements OnInit {
           });
 
   }
+  loadMore() {
+   // this.listLimit = this.items.length + 5;
+   // console.log(this.listLimit);
+    //this.allItems();
+
+    console.log(this.counter + 'dat size'+this.items.length)
+    for(let i=this.counter+1;i<this.items.length;i++)
+    {
+    this.content.push(this.items[i]);
+    if(i%10==0) break;
+    }
+    this.counter+=5;
+    
+  }
+  
 
 
   getUserData(id) {
@@ -118,11 +136,7 @@ export class RvsListingComponent implements OnInit {
     console.log('kp');
   }
 
-  loadMore() {
-    this.listLimit = this.items.length + 5;
-    console.log(this.listLimit);
-    this.allItems();
-  }
+  
 
   rentit(id)
   {
