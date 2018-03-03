@@ -53,11 +53,11 @@ export class FilterComponent {
     //this.location='mylocation';
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.location= params['location'];
-      let from=params['from'];
-      let to=params['to'];
+      let dateFrom=params['dateFrom'];
+      let dateTo=params['dateTo'];
       console.log('myrecord after click home search');
-      console.log(from);
-      console.log(to);
+      console.log(dateFrom);
+      console.log(dateTo);
       console.log(this.location);
       console.log(params);
      

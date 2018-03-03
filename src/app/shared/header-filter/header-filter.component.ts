@@ -83,8 +83,8 @@ export class HeaderFilterComponent implements OnInit {
         {
           location: this.searchElement.nativeElement.value,
          // location:'zirakpur',
-          from:this.bsValue,
-          to: this.mydate,
+         dateFrom:this.bsValue,
+         dateTo: this.mydate,
           homeSearch: true
         }
         
