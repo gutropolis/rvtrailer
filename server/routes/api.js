@@ -288,7 +288,7 @@ criteria = criteria.length > 0 ? { $and: criteria } : {};
                 [
                 {'unavailability_from':{"$lt":dateFrom}},
                 {'unavailability_from':{"$gt":dateTo}},
-                //{'unavailability_from':{ $exists: true }}    
+                {'unavailability_from':null}    
                 ]
                   },
                   
@@ -296,7 +296,7 @@ criteria = criteria.length > 0 ? { $and: criteria } : {};
                 [
                 {'unavailability_to':{"$lt":dateFrom}},
                 {'unavailability_to':{"$gt":dateTo}},
-               // {'unavailability_to':{ $exists: true }}    
+                {'unavailability_to':null}    
                 ]
                   }
                   ]

@@ -3,6 +3,10 @@ import {IMyDpOptions} from 'mydatepicker';
 import { FormGroup, Validators, FormBuilder,FormArray, NgForm ,FormControl} from '@angular/forms';
 import { ApiService } from './../../api.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { MapsAPILoader } from '@agm/core';
+import {} from '@types/googlemaps';
+
+import { ViewChild, ElementRef, NgZone } from '@angular/core';
 @Component({
   selector: 'rv-filter',
   templateUrl: './filter.component.html',
@@ -10,6 +14,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class FilterComponent {
+  @ViewChild('search') public searchElement: ElementRef;
   @Output() myFilter = new EventEmitter() ;
   rental :any=[];
   Listing: any;
@@ -31,39 +36,67 @@ export class FilterComponent {
     'West Virginia', 'Wisconsin', 'Wyoming','Punjab','Kurukestra','Hariyana'];
     rForm: FormGroup;
   public price: any;
-  constructor(public apiService: ApiService,private fb: FormBuilder,private activatedRoute:ActivatedRoute) { 
+  searchFieldValue: string = "";
+  constructor(public apiService: ApiService,private fb: FormBuilder,private activatedRoute:ActivatedRoute,private mapsAPILoader: MapsAPILoader,private ngZone: NgZone) { 
 
     this.rForm = fb.group({
       'location':[null]
      });
-       this.apiService.getCity().subscribe((res) => {
-       this.myLocation = res;
+      // this.apiService.getCity().subscribe((res) => {
+      // this.myLocation = res;
        //console.log("now location is ");
       
        //console.log(this.myLocation);
-       this.mystates = this.myLocation.map(function(a) {
-         return a["location_city"];
-        });
+     //  this.mystates = this.myLocation.map(function(a) {
+         //return a["location_city"];
+       // });
        //console.log("after Maping");
        //console.log(this.mystates);
          
-       });
+     //  });
+
+     this.mapsAPILoader.load().then(
+      () => {
+       let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types:["address"] });
+
+        autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+         console.log(place);
+         if(place.geometry === undefined || place.geometry === null ){
+          return;
+         } 
+        });
+        });
+      }
+         );
+
+
+
 
     this.getRental();
     //this.location='mylocation';
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.location= params['location'];
+      this.searchFieldValue= params['location'];
       let dateFrom=params['dateFrom'];
       let dateTo=params['dateTo'];
       console.log('myrecord after click home search');
       console.log(dateFrom);
       console.log(dateTo);
-      console.log(this.location);
+      console.log(this.searchFieldValue);
       console.log(params);
      
     });    
         
    }
+   searchBoxChanged () {
+    console.log(this.searchFieldValue)
+     
+     if (this.searchFieldValue != "")
+        this.searchFieldValue=this.searchElement.nativeElement.value;
+   }
+
+   
    getRental() {
     this.apiService.getAllRental().then((res) => {
       this.rental = res;
@@ -74,8 +107,9 @@ export class FilterComponent {
   }
 
   filterSearch(form) {
+
     let filterParams: any = {
-      location: form.value.location,
+      location: this.searchElement.nativeElement.value,
       dateFrom: form.value.dateFrom.formatted,
       dateTo: form.value.dateTo.formatted,
       numberOfGuest: form.value.numberOfGuest

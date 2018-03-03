@@ -18,8 +18,13 @@
               </svg>
             </i>
 
-                <input type="text"  [(ngModel)]="location"  name="location" class="form-control" placeholder="Nanaimo, Columbia" [typeahead]="mystates" />
+            <input type="text"  name="searchFieldValue" class="form-control" 
+            autocorrect="off" autocapitalize="off" spellcheck="off" 
+             placeholder="NANAIMO, COLUMBIA"  #search 
+             (keyup.enter)="searchBoxChanged()"
+             (blur)="searchBoxChanged()" [(ngModel)] = "searchFieldValue"  />
             </div>
+         
             <label class="form-label">
         Price Range
        
