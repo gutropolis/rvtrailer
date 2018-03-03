@@ -1,7 +1,8 @@
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { ApiService } from './../../api.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
+import { ListTrailerComponent } from 'app/routes/list-trailer/list-trailer.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'rvs-listing',
@@ -36,7 +37,7 @@ export class RvsListingComponent implements OnInit {
 
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
-              public router: Router) {
+              public router: Router,private datePipe: DatePipe) {
                       if (this.logindata  === null ) {
                         console.log();
                       } else {
@@ -125,11 +126,17 @@ export class RvsListingComponent implements OnInit {
    this.apiService.showListTrailer(id).subscribe((res) => {
             
     this.listtrailers =res;
+    //console.log('My date Format '+this.datePipe.transform(this.listtrailers.unavailability_from,"yyyy-MM-dd"));
+   // console.log('date check by : '+getMonth(this.listtrailers.unavailability_from));
+    let startdate=this.datePipe.transform(this.listtrailers.unavailability_from,"yyyy-MM-dd");
+    let enddate=this.datePipe.transform(this.listtrailers.unavailability_to,"yyyy-MM-dd");
+    console.log('Date format after using pipe'+startdate);
+    console.log('Date format after using pipe'+startdate);
     this.router.navigate(['/rv/'+id], { queryParams: 
       {
         
-        from:this.listtrailers.unavailability_from,
-        to:this.listtrailers.unavailability_to,
+        from:startdate,
+        to:enddate,
         
       }
      

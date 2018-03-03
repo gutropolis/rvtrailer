@@ -34,7 +34,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import {CalendarComponent} from '../../node_modules/ap-angular2-fullcalendar/src/calendar/calendar';
 
 /* components */
-
+import { DatePipe } from '@angular/common';
 import { AppComponent } from './shared/app/app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { RvsListingComponent } from './shared/rvs-listing/rvs-listing.component';
@@ -265,7 +265,7 @@ const firebaseConfig = {
     })
 
   ],
-  providers: [ApiService, AuthGuard, NotAuthGuard, ClientAuthGuard, ClientNotAuthGuard, GlobaldataService],
+  providers: [ApiService, AuthGuard, NotAuthGuard, ClientAuthGuard, ClientNotAuthGuard, GlobaldataService,DatePipe],
   bootstrap: [AppComponent]
-})
+}) 
 export class AppModule { }
