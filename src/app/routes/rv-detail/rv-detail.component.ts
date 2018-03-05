@@ -8,6 +8,7 @@ import { FlashMessagesService } from 'angular2-flash-messages/module';
 import * as $ from 'jquery';
 import 'fullcalendar';
 import {Options} from "fullcalendar";
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'rv-detail',
   templateUrl: './rv-detail.component.html',
@@ -22,7 +23,8 @@ export class RvDetailComponent implements OnInit {
   public rate: number = 4;
   public isReadonly: boolean = true;
   public features: string[];
-
+  from:String="";
+  to:String="";
   calendarOptions: Object = {};
  
   /*   
@@ -53,28 +55,37 @@ export class RvDetailComponent implements OnInit {
               public router: Router,
               public apiService: ApiService,
               private route: ActivatedRoute,
-              private flashMessagesService: FlashMessagesService,
+              private flashMessagesService: FlashMessagesService,private datePipe: DatePipe
               
               ) {
                   this.app.brandSlideVisible = false;
 
                   this.route.queryParams.subscribe((params: Params) => {
                    
-                    let from=params['from'];
-                    let to=params['to'];
+                    this.from=params['from'];
+                    this.to=params['to'];
                     console.log('myrecord after click home search');
-                    console.log(from);
-                    console.log(to);
+                    console.log(this.from);
+                    console.log(this.to);
+                    let today=Date();
+                    let newdate=this.datePipe.transform(today,"yyyy-MM-dd");
+                    console.log('this is change format'+newdate);
+                   // let enddate=this.datePipe.transform(this.listtrailers.unavailability_to,"yyyy-MM-dd");
+                    if(this.from == undefined || this.from < newdate)
+                    {
+                      this.from= Date();
+                      console.log('My undefind date is '+this.from);
+                    }
                    // console.log(this.location);
                     console.log(params);
                    
                     this.calendarOptions = {
-                      defaultDate: from,
+                      defaultDate: this.from,
                       defaultView: 'month',
                       events: [
                         {
-                          start: from,
-                          end: to,
+                          start:this.from,
+                          end:this.to,
                           rendering: 'background'
                         }
                       ]
