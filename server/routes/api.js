@@ -571,11 +571,11 @@ router.get('/trailers/:listlimit', function(req, res, next) {
   console.log(listlimit);
   
 
-  ListTrailer.find({}, function(err, list){
+  ListTrailer.find({}).sort({'created_at':-1}).limit(listlimit).exec(function(err, list){
     if (err) return err;
     res.json(list);
 
-  }).limit(listlimit);
+  })
 });
 
 router.get('/features/:listlimit', function(req, res, next) {
