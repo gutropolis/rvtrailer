@@ -3,7 +3,7 @@
 
 <div class="breadcrumb-wrap">
     <div class="container">
-        <h3>Trailer Name</h3>
+        <h3>{{renterdetail.details_ad_title}}</h3>
         <ol class="breadcrumb">
             <li><a [routerLink]="['/']">Home</a></li>
             <li><a [routerLink]="['/rv']">rv</a></li>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="trailer-name clearfix">
                     <div class="col-md-8">
-                        <h4>Abella Airstream</h4>
+                        <h4>{{renterdetail.details_ad_title}}</h4>
                     </div>
                     <div class="col-md-4 text-right trailor-rating">
                         <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"></rating>

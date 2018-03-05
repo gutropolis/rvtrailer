@@ -99,11 +99,11 @@
                                 <h6>{{ item.specification_make }}</h6>
                                 <p class="rv-price">Price: $ {{ item.pricing_high_rate_hour }} / Night</p>
                                 <p class="rv-location">Location: <label>{{ item.location_city}}</label></p>
-                                <label>{{ item.location_street }} </label>
+                              <!--  <label>{{ item.location_street }} </label> -->
                             </div>
                             <div class="rv-owner-info rv-info-top-right text-center">
                                 <div *ngFor="let user of users; let i = index;">
-
+                                    <div>
                                     <figure *ngIf="user._id == item.user_id">
                                         <img src="/images/{{ user.photo }}" alt="no image" />
                                     </figure>
@@ -111,12 +111,16 @@
                                 </div> 
 
                                 
-                                <h6>{{ item.details_ad_title }}</h6>
+                                <h6 *ngIf="user._id == item.user_id">
+                                    {{ user.firstname }}
+                                </h6>
+                            </div>
                                 <div class="star-rating">
                                     <rating [(ngModel)]="rating" disabled="disabled"></rating>
                                     <!-- <rating (click)=ratingClick()></rating> -->
 
                                 </div>
+                                
                             </div>
 
                         </div>
@@ -126,14 +130,17 @@
 
                       <!--      <button class="rv-btn btn btn-primary" type="button" [routerLink]="['/rv/', item._id]">Rent IT</button>
                       -->
-                             <button class="rv-btn btn btn-primary" type="button" (click)="rentit(item._id)">Rent IT</button>
+                             <button class="rv-btn btn btn-primary" type="button"  (click)="rentit(item._id)">Rent IT</button>
 
                         </div>
                     </div>
                 </div>
 
                 <div class=" view-btn ">
-                    <button class="btn btn-primary" (click)="loadMore()">View More</button>
+                    <button class="btn btn-primary" (click)="loadMore()" *ngIf="listlmt <= items.length">View More</button> 
+              <!--    <button class="btn btn-primary" (click)="loadMore()" [disabled]="counter>=items.length">
+                    Show more
+                  </button>-->
                 </div>
             </div>
         </div>

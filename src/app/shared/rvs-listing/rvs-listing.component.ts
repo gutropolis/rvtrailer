@@ -33,7 +33,9 @@ export class RvsListingComponent implements OnInit {
   rating: number;
   counter: number;
   item: any[] = [];
-  listLimit = 10;
+  content:any[]=new Array();
+  listLimit:number=10;
+  listlmt:number=0;
 
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
@@ -97,6 +99,13 @@ export class RvsListingComponent implements OnInit {
           .subscribe( (result) => {
             this.items = result;
             console.log(this.item);
+
+            this.listlmt=this.listLimit;
+            let lenght=this.items.length;
+            console.log('this is items lenght'+lenght);
+            console.log('this is list limit'+this.listlmt);
+           // this.counter=0;
+           // this.loadMore();
           });
 
           this.apiService.getAllUsers().subscribe((res) => {
@@ -105,7 +114,26 @@ export class RvsListingComponent implements OnInit {
           });
 
   }
+  loadMore() {
+    console.log('check item length'+this.items.length);
+    
+    this.listLimit = this.items.length + 5;
+    console.log(this.listLimit);
+    
+    this.allItems();
+   
 
+
+   /* console.log(this.counter + 'dat size'+this.items.length)
+    for(let i=this.counter+1;i<this.items.length;i++)
+    {
+    this.content.push(this.items[i]);
+    if(i%3==0) break;
+    }
+    this.counter+=3;
+    
+    */
+  }
 
   getUserData(id) {
     this.apiService.showUser(id).subscribe((res) => {
@@ -118,11 +146,7 @@ export class RvsListingComponent implements OnInit {
     console.log('kp');
   }
 
-  loadMore() {
-    this.listLimit = this.items.length + 5;
-    console.log(this.listLimit);
-    this.allItems();
-  }
+  
 
   rentit(id)
   {
