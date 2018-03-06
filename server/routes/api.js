@@ -279,7 +279,7 @@ criteria = criteria.length > 0 ? { $and: criteria } : {};
       [
         {$or: [
            
-            {"location_city":city}
+            {"location_city":city ||{$exists:true}}
           ]},
         {$and: [
            
@@ -325,7 +325,7 @@ else{
       [
         {$or: [
            
-            {"location_city":city}
+            {"location_city":city ||{$exists:true}}
           ]},
         {$and: [
            
