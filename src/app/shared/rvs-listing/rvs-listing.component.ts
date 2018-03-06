@@ -34,7 +34,7 @@ export class RvsListingComponent implements OnInit {
   counter: number;
   item: any[] = [];
   content:any[]=new Array();
-  listLimit:number=3;
+  listLimit:number=10;
   listlmt:number=0;
   isReadonly: boolean = true;
   constructor(private apiService: ApiService,
