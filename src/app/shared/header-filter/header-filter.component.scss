@@ -23,6 +23,95 @@
             padding-top: 15px;
             padding-bottom: 15px;
             padding-left: 65px;
+            .mydp{
+                border: none;
+                .selectorarrow{
+                    min-width: 300px;
+                    border: 0px;
+                }
+                .header{
+                    min-height: 50px;
+                    background: $red-color;
+                    position: relative;
+                    tr td:nth-child(2){
+                        display: none;
+                    }
+                    tr td div:first-child{
+                        float: none !important;
+
+                    }
+                    tr td div .headermonthtxt, tr td div.headeryeartxt{
+                        margin: 0px auto;
+                        display: block;
+                        min-width: 80px;
+                        border-radius: 50px;
+                        padding: 5px;
+                        min-height: 32px;
+                        button{
+                            font-size: 18px;
+                            color: $white-color;
+                            background: transparent;
+                        }
+                        &:hover{
+                            background: $darkred-color;
+                        }
+                    }
+                
+                
+                tr td:first-child .headerbtncell{
+                    display: block;
+                }
+                tr td:first-child .headerbtncell:first-child{
+                    position: absolute;
+                    left: 5px;
+                    top: 15px;
+                    background: transparent;
+                    button{
+                        background: transparent;
+                        color: $white-color;
+                    }
+                }
+                tr td:first-child .headerbtncell:last-child{
+                    position: absolute;
+                    right: 5px;
+                    top: 15px;
+                    background: transparent;
+                    button{
+                        background: transparent;
+                        color: $white-color;
+                    }
+                }
+                .headerbtncell{
+                    display: none;
+                }
+            }
+
+            .daycell, .currmonth, .tablesingleday{
+                padding: 0px;
+                margin: 5px;
+                &:hover{
+                    background: none;
+                }
+            }
+
+            .daycell .datevalue span{
+                display: inline-block;
+                width: 36px;
+                height: 36px;
+                padding: 10px;
+                border-radius: 100px;
+                &:hover{
+                    background: $red-color;
+                    color: $white-color;
+                }
+            }
+
+             .markcurrday{
+                background: red;
+                text-decoration: none;
+                color: #fff;
+            }
+            }
         }
     }
     .btn {

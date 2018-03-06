@@ -40,7 +40,8 @@ export class FilterComponent {
   constructor(public apiService: ApiService,private fb: FormBuilder,private activatedRoute:ActivatedRoute,private mapsAPILoader: MapsAPILoader,private ngZone: NgZone) { 
 
     this.rForm = fb.group({
-      'location':[null]
+      'location':[null],
+      'details_feature' : this.fb.array([]),
      });
       // this.apiService.getCity().subscribe((res) => {
       // this.myLocation = res;
@@ -94,6 +95,7 @@ export class FilterComponent {
      
      if (this.searchFieldValue != "")
         this.searchFieldValue=this.searchElement.nativeElement.value;
+       // console.log(this.searchFieldValue);
    }
 
    
@@ -107,14 +109,16 @@ export class FilterComponent {
   }
 
   filterSearch(form) {
+    console.log("my type of rv"+this.rForm.value.details_feature);
 
     let filterParams: any = {
       location: this.searchElement.nativeElement.value,
-      dateFrom: form.value.dateFrom.formatted,
-      dateTo: form.value.dateTo.formatted,
-      numberOfGuest: form.value.numberOfGuest
+      dateFrom:new Date(form.value.dateFrom.formatted),
+      dateTo:new Date(form.value.dateTo.formatted),
+      numberOfGuest: form.value.numberOfGuest,
+      type_of_rv:this.rForm.value.details_feature
       };
-    filterParams.traveltrailer = form.value.traveltrailer;
+    filterParams.traveltrailer =form.value.details_feature;
     filterParams.fifthwheel = form.value.fifthwheel;
     filterParams.tentrailer = form.value.tentrailer;
     filterParams.vintagetrailer = form.value.vintagetrailer;
@@ -130,6 +134,19 @@ export class FilterComponent {
   myOnFinish(event) {
     this.price = event.from;
   }
+
+  onChange(type_of_rv: string, isChecked: boolean) {
+   
+    const abc = <FormArray>this.rForm.controls.details_feature;
+    console.log(abc);
+    if (isChecked) {
+      abc.push(new FormControl(type_of_rv));
+      console.log('type of rv'+type_of_rv);
+    } else {
+      const index = abc.controls.findIndex(x => x.value === type_of_rv);
+      abc.removeAt(index);
+    }
+}
 
 
 }

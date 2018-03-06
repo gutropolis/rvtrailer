@@ -212,6 +212,8 @@ router.post('/filterSearch', (req, res) => {
 
   dateFrom = req.body.dateFrom;
   dateTo = req.body.dateTo;
+  type_of_rv=req.body.type_of_rv;
+  console.log(type_of_rv);
   /*
    //var query = ListTrailer.find();
  
@@ -329,7 +331,7 @@ else{
           ]},
         {$and: [
            
-          {'fifthwheel':fifthwheel ||{$exists:true}}, {'hybrid':hybridtrailer ||{$exists:true}}, {'specification_guest':numberOfGuest ||{$exists:true}}, {'tenttrailer':tentrailer ||{$exists:true}}, {'toyhauler':toytrailer ||{$exists:true}}, {'traveltrailer':traveltrailer ||{$exists:true} }, {'vintage':vintagetrailer ||{$exists:true}}
+          {'fifthwheel':fifthwheel ||{$exists:true}}, {'hybrid':hybridtrailer ||{$exists:true}}, {'specification_guest':numberOfGuest ||{$exists:true}}, {'tenttrailer':tentrailer ||{$exists:true}}, {'toyhauler':toytrailer ||{$exists:true}}, {'traveltrailer':traveltrailer ||{$exists:true} }, {'pricing_high_rate_hour':{$lte:price} },{'type_of_rv':[type_of_rv] }
       ]
     }
   ]
