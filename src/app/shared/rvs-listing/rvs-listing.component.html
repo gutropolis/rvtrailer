@@ -116,7 +116,7 @@
                                 </h6>
                             </div>
                                 <div class="star-rating">
-                                    <rating [(ngModel)]="rating" disabled="disabled"></rating>
+                                    <rating [(ngModel)]="rating" [readonly]="isReadonly"></rating>
                                     <!-- <rating (click)=ratingClick()></rating> -->
 
                                 </div>
