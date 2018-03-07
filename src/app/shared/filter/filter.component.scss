@@ -33,6 +33,10 @@
     }
 }
 
+.filter-box-body .btn{
+    margin-top: 15px;
+}
+
 .listing-btn-border{
     font-size: 18px !important;
     font-weight: 600 !important;
@@ -64,8 +68,8 @@
     &:active,
     &:focus{
         background: $red-color;
-        color: #fff;
-        fill: #fff;
+        color: $white-color;
+        fill: $white-color;
         outline: none;
     }
 
@@ -89,14 +93,14 @@
         position: relative;
         padding: 15px;
         width: 100%;
-        background: $grey-color2;
+        background: $grey-color4;
         font-family: Arial, Helvetica, sans-serif;
         color: $black-color;
         cursor: pointer;
       }
       
       input[type=checkbox] + label:hover {
-        background: #e4e4e4;
+        background: $grey-color4;
       }
       label{
           &::before{
@@ -106,7 +110,7 @@
       
       input[type=checkbox]:checked + label {
         background: $red-color;
-        color: #f0f0f0;
+        color: $grey-color4;
         animation: btn-color 0.5s ease-in-out;
       }
       
@@ -126,7 +130,7 @@
       
       input[type=checkbox]:checked + label div.checkmark {
         display: block;
-        fill: #f0f0f0;
+        fill: $white-color;
       }
       
       .checkmark {
@@ -137,7 +141,7 @@
         right: 8px;
         display: none;
         stroke-width: 4;
-        fill: #f0f0f0;
+        fill: $grey-color4;
         stroke-miterlimit: 10;
         animation: scale 0.5s ease-in-out;
       }
@@ -148,6 +152,9 @@
     border: none;
     .selectorarrow{
         min-width: 300px;
+    }
+    .selectiongroup{
+        border: 1px solid $grey-color2;
     }
     .header{
         min-height: 50px;
@@ -230,6 +237,6 @@
  .markcurrday{
     background: $red-color;
     text-decoration: none;
-    color: #fff;
+    color: $white-color;
 }
 }

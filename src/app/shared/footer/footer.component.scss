@@ -17,6 +17,9 @@ footer {
 }
 
 .footer {
+    @media(max-width: $break-sm){
+        text-align: center;
+    }
     &-top {
         h5 {
             margin-bottom: $space-m
@@ -33,7 +36,13 @@ footer {
                 margin-bottom: $space-n;
             }
             .newletterform {
-                margin-bottom: $space-n
+                margin-bottom: $space-n;
+
+                .btn-border-white{
+                    @media(max-width: $break-sm){
+                        width: 100%;
+                    }
+                }
             }
             .follow-us {
                 label {

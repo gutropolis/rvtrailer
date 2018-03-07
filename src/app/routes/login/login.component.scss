@@ -16,6 +16,11 @@
         label {
             color: $secondary-color;
         }
+        .forget_pass{
+            font-size: 16px;
+            font-weight: 600;
+            color: $red-color;
+        }
     }
     .btn {
         font-size: $small;

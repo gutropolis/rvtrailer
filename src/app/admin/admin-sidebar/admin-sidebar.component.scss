@@ -45,4 +45,13 @@
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+    li{
+        a{
+            &:focus{
+                color:$white-color;
+                background: $red-color;
+                outline: transparent;
+            }
+        }
+    }
 }

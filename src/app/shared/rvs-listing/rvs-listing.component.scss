@@ -121,11 +121,12 @@
     &-content {
         flex: 0 0 63.3%;
         max-width: 63.3%;
+        position: relative;
     }
     .rv-info {
         &-top {
             padding: 0 15px;
-            border-bottom: solid 1px $border-color;
+            margin-bottom: 50px;
             &-left {
                 float: left;
                 width: 65%;
@@ -189,6 +190,9 @@
             justify-content: center;
             align-content: center;
             text-align: center;
+            border-top: solid 1px $border-color;
+            position: absolute;
+            bottom: 0;
             .rv-guest,
             .rv-btn {
                 flex: 0 0 33.333%;
