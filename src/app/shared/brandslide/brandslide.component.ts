@@ -13,4 +13,24 @@ export class BrandslideComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
+testimonials: any[] = [
+  {
+    userPic: 'brand-1.png',
+   
+  },
+  {
+    userPic: 'brand-2.png',
+    
+  },
+  {
+    userPic: 'brand-3.png',
+    
+  },
+  {
+    userPic: 'brand-4.png',
+   
+  },
+];
 }

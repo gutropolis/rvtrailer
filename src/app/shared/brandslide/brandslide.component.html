@@ -1,5 +1,21 @@
 <section class="brand-slider">
   <div class="container">
-    <figure><img src="assets/images/brand.png" alt="" /></figure>
+    <!-- <figure><img src="assets/images/brand.png" alt="" /></figure> -->
+    <div class="testimonial-content-bottom">
+    <owl-carousel [options]="{dots: true, navigation: true, slideBy : 1 , autoplay: true, loop: true, responsive: {
+      '0': {  items: 1 },
+      '680': {  items: 1 },
+                 '780': { items: 2},
+                 '1100': { items: 3}
+
+            }  }" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+      <div class="item" *ngFor="let item of testimonials ;let i = index">
+
+          <rv-testimonial-box  [userPic]="item.userPic" ></rv-testimonial-box>
+      </div>
+
+
+  </owl-carousel>
+</div>
   </div>
 </section>

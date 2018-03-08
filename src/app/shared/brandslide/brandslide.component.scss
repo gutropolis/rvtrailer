@@ -1,7 +1,33 @@
 @import '../../style/style';
 
+
 .brand-slider{
+
+    padding: 50px 0px;
     background: $white-color;
-    padding: $large  0;
-    text-align: center;
+ 
+    .testimonial-box{
+    border: 0px;
+
+    .testimonial-box-head{
+        display: none;
+    }
+
+    .testimonial-box-info{
+        margin-top: 0px;
+        
+        .testimonial-box-avtar{
+            width: 50%;
+            height: auto;
+            min-height: 150px;
+            margin: 0px auto;
+            border-radius: 0px;
+        }
+    }
+
+    .testimonial-box-content{
+        display: none;
+    }
+}
+
 }
