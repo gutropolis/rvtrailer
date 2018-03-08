@@ -6,12 +6,12 @@
       '0': {  items: 1 },
       '680': {  items: 1 },
                  '780': { items: 2},
-                 '1100': { items: 3}
+                 '1100': { items: 3},
+                 '1200': { items: 4}
 
             }  }" [carouselClasses]="['owl-theme', 'row', 'sliding']">
       <div class="item" *ngFor="let item of testimonials ;let i = index">
-
-          <rv-testimonial-box  [userPic]="item.userPic" ></rv-testimonial-box>
+        <img src="assets/images/{{item.userPic}}" alt="" />
       </div>
 
 
