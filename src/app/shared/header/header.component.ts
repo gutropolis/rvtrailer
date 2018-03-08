@@ -48,7 +48,16 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/user-dashboard']);
   }
 
+
+
+
+onLogoutClick() {
+  this.apiService.logout();
+  this.flashMessagesService.show('You are Logged Out', {cssClass: 'alert-info'});
+  this.router.navigate(['/']);
 }
+}
+
 
 
 
