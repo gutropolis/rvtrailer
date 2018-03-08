@@ -1,6 +1,10 @@
 @import '../../style/style';
 .owner-ads {
     padding: $space-n;
+
+    @media only screen and (max-width:$break-xs){
+        text-align: center;
+    }
     h4 {
         color: $primary-color;
         font-weight: bold;

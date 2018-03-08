@@ -30,7 +30,7 @@
 
 .feature-rv {
     padding: $space-xl 0;
-    &-title {
+    &-title { 
         text-transform: uppercase;
         margin-bottom: $space-m;
         h2 {
@@ -39,6 +39,10 @@
                 display: block;
                 color: $background-color;
             }
+            
+            @media only screen and (max-width:$break-xs){
+                font-size: 24px;
+            }
         }
     }
     &-box {
@@ -46,8 +50,10 @@
         display: inline-block;
         vertical-align: top;
         margin: 13px;
-        @media(max-width: $break-sm) {
+        @media(max-width: $break-xs) {
             width: 100%;
+            margin: 0px;
+            margin-bottom: 25px;
         }
     }
     .view-btn {
@@ -63,6 +69,10 @@
         font-weight: 700;
         span {
             color: $background-color;
+        }
+
+        @media(max-width: $break-xs) {
+            font-size: 24px;
         }
     }
     &-content {
@@ -128,6 +138,10 @@
         span {
             color: $background-color;
         }
+
+        @media(max-width: $break-xs) {
+            font-size: 22px;
+        }
     }
     .fact {
         margin-bottom: $space-n;
@@ -161,6 +175,9 @@
         span {
             color: $background-color;
         }
+        @media(max-width: $break-xs) {
+            font-size: 24px;
+        }
     }
     &-content {
         font-size: $small;
@@ -175,6 +192,9 @@
         margin-bottom: $space-m;
         span {
             color: $background-color;
+        }
+        @media(max-width: $break-xs) {
+            font-size: 22px;
         }
     }
     p {

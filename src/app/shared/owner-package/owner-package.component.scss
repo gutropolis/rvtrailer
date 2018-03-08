@@ -13,6 +13,13 @@
         padding: 10px;
         display: inline-block;
         margin-left: 15px;
+
+        @media only screen and (max-width:$break-xs){
+            width: 100%;
+            margin: 0px auto;
+            margin-left: 0px;
+            margin-bottom: 25px;
+        }
         .circle-box {
             border-radius: 100%;
             width: 220px;
@@ -50,11 +57,19 @@
         ul {
             text-align: left;
             padding: 20px 30px;
+
+            @media only screen and (max-width:$break-xs){
+                text-align: center;
+            }
             li {
                 list-style: disc;
                 line-height: 30px;
                 font-weight: 600;
                 color: #555;
+                
+                @media only screen and (max-width:$break-xs){
+                    list-style: none;
+                }
             }
         }
         .select-btn {
