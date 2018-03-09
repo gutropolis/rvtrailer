@@ -6,8 +6,10 @@ footer {
     padding: $space-n 0 0;
     a {
         color: $white-color;
-        &:hover {
+        &:hover,
+        &:focus {
             color: $white-color;
+            outline: none;
         }
     }
     .footer-logo {
@@ -41,6 +43,10 @@ footer {
                 .btn-border-white{
                     @media(max-width: $break-sm){
                         width: 100%;
+                    }
+                    &:focus{
+                        outline: none;
+                        border: 1px solid $white-color;
                     }
                 }
             }

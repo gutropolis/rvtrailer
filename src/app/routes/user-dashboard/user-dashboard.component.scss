@@ -73,10 +73,11 @@
                         }
                     }
                     a {
+                        vertical-align: sub;
                         .icon {
                             position: relative;
-                            top: $space-vs;
                             svg {
+                                vertical-align: sub;
                                 path {
                                     fill: $primary-color;
                                 }

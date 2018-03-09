@@ -97,7 +97,7 @@ header {
     .header-lang {
         display: block;
         float: right;
-        margin-top: $space-m - 2;
+        margin-top: $space-m + $space-vs;
         margin-left: $space-n;
         color: $white-color;
         a {

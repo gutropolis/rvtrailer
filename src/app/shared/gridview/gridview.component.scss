@@ -52,6 +52,8 @@
     &-content {
         display: flex;
         width: $full;
+        height: 72px;
+        overflow: hidden;
         &-box {
             background: $white-color;
             border: solid 1px $border-color;
