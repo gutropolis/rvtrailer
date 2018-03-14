@@ -124,7 +124,7 @@ import { OrderbyPipe } from './orderby.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AgmCoreModule } from '@agm/core';
-import { FusionChartsModule } from 'angular4-fusioncharts';
+//import { FusionChartsModule } from 'angular4-fusioncharts';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkxVWfEOYenaJYNgb-12NV5Arp0tOGa8k",
