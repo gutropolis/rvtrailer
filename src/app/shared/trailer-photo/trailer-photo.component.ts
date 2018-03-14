@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ApiService } from './../../api.service';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
+import { GlobaldataService } from './../../globaldata.service';
 import { Router } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FileUploader } from 'ng2-file-upload';
@@ -30,16 +31,18 @@ listing: any = [];
 public uploader: FileUploader = new FileUploader({url: URL});
 fileName: String;
 userID: any = [];
-
+userDetails:any=[];
 allListing: any = [];
 photo: any;
 photoname: String;
 userDetail: any = [];
 DateTime:any=[];
+storage:any=[];
 
   constructor(private fb: FormBuilder,
               public router: Router,
-              public apiService: ApiService) {
+              public apiService: ApiService,
+              private gd: GlobaldataService) {
 
                 this.allListing = localStorage.getItem('listing');
 
@@ -87,8 +90,11 @@ DateTime:any=[];
   ;
     this.DateTime={'created_at':Date.now()};
     console.log(this.DateTime);
-
-    const photo_data = Object.assign({}, this.listing, this.photo,this.DateTime, {user_id: this.userID.id});
+    this.apiService.showUser(this.userID.id).subscribe((res) => {
+      this.userDetails = res;
+      
+   
+    const photo_data = Object.assign({}, this.listing, this.photo,this.DateTime, {user_id: this.userID.id},{owner_name: this.userDetails.firstname},{owner_email:this.userDetails.email});
     console.log(photo_data);
     //alert(JSON.stringify(photo_data));
     this.apiService.addListTrailer(photo_data).subscribe((result) => {
@@ -97,7 +103,18 @@ DateTime:any=[];
      }, (err) => {
       console.log(err);
     });
- 
+  });
+
+
+ // this.storage = JSON.parse(localStorage.getItem('listing'));
+
+console.log('before listing'+this.allListing);
+ localStorage.removeItem('listing');
+ localStorage.removeItem('global');
+ console.log('after listing'+JSON.parse(localStorage.getItem('listing')));
+ this.storage=null;
+ this.gd.ListingObj['global']=this.storage;
+
   }
 
 }
