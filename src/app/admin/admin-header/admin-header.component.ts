@@ -19,10 +19,11 @@ export class AdminHeaderComponent implements OnInit {
    ) { }
 
 onLogoutClick() {
+  //this.auth.logout();
 this.apiService.logout();
-this.flashMessagesService.show('You are Logged Out', {cssClass: 'alert-info'});
+//this.flashMessagesService.show('You are Logged Out', {cssClass: 'alert-info'});
 //this.router.navigate(['admin/']);
-this.router.navigateByUrl('./admin-login.component.html');
+this.router.navigate(['/login']);
 }
 
   ngOnInit() {

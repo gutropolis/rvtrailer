@@ -3,21 +3,24 @@ import { ApiService } from './../../api.service';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
-
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase/app';
 @Component({
   selector: 'rv-signup-renter',
   templateUrl: './signup-renter.component.html',
   styleUrls: ['./signup-renter.component.scss']
 })
 export class SignupRenterComponent implements OnInit {
-
+  users: Observable<firebase.User>;
   rForm: FormGroup;
   user: {};
   messageClass;
   message;
   photo: any;
 
-  constructor(private fb: FormBuilder,
+  constructor(public af: AngularFireAuth,
+              private fb: FormBuilder,
               public router:Router,
               public apiService:ApiService,
               private flashMessagesService: FlashMessagesService) {
@@ -56,5 +59,15 @@ export class SignupRenterComponent implements OnInit {
         this.flashMessagesService.show('This E-mail Id is Registered.', {cssClass: 'alert-danger'});
     });
   }
+  facebookLogin() {
+    this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    .then(res => console.log(res));
+  }
+
+googleLogin() {
+this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+.then(res => console.log(res));
+}
+  
 
 }

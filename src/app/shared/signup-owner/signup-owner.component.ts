@@ -3,7 +3,9 @@ import { ApiService } from './../../api.service';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Router,Params } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
-
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase/app';
 @Component({
   selector: 'rv-signup-owner',
   templateUrl: './signup-owner.component.html',
@@ -11,12 +13,14 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   encapsulation: ViewEncapsulation.None
 })
 export class SignupOwnerComponent implements OnInit {
+  users: Observable<firebase.User>;
    myFilter = new EventEmitter() ;
 rForm: FormGroup;
 user: {};
 photo: any;
 
-  constructor(private fb: FormBuilder,
+  constructor(public af: AngularFireAuth,
+    private fb: FormBuilder,
               public router:Router,
               public apiService:ApiService,
               private flashMessagesService: FlashMessagesService) {
@@ -73,6 +77,24 @@ photo: any;
     this.myFilter.emit(emailparams);
   
   }
+  facebookLogin() {
+    this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    .then(res=>
+
+      //console.log(res)
+      this.router.navigate(['/login'])
+    );
+  }
+
+googleLogin() {
+this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+.then(res => 
+  
+  //console.log(res)
+  this.router.navigate(['/login'])
+
+);
+}
   
 
 }

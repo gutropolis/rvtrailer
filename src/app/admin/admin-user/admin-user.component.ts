@@ -15,8 +15,8 @@ export class AdminUserComponent implements OnInit {
 users: any = [];
 listLimit=10;
 p: number;
- 
-    
+messageClass;
+message;
     
 
   constructor(public router: Router,
@@ -49,7 +49,12 @@ p: number;
   deleteUser(id) {
   this.apiService.deleteUser(id).then((result) => {
    // this.router.navigateByUrl('./admin-user.component.html');
-    window.location.reload();
+   // window.location.reload();
+   this.router.navigate(['admin/user']);
+   this.messageClass = 'alert alert-success';
+   this.message = 'Success';
+   this.getUserList();
+
   }, (err) => {
     console.log(err);
   });

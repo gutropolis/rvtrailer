@@ -34,8 +34,8 @@
 </div>
 <div class="signup-social">
     <label>or sign up with :</label>
-    <a href="#"><img src="assets/images/facebook.png" alt="Facebook" /></a>
-    <a href="#"><img src="assets/images/gplus.png" alt="Facebook" /></a>
+    <button (click)="facebookLogin()"><img src="assets/images/facebook.png" alt="Facebook" /></button>
+    <button (click)="googleLogin()"><img src="assets/images/gplus.png" alt="Google+" /></button>
 </div>
 <div class="privacy-policy">
     By joining you agree to the <strong>TRAILER HAILER</strong> <a [routerLink]="['/']">Terms of Service </a> and <a [routerLink]="['/']">Privacy Policy</a>.

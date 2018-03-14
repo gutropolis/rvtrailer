@@ -124,15 +124,15 @@ import { OrderbyPipe } from './orderby.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AgmCoreModule } from '@agm/core';
-
+import { FusionChartsModule } from 'angular4-fusioncharts';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD7fA0nS4hMW1cTLyKIfvx1lfj8V4BTz0U",
-  authDomain: "authentication-5d867.firebaseapp.com",
-  databaseURL: "https://authentication-5d867.firebaseio.com",
-  projectId: "authentication-5d867",
-  storageBucket: "authentication-5d867.appspot.com",
-  messagingSenderId: "494284030141"
+  apiKey: "AIzaSyBkxVWfEOYenaJYNgb-12NV5Arp0tOGa8k",
+  authDomain: "rvtrailer-1519631598269.firebaseapp.com",
+  databaseURL: "https://rvtrailer-1519631598269.firebaseio.com",
+  projectId: "rvtrailer-1519631598269",
+  storageBucket: "rvtrailer-1519631598269.appspot.com",
+  messagingSenderId: "750751530782"
 };
 
 
@@ -262,7 +262,8 @@ const firebaseConfig = {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDzjedSKp0zF9Bg4Gf2C-zWnNvAaWjTBrA',
       libraries: ["places"]
-    })
+    }),
+    FusionChartsModule
 
   ],
   providers: [ApiService, AuthGuard, NotAuthGuard, ClientAuthGuard, ClientNotAuthGuard, GlobaldataService,DatePipe],

@@ -7,15 +7,47 @@
         </div>
         <div class="image_outer">
                 <figure class="user_image_box">
-                        <img class='user_image chat-image-default' src="assets/images/avatar.png" />
+                        <div *ngIf="user_senderid !=userid"> 
+                                <div *ngFor="let user of users">
+                                        <div *ngIf="user._id==user_senderid">
+                        <img class='user_image chat-image-default' src="/images/{{user.photo}}" alt="no image"/>
+                    </div>
+                </div>
+                </div> 
+                <div *ngIf="user_recieverid !=userid"> 
+                        <div *ngFor="let user of users">
+                            <div *ngIf="user._id==user_recieverid">
+                <img class='user_image chat-image-default' src="/images/{{user.photo}}" alt="no image" />
+            </div>
+        </div>
+        </div> 
+
                    </figure>
         </div>
 
         <div class="name_outer">
-            <h4 class="user_name">{{allMessage.sendername}}</h4>
+               
+                <div *ngIf="user_senderid !=userid"> 
+                        <div *ngFor="let user of users">
+                                <div *ngIf="user._id==user_senderid">
+            <h4 class="user_name">{{user.firstname}}</h4>
+             
+           <!-- {{listnerusers.firstname}}-->
+        </div>
+        </div>
+        </div>  
+        <div *ngIf="user_recieverid !=userid"> 
+                <div *ngFor="let user of users">
+                    <div *ngIf="user._id==user_recieverid">
+    <h4 class="user_name">{{user.firstname}}</h4>
+     
+   <!-- {{listnerusers.firstname}}-->
+</div>
+</div>
+</div>      
         </div>
         
-        <div class="detail_outer " *ngFor="let trailerDetail of trailerDetails">
+        <div class="detail_outer" *ngFor="let trailerDetail of trailerDetails">
             <div class="trailer_detail">
                 <p> Trailer Type : <span> {{trailerDetail.rv_type}}</span> </p>
                 <p>price: <span>$ {{trailerDetail.pricing_high_rate_hour}}</span></p>
@@ -24,189 +56,105 @@
 
     </div>
 
-    <div class='chat_outer '>
+    <div class='chat_outer'>
+        <div *ngIf="user_senderid !=userid">
+            <div class='chat_message chat_recipient' >
+                    <figure class="chat_image_box">
+                        <div *ngFor="let user of users">
+                        <div *ngIf="user_senderid==user._id">
+                         <img class='chat_image chat-image-default' src="/images/{{user.photo}}" alt="no image" />
+                        </div>
+                        </div>
+                    </figure>
+            
+                    <div class='message_wrapper' >
+                      <div class='message_content' >
+                       <!-- <p>{{allMessage.sendername}}</p>-->
+                        <p> {{messageDetails.message}} </p>
+                      </div>         
+                    </div>
+                  </div>
+                </div>
 
-      <div class='chat_message chat_recipient'>
+                <div *ngIf="user_senderid ==userid">
+                        <div class='chat_message chat_sender'>
+                                <figure class="chat_image_box">
+                                        <div *ngFor="let user of users">
+                                                <div *ngIf="user_senderid==user._id">
+                                     <img class='chat_image chat-image-default' src="/images/{{user.photo}}" alt="no image" />
+                                     </div>
+                                     </div>
+                                </figure>
+                        
+                                <div class='message_wrapper'>
+                                    <div class='message_content'>
+                                        <!-- <p>{{allMessage.sendername}}</p> -->
+                                        <p> {{messageDetails.message}}</p>
+                                    </div>       
+                                </div>
+                    
+                              </div>
+
+                </div>
+               
+
+        <div  *ngFor="let allMessage of allMessages">
+            <div *ngIf="allMessage.sender_id != userid">
+      <div class='chat_message chat_recipient' >
         <figure class="chat_image_box">
-             <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
+            <div *ngFor="let user of users">
+            <div *ngIf="allMessage.sender_id==user._id">
+             <img class='chat_image chat-image-default' src="/images/{{user.photo}}" alt="no image" />
+            </div>
+            </div>
         </figure>
 
-        <div class='message_wrapper'>
-          <div class='message_content'>
-            <p>It is a long established fact that</p>
-            <p> a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            <p> a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        <div class='message_wrapper' >
+          <div class='message_content' >
+           <!-- <p>{{allMessage.sendername}}</p>-->
+            <p> {{allMessage.message}} </p>
           </div>         
         </div>
       </div>
-
-
+    </div>
+    <div *ngIf="allMessage.sender_id == userid">
       <div class='chat_message chat_sender'>
             <figure class="chat_image_box">
-                 <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
+                    <div *ngFor="let user of users">
+                            <div *ngIf="allMessage.sender_id==user._id">
+                 <img class='chat_image chat-image-default' src="/images/{{user.photo}}" alt="no image" />
+                 </div>
+                 </div>
             </figure>
     
             <div class='message_wrapper'>
                 <div class='message_content'>
-                    <p>Sushi tonight?</p>
-                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
+                    <!-- <p>{{allMessage.sendername}}</p> -->
+                    <p> {{allMessage.message}}</p>
                 </div>       
             </div>
 
           </div>
 
-          <div class='chat_message chat_recipient'>
-                <figure class="chat_image_box">
-                     <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                </figure>
-        
-                <div class='message_wrapper'>
-                  <div class='message_content'>
-                    <p> as opposed to using</p>
-                    <p> 'Content here, content here', making it look like readable English. </p>
-                  </div>         
-                </div>
-              </div>
-        
-        
-              <div class='chat_message chat_sender'>
-                    <figure class="chat_image_box">
-                         <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                    </figure>
-            
-                    <div class='message_wrapper'>
-                        <div class='message_content'>
-                            <p>Sushi tonight?</p>
-                            <p>ahsdgahds ahgsdh adsyguahsd asd </p>
-                        </div>       
-                    </div>
-        
-                  </div>
+        </div>
 
-                  <div class='chat_message chat_recipient'>
-                        <figure class="chat_image_box">
-                             <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                        </figure>
-                
-                        <div class='message_wrapper'>
-                          <div class='message_content'>
-                            <p>Sushi tonight?</p>
-                          </div>         
-                        </div>
-                      </div>
-                
-                
-                      <div class='chat_message chat_sender'>
-                            <figure class="chat_image_box">
-                                 <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                            </figure>
-                    
-                            <div class='message_wrapper'>
-                                <div class='message_content'>
-                                    <p>Sushi tonight?</p>
-                                    <p>ahsdgahds ahgsdh adsyguahsd asd </p>
-                                </div>       
-                            </div>
-                
-                          </div>
-
-
-
-                          <div class='chat_message chat_recipient'>
-                                <figure class="chat_image_box">
-                                     <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                                </figure>
-                        
-                                <div class='message_wrapper'>
-                                  <div class='message_content'>
-                                    <p>It is a long established fact that</p>
-                                    <p> a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                                    <p> a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                                  </div>         
-                                </div>
-                              </div>
-                        
-                        
-                              <div class='chat_message chat_sender'>
-                                    <figure class="chat_image_box">
-                                         <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                                    </figure>
-                            
-                                    <div class='message_wrapper'>
-                                        <div class='message_content'>
-                                            <p>Sushi tonight?</p>
-                                            <p> The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
-                                        </div>       
-                                    </div>
-                        
-                                  </div>
-                        
-                                  <div class='chat_message chat_recipient'>
-                                        <figure class="chat_image_box">
-                                             <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                                        </figure>
-                                
-                                        <div class='message_wrapper'>
-                                          <div class='message_content'>
-                                            <p> as opposed to using</p>
-                                            <p> 'Content here, content here', making it look like readable English. </p>
-                                          </div>         
-                                        </div>
-                                      </div>
-                                
-                                
-                                      <div class='chat_message chat_sender'>
-                                            <figure class="chat_image_box">
-                                                 <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                                            </figure>
-                                    
-                                            <div class='message_wrapper'>
-                                                <div class='message_content'>
-                                                    <p>Sushi tonight?</p>
-                                                    <p>ahsdgahds ahgsdh adsyguahsd asd </p>
-                                                </div>       
-                                            </div>
-                                
-                                          </div>
-                        
-                                          <div class='chat_message chat_recipient'>
-                                                <figure class="chat_image_box">
-                                                     <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                                                </figure>
-                                        
-                                                <div class='message_wrapper'>
-                                                  <div class='message_content'>
-                                                    <p>Sushi tonight?</p>
-                                                  </div>         
-                                                </div>
-                                              </div>
-                                        
-                                        
-                                              <div class='chat_message chat_sender'>
-                                                    <figure class="chat_image_box">
-                                                         <img class='chat_image chat-image-default' src="assets/images/avatar.png" />
-                                                    </figure>
-                                            
-                                                    <div class='message_wrapper'>
-                                                        <div class='message_content'>
-                                                            <p>Sushi tonight?</p>
-                                                            <p>ahsdgahds ahgsdh adsyguahsd asd </p>
-                                                            <p>ahsdgahds ahgsdh adsyguahsd asd ahsdgahds ahgsdh adsyguahsd asd ahsdgahds ahgsdh adsyguahsd asd ahsdgahds ahgsdh adsyguahsd asd ahsdgahds ahgsdh adsyguahsd asd ahsdgahds ahgsdh adsyguahsd asd ahsdgahds ahgsdh adsyguahsd asd ahsdgahds ahgsdh adsyguahsd asd ahsdgahds ahgsdh adsyguahsd asd ahsdgahds ahgsdh adsyguahsd asd </p>
-                                                        </div>       
-                                                    </div>
-                                        
-                                                  </div>
+          
           
 
-
+        </div>
   
 
 
     </div>
-
+    
     <div class="enter_message">
-            <input type="text" class="message_input" placeholder="Enter your message.."/>
-            <a href="#" class="send">Send</a>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <input type="text" class="message_input" ngModel name="message" id="message" required placeholder="Your Message here..."/>
+           <!-- <input type="text" class="message_input" placeholder="Enter your message.."/> -->
+           <!-- <a href="#" class="send">Send</a>-->
+            <button type=submit [disabled]="!f.valid" class="send" >Send</button>
+        </form>
           </div>
+        
 
   </div>

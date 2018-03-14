@@ -158,7 +158,7 @@ router.get('/messagebyParentid/:parentId', (req, res) => {
   parentId = req.params.parentId;
   console.log(parentId);
   let query = { "parent_id": parentId};
-  Message.find(query).sort([['date','descending']]).exec(function (err, messages) {
+  Message.find(query).sort([['date','ascending']]).exec(function (err, messages) {
     if(err) return err;
       res.json(messages);
   });

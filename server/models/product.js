@@ -49,6 +49,8 @@ var ListTrailerSchema = new Schema({
     created_at : { type : Date,default:null},
     unavailability_from:{ type : Date,default:null},
     unavailability_to:{ type : Date,default:null},
+    owner_name:{type:String},
+    owner_email:{type:String}
 });
 
 module.exports = mongoose.model('ListTrailer', ListTrailerSchema);

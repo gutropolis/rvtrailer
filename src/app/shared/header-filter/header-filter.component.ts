@@ -28,8 +28,8 @@ export class HeaderFilterComponent implements OnInit {
 
     this.searchForm = this.fb.group({
       'location': [null, Validators.required],
-      'from': [null,Validators.required],
-      'to': [null,Validators.required],
+      'from': [null],
+      'to': [null],
 
     });
    }
