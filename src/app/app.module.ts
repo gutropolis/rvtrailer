@@ -263,7 +263,7 @@ const firebaseConfig = {
       apiKey: 'AIzaSyDzjedSKp0zF9Bg4Gf2C-zWnNvAaWjTBrA',
       libraries: ["places"]
     }),
-    FusionChartsModule
+   
 
   ],
   providers: [ApiService, AuthGuard, NotAuthGuard, ClientAuthGuard, ClientNotAuthGuard, GlobaldataService,DatePipe],
