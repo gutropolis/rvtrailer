@@ -7,7 +7,8 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '../../api.service';
-
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Idle } from 'idlejs/dist';
 // Do not import from 'firebase' as you'd lose the tree shaking benefits
 
 import * as firebase from 'firebase/app';
@@ -32,7 +33,8 @@ export class LoginComponent implements OnInit {
   constructor(public af: AngularFireAuth,
               public router:Router,
               public apiService:ApiService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private flashMessagesService: FlashMessagesService) {
                 this.createForm();
 
               }
@@ -97,19 +99,41 @@ export class LoginComponent implements OnInit {
         this.message = 'Success';
         console.log(data.token);
         this.apiService.storeUserData(data.token, data.user);
+       
         setTimeout(() => {
           console.log('Role Type is '+data.user.role);
-           if(data.user.role){
-             if(data.user.role=='admin'){
-              this.router.navigate(['/admin']);
-            }else   if(data.user.role=='owner'){
-              this.router.navigate(['/']);
-             }else{
-              this.router.navigate(['/']);
-             }
-           }
+          if(data.user.role){
+            if(data.user.role=='admin'){
+             this.router.navigate(['/admin']);
+           }else   if(data.user.role=='owner'){
+             this.router.navigate(['/']);
+            }else{
+             this.router.navigate(['/']);
+            }
+          }
+
+        }, 2000);
+        const idle = new Idle()
+        .whenNotInteractive()
+        .within(30)
+        .do(() => {
+        this.apiService.logout();
+        
+       this.router.navigate(['/login']);
+        }
+      )
+        .start();
+     /*   setTimeout(() => {
+         
+          this.apiService.logout();
+          
+         this.router.navigate(['/login']);
+         
+         this.flashMessagesService.show('Session Expire', {cssClass: 'alert-info'});
+          
             
-           }, 2000);
+           }, 900000); //for 15 minute
+           */
       }
     });
 
