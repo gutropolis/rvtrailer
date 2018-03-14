@@ -56,7 +56,7 @@
 
     </div>
 
-    <div class='chat_outer'>
+    <div class='chat_outer' #scrollMe [scrollTop]="scrollMe.scrollHeight" *ngIf="allMessages.length > 0">
         <div *ngIf="user_senderid !=userid">
             <div class='chat_message chat_recipient' >
                     <figure class="chat_image_box">
