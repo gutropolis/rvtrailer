@@ -16,21 +16,32 @@
 			<p><strong>Call Us</strong> +61-7654-111-222</p>
 		</div>
 	</div>
-	<form #f="ngForm" (ngSubmit)="onSubmitContact(f)">
+	
+	<form [formGroup]="form" (ngSubmit)="onSubmitContact()">
 	<div class="contact-us-bottom">
+			
 	<div class="container">
 		<div class="contact-us-form">
 		<div class="row">
+				<div class="alert alert-success" *ngIf="saveSuccess">
+						<strong>Your Message Sent Successfully </strong>
+					</div>
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label class="form-label">Your Name*</label>
-					<input type="text" class="form-control"  [(ngModel)]="name" name="name" #Con_name="ngModel" placeholder="Name" required ng-model/>
+					<input type="text" class="form-control"  formControlName="name" name="name"  placeholder="Name" required ng-model/>
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<div class="form-group">
-					<label class="form-label">Your Email*</label>
-					<input type="email" class="form-control"  [(ngModel)]="email" name="email" #Con_email="ngModel" placeholder="E-Mail" required ng-model />
+			<div class="form-group" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}">
+					<label>E-mail*</label>
+					<input type="text" class="form-control" formControlName="email" id="email" placeholder="E-mail" />
+					<div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched " class="alert alert-danger">
+					   Please Insert Valid E-mail.
+					</div>
+					<div *ngIf="form.controls['email'].hasError('pattern') && form.controls['email'].touched " class="alert alert-danger">
+					   Please Insert Valid E-mail.
+					</div>
 				</div>
 			</div>
 		</div>
@@ -38,13 +49,28 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label class="form-label">Phone*</label>
-					<input type="number" class="form-control"  [(ngModel)]="phone" name="phone" #Con_phone="ngModel" placeholder="Phone" required ng-model />
+					<div class="form-group" [ngClass]="{'has-error':!form.controls['phone'].valid && form.controls['phone'].touched}">
+							<input type="text" formControlName="phone" id="phone"    class="form-control" placeholder="Contact Number"/>
+							<div *ngIf="form.controls['phone'].hasError('required') && form.controls['phone'].touched " class="alert alert-danger">
+							   Please Insert Valid 10 Digit Mobile Number.
+							</div>
+							<div *ngIf="form.controls['phone'].hasError('pattern') && form.controls['phone'].touched " class="alert alert-danger">
+							   Please Insert Valid 10 Digit Mobile Number.
+							</div>
+							<div *ngIf="form.controls['phone'].hasError('minLength') && form.controls['phone'].touched " class="alert alert-danger">
+							   Please Insert Valid 10 Digit Mobile Number.
+							</div>
+							<div *ngIf="form.controls['phone'].hasError('maxLength') && form.controls['phone'].touched " class="alert alert-danger">
+							   Please Insert Valid 10 Digit Mobile Number.
+							</div>
+			
+						  </div>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label class="form-label">Subject*</label>
-					<input type="text" class="form-control"  [(ngModel)]="subject" name="subject" #Con_subject="ngModel" placeholder="Subject" required ng-model/>
+					<input type="text" class="form-control"  formControlName="subject" name="subject"  placeholder="Subject" required ng-model/>
 				</div>
 			</div>
 		</div>
@@ -52,12 +78,12 @@
 
 				<div class="form-group">
 					<label class="form-label">Message</label>
-					<textarea class="form-control textareafix"  [(ngModel)]="msg" name="msg" #Con_msg="ngModel" placeholder="message" required ng-model></textarea>
+					<textarea class="form-control textareafix" formControlName="msg" name="msg"  placeholder="message" required ng-model></textarea>
 				</div>
 
 		</div>
 		<div class="clearfix">
-			<button [disabled]="!f.valid" class="btn btn-primary btn-lg">Send Message</button>
+			<button [disabled]="!form.valid" class="btn btn-primary btn-lg">Send Message</button>
 		</div>
 		</div>
 		</div>

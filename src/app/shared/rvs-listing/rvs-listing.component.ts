@@ -11,6 +11,8 @@ import { DatePipe } from '@angular/common';
   encapsulation: ViewEncapsulation.None
 })
 export class RvsListingComponent implements OnInit {
+  public loading = false;
+
   listtrailers:any=[];
   public rvList: any[] = [
     {
@@ -85,18 +87,22 @@ export class RvsListingComponent implements OnInit {
   }
 
   getItems(params) {
+    this.loading = true;
     this.apiService.filterSearch(params)
       .subscribe( (result) => {
+        this.loading = false;
         console.log(result);
         this.items = result;
+
        // alert(JSON.stringify(this.items));
       });
   }
 
   allItems() {
-
+    this.loading = true;
     this.apiService.getAllListTrailer(this.listLimit)
           .subscribe( (result) => {
+            this.loading = false;
             this.items = result;
             console.log(this.item);
 

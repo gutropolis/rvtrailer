@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common';
   encapsulation: ViewEncapsulation.None
 })
 export class RvDetailComponent implements OnInit {
+  public loading = false;
 
   renterdetail: any = [];
 
@@ -147,7 +148,9 @@ console.log(this.listing_id);
 }
 
   getRenterDetail(id) {
+    this.loading = true;
     this.apiService.showListTrailer(id).subscribe((res) => {
+      this.loading = false;
       this.renterdetail = res;
       console.log(this.renterdetail);
       this.user_id = this.renterdetail.user_id;

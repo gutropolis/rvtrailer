@@ -1,4 +1,8 @@
 <flash-messages></flash-messages>
+<div class="my-container">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+      
+   
 <form [formGroup]="rForm" (ngSubmit)="onSubmit()">
 <div class="form-group">
     <label>First Name</label>
@@ -37,4 +41,5 @@
 </form>
 <div class="privacy-policy">
     By joining you agree to the <strong>TRAILER HAILER</strong> <a [routerLink]="['/']">Terms of Service </a> and <a [routerLink]="['/']">Privacy Policy</a>.
+</div>
 </div>

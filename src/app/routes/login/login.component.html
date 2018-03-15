@@ -13,6 +13,10 @@
         <div class="login">
           <form [formGroup]="form" (ngSubmit)="onLoginSubmit()">
             <h2 class="title">LOGIN</h2>
+            <div class="my-container">
+                    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+                    
+                </div>
             <div class="form-group" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}">
                 <label>E-mail*</label>
                 <input type="text" class="form-control" formControlName="email" id="email" placeholder="E-mail/Username" />

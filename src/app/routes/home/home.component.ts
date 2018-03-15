@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
-
+  public loading = false;
   listtrailers: any = [];
   listLimit = 6;
   dollers: any[] = [
@@ -59,7 +59,9 @@ export class HomeComponent implements OnInit {
   }
 
   getListTrailerList() {
+    this.loading = true;
     this.apiService.getAllListTrailer(this.listLimit).subscribe((res) => {
+      this.loading = false;
       this.listtrailers = res;
       this.listtrailers.length - 1;
       console.log(this.listtrailers);
@@ -67,6 +69,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadMore() {
+    this.loading = true;
     this.listLimit = this.listtrailers.length + 6;
     console.log(this.listLimit);
     this.getListTrailerList();

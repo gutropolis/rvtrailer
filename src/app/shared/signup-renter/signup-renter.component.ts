@@ -12,6 +12,7 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./signup-renter.component.scss']
 })
 export class SignupRenterComponent implements OnInit {
+  public loading = false;
   users: Observable<firebase.User>;
   rForm: FormGroup;
   user: {};
@@ -46,6 +47,7 @@ export class SignupRenterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     let photoname = 'userphoto.png';
     this.photo = {'photo': photoname};
     const signup_data = Object.assign({}, this.rForm.value, this.photo);
@@ -54,7 +56,9 @@ export class SignupRenterComponent implements OnInit {
       let id = result['_id'];
       //alert('Please Loggin With Your Email and Password');
       this.router.navigate(['/login']);
+      this.loading = false;
     }, (err) => {
+      this.loading = false;
       console.log(err);
         this.flashMessagesService.show('This E-mail Id is Registered.', {cssClass: 'alert-danger'});
     });

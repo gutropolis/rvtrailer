@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { ChartsModule } from 'ng2-charts';
 
 @Component({
   selector: 'rv-dashboard',
@@ -7,44 +9,53 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnInit {
-  id = 'chart1';
-  width = 600;
-  height = 400;
-  type = 'column2d';
-  dataFormat = 'json';
-  dataSource;
+   // lineChart
+  public lineChartData:Array<any> = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartType:string = 'line';
+  public pieChartType:string = 'pie';
+ 
+  // Pie
+  public pieChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+  public pieChartData:number[] = [300, 500, 100];
+ 
+  public randomizeType():void {
+    this.lineChartType = this.lineChartType === 'line' ? 'bar' : 'line';
+    this.pieChartType = this.pieChartType === 'doughnut' ? 'pie' : 'doughnut';
+  }
+ 
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+ 
+
+
+  // Radar
+  public radarChartLabels:string[] = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
+  
+   public radarChartData:any = [
+     {data: [65, 59, 90, 81, 56, 55, 40], label: 'Series A'},
+     {data: [28, 48, 40, 19, 96, 27, 100], label: 'Series B'}
+   ];
+   public radarChartType:string = 'radar';
+  
+   // events
+   public chartClicker(e:any):void {
+     console.log(e);
+   }
+  
+   public chartHoverer(e:any):void {
+     console.log(e);
+   }
   constructor() { 
 
-    this.dataSource = {
-      "chart": {
-          "caption": "Harry's SuperMart",
-          "subCaption": "Top 5 stores in last month by revenue",
-          "numberprefix": "$",
-          "theme": "fint"
-      },
-      "data": [
-          {
-              "label": "Bakersfield Central",
-              "value": "880000"
-          },
-          {
-              "label": "Garden Groove harbour",
-              "value": "730000"
-          },
-          {
-              "label": "Los Angeles Topanga",
-              "value": "590000"
-          },
-          {
-              "label": "Compton-Rancho Dom",
-              "value": "520000"
-          },
-          {
-              "label": "Daly City Serramonte",
-              "value": "330000"
-          }
-      ]
-  }
 
 
 

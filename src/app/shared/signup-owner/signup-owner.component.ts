@@ -13,6 +13,7 @@ import * as firebase from 'firebase/app';
   encapsulation: ViewEncapsulation.None
 })
 export class SignupOwnerComponent implements OnInit {
+  public loading = false;
   users: Observable<firebase.User>;
    myFilter = new EventEmitter() ;
 rForm: FormGroup;
@@ -50,6 +51,7 @@ photo: any;
   }
 
   onSubmit() {
+    this.loading = true;
     let photoname = 'userphoto.png';
     this.photo = {'photo': photoname};
     const signup_data = Object.assign({}, this.rForm.value, this.photo);
@@ -58,16 +60,19 @@ photo: any;
       let id = result['_id'];
      // alert('Please Loggin With Your Email and Password');
 //for mailing perpose
-     this.Email(this.rForm.value);
-     console.log('Email is where'+this.Email(this.rForm.value));
+    // this.Email(this.rForm.value);
+    // console.log('Email is where'+this.Email(this.rForm.value));
       this.router.navigate(['/login']);
+      this.loading = false;
     }, (err) => {
+      this.loading = false;
       console.log(err);
       this.flashMessagesService.show('This E-mail Id is Registered.', {cssClass: 'alert-danger'});
     });
   }
 
   Email(rForm) {
+    this.loading = false;
     let emailparams: any = {
       location: rForm.value.email,
      
@@ -77,12 +82,14 @@ photo: any;
     this.myFilter.emit(emailparams);
   
   }
+  
   facebookLogin() {
     this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
     .then(res=>
 
       //console.log(res)
       this.router.navigate(['/login'])
+      
     );
   }
 

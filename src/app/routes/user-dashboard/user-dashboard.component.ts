@@ -12,7 +12,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   encapsulation: ViewEncapsulation.None
 })
 export class UserDashboardComponent implements OnInit {
-
+  public loading = false;
 
   logindata: any = [];
   user: any = [];
@@ -52,9 +52,11 @@ export class UserDashboardComponent implements OnInit {
   }
 
   onLogoutClick() {
+    this.loading = true;
     this.apiService.logout();
     this.flashMessagesService.show('You are Logged Out', {cssClass: 'alert-info'});
     this.router.navigate(['/']);
+    
   }
 
 }

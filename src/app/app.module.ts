@@ -125,6 +125,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AgmCoreModule } from '@agm/core';
 import { FusionChartsModule } from 'angular4-fusioncharts';
+import { ChartsModule } from 'ng2-charts';
+
+import { LoadingModule } from 'ngx-loading';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkxVWfEOYenaJYNgb-12NV5Arp0tOGa8k",
@@ -263,7 +266,9 @@ const firebaseConfig = {
       apiKey: 'AIzaSyDzjedSKp0zF9Bg4Gf2C-zWnNvAaWjTBrA',
       libraries: ["places"]
     }),
-    FusionChartsModule
+    FusionChartsModule,
+    ChartsModule,
+    LoadingModule
 
   ],
   providers: [ApiService, AuthGuard, NotAuthGuard, ClientAuthGuard, ClientNotAuthGuard, GlobaldataService,DatePipe],

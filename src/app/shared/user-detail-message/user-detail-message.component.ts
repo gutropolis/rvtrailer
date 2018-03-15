@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Rx';
   styleUrls: ['./user-detail-message.component.scss']
 })
 export class UserDetailMessageComponent implements OnInit {
-
+  public loading = false;
   trailerID: any = [];
   trailerDetails: any[] = [];
   saveSuccess: boolean;
@@ -100,7 +100,9 @@ export class UserDetailMessageComponent implements OnInit {
 }
 getUserList()
 {
+  this.loading = true;
   this.apiService.getAllUsers().subscribe((res) => {
+    this.loading = false;
     this.users = res;
   });
 }

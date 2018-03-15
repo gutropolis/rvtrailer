@@ -20,6 +20,7 @@ import * as firebase from 'firebase/app';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
+  public loading = false;
 
   user: Observable<firebase.User>;
 
@@ -76,6 +77,7 @@ export class LoginComponent implements OnInit {
   }
 
     onLoginSubmit() {
+      this.loading = true;
     console.log(this.form.value);
       this.email = this.form.get('email').value;
       this.processing = true;
@@ -89,11 +91,13 @@ export class LoginComponent implements OnInit {
 
     this.apiService.clientLogin(user).subscribe(data => {
       if (!data.success) {
+        this.loading = false;
         this.messageClass = 'alert alert-danger';
         this.message = 'Username or Password are Not Found.If sign up complete then call to admin for aproved your a/c';
         this.processing = false;
         this.enableForm();
       } else {
+       
        // this.getUserByEmail();
         this.messageClass = 'alert alert-success';
         this.message = 'Success';
@@ -105,10 +109,14 @@ export class LoginComponent implements OnInit {
           if(data.user.role){
             if(data.user.role=='admin'){
              this.router.navigate(['/admin']);
+             
            }else   if(data.user.role=='owner'){
+
              this.router.navigate(['/']);
+             
             }else{
              this.router.navigate(['/']);
+             
             }
           }
 
