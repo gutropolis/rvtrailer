@@ -371,21 +371,11 @@
                 <div class="trailer-share clearfix">
                     <h3>Share this trailer</h3>
                     <div class="trailer-share-social">
-                        <a href="">
-                            <img src="assets/images/twitter.png" alt="" />
-                        </a>
-                        <a href="">
-                            <img src="assets/images/facebook (1).png" alt="" />
-                        </a>
-                        <a href="">
-                            <img src="assets/images/google-plus.png" alt="" />
-                        </a>
-                        <a href="">
-                            <img src="assets/images/instagram.png" alt="" />
-                        </a>
-                        <a href="">
-                            <img src="assets/images/linkedin.png" alt="" />
-                        </a>
+                        <share-container
+               [platforms]="['twitter','facebook','googlePlus','linkedin']"
+              [textEnabled]="false"
+               [expandable]="false">
+          </share-container>
                     </div>
                 </div>
             </div>

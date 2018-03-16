@@ -128,6 +128,7 @@ import { FusionChartsModule } from 'angular4-fusioncharts';
 import { ChartsModule } from 'ng2-charts';
 
 import { LoadingModule } from 'ngx-loading';
+import {ShareModule} from 'ng2share/share.module'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkxVWfEOYenaJYNgb-12NV5Arp0tOGa8k",
@@ -268,7 +269,8 @@ const firebaseConfig = {
     }),
     FusionChartsModule,
     ChartsModule,
-    LoadingModule
+    LoadingModule,
+    ShareModule
 
   ],
   providers: [ApiService, AuthGuard, NotAuthGuard, ClientAuthGuard, ClientNotAuthGuard, GlobaldataService,DatePipe],
