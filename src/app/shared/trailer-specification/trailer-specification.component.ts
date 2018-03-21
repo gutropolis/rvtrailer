@@ -45,10 +45,12 @@ export class TrailerSpecificationComponent implements OnInit {
               public router: Router,
               public apiService: ApiService,
               private gd: GlobaldataService) {
+                
                   this.listing = this.gd.ListingObj['global'];
                   console.log(this.listing);
                // alert(this.listing);
                   this.getRental();
+
                   
                   
                 

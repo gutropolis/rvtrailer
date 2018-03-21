@@ -128,7 +128,12 @@ import { FusionChartsModule } from 'angular4-fusioncharts';
 import { ChartsModule } from 'ng2-charts';
 
 import { LoadingModule } from 'ngx-loading';
-import {ShareModule} from 'ng2share/share.module'
+import {ShareModule} from 'ng2share/share.module';
+import { AdminPackageComponent } from './admin/admin-package/admin-package.component';
+import { AdminAddPackageComponent } from './admin/admin-add-package/admin-add-package.component';
+import { AdminEditPackageComponent } from './admin/admin-edit-package/admin-edit-package.component';
+import { AdminViewPackageComponent } from './admin/admin-view-package/admin-view-package.component';
+import { DatepickerComponent } from './shared/datepicker/datepicker.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkxVWfEOYenaJYNgb-12NV5Arp0tOGa8k",
@@ -236,6 +241,11 @@ const firebaseConfig = {
       AdminViewFeaturesComponent,
       OwnerEditListtrailerComponent,
       OrderbyPipe,
+      AdminPackageComponent,
+      AdminAddPackageComponent,
+      AdminEditPackageComponent,
+      AdminViewPackageComponent,
+      DatepickerComponent,
      
 
   ],

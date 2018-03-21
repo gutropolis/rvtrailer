@@ -1,6 +1,6 @@
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { ApiService } from './../../api.service';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit,Renderer, ViewEncapsulation } from '@angular/core';
 import { ListTrailerComponent } from 'app/routes/list-trailer/list-trailer.component';
 import { DatePipe } from '@angular/common';
 
@@ -41,7 +41,8 @@ export class RvsListingComponent implements OnInit {
   isReadonly: boolean = true;
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
-              public router: Router,private datePipe: DatePipe) {
+              public router: Router,private datePipe: DatePipe,private renderer: Renderer) {
+                this.renderer.setElementProperty(document.body, "scrollTop", 0);
                       if (this.logindata  === null ) {
                         console.log();
                       } else {

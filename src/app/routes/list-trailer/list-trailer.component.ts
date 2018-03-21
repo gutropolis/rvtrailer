@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from './../../api.service';
-import { Component, OnInit,ViewEncapsulation } from '@angular/core';
+import { Component, OnInit,Renderer,ViewEncapsulation } from '@angular/core';
 import {AppComponent} from '../../shared/app/app.component';
 
 @Component({
@@ -19,8 +19,9 @@ export class ListTrailerComponent implements OnInit {
               private apiService: ApiService,
               public router: Router,
               private fb: FormBuilder,
-              private route: ActivatedRoute)
+              private route: ActivatedRoute,private renderer: Renderer)
               {
+                this.renderer.setElementProperty(document.body, "scrollTop", 0);
                 this.app.brandSlideVisible = false;
                     this.app.brandSlideVisible = false;
                       if(this.logindata  === null ) {

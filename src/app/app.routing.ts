@@ -73,7 +73,11 @@ import { AdminAddFeaturesComponent } from './admin/admin-add-features/admin-add-
 import { AdminEditFeaturesComponent } from './admin/admin-edit-features/admin-edit-features.component';
 import { AdminViewFeaturesComponent } from './admin/admin-view-features/admin-view-features.component';
 import { OwnerEditListtrailerComponent } from './shared/owner-edit-listtrailer/owner-edit-listtrailer.component';
-
+import { AdminPackageComponent } from './admin/admin-package/admin-package.component';
+import { AdminAddPackageComponent } from './admin/admin-add-package/admin-add-package.component';
+import { AdminEditPackageComponent } from './admin/admin-edit-package/admin-edit-package.component';
+import { AdminViewPackageComponent } from './admin/admin-view-package/admin-view-package.component';
+import { DatepickerComponent } from './shared/datepicker/datepicker.component';
 export const Routing = RouterModule.forRoot([
     {
         path: '',
@@ -211,6 +215,11 @@ export const Routing = RouterModule.forRoot([
             { path: 'add-features', component: AdminAddFeaturesComponent },
             { path: 'view-features/:id', component: AdminViewFeaturesComponent },
             { path: 'edit-features/:id', component: AdminEditFeaturesComponent },
+            { path: 'package', component: AdminPackageComponent },
+            { path: 'add-package', component: AdminAddPackageComponent },
+            { path: 'edit-package/:id', component: AdminEditPackageComponent },
+            { path: 'view-package/:id', component: AdminViewPackageComponent },
+            { path: 'datepicker', component: DatepickerComponent },
         ]
     },
 

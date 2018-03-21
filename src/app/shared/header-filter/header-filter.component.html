@@ -18,10 +18,11 @@
                 </g>
               </svg>
             </i>
+         <!--   <button type="button" (click)="dpYMD.show()">show date</button> -->
                 <input type="text" formControlName="location" name="location"  class="form-control" 
                 autocorrect="off" autocapitalize="off" spellcheck="off" 
                  placeholder="NANAIMO, COLUMBIA"  #search 
-                 (keyup.enter)="searchBoxChanged()"
+                 (keyup.enter)="searchBoxChanged()" (click)="dpYMD.show()"
                  (blur)="searchBoxChanged()" [(ngModel)] = "searchFieldValue"  />
             </div>
         </div>
@@ -39,8 +40,30 @@
                 </g>
                 </svg>
             </i>
-            <my-date-picker ngModel name="from" class="form-control"  formControlName="from" placeholder="Available On"></my-date-picker>
-             <!--   <input type="text" formControlName="from" class="form-control" bsDatepicker #dp1="bsDatepicker" placeholder="Available On" [(bsValue)]="bsValue" />
+
+          <!--    <input type="text" value="{{startdate}}"
+            [minDate]="minDate"
+            formControlName="from"
+            placeholder="Available On"
+            class="form-control"
+            (bsValueChange)="onValueChange($event)"
+            bsDaterangepicker/>
+-->
+            <input
+            class="form-control"
+            [minDate]="minDate"
+            
+            #dpYMD="bsDatepicker"
+            bsDatepicker
+            formControlName="from"  placeholder="Available On"
+           
+            [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+            (bsValueChange)="onValueChange($event)"
+            
+            >
+          <!--     <input type="text" class="form-control" placeholder="Daterangepicker" bsDaterangepicker [(ngModel)]="daterangepickerModel" />
+             
+               <input type="text" formControlName="from" class="form-control" bsDatepicker #dp1="bsDatepicker" placeholder="Available On" [(bsValue)]="bsValue" />
              -->
             </div>
         </div>
@@ -59,11 +82,34 @@
                 </g>
                 </svg>
             </i>
-            <my-date-picker ngModel name="to" class="form-control" formControlName="to" placeholder="Available Till"></my-date-picker>
+            
+         <!--   <input type="text" value="{{enddate |  date:'MM/dd/yyyy'}}" 
+            placeholder="Available Till"
+            class="form-control"
+            [minDate]="startdate"
+            
+            bsDaterangepicker/>-->
+            <input class="form-control" value="{{data |date:'yyyy-MM-dd' }}" [minDate]="data" #dp="bsDatepicker" placeholder="Available Till" bsDatepicker [isOpen]="isOpen2===true" 
+            [bsConfig]="{ dateInputFormat:'YYYY-MM-DD' }" 
+            (bsValueChange)="onValueChangeV2($event)" 
+            />
+       <!--    <input
+            class="form-control"
+           
+            [minDate]="data"
+            placeholder="Available Till"
+            #dp="bsDatepicker"
+            [(bsValue)]="data" value="{{ data | date:'yyyy-MM-dd' }}"
+            bsDatepicker [isOpen]="isOpen==true"
+            formControlName="to"
+            [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+            >
+          <my-date-picker ngModel name="to" class="form-control" formControlName="to" placeholder="Available Till"></my-date-picker>
         
-               <!-- <input type="text" formControlName="to" placeholder="Available Till" class="form-control" bsDatepicker #dp="bsDatepicker">
-               -->
-                <!-- <input type="text" class="form-control" /> -->
+                <input type="text" formControlName="to" placeholder="Available Till" class="form-control" bsDatepicker #dp="bsDatepicker">
+              
+                 <input type="text" class="form-control" />  -->
+               
             </div>
         </div>
         <div class="col-sm-2">

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit,Renderer,ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'rv-blog',
@@ -8,7 +8,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private renderer: Renderer) {this.renderer.setElementProperty(document.body, "scrollTop", 0); }
 
   brandSlideVisible: boolean;
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit,Renderer , ViewEncapsulation } from '@angular/core';
 import {AppComponent} from '../../shared/app/app.component';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { RecaptchaModule } from 'ng2-recaptcha';
@@ -19,7 +19,8 @@ export class ContactUsComponent implements OnInit {
     public apiService: ApiService,
     private route: ActivatedRoute,
     private flashMessagesService: FlashMessagesService,
-    private formBuilder: FormBuilder,) {
+    private formBuilder: FormBuilder,
+    private renderer: Renderer) {
       let emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       let phone_pattern=/^\+?\d{10}$/;
             this.form = this.formBuilder.group({
@@ -30,6 +31,7 @@ export class ContactUsComponent implements OnInit {
             'msg' : [null, Validators.required],
             'validate' : ''
           });
+          this.renderer.setElementProperty(document.body, "scrollTop", 0);
 
      }
 

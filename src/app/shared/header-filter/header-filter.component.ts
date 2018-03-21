@@ -13,28 +13,65 @@ import { ViewChild, ElementRef, NgZone } from '@angular/core';
 export class HeaderFilterComponent implements OnInit {
   @ViewChild('search') public searchElement: ElementRef;
   
-
-
+  isOpen = false;
+  isOpen2=false;
   public myForm: FormGroup; // our model driven form
   public submitted: boolean;
+  public focus: boolean;
   searchForm:any;
   bsValue: Date = new Date();
   mydate:Date;
+  minDate: Date = new Date();;
    //content of searchbox field
+   data:Date;
+   startdate:Date;
+   enddate:Date;
    searchFieldValue: string = "";
+   bsDatepicker:String;
+   onValueChange(value: Date): void {
    
+    this.data = value;
+    if(this.data != null)
+    {
+      this.isOpen2 = true;
+     // this.isOpen = false;
+    this.startdate=this.data[0];
+    this.enddate=this.data[1];
+    console.log('start date value is '+this.data[0])
+    console.log('End date value is '+this.data[1])
+    }
+   
+   }
+   onValueChangeV2(value: Date): void {
+   
+    this.isOpen2 = false;
+    }
+   
+    
+   /*onValueChange(value: Date): void {
+    
+    this.data = value;
+   // this.mydate=this.data;
+   // this.mydate.setDate(this.mydate.getDate() + 1);
+   }
+   */
+   mydata=this.data;
+ 
+
   //router:Router;
   constructor(private fb: FormBuilder, public router: Router,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
-
+    
     this.searchForm = this.fb.group({
       'location': [null, Validators.required],
-      'from': [null],
-      'to': [null],
+      'from': [null, Validators.required],
+      'to': [null, Validators.required],
 
     });
    }
 
   ngOnInit() {
+    
+   console.log(this.mydata);
     this.mapsAPILoader.load().then(
       () => {
        let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types:["address"] });
@@ -42,7 +79,9 @@ export class HeaderFilterComponent implements OnInit {
         autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          
          console.log(place);
+         
          if(place.geometry === undefined || place.geometry === null ){
           return;
          } 
@@ -54,10 +93,19 @@ export class HeaderFilterComponent implements OnInit {
   }
 
   searchBoxChanged () {
-   console.log(this.searchFieldValue)
-    
+   // this.isOpen = true;
+   console.log('its location'+this.searchFieldValue)
+   
     if (this.searchFieldValue != "")
        this.searchFieldValue=this.searchElement.nativeElement.value;
+      
+
+  }
+
+  itsmydate()
+  {
+    this.mydate=this.data;
+    console.log('its my date'+this.minDate);
   }
 
 
@@ -68,14 +116,15 @@ export class HeaderFilterComponent implements OnInit {
     console.log(this.searchForm.value);
    console.log(this.searchElement.nativeElement.value);
     let formValues = this.searchForm.value;
+   console.log(formValues);
    
-   let tosearch =formValues.to.date.year+"-"+formValues.to.date.month+"-"+formValues.to.date.day;
-   let fromsearch =formValues.from.date.year+"-"+formValues.from.date.month+"-"+formValues.from.date.day;
+  // let tosearch =formValues.to.date.year+"-"+formValues.to.date.month+"-"+formValues.to.date.day;
+  // let fromsearch =formValues.from.date.year+"-"+formValues.from.date.month+"-"+formValues.from.date.day;
    
    //console.log('this is my date : '+this.mydate.datepicker({ dateFormat: 'dd-mm-yy' }).val());
    
-    this.mydate=new Date(tosearch);
-    this.bsValue=new Date(fromsearch);
+   // this.mydate=new Date(tosearch);
+   // this.bsValue=new Date(fromsearch);
 
    // console.log('time format change by thakur'+this.bsValue);
 
@@ -83,8 +132,8 @@ export class HeaderFilterComponent implements OnInit {
         {
           location: this.searchElement.nativeElement.value,
          // location:'zirakpur',
-         dateFrom:this.bsValue,
-         dateTo: this.mydate,
+         dateFrom:this.searchForm.value.from,
+         dateTo: this.searchForm.value.to,
           homeSearch: true
         }
         
@@ -94,6 +143,10 @@ export class HeaderFilterComponent implements OnInit {
         return false;
 
 //this.router.navigate(['/rvs']);
+  }
+  aplytheme()
+  {
+    console.log('Hello apply theme');
   }
   
 

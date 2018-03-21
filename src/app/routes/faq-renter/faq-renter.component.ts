@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit,Renderer, ViewEncapsulation } from '@angular/core';
 import {AppComponent} from '../../shared/app/app.component';
 
 @Component({
@@ -9,7 +9,8 @@ import {AppComponent} from '../../shared/app/app.component';
 })
 export class FaqRenterComponent implements OnInit {
 
-  constructor(private app: AppComponent) {
+  constructor(private app: AppComponent,private renderer: Renderer) {
+    this.renderer.setElementProperty(document.body, "scrollTop", 0);
     this.app.brandSlideVisible = false;
    }
 
