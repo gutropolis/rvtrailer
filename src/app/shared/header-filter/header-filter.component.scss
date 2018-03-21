@@ -128,4 +128,9 @@
         width: 100%;
         min-height: 60px;
     }
+   
+   
 }
+.theme-green .bs-datepicker-head{background: $red-color !important;}
+.theme-green .bs-datepicker-body table td.week span{color: $red-color !important;}
+.theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span, .theme-green .bs-datepicker-body table td span[class*="select-"]:after, .theme-green .bs-datepicker-body table td[class*="select-"] span:after{background: $red-color !important;}

@@ -63,7 +63,7 @@ export class HeaderFilterComponent implements OnInit {
 
   //router:Router;
   constructor(private fb: FormBuilder, public router: Router,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
-   // this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+    //this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
     this.searchForm = this.fb.group({
       'location': [null, Validators.required],
       'from': [null, Validators.required],
