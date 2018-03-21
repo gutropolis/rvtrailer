@@ -52,11 +52,12 @@
             <input
             class="form-control"
             [minDate]="minDate"
-            
+           
             #dpYMD="bsDatepicker"
             bsDatepicker
-            formControlName="from"  placeholder="Available On"
-           
+             placeholder="Available On"
+             formControlName="from"
+            [(bsValue)]="bsValue"
             [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
             (bsValueChange)="onValueChange($event)"
             
@@ -89,7 +90,7 @@
             [minDate]="startdate"
             
             bsDaterangepicker/>-->
-            <input class="form-control" value="{{data |date:'yyyy-MM-dd' }}" [minDate]="data" #dp="bsDatepicker" placeholder="Available Till" bsDatepicker [isOpen]="isOpen2===true" formControlName="to"
+            <input class="form-control" value="{{data2 |date:'yyyy-MM-dd' }}" [minDate]="data2" #dp="bsDatepicker" placeholder="Available Till" bsDatepicker [isOpen]="isOpen2===true" formControlName="to"
             [bsConfig]="{ dateInputFormat:'YYYY-MM-DD' }" 
             (bsValueChange)="onValueChangeV2($event)" 
             />

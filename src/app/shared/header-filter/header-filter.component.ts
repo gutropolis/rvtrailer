@@ -27,6 +27,7 @@ export class HeaderFilterComponent implements OnInit {
   minDate: Date = new Date();;
    //content of searchbox field
    data:Date;
+   data2:Date;
    startdate:Date;
    enddate:Date;
    searchFieldValue: string = "";
@@ -34,14 +35,13 @@ export class HeaderFilterComponent implements OnInit {
    onValueChange(value: Date): void {
    
     this.data = value;
+
     if(this.data != null)
     {
+      this.data2 = new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
       this.isOpen2 = true;
      // this.isOpen = false;
-    this.startdate=this.data[0];
-    this.enddate=this.data[1];
-    console.log('start date value is '+this.data[0])
-    console.log('End date value is '+this.data[1])
+   //this.data.setDate(this.data.getDate()+1)
     }
    
    }
@@ -73,8 +73,7 @@ export class HeaderFilterComponent implements OnInit {
    }
 
   ngOnInit() {
-    
-    
+  
    console.log(this.mydata);
     this.mapsAPILoader.load().then(
       () => {
