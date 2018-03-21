@@ -4,6 +4,7 @@ import { MapsAPILoader } from '@agm/core';
 import {} from '@types/googlemaps';
 import {Router} from '@angular/router';
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 @Component({
   selector: 'rv-header-filter',
   templateUrl: './header-filter.component.html',
@@ -12,7 +13,9 @@ import { ViewChild, ElementRef, NgZone } from '@angular/core';
 })
 export class HeaderFilterComponent implements OnInit {
   @ViewChild('search') public searchElement: ElementRef;
-  
+  colorTheme = 'theme-red';
+  bsConfig: Partial<BsDatepickerConfig>;
+ 
   isOpen = false;
   isOpen2=false;
   public myForm: FormGroup; // our model driven form
@@ -60,7 +63,7 @@ export class HeaderFilterComponent implements OnInit {
 
   //router:Router;
   constructor(private fb: FormBuilder, public router: Router,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
-    
+   // this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
     this.searchForm = this.fb.group({
       'location': [null, Validators.required],
       'from': [null, Validators.required],
@@ -70,6 +73,7 @@ export class HeaderFilterComponent implements OnInit {
    }
 
   ngOnInit() {
+    
     
    console.log(this.mydata);
     this.mapsAPILoader.load().then(
