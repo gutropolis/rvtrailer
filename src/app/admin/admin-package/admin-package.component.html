@@ -1,0 +1,45 @@
+<div class="admin-page">
+  <h4 class="admin-title">All Packages List
+      <button type="button" class="btn btn-info pull-right" [routerLink]="['/admin/add-package']">Add Package</button></h4>
+     <h2> Search</h2> <nav class="navbar">
+          <input class="form-control" type="text" name="search" [(ngModel)]="filter">      
+        </nav>
+  <div class="table-responsive">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Listing</th>
+                  <th>Edit Listing</th>
+                  <th>Registration Date</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody *ngFor="let package of packages | filter:filter | OrderbyPipe:'-created_at' | paginate: { itemsPerPage: 10, currentPage: p } ;let i = index">
+              <tr>
+                  <td>{{ package.name }}  </td>
+                  <td>{{ package.price }}</td>
+                  <td>{{package.listing}}</td>
+
+                  <td>
+                    {{package.edit_listing}}
+                  </td>
+                  <th>{{ package.created_at | date}}</th>
+                  
+                  <td>
+                      <button class="btn btn-success btn-sm" type="button" [routerLink]="['/admin/view-package', package._id]">VIEW</button>
+                      <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/admin/edit-package', package._id]">EDIT</button>
+                      <button class="btn btn-danger btn-sm" type="button" (click)="deletePackage(package._id)">DELETE</button>
+                  </td>
+              </tr>
+          </tbody>
+          
+      </table>
+      <div>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+      
+  </div>
+
+</div>

@@ -1,0 +1,38 @@
+
+<!--<p>
+  datepicker works!
+</p>
+<form [formGroup]="myForm" (ngSubmit)="onsubmit()">
+
+    <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
+        <input type="text" max="5" class="form-control" placeholder="Daterangepicker" bsDaterangepicker formControlName="range" />
+      </div>
+      <div>
+          <button type="submit"  class="btn btn-primary btn_eql">Submit</button>
+      </div>
+    
+  </form>
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <pre class="code-preview">{{myForm.value | json}}</pre>
+    </div>
+  </div>
+-->
+   
+
+<input class="form-control" (ngModelChange)="changeFunction('bsDaterangepicker')" #drp="bsDaterangepicker" name="daterangpicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
+
+<input type="text"
+           placeholder="Daterangepicker"
+           class="form-control"
+           bsDaterangepicker #daterange (change)="onchangeFunction(daterange, daterange2)">
+           <button  (click)="onchangeFunction(daterange, daterange2, daterange3)">Submit</button>
+
+           <input type="text"
+           placeholder="Daterangepicker"
+           class="form-control"
+           bsDaterangepicker #daterange2>
+           <input type="text"
+           placeholder="Daterangepicker"
+           class="form-control"
+           bsDaterangepicker #daterange3>
