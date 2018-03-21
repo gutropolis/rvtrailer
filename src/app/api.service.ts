@@ -587,6 +587,66 @@ Email(params) {
       .map(res => res.json());
   }
 
+  addPackage(data) {
+        return new Promise((resolve, reject) => {
+            this.http.post( this.mainURL + '/api/add-package', data)
+              .map(res => res.json())
+              .subscribe(res => {
+                resolve(res);
+              }, (err) => {
+                reject(err);
+              });
+        });
+      }
+
+      deletePackage(id) {
+        return new Promise((resolve, reject) => {
+              this.http.delete( this.mainURL + '/api/Packages/' + id)
+                .subscribe(res => {
+                  resolve(res);
+                }, (err) => {
+                  reject(err);
+                });
+          });
+        }
+
+        getViewPackage(id) {
+          return new Promise((resolve, reject) => {
+              this.http.get( this.mainURL + '/api/view-package/' + id)
+                .map(res => res.json())
+                .subscribe(res => {
+                  resolve(res)
+              }, (err) => {
+                reject(err);
+              });
+          });
+        }
+
+        getEditPackage(id,data) {
+          return new Promise((resolve, reject) => {
+              this.http.get( this.mainURL + '/api/edit-package/' + id,data)
+                .map(res => res.json())
+                .subscribe(res => {
+                  resolve(res)
+              }, (err) => {
+                reject(err);
+              });
+          });
+        }
+
+        updatePackage(id, data) {
+          return new Promise((resolve, reject) => {
+              this.http.put( this.mainURL + '/api/edit-package/' + id, data)
+                .map(res => res.json())
+                .subscribe(res => {
+                  resolve(res);
+                }, (err) => {
+                  reject(err);
+                });
+          });
+        }
+
+
   getNewsLetters(data) {
       return this.http.post( this.mainURL + '/api/newsLetter', data)
           .map(res => res.json());
