@@ -38,7 +38,7 @@ export class HeaderFilterComponent implements OnInit {
 
     if(this.data != null)
     {
-      this.data2 = new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
+      this.data2= new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
       this.isOpen2 = true;
      // this.isOpen = false;
    //this.data.setDate(this.data.getDate()+1)
