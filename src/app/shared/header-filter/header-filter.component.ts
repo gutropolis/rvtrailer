@@ -105,9 +105,10 @@ export class HeaderFilterComponent implements OnInit {
 
   }
 
-  show(pop:any)
+  itsmydate()
   {
-  pop.show();
+    this.mydate=this.data;
+    console.log('its my date'+this.minDate);
   }
 
 
