@@ -38,8 +38,17 @@ export class HeaderFilterComponent implements OnInit {
 
     if(this.data != null)
     {
-      this.data2= new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
+     
+      if( this.isOpen2== true)
+      {
+        this.isOpen2=false;
+        this.data2 = new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
+        
+      }
+      else{
+      this.data2 = new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
       this.isOpen2 = true;
+      }
      // this.isOpen = false;
    //this.data.setDate(this.data.getDate()+1)
     }
@@ -105,10 +114,10 @@ export class HeaderFilterComponent implements OnInit {
 
   }
 
-  itsmydate()
+  showevent(pop:any)
   {
-    this.mydate=this.data;
-    console.log('its my date'+this.minDate);
+    pop.show();
+    
   }
 
 
