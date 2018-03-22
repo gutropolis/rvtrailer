@@ -38,17 +38,8 @@ export class HeaderFilterComponent implements OnInit {
 
     if(this.data != null)
     {
-     
-      if( this.isOpen2== true)
-      {
-        this.isOpen2=false;
-        this.data2 = new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
-        
-      }
-      else{
       this.data2 = new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
       this.isOpen2 = true;
-      }
      // this.isOpen = false;
    //this.data.setDate(this.data.getDate()+1)
     }
@@ -114,10 +105,9 @@ export class HeaderFilterComponent implements OnInit {
 
   }
 
-  showevent(pop:any)
+  show(pop:any)
   {
-    pop.show();
-    
+  pop.show();
   }
 
 
