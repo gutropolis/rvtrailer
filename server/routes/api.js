@@ -14,12 +14,13 @@ var Message = require('../models/message');
 var NewsLetter = require('../models/newsletter');
 var Rental=require('../models/rental_type');
 var Feature=require('../models/feature');
+var Feedback=require('../models/feedback');
 
 /*var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'ajaythakurniit93@gmail.com',
-    pass: 'Romanticworld12'
+    pass: ''
   }
 });
 */
@@ -727,8 +728,34 @@ router.get('/Packages', (req, res) => {
     res.json(package);
   });
 });
+router.post('/add-package', function(req, res, next) {
+  Package.create(req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+ 
+});
+
+router.delete('/Packages/:id', function(req, res, next) {
+  Package.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 
 
+router.get('/view-package/:id', function(req, res, next) {
+  Package.findById(req.params.id, function (err, Package) {
+    if (err) return next(err);
+    res.json(Package);
+  });
+});
+router.put('/edit-package/:id', function(req, res, next) {
+  Package.findByIdAndUpdate(req.params.id, req.body, function (err,Package) {
+    if (err) return next(err);
+    res.json(Package);
+  });
+});
 
 router.post('/login', (req, res) => {
       User.findOne({ $and: [ {email: req.body.email}, {password: req.body.password}, {type: 'admin'} ]}, (err, user) => {
@@ -871,11 +898,61 @@ router.delete('/view-features/:id', function(req, res, next) {
   });
 });
 
+router.post('/feedback', function(req, res, next) {
+  Feedback.create(req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+router.get('/feedback', function(req, res, next) {
+  Feedback.find({}, function(err, Feedback){
+    if (err) return next(err);
+    res.json(Feedback);
+  });
+});
+router.delete('/view-feedback/:id', function(req, res, next) {
+  Feedback.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+let aquery={
+  $group:
+    {
+      _id: "$trailer_id",
+      
+      avgQuantity: { $avg: "$star_rating" }
+    }
+   
+  };
+  router.get('/feedbacks', function(req, res, next) {
+    Feedback.aggregate(
+      [
+      { '$group': { _id: '$trailer_id', avgRating: { '$avg': '$star_rating' } } } ],
+          { cursor: { batchSize: 200000 }, allowDiskUse: true,
+          explain: false},null).exec(function(cerr, records) {
+      if (cerr) {
+        return console.log(cerr);
+      }
+      res.json(records);
+    });
+  });
 
 
-
-
-
+router.get('/view-feedback/:id', function(req, res, next) {
+  Feedback.findById(req.params.id, function (err, Feedback) {
+    if (err) return next(err);
+    res.json(Feedback);
+  });
+});
+router.put('/edit-feedback/:id', function(req, res, next) {
+  Feedback.findByIdAndUpdate(req.params.id, req.body, function (err,Feedback) {
+    if (err) return next(err);
+    res.json(Feedback);
+  });
+});
 
 
 
