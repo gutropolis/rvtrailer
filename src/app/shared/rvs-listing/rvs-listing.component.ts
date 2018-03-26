@@ -12,8 +12,19 @@ import { DatePipe } from '@angular/common';
 })
 export class RvsListingComponent implements OnInit {
   public loading = false;
-
+  calculaterating:number=0;
+  totalrating:number=0;
+  calc:number=0;
+  myfeedbackdata:any=[{
+    "_id" : "5aaba714ac6d5a11d453a1e3",
+    "avgRating" : 4.5
+},
+{
+    "_id" : "5ab4cc28ba9b100d48017cef",
+    "avgRating" : 3.5
+}];
   listtrailers:any=[];
+  feedbackm:any=[];
   public rvList: any[] = [
     {
       rvimage: 'rv-1.jpg',
@@ -38,6 +49,8 @@ export class RvsListingComponent implements OnInit {
   content:any[]=new Array();
   listLimit:number=10;
   listlmt:number=0;
+  rateid:any='5aaba714ac6d5a11d453a1e3';
+  ratings:Number=2.5;
   isReadonly: boolean = true;
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
@@ -48,6 +61,9 @@ export class RvsListingComponent implements OnInit {
                       } else {
                         this.logindata = JSON.parse(localStorage.getItem('user'));
                       }
+                      this.feedback();
+                     // console.log('rating by trailer'+this.myfeedbackdata);
+                     
   }
 
   brandSlideVisible: boolean;
@@ -105,7 +121,7 @@ export class RvsListingComponent implements OnInit {
           .subscribe( (result) => {
             this.loading = false;
             this.items = result;
-            console.log(this.item);
+            console.log('items is '+JSON.stringify(this.items));
 
             this.listlmt=this.listLimit;
             let lenght=this.items.length;
@@ -183,6 +199,34 @@ export class RvsListingComponent implements OnInit {
          
   
 
+  }
+
+  feedback()
+  {
+    this.apiService.getAllFeedback()
+          .then( (res) => 
+          {
+            this.feedbackm=res;
+            
+            var someArray =this.feedbackm;
+            someArray.forEach((item, index) => {
+               // console.log(item.star_rating); 
+               
+                this.calculaterating+=item.star_rating;
+                this.calc++;
+                //console.log(index); 
+            });
+            this.totalrating=this.calculaterating/this.calc;
+        console.log('calculating rate'+this.calculaterating);
+        console.log('calculating index'+this.calc);
+        console.log('total rating'+this.totalrating);
+           // console.log('feed back is here'+JSON.stringify(this.feedbackm));
+          });
+
+  }
+  onchange()
+  {
+    console.log('onchange function values');
   }
 
 }

@@ -1,0 +1,33 @@
+<div class="user-review clearfix">
+    <div class="user-review-top ">
+        <div class="col-md-12">
+            <div class="user-review-form">
+                <form [formGroup]="rForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" placeholder="Title" formControlName="title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Review</label>
+                        <textarea placeholder="Your Review" formControlName="review" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <p><strong>Star Rating :</strong>
+                            <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly" formControlName="star_rating" ></rating>
+                           
+                           Rate: <b>{{rate}}</b>
+                            
+                          
+                        </p>
+                        
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" [disabled]="!rForm.valid" class="btn btn-border-grey">Submit Review</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+  
+</div>

@@ -63,6 +63,11 @@
                         </div>
 
                     </td>
+                    <td >
+                        <a [routerLink]="['/user-dashboard/feedback',messageDetail?.listing_id]" class="btn btn-primary pull-right">FeedBack</a>
+                    </td>
+
+
                     <td class="yf xY " width="5%">&nbsp;</td>
                     <td class="text-right" width="18%"><b>{{ messageDetail.date | date:'dd/MM/yyyy hh:mm a'}}</b></td>
                 </tr>

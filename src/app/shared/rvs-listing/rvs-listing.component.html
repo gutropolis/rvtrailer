@@ -119,13 +119,31 @@
                                 <h6 *ngIf="user._id == item.user_id">
                                     {{ user.firstname }}
                                 </h6>
-                            </div>
-                                <div class="star-rating">
-                                    <rating [(ngModel)]="rating" [readonly]="isReadonly"></rating>
+                            
+                                <div class="star-rating" *ngIf="user._id == item.user_id">
+                                      
+                                        <div *ngIf="item._id == rateid">
+                                            
+                                              
+                                        
+                                   
+                                    <rating  [(ngModel)]="ratings" [max]="max" [readonly]="isReadonly"></rating>
                                     <!-- <rating (click)=ratingClick()></rating> -->
+                               
+                                </div>
+                                <div *ngIf="item._id != rateid">
+                                            
+                                              
+                                        
+                                   
+                                    <rating   [max]="max" [readonly]="isReadonly"></rating>
+                                    <!-- <rating (click)=ratingClick()></rating> -->
+                               
+                                </div>
+
 
                                 </div>
-                                
+                            </div>
                             </div>
 
                         </div>

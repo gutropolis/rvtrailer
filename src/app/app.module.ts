@@ -134,6 +134,12 @@ import { AdminAddPackageComponent } from './admin/admin-add-package/admin-add-pa
 import { AdminEditPackageComponent } from './admin/admin-edit-package/admin-edit-package.component';
 import { AdminViewPackageComponent } from './admin/admin-view-package/admin-view-package.component';
 import { DatepickerComponent } from './shared/datepicker/datepicker.component';
+import { UserFeedbackComponent } from './shared/user-feedback/user-feedback.component';
+import { AdminFeedbackComponent } from './admin/admin-feedback/admin-feedback.component';
+import { AdminAddFeedbackComponent } from './admin/admin-add-feedback/admin-add-feedback.component';
+import { AdminEditFeedbackComponent } from './admin/admin-edit-feedback/admin-edit-feedback.component';
+import { AdminViewFeedbackComponent } from './admin/admin-view-feedback/admin-view-feedback.component';
+import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkxVWfEOYenaJYNgb-12NV5Arp0tOGa8k",
@@ -246,6 +252,12 @@ const firebaseConfig = {
       AdminEditPackageComponent,
       AdminViewPackageComponent,
       DatepickerComponent,
+      UserFeedbackComponent,
+      AdminFeedbackComponent,
+      AdminAddFeedbackComponent,
+      AdminEditFeedbackComponent,
+      AdminViewFeedbackComponent,
+      AdminContactComponent,
      
 
   ],

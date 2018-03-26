@@ -52,6 +52,8 @@ export class RvDetailComponent implements OnInit {
   saveSuccess: boolean;
   users:any=[];
   rentalusername:any=[];
+  rateid:any='5aaba714ac6d5a11d453a1e3';
+  ratings:Number=2.5;
   constructor(private app: AppComponent,
               public router: Router,
               public apiService: ApiService,

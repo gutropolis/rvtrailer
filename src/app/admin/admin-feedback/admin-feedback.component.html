@@ -1,0 +1,43 @@
+
+<div class="admin-page">
+  <h4 class="admin-title">All Features List
+      <button type="button" class="btn btn-info pull-right" [routerLink]="['/admin/add-feedback']">Add Feedback</button></h4>
+      <h2> Search</h2> <nav class="navbar">
+          <input class="form-control" type="text" name="search" [(ngModel)]="filter">      
+        </nav>
+             <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Feedback Title</th>
+                          <th>Star Rating</th>
+                          <th>Created_at</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <ng-container *ngFor="let feedback of feedbacks | filter:filter | OrderbyPipe:'-date'| paginate: { itemsPerPage: 10, currentPage: p } ;let i = index">
+                 
+                                   
+                      <tr >
+        
+                          <td>{{ feedback.title }}</td>
+                          <th>{{ feedback.star_rating}}</th>
+                         <th>{{ feedback.date | date}}</th>
+                          <td>
+                              <button class="btn btn-success btn-sm" type="button" [routerLink]="['/admin/view-feedback',feedback._id]">VIEW</button>
+                              <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/admin/edit-feedback',feedback._id]">EDIT</button>
+                              <button class="btn btn-danger btn-sm" type="button" (click)="deleteFeedback(feedback._id)">DELETE</button>
+                          </td>
+                      </tr>
+                    </ng-container>
+                   
+                  </tbody>
+                  
+              </table>
+              <div>
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
+          </div>
+        
+        </div>

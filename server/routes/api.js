@@ -15,7 +15,8 @@ var NewsLetter = require('../models/newsletter');
 var Rental=require('../models/rental_type');
 var Feature=require('../models/feature');
 var Feedback=require('../models/feedback');
-
+var Contact=require('../models/contact');
+ratingstor:any=[];
 /*var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -918,27 +919,40 @@ router.delete('/view-feedback/:id', function(req, res, next) {
   });
 });
 
-let aquery={
-  $group:
-    {
-      _id: "$trailer_id",
-      
-      avgQuantity: { $avg: "$star_rating" }
-    }
-   
-  };
+var pipeline = [{$group: {_id: "$trailer_id",average: { $avg: "$star_rating" }}}];
   router.get('/feedbacks', function(req, res, next) {
-    Feedback.aggregate(
-      [
-      { '$group': { _id: '$trailer_id', avgRating: { '$avg': '$star_rating' } } } ],
-          { cursor: { batchSize: 200000 }, allowDiskUse: true,
-          explain: false},null).exec(function(cerr, records) {
-      if (cerr) {
-        return console.log(cerr);
+    var cursor = Feedback
+    .aggregate([
+      {
+          $group: { 
+            _id : "$trailer_id" ,
+            average: { $avg: "$star_rating" }
+          }
       }
-      res.json(records);
+    ])
+    .cursor({ batchSize: 1000 })
+    .exec(function() {
+      console.log('MyFunction working there');
+    });
+   
+  cursor
+    .on('error', function(err) {
+  console.log('Hello error');
+    })
+    .on('data', function(data) {
+     
+    this.ratingstor=data;
+    
+  
+      console.log('Hello Data'+JSON.stringify(data));
+    })
+    
+    .on('end', function() {
+      
+      console.log('Hello End');
     });
   });
+  
 
 
 router.get('/view-feedback/:id', function(req, res, next) {
@@ -954,8 +968,18 @@ router.put('/edit-feedback/:id', function(req, res, next) {
   });
 });
 
-
-
+router.post('/contact-us', function(req, res, next) {
+  Contact.create(req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+router.get('/contact-us', function(req, res, next) {
+  Contact.find({}, function(err, Contact){
+    if (err) return next(err);
+    res.json(Contact);
+  });
+});
 
 router.use((req, res, next) => {
   const token = req.headers['authorization'];

@@ -33,7 +33,8 @@
                         <h4>{{renterdetail.details_ad_title}}</h4>
                     </div>
                     <div class="col-md-4 text-right trailor-rating">
-                        <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"></rating>
+                        <rating  *ngIf="renterdetail._id == rateid" [(ngModel)]="ratings" [max]="max" [readonly]="isReadonly"></rating>
+                        <rating  *ngIf="renterdetail._id != rateid"  [max]="max" [readonly]="isReadonly"></rating>
                     </div>
                 </div>
 

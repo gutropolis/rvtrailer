@@ -78,6 +78,12 @@ import { AdminAddPackageComponent } from './admin/admin-add-package/admin-add-pa
 import { AdminEditPackageComponent } from './admin/admin-edit-package/admin-edit-package.component';
 import { AdminViewPackageComponent } from './admin/admin-view-package/admin-view-package.component';
 import { DatepickerComponent } from './shared/datepicker/datepicker.component';
+import { UserFeedbackComponent } from './shared/user-feedback/user-feedback.component';
+import { AdminFeedbackComponent } from './admin/admin-feedback/admin-feedback.component';
+import { AdminAddFeedbackComponent } from './admin/admin-add-feedback/admin-add-feedback.component';
+import { AdminEditFeedbackComponent } from './admin/admin-edit-feedback/admin-edit-feedback.component';
+import { AdminViewFeedbackComponent } from './admin/admin-view-feedback/admin-view-feedback.component';
+import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 export const Routing = RouterModule.forRoot([
     {
         path: '',
@@ -220,6 +226,11 @@ export const Routing = RouterModule.forRoot([
             { path: 'edit-package/:id', component: AdminEditPackageComponent },
             { path: 'view-package/:id', component: AdminViewPackageComponent },
             { path: 'datepicker', component: DatepickerComponent },
+            { path: 'feedback', component: AdminFeedbackComponent },
+            { path: 'edit-feedback/:id', component: AdminEditFeedbackComponent },
+            { path: 'view-feedback/:id', component: AdminViewFeedbackComponent },
+            { path: 'add-feedback', component: AdminAddFeedbackComponent },
+            { path: 'contact-us', component: AdminContactComponent },
         ]
     },
 
@@ -297,6 +308,10 @@ export const Routing = RouterModule.forRoot([
             {
                 path: 'review',
                 component: OwnerReviewComponent
+            },
+            {
+                path:'feedback/:id',
+                component:UserFeedbackComponent
             },
             {
                 path: 'favourite',

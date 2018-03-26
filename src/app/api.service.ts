@@ -90,7 +90,73 @@ Email(params) {
   }
 
 
+  addFeedback(data) {
+    return new Promise((resolve, reject) => {
+     
+        this.http.post( this.mainURL + '/api/feedback',data)
+          .map(res => res.json())
+          .subscribe(res => {
+            resolve(res);
+          }, (err) => {
+            reject(err);
+          });
+    });
+  }
+  getAllFeedback() {
+    return new Promise((resolve, reject) => {
+      this.http.get( this.mainURL + '/api/feedback')
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+      });
+    }
+    deleteFeedback(id) {
+      return new Promise((resolve, reject) => {
+            this.http.delete( this.mainURL + '/api/view-feedback/' + id)
+              .subscribe(res => {
+                resolve(res);
+              }, (err) => {
+                reject(err);
+              });
+        });
+      }
 
+      viewFeedback(id) {
+        return new Promise((resolve, reject) => {
+            this.http.get( this.mainURL + '/api/view-feedback/' + id)
+              .map(res => res.json())
+              .subscribe(res => {
+                resolve(res)
+            }, (err) => {
+              reject(err);
+            });
+        });
+      }
+      updateFeedback(id, data) {
+        return new Promise((resolve, reject) => {
+            this.http.put( this.mainURL + '/api/edit-feedback/' + id, data)
+              .map(res => res.json())
+              .subscribe(res => {
+                resolve(res);
+              }, (err) => {
+                reject(err);
+              });
+        });
+      }
+      getRetingbyId() {
+        return new Promise((resolve, reject) => {
+          this.http.get( this.mainURL + '/api/feedbacks')
+            .map(res => res.json())
+            .subscribe(res => {
+              resolve(res);
+            }, (err) => {
+              reject(err);
+            });
+          });
+        }
 
 
   addUser(data) {
@@ -661,4 +727,28 @@ Email(params) {
        
         }
 
+        addContact(data) {
+          return new Promise((resolve, reject) => {
+           
+              this.http.post( this.mainURL + '/api/contact-us',data)
+                .map(res => res.json())
+                .subscribe(res => {
+                  resolve(res);
+                }, (err) => {
+                  reject(err);
+                });
+          });
+        }
+
+        getContactus() {
+          return new Promise((resolve, reject) => {
+            this.http.get( this.mainURL + '/api/contact-us')
+              .map(res => res.json())
+              .subscribe(res => {
+                resolve(res);
+              }, (err) => {
+                reject(err);
+              });
+            });
+          }
 }
