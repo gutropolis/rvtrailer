@@ -53,7 +53,7 @@ export class RvDetailComponent implements OnInit {
   users:any=[];
   rentalusername:any=[];
   rateid:any='5aaba714ac6d5a11d453a1e3';
-  ratings:Number=2.5;
+   avg:Number=0;
   constructor(private app: AppComponent,
               public router: Router,
               public apiService: ApiService,
@@ -154,7 +154,19 @@ console.log(this.listing_id);
     this.apiService.showListTrailer(id).subscribe((res) => {
       this.loading = false;
       this.renterdetail = res;
-     // console.log(this.renterdetail);
+var star_rating=this.renterdetail.star_rating;
+var icount=0;
+var totalcount=0;
+
+star_rating.forEach(function(items) {
+  icount+=1;
+  totalcount+=items.star_rating
+    });
+    if(icount > 0 && totalcount > 0){
+      this.avg=totalcount/icount;
+  }
+      console.log('total rating average'+this.avg);
+      //console.log('total index'+icount);
       this.user_id = this.renterdetail.user_id;
 
        //get userby id
@@ -168,21 +180,7 @@ console.log(this.listing_id);
     });
  
   
-      this.features = this.renterdetail.details_feature;
-
-      let star_radingid=this.renterdetail.star_rating;
-      console.log(star_radingid);
-     // console.log('this is rating id '+star_radingid);
-      var someArray =star_radingid;
-
-      someArray.forEach((item, index) => {
-       // 
-       console.log(item);
-         console.log('rating id is '+item); 
-        });
-          
-          
-      
+      this.features = this.renterdetail.details_feature;  
 
     }, (err) => {
       console.log(err);
