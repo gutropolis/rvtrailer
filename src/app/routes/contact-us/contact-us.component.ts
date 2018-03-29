@@ -41,12 +41,24 @@ export class ContactUsComponent implements OnInit {
   }
 
 onSubmitContact()
-{
+   {
+    //   this.apiService.addContact(this.form.value).then((result) => {
+    //   console.log(this.form.value);
+    //   this.saveSuccess=true;
+    //    console.log("data save successfully");
+    //    },(err) => {
+    //     console.log(err);
+    //     });
+
+         this.apiService.Email(this.form.value).subscribe((result) => {
+          console.log(this.form.value);
+          //this.saveSuccess=true;
+           console.log("data send by email successfully");
+           });
+
   
- // console.log('values is here'+JSON.stringify(form.value));
-  this.saveSuccess=true;
+ // console.log('values is here'+JSON.stringify(this.form.value));
 
-}
-
+   }
 
 }

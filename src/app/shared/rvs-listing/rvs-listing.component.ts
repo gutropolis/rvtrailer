@@ -1,8 +1,9 @@
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {Router, ActivatedRoute, Params, ActivatedRouteSnapshot} from '@angular/router';
 import { ApiService } from './../../api.service';
 import { Component, OnInit,Renderer, ViewEncapsulation } from '@angular/core';
 import { ListTrailerComponent } from 'app/routes/list-trailer/list-trailer.component';
 import { DatePipe } from '@angular/common';
+import { count } from 'rxjs/operator/count';
 
 @Component({
   selector: 'rvs-listing',
@@ -12,46 +13,18 @@ import { DatePipe } from '@angular/common';
 })
 export class RvsListingComponent implements OnInit {
   public loading = false;
-  calculaterating:number=0;
-  totalrating:number=0;
-  calc:number=0;
-  myfeedbackdata:any=[{
-    "_id" : "5aaba714ac6d5a11d453a1e3",
-    "avgRating" : 4.5
-},
-{
-    "_id" : "5ab4cc28ba9b100d48017cef",
-    "avgRating" : 3.5
-}];
   listtrailers:any=[];
-  feedbackm:any=[];
-  public rvList: any[] = [
-    {
-      rvimage: 'rv-1.jpg',
-      rvName: 'Abella Airstream',
-      rvPrice: '150/hour',
-      location: 'nanaimo, Columbia',
-      rating: 3,
-      year: 2016,
-      guest: 5,
-      ownerName: 'Rezmi Bell',
-      ownerImage: 'owner-1.png'
-    }
-  ];
-
-  items: any[] = [];
+  items: any = [];
   users: any[] = [];
+  itemwithavgrating : any[]= [];
   userDetails: any[] = [];
   logindata: any;
-  rating: number;
-  counter: number;
   item: any[] = [];
   content:any[]=new Array();
   listLimit:number=10;
   listlmt:number=0;
-  rateid:any='5aaba714ac6d5a11d453a1e3';
-  ratings:Number=2.5;
   isReadonly: boolean = true;
+
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
               public router: Router,private datePipe: DatePipe,private renderer: Renderer) {
@@ -61,8 +34,6 @@ export class RvsListingComponent implements OnInit {
                       } else {
                         this.logindata = JSON.parse(localStorage.getItem('user'));
                       }
-                      this.feedback();
-                     // console.log('rating by trailer'+this.myfeedbackdata);
                      
   }
 
@@ -90,8 +61,6 @@ export class RvsListingComponent implements OnInit {
       this.getItems(params);
      }
     
-     
-    
     });
 
 
@@ -110,8 +79,6 @@ export class RvsListingComponent implements OnInit {
         this.loading = false;
         console.log(result);
         this.items = result;
-
-       // alert(JSON.stringify(this.items));
       });
   }
 
@@ -120,15 +87,31 @@ export class RvsListingComponent implements OnInit {
     this.apiService.getAllListTrailer(this.listLimit)
           .subscribe( (result) => {
             this.loading = false;
+            result.forEach(snapshot => {
+            var  startRatingArray = snapshot.star_rating;
+            var icount=0;
+            var totalR=0;
+            var avgRate=0;
+            startRatingArray.forEach(rate => {
+                icount=icount+1;
+               totalR=totalR+rate.star_rating;
+            });
+            if(icount > 0 && totalR > 0){
+                avgRate=totalR/icount;
+            }
+            console.log('count is '+icount);
+            console.log('avg is '+avgRate);
+            console.log('total  is '+totalR);
+              console.log('starratomg'+startRatingArray);                         
+              Object.assign(snapshot, {'avgrating':avgRate});         
+            });
             this.items = result;
-            console.log('items is '+JSON.stringify(this.items));
-
+            console.log('aaa'); 
+         
             this.listlmt=this.listLimit;
             let lenght=this.items.length;
             console.log('this is items lenght'+lenght);
             console.log('this is list limit'+this.listlmt);
-           // this.counter=0;
-           // this.loadMore();
           });
 
           this.apiService.getAllUsers().subscribe((res) => {
@@ -165,12 +148,6 @@ export class RvsListingComponent implements OnInit {
     });
   }
 
-  ratingClick() {
-    console.log('kp');
-  }
-
-  
-
   rentit(id)
   {
    console.log('renter click with this id '+id);
@@ -197,36 +174,7 @@ export class RvsListingComponent implements OnInit {
      
           });
          
-  
 
   }
-
-  feedback()
-  {
-    this.apiService.getAllFeedback()
-          .then( (res) => 
-          {
-            this.feedbackm=res;
-            
-            var someArray =this.feedbackm;
-            someArray.forEach((item, index) => {
-               // console.log(item.star_rating); 
-               
-                this.calculaterating+=item.star_rating;
-                this.calc++;
-                //console.log(index); 
-            });
-            this.totalrating=this.calculaterating/this.calc;
-        console.log('calculating rate'+this.calculaterating);
-        console.log('calculating index'+this.calc);
-        console.log('total rating'+this.totalrating);
-           // console.log('feed back is here'+JSON.stringify(this.feedbackm));
-          });
-
-  }
-  onchange()
-  {
-    console.log('onchange function values');
-  }
-
 }
+

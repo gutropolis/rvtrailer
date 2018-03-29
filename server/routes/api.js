@@ -30,17 +30,18 @@ var smtpTransport = nodemailer.createTransport({
   host: "smtp.outlook.com",
   auth: {
       user: "ajaythakur9329@outlook.com",
-      pass: ""
+      pass: "zirakpur@123"
   }
 });
-
-/*var mailOptions={
+/*
+var mailOptions={
   from: 'ajaythakur9329@outlook.com', //user sender
-  to: 'ajaythakurniit93@gmail.com',  //msg reciver adderss
-  subject: '5th time test',
-  text: 'its my testing'
+  to: 'singla.nikhil4@outlook.com',  //msg reciver adderss
+  subject: 'Trailer hailer',
+  html: 'You are looking for a trailer for 7 days Nikhil'
   
 }
+
 
 console.log(mailOptions);
 smtpTransport.sendMail(mailOptions, function(error, response){
@@ -52,20 +53,43 @@ console.log("Message sent: " + response.message);
 res.end("sent");
 }
 });
-
 */
+
 //static email
 router.post('/send',function(req,res){
 console.log('in this api '+req.body);
 
   
   var mailOptions={
-    from: 'ajaythakur9329@outlook.com',
-    to: req.body.email,
-      subject : 'sign up successfully',
-      text : 'Hello text'
+    from: req.body.email,
+    to:'ajaythakur9329@outlook.com',
+      subject :req.body.subject,
+      html : req.body.msg
   }
   
+  
+  smtpTransport.sendMail(mailOptions, function(error, response){
+   if(error){
+          console.log(error);
+      res.end("error");
+   }else{
+          console.log("Message sent by: " + req.body.email);
+      res.end("sent");
+       }
+});
+});
+
+
+router.post('/sendmail', (req, res) => {
+
+  var mailOptions={
+    from: 'ajaythakur9329@outlook.com', //user sender
+    to: 'singla.nikhil4@outlook.com',  //msg reciver adderss
+    subject: 'Trailer hailer',
+    html: 'You are looking for a trailer for 10 days Nikhil'
+    
+  }
+
   console.log(mailOptions);
   smtpTransport.sendMail(mailOptions, function(error, response){
    if(error){
@@ -79,41 +103,6 @@ console.log('in this api '+req.body);
 });
 
 
-/*router.post('/sendmail', (req, res) => {
-
-  var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'ajaythakurniit93@gmail.com',
-      pass: 'Romanticworld12'
-    }
-  });
-  
-  
-
-
-
-
-  var mailOptions = {
-    from: 'singla.nikhil4@gmail.com',
-    to: req.body.to,
-    subject: req.body.subject,
-    text: "Hello text"
-  };
-
-  console.log(mailOptions);
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
-
-
-});
-*/
-
 router.get('/', (req, res) => {
   res.send('api works');
 });
@@ -126,7 +115,7 @@ router.post('/message', (req, res) => {
 
   // Send mail details
   var mailOptions = {
-    from: 'ajaythakurniit93@gmail.com',
+    from: 'ajaythakur9329@outlook.com',
     to: req.body.email,
     subject: "Your contact request to trailer owner",
     text: JSON.stringify(req.body.message)
@@ -572,10 +561,8 @@ router.get('/trailers', function(req, res, next) {
 
 router.get('/trailers/:listlimit', function(req, res, next) {
   let listlimit = parseInt(req.params.listlimit);
-  console.log(listlimit);
-  
-
-  ListTrailer.find({}).sort({'created_at':-1}).limit(listlimit).exec(function(err, list){
+  console.log(listlimit);  
+  ListTrailer.find({}).populate('star_rating').sort({'created_at':-1}).limit(listlimit).exec(function(err, list){
     if (err) return err;
     res.json(list);
 
@@ -614,6 +601,7 @@ router.get('/trailersByUserId/:id', function(req, res, next) {
   });
 });
 
+
 router.post('/list_trailers', function(req, res, next) {
   ListTrailer.create(req.body, function (err, post) {
     if (err) return next(err);
@@ -622,11 +610,15 @@ router.post('/list_trailers', function(req, res, next) {
 });
 
 router.get('/list_trailers/:id', function(req, res, next) {
-  ListTrailer.findById(req.params.id, function (err, listtrailers) {
+
+  ListTrailer.findById(req.params.id)
+  .populate('star_rating')
+  .exec(function (err, listtrailers) {
     if (err) return next(err);
     res.json(listtrailers);
   });
 });
+   
 
 router.put('/list_trailers/:id', function(req, res, next) {
   ListTrailer.findByIdAndUpdate(req.params.id, req.body, function (err, listtrailers) {
@@ -707,14 +699,7 @@ router.get('/list_trailer_locs', function(req, res, next) {
     
     });   
 });
-// router.get('/allPackageDetail', function (req, res) {
 
-//   Package.find({}, function(err, package) {
-//     if (err) return err;
-//     res.json(package);
-//   });
-
-//   });
 
 router.get('/allPackageDetail', function(req, res, next) {
   Package.find({}, function(err, package){
@@ -899,12 +884,47 @@ router.delete('/view-features/:id', function(req, res, next) {
   });
 });
 
+
+router.post('/feedback', function(req,res, next){
+  Feedback.create(req.body, function(err, feedback){
+    console.log(feedback)
+    if(err) {
+      console.log(err);
+     
+    }
+    else {
+      ListTrailer.findById(req.body.trailer_id,function(err,objtrailer){
+        console.log('check feedback');
+        console.log(objtrailer);
+        objtrailer.star_rating.push(feedback);
+        console.log('pusing');
+        console.log(objtrailer.star_rating);
+        feedback.trailers = objtrailer._id;
+        feedback.save();
+
+        objtrailer.save(function(err) {
+          if (err) {
+              console.log('Error in saving message');
+              console.log(err);
+          } else {
+            console.log('save successfully');
+          }
+      });
+
+        
+        
+      });
+    }
+  });
+});
+/*
 router.post('/feedback', function(req, res, next) {
   Feedback.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
+*/
 
 router.get('/feedback', function(req, res, next) {
   Feedback.find({}, function(err, Feedback){
@@ -918,41 +938,6 @@ router.delete('/view-feedback/:id', function(req, res, next) {
     res.json(post);
   });
 });
-
-var pipeline = [{$group: {_id: "$trailer_id",average: { $avg: "$star_rating" }}}];
-  router.get('/feedbacks', function(req, res, next) {
-    var cursor = Feedback
-    .aggregate([
-      {
-          $group: { 
-            _id : "$trailer_id" ,
-            average: { $avg: "$star_rating" }
-          }
-      }
-    ])
-    .cursor({ batchSize: 1000 })
-    .exec(function() {
-      console.log('MyFunction working there');
-    });
-   
-  cursor
-    .on('error', function(err) {
-  console.log('Hello error');
-    })
-    .on('data', function(data) {
-     
-    this.ratingstor=data;
-    
-  
-      console.log('Hello Data'+JSON.stringify(data));
-    })
-    
-    .on('end', function() {
-      
-      console.log('Hello End');
-    });
-  });
-  
 
 
 router.get('/view-feedback/:id', function(req, res, next) {

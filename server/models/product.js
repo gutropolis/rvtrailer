@@ -50,7 +50,15 @@ var ListTrailerSchema = new Schema({
     unavailability_from:{ type : Date,default:null},
     unavailability_to:{ type : Date,default:null},
     owner_name:{type:String},
-    owner_email:{type:String}
-});
+    owner_email:{type:String},
+    star_rating:[{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Feedback"
+        }]
+    },{
+            usePushEach: true
+        
+    }
+); 
 
 module.exports = mongoose.model('ListTrailer', ListTrailerSchema);

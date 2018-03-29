@@ -8,8 +8,15 @@ var FeedbackSchema = new Schema({
     user_id: {type: String},
     star_rating:{type:Number},
     trailer_id:{type:String},
-    date: { type: Date, default: Date.now }
-   
+    date: { type: Date, default: Date.now },
+    trailers: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "ListTrailer"
+    }],
+    owners: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User"
+    }]
 });
 
 module.exports = mongoose.model('Feedback', FeedbackSchema);

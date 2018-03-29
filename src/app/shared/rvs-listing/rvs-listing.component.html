@@ -10,12 +10,6 @@
     </div>
 </div>
 
-<!-- <div class="rv-topsearch">
-    <div class="rv-topsearch-in">
-        <rv-header-filter></rv-header-filter>
-    </div>
-</div> -->
-
 <div class="rvlist-bottom">
     <div class="container">
         <div class="row">
@@ -78,22 +72,12 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div class="col-sm-8">
-                <!-- <rv-listview *ngFor="let item of items" [rvInfo]="item" [rvimage]="item.rvimage" [rvName]="item.rvName" [rvPrice]="item.rvPrice" [location]="item.location" [rating]="item.rating" [year]="item.year" [guest]="item.guest" [ownerName]="item.ownerName" [ownerImage]="item.ownerImage">
-
-                </rv-listview> -->
-                <!--
-                <div *ngFor="let item of items">
-                        {{ item | json }} <br>
-                </div> -->
-
                 <div class="my-container">
                         <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
-                      
-                    </div>
+                        </div>
+                   
                 <div class="clearfix rvlist" *ngFor="let item of items | filter:filter | OrderbyPipe:'-created_at'; let i = index">
                     <figure class="rvlist-figure">
                         <img src="/images/{{ item.photo }}" />
@@ -121,27 +105,8 @@
                                 </h6>
                             
                                 <div class="star-rating" *ngIf="user._id == item.user_id">
-                                      
-                                        <div *ngIf="item._id == rateid">
-                                            
-                                              
-                                        
-                                   
-                                    <rating  [(ngModel)]="ratings" [max]="max" [readonly]="isReadonly"></rating>
-                                    <!-- <rating (click)=ratingClick()></rating> -->
+                                <rating  [(ngModel)]="item.avgrating" [max]="max" [readonly]="isReadonly"></rating>
                                
-                                </div>
-                                <div *ngIf="item._id != rateid">
-                                            
-                                              
-                                        
-                                   
-                                    <rating   [max]="max" [readonly]="isReadonly"></rating>
-                                    <!-- <rating (click)=ratingClick()></rating> -->
-                               
-                                </div>
-
-
                                 </div>
                             </div>
                             </div>
@@ -151,8 +116,6 @@
                             <div class="rv-modal">Year<br/> {{item.specification_year}}</div>
                             <div class="rv-guest">guest <br /> {{ item.specification_guest }}</div>
 
-                      <!--      <button class="rv-btn btn btn-primary" type="button" [routerLink]="['/rv/', item._id]">Rent IT</button>
-                      -->
                              <button class="rv-btn btn btn-primary" type="button"  (click)="rentit(item._id)">Rent IT</button>
 
                         </div>

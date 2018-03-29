@@ -67,12 +67,12 @@ export class RvDetailComponent implements OnInit {
                    
                     this.from=params['from'];
                     this.to=params['to'];
-                    console.log('myrecord after click home search');
-                    console.log(this.from);
-                    console.log(this.to);
+                  //  console.log('myrecord after click home search');
+                  //  console.log(this.from);
+                   // console.log(this.to);
                     let today=Date();
                     let newdate=this.datePipe.transform(today,"yyyy-MM-dd");
-                    console.log('this is change format'+newdate);
+                   // console.log('this is change format'+newdate);
                    // let enddate=this.datePipe.transform(this.listtrailers.unavailability_to,"yyyy-MM-dd");
                     if(this.from == undefined || this.from < newdate)
                     {
@@ -80,7 +80,7 @@ export class RvDetailComponent implements OnInit {
                       console.log('My undefind date is '+this.from);
                     }
                    // console.log(this.location);
-                    console.log(params);
+                  //  console.log(params);
                    
                     this.calendarOptions = {
                       defaultDate: this.from,
@@ -134,7 +134,7 @@ console.log(this.listing_id);
   form.value.recivername=this.rentalusername;
   form.value.sendername=senderID.username;
   form.value.parent_id = 0;
-  console.log(form.value);
+ // console.log(form.value);
 
   this.apiService.createMessage(form.value)
   .subscribe( (response) => {
@@ -154,7 +154,7 @@ console.log(this.listing_id);
     this.apiService.showListTrailer(id).subscribe((res) => {
       this.loading = false;
       this.renterdetail = res;
-      console.log(this.renterdetail);
+     // console.log(this.renterdetail);
       this.user_id = this.renterdetail.user_id;
 
        //get userby id
@@ -162,7 +162,7 @@ console.log(this.listing_id);
     this.apiService.showUser(this.user_id).subscribe((res) => {
       this.users = res;
       this.rentalusername=this.users.firstname;
-      console.log(this.rentalusername);
+     // console.log(this.rentalusername);
     }, (err) => {
       console.log(err);
     });
@@ -170,8 +170,19 @@ console.log(this.listing_id);
   
       this.features = this.renterdetail.details_feature;
 
+      let star_radingid=this.renterdetail.star_rating;
+      console.log(star_radingid);
+     // console.log('this is rating id '+star_radingid);
+      var someArray =star_radingid;
 
-
+      someArray.forEach((item, index) => {
+       // 
+       console.log(item);
+         console.log('rating id is '+item); 
+        });
+          
+          
+      
 
     }, (err) => {
       console.log(err);
@@ -212,13 +223,13 @@ console.log(this.listing_id);
       console.log(result);
       if (result === null ) {
         this.isFavourite = false;
-        console.log('show fav icon');
+      //  console.log('show fav icon');
 
       } else {
-        console.log('do not show fav icon');
+       // console.log('do not show fav icon');
         this.fav_id = result._id;
         this.isFavourite = true;
-        console.log(this.fav_id);
+      //  console.log(this.fav_id);
       }
     });
 

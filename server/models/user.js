@@ -20,6 +20,12 @@ var UserSchema = new Schema({
     user_contact_no: {type: String},
     package_id: {type: String, default: null},
     created_at : { type : Date,default:null},
+    avgrating:[
+        {
+           type: mongoose.Schema.Types.ObjectId,
+           ref: "Feedback"
+        }
+        ],
 });
 
 module.exports = mongoose.model('User', UserSchema);
