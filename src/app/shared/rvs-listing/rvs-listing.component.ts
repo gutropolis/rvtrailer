@@ -77,8 +77,28 @@ export class RvsListingComponent implements OnInit {
     this.apiService.filterSearch(params)
       .subscribe( (result) => {
         this.loading = false;
-        console.log(result);
+        result.forEach(snapshot => {
+          var  startRatingArray = snapshot.star_rating;
+          var icount=0;
+          var totalR=0;
+          var avgRate=0;
+          startRatingArray.forEach(rate => {
+              icount=icount+1;
+             totalR=totalR+rate.star_rating;
+          });
+          if(icount > 0 && totalR > 0){
+              avgRate=totalR/icount;
+          }
+          console.log('count is '+icount);
+          console.log('avg is '+avgRate);
+          console.log('total  is '+totalR);
+            console.log('starratomg'+startRatingArray);                         
+            Object.assign(snapshot, {'avgrating':avgRate});         
+          });
         this.items = result;
+
+
+        
       });
   }
 

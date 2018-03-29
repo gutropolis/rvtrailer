@@ -303,7 +303,7 @@ criteria = criteria.length > 0 ? { $and: criteria } : {};
     // let query = {$and:[{'pricing_high_rate_hour': {$gte: 0, $lte: price} }]}
     // let query = {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}
   
-      ListTrailer.find(query, function(err, trailers){
+      ListTrailer.find(query).populate('star_rating').exec(function(err, trailers){
   
         res.json(trailers);
       });
@@ -318,7 +318,7 @@ else{
       [
         {$or: [
            
-            {"location_city":city ||{$exists:true}}
+            {"location_city":city}
           ]},
         {$and: [
            
