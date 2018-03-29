@@ -48,7 +48,10 @@ export class UserFeedbackComponent implements OnInit {
     const feedbackdata = Object.assign({}, this.rForm.value,this.userid,trailerid);
     this.apiService.addFeedback(feedbackdata).then((result) => {
       console.log('Data Save Successfully');
+     
+      
     });
+    this.router.navigate(['/user-dashboard/message']);
   }
   
 
