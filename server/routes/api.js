@@ -27,11 +27,19 @@ var m =require('../models/emailsubject');
 
 ratingstor:any=[];
 var smtpTransport = nodemailer.createTransport({
-  service: 'gmail',
+  //pool: true,
+    host: 'smtp.gmail.com', // Gmail as mail client
+    port: 465,
+    secure: true, // use SSL
+    auth: {
+        user: 'royalrajput9329@gmail.com',
+        pass: 'Romanticworld12'
+    }
+ /* service: 'gmail',
   auth: {
       user: "royalrajput9329@gmail.com",
       pass: "Romanticworld12"
-  }
+  }*/
 });
 
 //static email
