@@ -66,8 +66,8 @@ export class HeaderFilterComponent implements OnInit {
     //this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
     this.searchForm = this.fb.group({
       'location': [null, Validators.required],
-      'from': [null, Validators.required],
-      'to': [null, Validators.required],
+      'from': [null],
+      'to': [null],
 
     });
    }

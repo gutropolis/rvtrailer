@@ -84,6 +84,7 @@ import { AdminAddFeedbackComponent } from './admin/admin-add-feedback/admin-add-
 import { AdminEditFeedbackComponent } from './admin/admin-edit-feedback/admin-edit-feedback.component';
 import { AdminViewFeedbackComponent } from './admin/admin-view-feedback/admin-view-feedback.component';
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
+import { UserForgetPasswordComponent } from './shared/user-forget-password/user-forget-password.component';
 export const Routing = RouterModule.forRoot([
     {
         path: '',
@@ -231,6 +232,7 @@ export const Routing = RouterModule.forRoot([
             { path: 'view-feedback/:id', component: AdminViewFeedbackComponent },
             { path: 'add-feedback', component: AdminAddFeedbackComponent },
             { path: 'contact-us', component: AdminContactComponent },
+            
         ]
     },
 
@@ -263,6 +265,10 @@ export const Routing = RouterModule.forRoot([
     {
         path: 'subscribe-plan/:id',
         component: SubscribePlanComponent
+    },
+    {
+        path: 'forget-password',
+        component: UserForgetPasswordComponent
     },
 
     {

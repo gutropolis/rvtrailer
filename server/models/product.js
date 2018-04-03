@@ -34,7 +34,7 @@ var ListTrailerSchema = new Schema({
     details_no_of_bathrooms: {type: String},
     pricing_security_deposit: {type: String},
     pricing_delivery_charges: {type: String},
-    pricing_high_rate_hour: {type: String},
+    pricing_high_rate_hour: {type:Number},
     pricing_high_rate_week: {type: String},
     pricing_high_rate_month: {type: String},
     pricing_low_rate_hour: {type: String},

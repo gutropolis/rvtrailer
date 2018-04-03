@@ -71,6 +71,51 @@ Email(params) {
 
 
 }
+ApprovedbyEmail(params){
+  return this.http.post(this.mainURL + '/api/approvedbymail', params)
+  .map(res => res.json());
+
+}
+//Package subscribe Mailing
+PackagePlanbyEmail(params){
+  return this.http.post(this.mainURL + '/api/planpackagemail', params)
+  .map(res => res.json());
+   }
+
+   //Add Listing by mailing
+   TrailerListbyEmail(params){
+    return this.http.post(this.mainURL + '/api/Addlistmail', params)
+    .map(res => res.json());
+     }
+     //email for forget password
+
+     forgetpasemail(params){
+      return this.http.post(this.mainURL + '/api/forgetpass', params)
+      .map(res => res.json());
+       }
+
+       //rating system
+       ratingemail(params)
+       {
+        return this.http.post(this.mainURL + '/api/ratingbyemail', params)
+        .map(res => res.json());
+
+       }
+//msg email system
+sendmsgbyemail(params)
+       {
+        return this.http.post(this.mainURL + '/api/msgbyemail', params)
+        .map(res => res.json());
+
+       }
+       //Contact us email
+       contactusmail(params)
+       {
+        return this.http.post(this.mainURL + '/api/contactusmail', params)
+        .map(res => res.json());
+
+       }
+
   getAllUsers() {
     return this.http.get(this.mainURL + '/api/user')
       .map(res => res.json());

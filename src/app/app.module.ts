@@ -140,6 +140,7 @@ import { AdminAddFeedbackComponent } from './admin/admin-add-feedback/admin-add-
 import { AdminEditFeedbackComponent } from './admin/admin-edit-feedback/admin-edit-feedback.component';
 import { AdminViewFeedbackComponent } from './admin/admin-view-feedback/admin-view-feedback.component';
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
+import { UserForgetPasswordComponent } from './shared/user-forget-password/user-forget-password.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkxVWfEOYenaJYNgb-12NV5Arp0tOGa8k",
@@ -258,6 +259,7 @@ const firebaseConfig = {
       AdminEditFeedbackComponent,
       AdminViewFeedbackComponent,
       AdminContactComponent,
+      UserForgetPasswordComponent,
      
 
   ],

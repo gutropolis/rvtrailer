@@ -48,6 +48,15 @@ export class AdminEditUserComponent implements OnInit {
   updateUser(id) {
     this.apiService.updateUser(id, this.users).then((result) => {
       let id = result['_id'];
+      if(this.users.approved==true)
+      {
+      this.apiService.ApprovedbyEmail(this.users).subscribe((result) => {
+        console.log(this.users);
+      
+       
+         });
+        }
+        
       this.router.navigate(['admin/user']);
     }, (err) => {
       console.log(err);

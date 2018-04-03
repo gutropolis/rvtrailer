@@ -92,7 +92,13 @@ storage:any=[];
     console.log(this.DateTime);
     this.apiService.showUser(this.userID.id).subscribe((res) => {
       this.userDetails = res;
-      
+      const alllistemail = Object.assign({},{email: this.userDetails.email},{firstname: this.userDetails.firstname},{lastname:this.userDetails.lastname});
+      this.apiService.TrailerListbyEmail(alllistemail).subscribe((result) => {
+        //console.log(this.rForm.value);
+        console.log('send email also');
+        
+       
+         });
    
     const photo_data = Object.assign({}, this.listing, this.photo,this.DateTime, {user_id: this.userID.id},{owner_name: this.userDetails.firstname},{owner_email:this.userDetails.email});
     console.log(photo_data);

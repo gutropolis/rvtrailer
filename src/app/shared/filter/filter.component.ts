@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation,Renderer, Output, EventEmitter } from '@angular/core';
 import {IMyDpOptions} from 'mydatepicker';
 import { FormGroup, Validators, FormBuilder,FormArray, NgForm ,FormControl} from '@angular/forms';
 import { ApiService } from './../../api.service';
@@ -37,7 +37,8 @@ export class FilterComponent {
     rForm: FormGroup;
   public price: any;
   searchFieldValue: string = "";
-  constructor(public apiService: ApiService,private fb: FormBuilder,private activatedRoute:ActivatedRoute,private mapsAPILoader: MapsAPILoader,private ngZone: NgZone) { 
+  constructor(public apiService: ApiService,private fb: FormBuilder,private activatedRoute:ActivatedRoute,private mapsAPILoader: MapsAPILoader,private ngZone: NgZone,private renderer: Renderer) { 
+    this.renderer.setElementProperty(document.body, "scrollTop", 0);
 
     this.rForm = fb.group({
       'location':[null],
@@ -112,6 +113,7 @@ export class FilterComponent {
     console.log("my type of rv"+this.rForm.value.details_feature);
 
     let filterParams: any = {
+     
       location: this.searchElement.nativeElement.value,
       dateFrom:new Date(form.value.dateFrom.formatted),
       dateTo:new Date(form.value.dateTo.formatted),
@@ -127,7 +129,9 @@ export class FilterComponent {
     filterParams.price = this.price;
     //console.log(filterParams);
      // alert("hello");
+    // console.log('check type of rv'+this.rForm.value.details_feature);
     this.myFilter.emit(filterParams);
+    this.renderer.setElementProperty(document.body, "scrollTop", 0);
 
   }
 

@@ -14,6 +14,7 @@ export class SubscribePlanComponent implements OnInit {
 
   packages: any[] = [];
   user: any = [];
+  userDetails:any=[];
   public isPackageSubscribe = false;
 
   constructor(private app: AppComponent,
@@ -44,11 +45,31 @@ export class SubscribePlanComponent implements OnInit {
     let package_id = {'package_id': id};
     this.user = JSON.parse(localStorage.getItem('user'));
     let userId = this.user.id;
+  
+    let usermail=this.user.email;
+    let firstname=this.user.firstname;
+    let lastname=this.user.lastname;
 
     this.apiService.updateUser(userId, package_id).then((result) => {
       let id = result['_id'];
       this.router.navigate(['list-trailer']);
   });
+
+  this.apiService.showUser(this.user.id).subscribe((res) => {
+
+    this.userDetails = res;
+    const subscriptData = Object.assign({},{email: this.userDetails.email} ,{firstname:this.userDetails.firstname},{lastname:this.userDetails.lastname},{packages_id:package_id});
+    console.log(subscriptData);
+  this.apiService.PackagePlanbyEmail(subscriptData).subscribe((result) => {
+    //console.log(this.rForm.value);
+    console.log('send email also');
+    console.log(this.packages);
+   
+     });
+
+  });
+
+  
 
 
 }

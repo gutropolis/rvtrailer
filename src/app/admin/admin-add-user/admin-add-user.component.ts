@@ -24,7 +24,7 @@ rForm: FormGroup;
       'email' : [null, Validators.required],
       'password' : [null, Validators.required],
         'type':[null, Validators.required],
-      'approved' : [ false ],
+     // 'approved' : [ false ],
       'created_at':Date.now(),
       'validate' : ''
     });
@@ -38,6 +38,12 @@ rForm: FormGroup;
     this.apiService.addUser(this.rForm.value).then((result) => {
      // console.log(this.rForm.value);
       let id = result['_id'];
+     
+        this.apiService.Email(this.rForm.value).subscribe((result) => {
+          console.log(this.rForm.value);
+          console.log('send email also');
+         
+           });
       this.router.navigate(['admin/user']);
     }, (err) => {
       console.log(err);

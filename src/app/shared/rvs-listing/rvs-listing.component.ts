@@ -34,19 +34,21 @@ export class RvsListingComponent implements OnInit {
                       } else {
                         this.logindata = JSON.parse(localStorage.getItem('user'));
                       }
+                      this.allItems();
                      
   }
 
   brandSlideVisible: boolean;
 
   ngOnInit() {
+    this.renderer.setElementProperty(document.body, "scrollTop", 0);
     this.brandSlideVisible = true;
-    this.allItems();
+   
     if (this.logindata  !== null ) {
         const id = this.logindata.id;
         this.getUserData(id);
      }
-
+     
      this.activatedRoute.queryParams.subscribe((params: Params) => {
       let userId = params['location'];
       let from=params['dateFrom'];
@@ -56,13 +58,11 @@ export class RvsListingComponent implements OnInit {
       console.log(to);
       console.log(userId);
       console.log(params);
-     if(typeof from  !== 'undefined')
-     {
+     
       this.getItems(params);
-     }
+    
     
     });
-
 
   }
 
@@ -73,7 +73,9 @@ export class RvsListingComponent implements OnInit {
   }
 
   getItems(params) {
+    console.log('from params');
     this.loading = true;
+    this.renderer.setElementProperty(document.body, "scrollTop", 0);
     this.apiService.filterSearch(params)
       .subscribe( (result) => {
         this.loading = false;
@@ -96,13 +98,14 @@ export class RvsListingComponent implements OnInit {
             Object.assign(snapshot, {'avgrating':avgRate});         
           });
         this.items = result;
-
+        console.log('from param '+JSON.stringify(this.items)); 
 
         
       });
   }
 
   allItems() {
+    console.log('direct all items');
     this.loading = true;
     this.apiService.getAllListTrailer(this.listLimit)
           .subscribe( (result) => {
@@ -126,7 +129,7 @@ export class RvsListingComponent implements OnInit {
               Object.assign(snapshot, {'avgrating':avgRate});         
             });
             this.items = result;
-            console.log('aaa'); 
+            console.log('from all '+JSON.stringify(this.items)); 
          
             this.listlmt=this.listLimit;
             let lenght=this.items.length;

@@ -17,6 +17,7 @@ export class UserFeedbackComponent implements OnInit {
   rForm: FormGroup;
   userid:any=[];
   trailer_id:any=[];
+  listtrailers:any=[];
  
   constructor(public af: AngularFireAuth,
     private fb: FormBuilder,
@@ -51,6 +52,16 @@ export class UserFeedbackComponent implements OnInit {
      
       
     });
+    this.apiService.showListTrailer( this.trailer_id).subscribe((res) => {
+            
+      this.listtrailers =res;
+      const data = Object.assign({}, {email:this.listtrailers.owner_email});
+    this.apiService.ratingemail(data).subscribe((result) => {
+      console.log('Data send to email');
+     
+      
+    });
+  });
     this.router.navigate(['/user-dashboard/message']);
   }
   

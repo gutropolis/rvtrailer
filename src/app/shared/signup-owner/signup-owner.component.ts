@@ -63,6 +63,11 @@ photo: any;
     // this.Email(this.rForm.value);
     // console.log('Email is where'+this.Email(this.rForm.value));
       this.router.navigate(['/login']);
+      this.apiService.Email(this.rForm.value).subscribe((result) => {
+        console.log(this.rForm.value);
+        console.log('send email also');
+       
+         });
       this.loading = false;
     }, (err) => {
       this.loading = false;

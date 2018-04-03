@@ -56,12 +56,19 @@ export class SignupRenterComponent implements OnInit {
       let id = result['_id'];
       //alert('Please Loggin With Your Email and Password');
       this.router.navigate(['/login']);
+      this.apiService.Email(this.rForm.value).subscribe((result) => {
+        console.log(this.rForm.value);
+        console.log('send email also');
+       
+         });
+        
       this.loading = false;
     }, (err) => {
       this.loading = false;
       console.log(err);
         this.flashMessagesService.show('This E-mail Id is Registered.', {cssClass: 'alert-danger'});
     });
+
   }
   facebookLogin() {
     this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())

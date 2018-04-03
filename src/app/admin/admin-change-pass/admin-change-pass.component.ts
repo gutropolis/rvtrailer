@@ -29,6 +29,7 @@ rForm: FormGroup;
     this.apiService.viewPassword().subscribe(changePass => {
       this.users = changePass.user;
       // this.id = changePass.user._id;
+      console.log(this.users);
     });
 
   }

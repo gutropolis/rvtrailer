@@ -21,6 +21,7 @@ export class UserDetailMessageComponent implements OnInit {
   messageDetails:any=[];
   user_recieverid:any=[];
   user_senderid:any=[];
+  usersendidforemail:any=[];
   constructor(private route: ActivatedRoute,
               public apiService: ApiService) { 
                 this.getUserList();
@@ -58,12 +59,14 @@ export class UserDetailMessageComponent implements OnInit {
     getAllMessagesByParentId(id) {
       this.apiService.messagesByParentId(id).subscribe((res) => {
       this.allMessages = res;
+      //console.log('mymsg'+);
       //this.listerUser=this.allMessages.listing_user_id;
 
       console.log(this.allMessages);
       let user = JSON.parse(localStorage.getItem('user'));
       this.user_name=user.username;
       this.userid=user.id;
+      
     
       // this.trailerDetails = Array.of(trailderObj);
       // let listing_user_id = trailderObj.user_id;
@@ -73,7 +76,7 @@ export class UserDetailMessageComponent implements OnInit {
   onSubmit(form) {
 
   form.value.listing_id = this.trailerID;
-  form.value.listing_user_id =  this.listner_userid;
+  form.value.listings_user_id =  this.listner_userid;
   console.log('after submit listing user id is '+ this.listner_userid);
 
   let senderID = JSON.parse(localStorage.getItem('user'));
@@ -84,6 +87,28 @@ export class UserDetailMessageComponent implements OnInit {
     form.value.sendername=senderID.username;
   console.log(form.value);
 
+  //mailing purpose
+if(this.user_recieverid!=senderID.id)
+{
+  this.usersendidforemail=this.user_recieverid;
+}
+else if(this.user_recieverid==senderID.id)
+{
+this.usersendidforemail=this.user_senderid;
+}
+
+  this.apiService.showUser(this.usersendidforemail).subscribe((res) => {
+    let showuser = res;
+    console.log('listner user email is '+showuser.email);
+     const data = Object.assign({}, {email:showuser.email},form.value);
+ 
+   this.apiService.sendmsgbyemail(data).subscribe((result) => {
+     console.log('Data send to email');
+    
+   }); 
+   });
+
+
   this.apiService.createMessage(form.value)
   .subscribe( (response) => {
     if (response) {
@@ -93,10 +118,14 @@ export class UserDetailMessageComponent implements OnInit {
         setTimeout(function() {
         this.saveSuccess = false;
         }.bind(this), 3000);
+
     } else {
         this.saveSuccess = false;
     }
   });
+
+
+
 }
 getUserList()
 {

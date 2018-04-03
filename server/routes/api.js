@@ -16,15 +16,16 @@ var Rental=require('../models/rental_type');
 var Feature=require('../models/feature');
 var Feedback=require('../models/feedback');
 var Contact=require('../models/contact');
+var tempmailer = require('pug-mailer');
+var m =require('../models/emailsubject');
+//var app=express();
+//var pug = require('pug');
+//app.set('view engine', 'pug');
+
+//var regisrterFunction = pug.compileFile('server/template/register.pug');
+//var approvedFunction = pug.compileFile('server/template/approved.pug');
+
 ratingstor:any=[];
-/*var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'ajaythakurniit93@gmail.com',
-    pass: ''
-  }
-});
-*/
 var smtpTransport = nodemailer.createTransport({
   service: "outlook",
   host: "smtp.outlook.com",
@@ -33,51 +34,282 @@ var smtpTransport = nodemailer.createTransport({
       pass: "zirakpur@123"
   }
 });
-/*
-var mailOptions={
-  from: 'ajaythakur9329@outlook.com', //user sender
-  to: 'singla.nikhil4@outlook.com',  //msg reciver adderss
-  subject: 'Trailer hailer',
-  html: 'You are looking for a trailer for 7 days Nikhil'
-  
-}
-
-
-console.log(mailOptions);
-smtpTransport.sendMail(mailOptions, function(error, response){
-if(error){
-console.log(error);
-res.end("error");
-}else{
-console.log("Message sent: " + response.message);
-res.end("sent");
-}
-});
-*/
 
 //static email
 router.post('/send',function(req,res){
-console.log('in this api '+req.body);
+console.log('in this api '+JSON.stringify(req.body));
+var message;
 
-  
   var mailOptions={
-    from: req.body.email,
-    to:'ajaythakur9329@outlook.com',
-      subject :req.body.subject,
-      html : req.body.msg
-  }
-  
-  
+   
+      to:req.body.email,
+      subject :m.subject_Register,
+      html :m.regisrterFunction({firstname:req.body.firstname, lastname:req.body.lastname})
+ 
+}
+var AdminmailOptions={  
+    to:m.adminEmail,
+    subject :m.subject_admin_reg,
+    html :m.signupFunction({firstname:req.body.firstname, lastname:req.body.lastname})
+
+}  
+
   smtpTransport.sendMail(mailOptions, function(error, response){
    if(error){
           console.log(error);
       res.end("error");
    }else{
-          console.log("Message sent by: " + req.body.email);
+          console.log("Message sent to: " + req.body.email);
       res.end("sent");
        }
 });
+smtpTransport.sendMail(AdminmailOptions, function(error, response){
+  if(error){
+         console.log(error);
+     res.end("error");
+  }else{
+         console.log("Message sent to Admin by : " + req.body.email);
+     res.end("sent");
+      }
 });
+
+
+
+});
+
+//for approved
+router.post('/approvedbymail',function(req,res){
+  console.log('in this api '+JSON.stringify(req.body));
+
+    var mailOptions={
+     
+      
+        to:req.body.email,
+        subject :m.subject_approvedby,
+        html :m.approvedFunction({})
+   
+  } 
+    smtpTransport.sendMail(mailOptions, function(error, response){
+     if(error){
+            console.log(error);
+        res.end("error");
+     }else{
+            console.log("Approved account : " + req.body.email);
+        res.end("sent");
+         }
+  });
+  });
+
+  //Plan Package Purchage mailing
+
+  router.post('/planpackagemail',function(req,res){
+    console.log('in this api '+JSON.stringify(req.body));
+  
+      var mailOptions={
+       
+          to:req.body.email,
+          subject :m.subsubcription_plan,
+          html :m.subscription({})
+     
+    } 
+     var AdminmailOptions={
+       
+        
+          to:m.adminEmail,
+          subject :m.admin_msgsubsubcription_plan,
+          html :m.subscriptionbyadmin({})
+     
+    } 
+    smtpTransport.sendMail(AdminmailOptions, function(error, response){
+      if(error){
+             console.log(error);
+         res.end("error");
+      }else{
+             console.log("Email to admin ");
+         res.end("sent");
+          }
+   });
+
+      smtpTransport.sendMail(mailOptions, function(error, response){
+       if(error){
+              console.log(error);
+          res.end("error");
+       }else{
+              console.log("Package select by  : " + req.body.email);
+          res.end("sent");
+           }
+    });
+    });
+
+    //Adding trailer List Mailing
+
+    router.post('/Addlistmail',function(req,res){
+      console.log('in this api '+JSON.stringify(req.body));
+    
+        var mailOptions={
+         
+            to:req.body.email,
+            subject :m.addlist_submsg,
+            html :m.addlist({})
+       
+      } 
+      var AdminmailOptions={
+         
+        from:'ajaythakur9329@outlook.com',
+       to: m.adminEmail,
+          subject :m.admin_addlist_submsg,
+          html :m.addlistadmin({})
+     
+    } 
+    smtpTransport.sendMail(AdminmailOptions, function(error, response){
+      if(error){
+             console.log(error);
+         res.end("error");
+      }else{
+             console.log("add trailer id  by  : " + req.body.email);
+         res.end("sent");
+          }
+   });
+
+        smtpTransport.sendMail(mailOptions, function(error, response){
+         if(error){
+                console.log(error);
+            res.end("error");
+         }else{
+                console.log("Adding trailer by  : " + req.body.email);
+            res.end("sent");
+             }
+      });
+      });
+
+
+      //Forget password for email
+      router.post('/forgetpass',function(req,res){
+        console.log('in this api '+JSON.stringify(req.body));
+      
+          var mailOptions={
+           
+           
+              to:req.body.email,
+              subject :m.forgetpass_submsg,
+              html :m.forgetpass({})
+         
+        } 
+        var AdminmailOptions={
+         
+          
+         to: m.adminEmail,
+            subject :m.admin_forgetpass_submsg,
+            html :m.forgetpassbyadmin({})
+       
+      } 
+      smtpTransport.sendMail(AdminmailOptions, function(error, response){
+        if(error){
+               console.log(error);
+           res.end("error");
+        }else{
+               console.log("Forget Password  by  : " + req.body.email);
+           res.end("sent");
+            }
+     });
+          smtpTransport.sendMail(mailOptions, function(error, response){
+           if(error){
+                  console.log(error);
+              res.end("error");
+           }else{
+                  console.log("Forget password by  : " + req.body.email);
+              res.end("sent");
+               }
+        });
+        });
+
+        //Rating System
+
+        router.post('/ratingbyemail',function(req,res){
+          console.log('in this api '+JSON.stringify(req.body));
+        
+            var mailOptions={
+             
+              
+                to:req.body.email,
+                subject :m.rating_subject,
+                html :m.rating_msg({})
+           
+          } 
+          var AdminmailOptions={
+         
+          
+            to: m.adminEmail,
+            subject :m.rating_subject_admin,
+            html :m.rating_msg_admin({})
+          
+         } 
+         smtpTransport.sendMail(AdminmailOptions, function(error, response){
+           if(error){
+                  console.log(error);
+              res.end("error");
+           }else{
+                  console.log("rating msg to admin  : " + m.adminEmail);
+              res.end("sent");
+               }
+        });
+             smtpTransport.sendMail(mailOptions, function(error, response){
+              if(error){
+                     console.log(error);
+                 res.end("error");
+              }else{
+                     console.log("rating to  : " + req.body.email);
+                 res.end("sent");
+                  }
+           });
+          });
+
+          //msgsend
+          router.post('/msgbyemail',function(req,res){
+            console.log('in this api '+JSON.stringify(req.body));
+          
+              var mailOptions={
+               
+                
+                  to:req.body.email,
+                  subject:m.msg_send +req.body.sendername,
+                  html :m.msg_byemail({message:req.body.message})
+             
+            } 
+              smtpTransport.sendMail(mailOptions, function(error, response){
+               if(error){
+                      console.log(error);
+                  res.end("error");
+               }else{
+                      console.log("Msg sent to : " + req.body.email);
+                  res.end("sent");
+                   }
+            });
+            });
+
+            //contact us mailing
+
+            router.post('/contactusmail',function(req,res){
+              console.log('in this api '+JSON.stringify(req.body));
+            
+                var mailOptions={
+                 
+                  
+                    to:m.adminEmail,
+                    subject :req.body.subject,
+                    html :req.body.msg +' : '+ req.body.email
+               
+              } 
+                smtpTransport.sendMail(mailOptions, function(error, response){
+                 if(error){
+                        console.log(error);
+                    res.end("error");
+                 }else{
+                        console.log("Contact to admin by : " + req.body.email);
+                    res.end("sent");
+                     }
+              });
+              });
 
 
 router.post('/sendmail', (req, res) => {
@@ -204,144 +436,33 @@ router.post('/filterSearch', (req, res) => {
   dateFrom = req.body.dateFrom;
   dateTo = req.body.dateTo;
   type_of_rv=req.body.type_of_rv;
-  console.log(type_of_rv);
-  /*
+  
+  
+ 
    //var query = ListTrailer.find();
  
   //let criteria = {};
   let criteria = [];
   
 if (city && city.length > 0) {   criteria.push({ 'location_city': city }); } 
-//if (province && province.length > 0) {  criteria.push({  'location_province': province }); } 
-if (dateFrom && dateFrom.length > 0) {  criteria.push({  'unavailability_from': dateFrom }); }
-if (dateTo && dateTo.length > 0) {  criteria.push({  'unavailability_to': dateTo }); }
-if (fifthwheel && fifthwheel.length > 0) {  criteria.push({  'fifthwheel': fifthwheel }); }
-if (hybridtrailer && hybridtrailer.length > 0) {  criteria.push({  'hybrid': hybridtrailer }); }
-if (numberOfGuest && numberOfGuest.length > 0) {  criteria.push({  'specification_guest': numberOfGuest }); }
+
+if (dateFrom && dateFrom.length > 0) {  criteria.push({ '$or': [{  'unavailability_from':{$lt: dateFrom}},{  'unavailability_from':{$gt: dateTo}}, {'unavailability_from':null}]}); }
+if (dateTo && dateTo.length > 0) {  criteria.push({ '$or': [{  'unavailability_to':{$lt: dateFrom}},{  'unavailability_to':{$gt: dateTo}},{'unavailability_to':null}]}); }
+
+if (numberOfGuest && numberOfGuest.length > 0) {  criteria.push({ '$or': [{  'specification_guest': numberOfGuest }]}); }
 console.log(tentrailer);
-if (tentrailer) {  criteria.push({  'tenttrailer': tentrailer });
-  console.log('I am in tentrailer');
-}
-if (toytrailer) {  criteria.push({  'toyhauler': toytrailer }); }
-if (vintagetrailer) {  criteria.push({  'vintage': vintagetrailer }); }
-if (traveltrailer) {  criteria.push({  'traveltrailer': traveltrailer }); }
-if (price && price.length > 0) {  criteria.push({  'pricing_high_rate_hour': {$gte: 0, $lte: price} }); } 
+
+if (price &&  price > 0) {  criteria.push({  'pricing_high_rate_hour': {$lte: price} }); } 
+if (type_of_rv && type_of_rv.length > 0) {  criteria.push({  'type_of_rv':{$in:type_of_rv}}); }
 
 criteria = criteria.length > 0 ? { $and: criteria } : {};
-/*
- let query = { 
-				 $and:[ 
-						{ 
-						
-						
-							$or: [       
-								   {'location_city':city}, 
-								   {'location_province':province}
-								  ]
-						},
-						
-						{'fifthwheel':fifthwheel}, 
-						{'hybrid':hybridtrailer}, 
-						{'specification_guest':numberOfGuest}, 
-						{'tenttrailer':tentrailer}, 
-						{'toyhauler':toytrailer}, 
-						{'traveltrailer':traveltrailer}, 
-						{'vintage':vintagetrailer}, 
-						{'pricing_high_rate_hour': {$gte: 0, $lte: price} }, 
-						{
-							$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]
-						}
-					]
- 
-			}
-*/
-  //let query = { $or:[ {'location_city':city}, {'location_province':province}, {'fifthwheel':fifthwheel}, {'hybrid':hybridtrailer}, {'specification_guest':numberOfGuest}, {'tenttrailer':tentrailer}, {'toyhauler':toytrailer}, {'traveltrailer':traveltrailer}, {'vintage':vintagetrailer}, {'pricing_high_rate_hour': {$gte: 0, $lte: price} }, {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}]}
-  // let query = {$and:[{'pricing_high_rate_hour': {$gte: 0, $lte: price} }]}
-  // let query = {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}
 
- /*   ListTrailer.find(criteria, function(err, trailers){
+  
+   ListTrailer.find(criteria).populate('star_rating').exec(function(err, trailers){
       res.json(trailers);
     });
-    */
-    console.log('date after click search '+dateFrom);
-
-    if (dateFrom != undefined && dateTo !=undefined) 
-    {
-       let query = {
-      $and : 
-      [
-        {$or: [
-           
-            {"location_city":city ||{$exists:true}}
-          ]},
-        {$and: [
-           
-          {'fifthwheel':fifthwheel ||{$exists:true}}, {'hybrid':hybridtrailer ||{$exists:true}}, {'specification_guest':numberOfGuest ||{$exists:true}}, {'tenttrailer':tentrailer ||{$exists:true}}, {'toyhauler':toytrailer ||{$exists:true}}, {'traveltrailer':traveltrailer ||{$exists:true} }, {'vintage':vintagetrailer ||{$exists:true}},{$and:[
-            {$or:
-                [
-                {'unavailability_from':{"$lt":dateFrom}},
-                {'unavailability_from':{"$gt":dateTo}},
-                {'unavailability_from':null}    
-                ]
-                  },
-                  
-                  {$or:
-                [
-                {'unavailability_to':{"$lt":dateFrom}},
-                {'unavailability_to':{"$gt":dateTo}},
-                {'unavailability_to':null}    
-                ]
-                  }
-                  ]
-              }
-      ]
-    }
-  ]
-  }
-    
-  
-    // let query = {$and:[{'pricing_high_rate_hour': {$gte: 0, $lte: price} }]}
-    // let query = {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}
-  
-      ListTrailer.find(query).populate('star_rating').exec(function(err, trailers){
-  
-        res.json(trailers);
-      });
-
-     
-      
-    }
-
-else{
-    let query = {
-      $and : 
-      [
-        {$or: [
-           
-            {"location_city":city}
-          ]},
-        {$and: [
-           
-          {'fifthwheel':fifthwheel ||{$exists:true}}, {'hybrid':hybridtrailer ||{$exists:true}}, {'specification_guest':numberOfGuest ||{$exists:true}}, {'tenttrailer':tentrailer ||{$exists:true}}, {'toyhauler':toytrailer ||{$exists:true}}, {'traveltrailer':traveltrailer ||{$exists:true} }, {'pricing_high_rate_hour':{$lte:price} },{'type_of_rv':[type_of_rv] }
-      ]
-    }
-  ]
-  }
-    
-  
-    // let query = {$and:[{'pricing_high_rate_hour': {$gte: 0, $lte: price} }]}
-    // let query = {$and:[{'pricing_highest_season_date_range_from': {$gte: dateFrom, $lte: dateTo}}, {'pricing_highest_season_date_range_to': {$lte: dateTo}}]}
-  
-      ListTrailer.find(query, function(err, trailers){
-  
-        res.json(trailers);
-      });
-    
-    }
   });
-
-
-
+   
 
 
 

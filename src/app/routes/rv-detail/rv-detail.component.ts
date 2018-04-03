@@ -17,9 +17,9 @@ import { DatePipe } from '@angular/common';
 })
 export class RvDetailComponent implements OnInit {
   public loading = false;
-
+  public user_email:any=[];
   renterdetail: any = [];
-
+  userslist:any=[];
   public max: number = 5;
   public rate: number = 4;
   public isReadonly: boolean = true;
@@ -96,7 +96,7 @@ export class RvDetailComponent implements OnInit {
 
                   });    
                   
-                 
+                  this.getUserList();
             }
 
               brandSlideVisible: boolean;
@@ -135,6 +135,16 @@ console.log(this.listing_id);
   form.value.sendername=senderID.username;
   form.value.parent_id = 0;
  // console.log(form.value);
+ let userid= this.route.snapshot.params['id'];
+ this.apiService.showListTrailer(userid).subscribe((res) => {
+   let trailerdetail=res;
+   const data = Object.assign({}, {email:trailerdetail.owner_email},form.value);
+
+ this.apiService.sendmsgbyemail(data).subscribe((result) => {
+   console.log('Data send to email'); 
+ }); 
+});
+ 
 
   this.apiService.createMessage(form.value)
   .subscribe( (response) => {
@@ -154,6 +164,7 @@ console.log(this.listing_id);
     this.apiService.showListTrailer(id).subscribe((res) => {
       this.loading = false;
       this.renterdetail = res;
+      this.user_email=this.renterdetail.owner_email;
 var star_rating=this.renterdetail.star_rating;
 var icount=0;
 var totalcount=0;
@@ -239,6 +250,19 @@ star_rating.forEach(function(items) {
         console.log(result);
     });
     location.reload();
+  }
+
+  getUserList()
+  {
+    this.apiService.getAllUsers().subscribe((res) => {
+      this.userslist = res;
+      console.log('user details'+this.users);
+    
+      
+
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   

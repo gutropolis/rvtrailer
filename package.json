@@ -52,6 +52,8 @@
     "ngx-owl-carousel": "^1.0.1",
     "ngx-pagination": "^3.1.0",
     "nodemailer": "^4.1.0",
+    "pug": "^2.0.3",
+    "pug-mailer": "^1.0.1",
     "rxjs": "^5.1.0",
     "tinymce": "^4.6.6",
     "zone.js": "^0.8.4"
