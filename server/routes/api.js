@@ -27,11 +27,12 @@ var m =require('../models/emailsubject');
 
 ratingstor:any=[];
 var smtpTransport = nodemailer.createTransport({
-  service: "outlook",
-  host: "smtp.outlook.com",
+  host: 'smtp.ethereal.email',
+  port: 587,
+  secure: STARTTLS, // true for 465, false for other ports
   auth: {
-      user: "ajaythakur9329@outlook.com",
-      pass: "zirakpur@123"
+      user: 'xb7esrf4jwxyzxl3@ethereal.email', // generated ethereal user
+      pass: 'ydq6YdZns2Bm6A7GyM' // generated ethereal password
   }
 });
 
