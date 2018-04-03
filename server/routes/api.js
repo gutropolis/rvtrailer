@@ -27,11 +27,10 @@ var m =require('../models/emailsubject');
 
 ratingstor:any=[];
 var smtpTransport = nodemailer.createTransport({
-  service: "outlook",
-  host: "smtp.outlook.com",
+  service: 'gmail',
   auth: {
-      user: "ajaythakur9329@outlook.com",
-      pass: "zirakpur@123"
+      user: "royalrajput9329@gmail.com",
+      pass: "Romanticworld12"
   }
 });
 
