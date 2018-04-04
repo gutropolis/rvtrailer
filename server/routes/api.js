@@ -29,8 +29,8 @@ ratingstor:any=[];
 var smtpTransport = nodemailer.createTransport({
   debug: true,
   host: 'smtp.gmail.com',
-  port:  587 ,
-  secure: true,
+  port: 25,
+  secure: false,
   auth: {
     user: 'royalrajput9329@gmail.com',
     pass: 'Romanticworld12'
