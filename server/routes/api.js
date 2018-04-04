@@ -27,19 +27,11 @@ var m =require('../models/emailsubject');
 
 ratingstor:any=[];
 var smtpTransport = nodemailer.createTransport({
-  //pool: true,
-    host: 'smtp.gmail.com', // Gmail as mail client
-    port: 465,
-    secure: true, // use SSL
-    auth: {
-        user: 'royalrajput9329@gmail.com',
-        pass: 'Romanticworld12'
-    }
- /* service: 'gmail',
+  service: 'gmail',
   auth: {
-      user: "royalrajput9329@gmail.com",
-      pass: "Romanticworld12"
-  }*/
+    user: 'royalrajput9329@gmail.com',
+    pass: 'Romanticworld12'
+  }
 });
 
 //static email
@@ -48,13 +40,14 @@ console.log('in this api '+JSON.stringify(req.body));
 var message;
 
   var mailOptions={
-   
+      from:'royalrajput9329@gmail.com',
       to:req.body.email,
       subject :m.subject_Register,
       html :m.regisrterFunction({firstname:req.body.firstname, lastname:req.body.lastname})
  
 }
 var AdminmailOptions={  
+  from:'royalrajput9329@gmail.com',
     to:m.adminEmail,
     subject :m.subject_admin_reg,
     html :m.signupFunction({firstname:req.body.firstname, lastname:req.body.lastname})
