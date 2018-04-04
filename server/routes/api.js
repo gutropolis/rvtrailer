@@ -33,7 +33,7 @@ var smtpTransport = nodemailer.createTransport({
   secure: false,
   auth: {
     user: 'royalrajput9329@gmail.com',
-    pass: 'Romanticworld12'
+    pass: 'realworld@12'
   }
 });
 
